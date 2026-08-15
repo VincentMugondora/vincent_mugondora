@@ -1,7 +1,7 @@
 ---
 import ArticleLayout from "@layouts/ArticleLayout.astro";
 import Container from "@components/ui/Container.astro";
-import { getCollection } from "astro:content";
+import { getCollection, render } from "astro:content";
 import { formatDate } from "@lib/utils";
 
 export async function getStaticPaths() {
@@ -15,7 +15,7 @@ export async function getStaticPaths() {
 }
 
 const { post } = Astro.props;
-const { Content } = await post.render();
+const { Content } = await render(post);
 ---
 
 <ArticleLayout title={post.data.title} description={post.data.description} image={post.data.image}>
