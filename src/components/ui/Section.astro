@@ -1,0 +1,17 @@
+---
+interface Props {
+  theme?: "light" | "dark";
+  id?: string;
+  class?: string;
+}
+
+const { theme = "light", id, class: className = "" } = Astro.props;
+
+const themeClasses = theme === "dark"
+  ? "bg-midnight text-offwhite"
+  : "bg-offwhite text-slate-brand";
+---
+
+<section id={id} class:list={[themeClasses, "py-20 lg:py-28", className]}>
+  <slot />
+</section>

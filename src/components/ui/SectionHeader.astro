@@ -1,0 +1,25 @@
+---
+interface Props {
+  title: string;
+  subtitle?: string;
+  align?: "left" | "center";
+  theme?: "light" | "dark";
+}
+
+const { title, subtitle, align = "left", theme = "light" } = Astro.props;
+
+const titleColor = theme === "dark" ? "text-offwhite" : "text-midnight";
+const subtitleColor = theme === "dark" ? "text-offwhite/70" : "text-muted";
+const alignment = align === "center" ? "text-center" : "text-left";
+---
+
+<header class:list={["mb-12", alignment]}>
+  <h2 class:list={["font-heading text-3xl font-bold lg:text-4xl", titleColor]}>
+    {title}
+  </h2>
+  {subtitle && (
+    <p class:list={["mt-4 max-w-2xl text-lg", subtitleColor, align === "center" && "mx-auto"]}>
+      {subtitle}
+    </p>
+  )}
+</header>
