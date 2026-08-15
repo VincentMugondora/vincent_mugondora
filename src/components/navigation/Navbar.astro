@@ -1,0 +1,130 @@
+---
+import Container from "@components/ui/Container.astro";
+import { mainNav } from "@config/navigation";
+import { siteConfig } from "@config/site";
+
+const currentPath = Astro.url.pathname;
+---
+
+<header class="fixed inset-x-0 top-0 z-50 border-b border-midnight/5 bg-offwhite/80 backdrop-blur-md">
+  <Container>
+    <nav class="flex h-16 items-center justify-between" aria-label="Main navigation">
+      <a href="/" class="font-heading text-lg font-bold text-midnight">
+        {siteConfig.name}
+      </a>
+
+      <ul class="hidden items-center gap-1 md:flex" role="list">
+        {mainNav.map((item) => {
+          const isActive = currentPath === item.href || currentPath.startsWith(item.href + "/");
+          return (
+            <li>
+              <a
+                href={item.href}
+                class:list={[
+                  "rounded-md px-3 py-2 text-sm font-medium transition-colors",
+                  isActive
+                    ? "text-electric"
+                    : "text-muted hover:text-midnight",
+                ]}
+                aria-current={isActive ? "page" : undefined}
+              >
+                {item.label}
+              </a>
+            </li>
+          );
+        })}
+      </ul>
+
+      <button
+        type="button"
+        class="flex h-10 w-10 items-center justify-center rounded-md text-midnight md:hidden"
+        aria-label="Open menu"
+        aria-expanded="false"
+        data-menu-toggle
+      >
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+          <line x1="3" y1="6" x2="21" y2="6" />
+          <line x1="3" y1="12" x2="21" y2="12" />
+          <line x1="3" y1="18" x2="21" y2="18" />
+        </svg>
+      </button>
+    </nav>
+  </Container>
+</header>
+
+<div
+  class="fixed inset-0 z-50 hidden flex-col bg-offwhite"
+  data-mobile-menu
+  aria-hidden="true"
+>
+  <Container>
+    <div class="flex h-16 items-center justify-between">
+      <a href="/" class="font-heading text-lg font-bold text-midnight">
+        {siteConfig.name}
+      </a>
+      <button
+        type="button"
+        class="flex h-10 w-10 items-center justify-center rounded-md text-midnight"
+        aria-label="Close menu"
+        data-menu-close
+      >
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+          <line x1="18" y1="6" x2="6" y2="18" />
+          <line x1="6" y1="6" x2="18" y2="18" />
+        </svg>
+      </button>
+    </div>
+  </Container>
+  <nav class="flex flex-1 flex-col px-6 pt-8" aria-label="Mobile navigation">
+    <ul class="flex flex-col gap-2" role="list">
+      {mainNav.map((item) => {
+        const isActive = currentPath === item.href || currentPath.startsWith(item.href + "/");
+        return (
+          <li>
+            <a
+              href={item.href}
+              class:list={[
+                "block rounded-md px-4 py-3 text-lg font-medium transition-colors",
+                isActive
+                  ? "text-electric"
+                  : "text-slate-brand hover:text-electric",
+              ]}
+              aria-current={isActive ? "page" : undefined}
+            >
+              {item.label}
+            </a>
+          </li>
+        );
+      })}
+    </ul>
+  </nav>
+</div>
+
+<script is:inline>
+  document.addEventListener("DOMContentLoaded", () => {
+    const toggle = document.querySelector("[data-menu-toggle]");
+    const close = document.querySelector("[data-menu-close]");
+    const menu = document.querySelector("[data-mobile-menu]");
+    if (!toggle || !close || !menu) return;
+
+    function open() {
+      menu.classList.remove("hidden");
+      menu.classList.add("flex");
+      menu.setAttribute("aria-hidden", "false");
+      toggle.setAttribute("aria-expanded", "true");
+      document.body.style.overflow = "hidden";
+    }
+
+    function shut() {
+      menu.classList.add("hidden");
+      menu.classList.remove("flex");
+      menu.setAttribute("aria-hidden", "true");
+      toggle.setAttribute("aria-expanded", "false");
+      document.body.style.overflow = "";
+    }
+
+    toggle.addEventListener("click", open);
+    close.addEventListener("click", shut);
+    menu.querySelectorAll("a").forEach(a => a.addEventListener("click", shut));
+  });
+</script>
