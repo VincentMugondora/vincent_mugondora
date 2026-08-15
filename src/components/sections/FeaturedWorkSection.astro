@@ -1,0 +1,47 @@
+---
+import Section from "@components/ui/Section.astro";
+import Container from "@components/ui/Container.astro";
+import SectionHeader from "@components/ui/SectionHeader.astro";
+import Button from "@components/ui/Button.astro";
+import Tag from "@components/ui/Tag.astro";
+import { getFeaturedProjects } from "@lib/content";
+
+const projects = await getFeaturedProjects();
+---
+
+<Section theme="light">
+  <Container>
+    <SectionHeader
+      title="Featured Work"
+      subtitle="Selected projects that demonstrate engineering thinking and real-world impact."
+    />
+    {projects.length > 0 ? (
+      <div class="grid gap-8 lg:grid-cols-2">
+        {projects.map((project) => (
+          <a href={`/work/${project.id}`} class="group block rounded-lg border border-midnight/10 p-8 transition-colors hover:border-electric/30">
+            <h3 class="font-heading text-xl font-semibold text-midnight group-hover:text-electric">
+              {project.data.title}
+            </h3>
+            <p class="mt-3 text-muted">
+              {project.data.description}
+            </p>
+            {project.data.technologies.length > 0 && (
+              <div class="mt-4 flex flex-wrap gap-2">
+                {project.data.technologies.slice(0, 4).map((tech) => (
+                  <Tag label={tech} />
+                ))}
+              </div>
+            )}
+          </a>
+        ))}
+      </div>
+    ) : (
+      <div class="rounded-lg border border-dashed border-midnight/20 p-12 text-center">
+        <p class="text-muted">Projects coming soon.</p>
+      </div>
+    )}
+    <div class="mt-12 text-center">
+      <Button href="/work" variant="secondary">View All Projects</Button>
+    </div>
+  </Container>
+</Section>

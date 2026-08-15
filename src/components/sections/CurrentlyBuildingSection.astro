@@ -1,0 +1,40 @@
+---
+import Section from "@components/ui/Section.astro";
+import Container from "@components/ui/Container.astro";
+import SectionHeader from "@components/ui/SectionHeader.astro";
+import Tag from "@components/ui/Tag.astro";
+import { getAllExperiments } from "@lib/content";
+
+const experiments = await getAllExperiments();
+const active = experiments.filter((e) => e.data.status === "active");
+---
+
+<Section theme="light">
+  <Container>
+    <SectionHeader
+      title="Currently Building"
+      subtitle="Active experiments and projects in progress."
+    />
+    {active.length > 0 ? (
+      <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        {active.map((experiment) => (
+          <div class="rounded-lg border border-midnight/10 p-6">
+            <div class="mb-3">
+              <Tag label={experiment.data.status} />
+            </div>
+            <h3 class="font-heading text-lg font-semibold text-midnight">
+              {experiment.data.title}
+            </h3>
+            <p class="mt-2 text-sm text-muted">
+              {experiment.data.description}
+            </p>
+          </div>
+        ))}
+      </div>
+    ) : (
+      <div class="rounded-lg border border-dashed border-midnight/20 p-12 text-center">
+        <p class="text-muted">Experiments coming soon.</p>
+      </div>
+    )}
+  </Container>
+</Section>
