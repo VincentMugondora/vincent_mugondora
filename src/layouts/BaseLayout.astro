@@ -25,12 +25,18 @@ const pageDescription = description ?? siteConfig.description;
     <title>{pageTitle}</title>
     <meta name="description" content={pageDescription} />
 
-    <link rel="canonical" href={new URL(Astro.url.pathname, siteConfig.url).href} />
+    <link
+      rel="canonical"
+      href={new URL(Astro.url.pathname, siteConfig.url).href}
+    />
 
     <meta property="og:type" content="website" />
     <meta property="og:title" content={pageTitle} />
     <meta property="og:description" content={pageDescription} />
-    <meta property="og:url" content={new URL(Astro.url.pathname, siteConfig.url).href} />
+    <meta
+      property="og:url"
+      content={new URL(Astro.url.pathname, siteConfig.url).href}
+    />
     <meta property="og:site_name" content={siteConfig.name} />
 
     <meta name="twitter:card" content="summary_large_image" />
