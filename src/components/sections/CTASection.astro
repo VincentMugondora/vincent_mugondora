@@ -1,0 +1,23 @@
+---
+import Section from "@components/ui/Section.astro";
+import Container from "@components/ui/Container.astro";
+import Button from "@components/ui/Button.astro";
+---
+
+<Section theme="light" class="py-28 lg:py-36">
+  <Container>
+    <div class="mx-auto max-w-2xl text-center">
+      <h2 class="font-heading text-3xl font-bold text-midnight lg:text-4xl">
+        Let's build something together
+      </h2>
+      <p class="mt-4 text-lg text-muted">
+        Whether you need engineering expertise, a speaker for your event,
+        or a collaborator for your next project — I'd like to hear from you.
+      </p>
+      <div class="mt-8 flex flex-wrap justify-center gap-4">
+        <Button href="/contact" variant="primary" size="lg">Get In Touch</Button>
+        <Button href="/work" variant="secondary" size="lg">See My Work</Button>
+      </div>
+    </div>
+  </Container>
+</Section>
