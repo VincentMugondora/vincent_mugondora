@@ -1,0 +1,54 @@
+---
+import PageLayout from "@layouts/PageLayout.astro";
+import Section from "@components/ui/Section.astro";
+import Container from "@components/ui/Container.astro";
+import Tag from "@components/ui/Tag.astro";
+import { getAllProjects } from "@lib/content";
+
+const projects = await getAllProjects();
+---
+
+<PageLayout title="Work" description="Software engineering projects and case studies by Vincent Mugondora.">
+  <Section theme="dark">
+    <Container>
+      <div class="max-w-2xl">
+        <p class="font-mono text-sm uppercase tracking-widest text-gold">Portfolio</p>
+        <h1 class="mt-4 font-heading text-4xl font-bold text-offwhite lg:text-5xl">
+          Work
+        </h1>
+        <p class="mt-4 text-lg text-offwhite/70">
+          Projects that demonstrate engineering thinking, system design, and real-world impact.
+        </p>
+      </div>
+    </Container>
+  </Section>
+
+  <Section theme="light">
+    <Container>
+      {projects.length > 0 ? (
+        <div class="grid gap-8 lg:grid-cols-2">
+          {projects.map((project) => (
+            <a href={`/work/${project.id}`} class="group block rounded-lg border border-midnight/10 p-8 transition-colors hover:border-electric/30">
+              <h2 class="font-heading text-xl font-semibold text-midnight group-hover:text-electric">
+                {project.data.title}
+              </h2>
+              <p class="mt-3 text-muted">{project.data.description}</p>
+              {project.data.technologies.length > 0 && (
+                <div class="mt-4 flex flex-wrap gap-2">
+                  {project.data.technologies.slice(0, 5).map((tech) => (
+                    <Tag label={tech} />
+                  ))}
+                </div>
+              )}
+            </a>
+          ))}
+        </div>
+      ) : (
+        <div class="rounded-lg border border-dashed border-midnight/20 p-16 text-center">
+          <h2 class="font-heading text-xl font-semibold text-midnight">Projects coming soon</h2>
+          <p class="mt-2 text-muted">Case studies and project details are being documented.</p>
+        </div>
+      )}
+    </Container>
+  </Section>
+</PageLayout>

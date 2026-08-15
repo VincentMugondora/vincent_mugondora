@@ -1,0 +1,57 @@
+---
+import PageLayout from "@layouts/PageLayout.astro";
+import Section from "@components/ui/Section.astro";
+import Container from "@components/ui/Container.astro";
+import Tag from "@components/ui/Tag.astro";
+import { getAllExperiments } from "@lib/content";
+
+const experiments = await getAllExperiments();
+---
+
+<PageLayout title="AI Lab" description="AI experiments, agents, RAG systems, and automation projects by Vincent Mugondora.">
+  <Section theme="dark">
+    <Container>
+      <div class="max-w-2xl">
+        <p class="font-mono text-sm uppercase tracking-widest text-gold">Experiments</p>
+        <h1 class="mt-4 font-heading text-4xl font-bold text-offwhite lg:text-5xl">
+          AI Lab
+        </h1>
+        <p class="mt-4 text-lg text-offwhite/70">
+          Exploring AI agents, RAG systems, automation, and intelligent solutions for African businesses and education.
+        </p>
+      </div>
+    </Container>
+  </Section>
+
+  <Section theme="light">
+    <Container>
+      {experiments.length > 0 ? (
+        <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          {experiments.map((experiment) => (
+            <div class="rounded-lg border border-midnight/10 p-6">
+              <div class="flex items-center gap-2">
+                <Tag label={experiment.data.status} />
+              </div>
+              <h2 class="mt-4 font-heading text-lg font-semibold text-midnight">
+                {experiment.data.title}
+              </h2>
+              <p class="mt-2 text-sm text-muted">{experiment.data.description}</p>
+              {experiment.data.technologies.length > 0 && (
+                <div class="mt-4 flex flex-wrap gap-1">
+                  {experiment.data.technologies.slice(0, 3).map((tech) => (
+                    <span class="font-mono text-xs text-muted">{tech}</span>
+                  ))}
+                </div>
+              )}
+            </div>
+          ))}
+        </div>
+      ) : (
+        <div class="rounded-lg border border-dashed border-midnight/20 p-16 text-center">
+          <h2 class="font-heading text-xl font-semibold text-midnight">Experiments coming soon</h2>
+          <p class="mt-2 text-muted">AI research notes and experiments are being documented.</p>
+        </div>
+      )}
+    </Container>
+  </Section>
+</PageLayout>

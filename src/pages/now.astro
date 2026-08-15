@@ -1,0 +1,62 @@
+---
+import PageLayout from "@layouts/PageLayout.astro";
+import Section from "@components/ui/Section.astro";
+import Container from "@components/ui/Container.astro";
+---
+
+<PageLayout title="Now" description="What Vincent Mugondora is currently working on, learning, and building.">
+  <Section theme="dark">
+    <Container>
+      <div class="max-w-2xl">
+        <p class="font-mono text-sm uppercase tracking-widest text-gold">Now</p>
+        <h1 class="mt-4 font-heading text-4xl font-bold text-offwhite lg:text-5xl">
+          What I'm doing now
+        </h1>
+        <p class="mt-4 text-lg text-offwhite/70">
+          A snapshot of my current focus, projects, and learning.
+        </p>
+      </div>
+    </Container>
+  </Section>
+
+  <Section theme="light">
+    <Container>
+      <div class="mx-auto max-w-3xl space-y-12">
+        <div>
+          <h2 class="font-heading text-2xl font-bold text-midnight">Currently Building</h2>
+          <ul class="mt-4 space-y-3 text-muted" role="list">
+            <li class="flex items-start gap-3">
+              <span class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-electric"></span>
+              <span>This portfolio — vincentmugondora.com</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-electric"></span>
+              <span>Zimnovate projects</span>
+            </li>
+          </ul>
+        </div>
+
+        <div>
+          <h2 class="font-heading text-2xl font-bold text-midnight">Currently Learning</h2>
+          <ul class="mt-4 space-y-3 text-muted" role="list">
+            <li class="flex items-start gap-3">
+              <span class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-gold"></span>
+              <span>Advanced AI agent architectures</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-gold"></span>
+              <span>Edge computing and Cloudflare Workers</span>
+            </li>
+          </ul>
+        </div>
+
+        <div>
+          <h2 class="font-heading text-2xl font-bold text-midnight">Current Focus</h2>
+          <p class="mt-4 text-muted">
+            Building Zimnovate's product pipeline, establishing my personal brand, and teaching software engineering to young developers in Zimbabwe.
+          </p>
+        </div>
+      </div>
+    </Container>
+  </Section>
+</PageLayout>

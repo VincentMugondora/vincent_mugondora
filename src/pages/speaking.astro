@@ -1,0 +1,90 @@
+---
+import PageLayout from "@layouts/PageLayout.astro";
+import Section from "@components/ui/Section.astro";
+import Container from "@components/ui/Container.astro";
+import Button from "@components/ui/Button.astro";
+import { getAllSpeaking } from "@lib/content";
+import { formatDate } from "@lib/utils";
+
+const events = await getAllSpeaking();
+
+const topics = [
+  "AI and Software Engineering",
+  "Building AI Products",
+  "Technology in Africa",
+  "Becoming a Software Engineer",
+  "System Design",
+  "Software Engineering Careers",
+  "Technology Entrepreneurship",
+  "Teaching Young Developers",
+];
+---
+
+<PageLayout title="Speaking" description="Vincent Mugondora speaks about AI, software engineering, technology entrepreneurship, and building tech in Africa.">
+  <Section theme="dark">
+    <Container>
+      <div class="max-w-2xl">
+        <p class="font-mono text-sm uppercase tracking-widest text-gold">Speaking</p>
+        <h1 class="mt-4 font-heading text-4xl font-bold text-offwhite lg:text-5xl">
+          Speaking & Workshops
+        </h1>
+        <p class="mt-4 text-lg text-offwhite/70">
+          I speak about AI, software engineering, technology entrepreneurship, and building tech careers — particularly in the African context.
+        </p>
+      </div>
+    </Container>
+  </Section>
+
+  <Section theme="light">
+    <Container>
+      <div class="mx-auto max-w-3xl">
+        <h2 class="font-heading text-2xl font-bold text-midnight">Topics</h2>
+        <ul class="mt-6 grid gap-3 sm:grid-cols-2" role="list">
+          {topics.map((topic) => (
+            <li class="flex items-center gap-3 rounded-md border border-midnight/10 px-4 py-3">
+              <span class="h-1.5 w-1.5 rounded-full bg-electric"></span>
+              <span class="text-sm text-slate-brand">{topic}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </Container>
+  </Section>
+
+  <Section theme="dark">
+    <Container>
+      <div class="mx-auto max-w-3xl">
+        <h2 class="font-heading text-2xl font-bold text-offwhite">Events</h2>
+        {events.length > 0 ? (
+          <div class="mt-8 space-y-6">
+            {events.map((event) => (
+              <div class="rounded-lg border border-offwhite/10 p-6">
+                <p class="font-mono text-xs text-offwhite/40">{formatDate(event.data.date)}</p>
+                <h3 class="mt-2 font-heading text-lg font-semibold text-offwhite">{event.data.title}</h3>
+                <p class="mt-1 text-sm text-offwhite/60">{event.data.event} {event.data.location && `— ${event.data.location}`}</p>
+              </div>
+            ))}
+          </div>
+        ) : (
+          <div class="mt-8 rounded-lg border border-dashed border-offwhite/20 p-12 text-center">
+            <p class="text-offwhite/60">Upcoming events will be listed here.</p>
+          </div>
+        )}
+      </div>
+    </Container>
+  </Section>
+
+  <Section theme="light">
+    <Container>
+      <div class="mx-auto max-w-2xl text-center">
+        <h2 class="font-heading text-2xl font-bold text-midnight">Invite me to speak</h2>
+        <p class="mt-4 text-muted">
+          Available for conferences, meetups, workshops, and corporate events. I tailor each talk to the audience and context.
+        </p>
+        <div class="mt-8">
+          <Button href="/contact" variant="primary" size="lg">Book a Talk</Button>
+        </div>
+      </div>
+    </Container>
+  </Section>
+</PageLayout>

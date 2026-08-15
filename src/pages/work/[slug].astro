@@ -1,0 +1,60 @@
+---
+import PageLayout from "@layouts/PageLayout.astro";
+import Section from "@components/ui/Section.astro";
+import Container from "@components/ui/Container.astro";
+import Tag from "@components/ui/Tag.astro";
+import Button from "@components/ui/Button.astro";
+import { getCollection } from "astro:content";
+
+export async function getStaticPaths() {
+  const projects = await getCollection("projects");
+  return projects.map((project) => ({
+    params: { slug: project.id },
+    props: { project },
+  }));
+}
+
+const { project } = Astro.props;
+const { Content } = await project.render();
+---
+
+<PageLayout title={project.data.title} description={project.data.description}>
+  <Section theme="dark">
+    <Container>
+      <div class="max-w-3xl">
+        <p class="font-mono text-sm uppercase tracking-widest text-gold">Case Study</p>
+        <h1 class="mt-4 font-heading text-4xl font-bold text-offwhite lg:text-5xl">
+          {project.data.title}
+        </h1>
+        <p class="mt-4 text-lg text-offwhite/70">{project.data.description}</p>
+        {project.data.technologies.length > 0 && (
+          <div class="mt-6 flex flex-wrap gap-2">
+            {project.data.technologies.map((tech) => (
+              <Tag label={tech} theme="dark" />
+            ))}
+          </div>
+        )}
+        <div class="mt-8 flex gap-4">
+          {project.data.github && <Button href={project.data.github} variant="secondary" size="sm" class="border-offwhite/20 text-offwhite hover:bg-offwhite/5">GitHub</Button>}
+          {project.data.live && <Button href={project.data.live} variant="primary" size="sm">Live Site</Button>}
+        </div>
+      </div>
+    </Container>
+  </Section>
+
+  <Section theme="light">
+    <Container>
+      <article class="prose mx-auto max-w-3xl">
+        <Content />
+      </article>
+    </Container>
+  </Section>
+
+  <Section theme="light" class="pt-0">
+    <Container>
+      <div class="mx-auto max-w-3xl text-center">
+        <Button href="/work" variant="secondary">Back to All Projects</Button>
+      </div>
+    </Container>
+  </Section>
+</PageLayout>

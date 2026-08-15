@@ -1,0 +1,95 @@
+---
+import PageLayout from "@layouts/PageLayout.astro";
+import Section from "@components/ui/Section.astro";
+import Container from "@components/ui/Container.astro";
+import Tag from "@components/ui/Tag.astro";
+---
+
+<PageLayout title="About" description="Software Engineer, AI Builder, Educator, and Entrepreneur building technology and developing people in Africa.">
+  <Section theme="dark">
+    <Container>
+      <div class="max-w-3xl">
+        <p class="font-mono text-sm uppercase tracking-widest text-gold">About</p>
+        <h1 class="mt-4 font-heading text-4xl font-bold text-offwhite lg:text-5xl">
+          Building at the intersection of engineering, education, and entrepreneurship
+        </h1>
+        <p class="mt-6 text-lg text-offwhite/70">
+          I'm Vincent Mugondora — a software engineer and entrepreneur based in Zimbabwe.
+          I build technology, teach developers, and create solutions for Africa.
+        </p>
+      </div>
+    </Container>
+  </Section>
+
+  <Section theme="light">
+    <Container>
+      <div class="mx-auto max-w-3xl">
+        <h2 class="font-heading text-3xl font-bold text-midnight">Journey</h2>
+        <div class="mt-8 space-y-8 border-l-2 border-midnight/10 pl-8">
+          <div>
+            <p class="font-mono text-xs text-muted">Present</p>
+            <h3 class="mt-1 font-heading text-lg font-semibold text-midnight">Founder, Zimnovate</h3>
+            <p class="mt-1 text-muted">Building technology solutions for Zimbabwe and Africa.</p>
+          </div>
+          <div>
+            <p class="font-mono text-xs text-muted">Ongoing</p>
+            <h3 class="mt-1 font-heading text-lg font-semibold text-midnight">Software Engineer & AI Builder</h3>
+            <p class="mt-1 text-muted">Full-stack development, AI systems, and system architecture.</p>
+          </div>
+          <div>
+            <p class="font-mono text-xs text-muted">Ongoing</p>
+            <h3 class="mt-1 font-heading text-lg font-semibold text-midnight">Educator & Speaker</h3>
+            <p class="mt-1 text-muted">Teaching software engineering and speaking about technology in Africa.</p>
+          </div>
+        </div>
+      </div>
+    </Container>
+  </Section>
+
+  <Section theme="dark">
+    <Container>
+      <div class="mx-auto max-w-3xl">
+        <h2 class="font-heading text-3xl font-bold text-offwhite">Engineering Philosophy</h2>
+        <div class="mt-8 space-y-4 text-offwhite/70">
+          <p>I believe in building software that works reliably, performs well, and serves real users. Clean architecture and strong fundamentals matter more than chasing trends.</p>
+          <p>I care about developer experience — both for the teams I work with and for the developers I teach. Good code should be understandable, maintainable, and purposeful.</p>
+          <p>Technology should solve problems. In the African context, that means building practical solutions that work within real constraints — connectivity, cost, and accessibility.</p>
+        </div>
+      </div>
+    </Container>
+  </Section>
+
+  <Section theme="light">
+    <Container>
+      <div class="mx-auto max-w-3xl">
+        <h2 class="font-heading text-3xl font-bold text-midnight">Skills & Technologies</h2>
+        <div class="mt-8 grid gap-8 sm:grid-cols-2">
+          <div>
+            <h3 class="font-heading text-lg font-semibold text-midnight">Languages & Frameworks</h3>
+            <div class="mt-3 flex flex-wrap gap-2">
+              {["TypeScript", "Python", "Astro", "Node.js", "React"].map((t) => <Tag label={t} />)}
+            </div>
+          </div>
+          <div>
+            <h3 class="font-heading text-lg font-semibold text-midnight">AI & Data</h3>
+            <div class="mt-3 flex flex-wrap gap-2">
+              {["LLMs", "RAG", "AI Agents", "LangChain", "Vector DBs"].map((t) => <Tag label={t} />)}
+            </div>
+          </div>
+          <div>
+            <h3 class="font-heading text-lg font-semibold text-midnight">Infrastructure</h3>
+            <div class="mt-3 flex flex-wrap gap-2">
+              {["Cloudflare", "Vercel", "PostgreSQL", "Docker"].map((t) => <Tag label={t} />)}
+            </div>
+          </div>
+          <div>
+            <h3 class="font-heading text-lg font-semibold text-midnight">Practices</h3>
+            <div class="mt-3 flex flex-wrap gap-2">
+              {["System Design", "Performance", "Accessibility", "SEO"].map((t) => <Tag label={t} />)}
+            </div>
+          </div>
+        </div>
+      </div>
+    </Container>
+  </Section>
+</PageLayout>

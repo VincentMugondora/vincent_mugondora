@@ -1,0 +1,55 @@
+---
+import PageLayout from "@layouts/PageLayout.astro";
+import Section from "@components/ui/Section.astro";
+import Container from "@components/ui/Container.astro";
+import { getPublishedPosts } from "@lib/content";
+import { formatDate } from "@lib/utils";
+
+const posts = await getPublishedPosts();
+---
+
+<PageLayout title="Writing" description="Technical articles on software engineering, AI, system design, and technology in Africa by Vincent Mugondora.">
+  <Section theme="dark">
+    <Container>
+      <div class="max-w-2xl">
+        <p class="font-mono text-sm uppercase tracking-widest text-gold">Articles</p>
+        <h1 class="mt-4 font-heading text-4xl font-bold text-offwhite lg:text-5xl">
+          Writing
+        </h1>
+        <p class="mt-4 text-lg text-offwhite/70">
+          Technical writing on software engineering, AI, system design, and building technology in Africa.
+        </p>
+      </div>
+    </Container>
+  </Section>
+
+  <Section theme="light">
+    <Container>
+      {posts.length > 0 ? (
+        <div class="mx-auto max-w-3xl divide-y divide-midnight/10">
+          {posts.map((post) => (
+            <a href={`/writing/${post.id}`} class="group block py-8 first:pt-0 last:pb-0">
+              <div class="flex items-center gap-3">
+                <span class="rounded-full bg-midnight/5 px-3 py-1 font-mono text-xs text-muted">
+                  {post.data.category.replace("-", " ")}
+                </span>
+                <span class="font-mono text-xs text-muted">
+                  {formatDate(post.data.publishedAt)}
+                </span>
+              </div>
+              <h2 class="mt-3 font-heading text-xl font-semibold text-midnight group-hover:text-electric">
+                {post.data.title}
+              </h2>
+              <p class="mt-2 text-muted">{post.data.description}</p>
+            </a>
+          ))}
+        </div>
+      ) : (
+        <div class="rounded-lg border border-dashed border-midnight/20 p-16 text-center">
+          <h2 class="font-heading text-xl font-semibold text-midnight">Articles coming soon</h2>
+          <p class="mt-2 text-muted">Technical writing is in progress.</p>
+        </div>
+      )}
+    </Container>
+  </Section>
+</PageLayout>

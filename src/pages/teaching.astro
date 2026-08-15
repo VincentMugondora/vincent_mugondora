@@ -1,0 +1,75 @@
+---
+import PageLayout from "@layouts/PageLayout.astro";
+import Section from "@components/ui/Section.astro";
+import Container from "@components/ui/Container.astro";
+import Button from "@components/ui/Button.astro";
+---
+
+<PageLayout title="Teaching" description="Vincent Mugondora teaches software engineering, AI development, and system design through workshops and mentorship.">
+  <Section theme="dark">
+    <Container>
+      <div class="max-w-2xl">
+        <p class="font-mono text-sm uppercase tracking-widest text-gold">Education</p>
+        <h1 class="mt-4 font-heading text-4xl font-bold text-offwhite lg:text-5xl">
+          Teaching
+        </h1>
+        <p class="mt-4 text-lg text-offwhite/70">
+          Helping developers build confidence through practical, project-based learning in software engineering, AI, and system design.
+        </p>
+      </div>
+    </Container>
+  </Section>
+
+  <Section theme="light">
+    <Container>
+      <div class="mx-auto max-w-3xl">
+        <h2 class="font-heading text-2xl font-bold text-midnight">What I Teach</h2>
+        <div class="mt-8 grid gap-6 sm:grid-cols-2">
+          <div class="rounded-lg border border-midnight/10 p-6">
+            <h3 class="font-heading text-lg font-semibold text-midnight">Software Engineering</h3>
+            <p class="mt-2 text-sm text-muted">Fundamentals, clean code, testing, and building production-ready applications.</p>
+          </div>
+          <div class="rounded-lg border border-midnight/10 p-6">
+            <h3 class="font-heading text-lg font-semibold text-midnight">AI Development</h3>
+            <p class="mt-2 text-sm text-muted">Building AI agents, RAG systems, and integrating LLMs into real products.</p>
+          </div>
+          <div class="rounded-lg border border-midnight/10 p-6">
+            <h3 class="font-heading text-lg font-semibold text-midnight">System Design</h3>
+            <p class="mt-2 text-sm text-muted">Architecture patterns, scalability, performance, and technical decision-making.</p>
+          </div>
+          <div class="rounded-lg border border-midnight/10 p-6">
+            <h3 class="font-heading text-lg font-semibold text-midnight">Web Development</h3>
+            <p class="mt-2 text-sm text-muted">Modern frameworks, TypeScript, performance optimization, and deployment.</p>
+          </div>
+        </div>
+      </div>
+    </Container>
+  </Section>
+
+  <Section theme="dark">
+    <Container>
+      <div class="mx-auto max-w-3xl">
+        <h2 class="font-heading text-2xl font-bold text-offwhite">Teaching Philosophy</h2>
+        <div class="mt-8 space-y-4 text-offwhite/70">
+          <p>I believe in learning by building. Every concept is better understood when applied to a real problem, not an abstract exercise.</p>
+          <p>I meet students where they are — whether they're writing their first function or architecting distributed systems. The goal is always to build confidence alongside competence.</p>
+          <p>I focus on fundamentals that transfer across languages and frameworks. Tools change; thinking endures.</p>
+        </div>
+      </div>
+    </Container>
+  </Section>
+
+  <Section theme="light">
+    <Container>
+      <div class="mx-auto max-w-2xl text-center">
+        <h2 class="font-heading text-2xl font-bold text-midnight">Work with me</h2>
+        <p class="mt-4 text-muted">
+          Available for workshops, mentorship, and course development. Let's discuss how I can help your team or community grow.
+        </p>
+        <div class="mt-8">
+          <Button href="/contact" variant="primary" size="lg">Get In Touch</Button>
+        </div>
+      </div>
+    </Container>
+  </Section>
+</PageLayout>

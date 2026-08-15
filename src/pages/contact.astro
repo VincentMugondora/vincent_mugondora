@@ -1,0 +1,153 @@
+---
+import PageLayout from "@layouts/PageLayout.astro";
+import Section from "@components/ui/Section.astro";
+import Container from "@components/ui/Container.astro";
+import Button from "@components/ui/Button.astro";
+---
+
+<PageLayout title="Contact" description="Get in touch with Vincent Mugondora for work, speaking, collaboration, or mentorship opportunities.">
+  <Section theme="dark">
+    <Container>
+      <div class="max-w-2xl">
+        <p class="font-mono text-sm uppercase tracking-widest text-gold">Contact</p>
+        <h1 class="mt-4 font-heading text-4xl font-bold text-offwhite lg:text-5xl">
+          Let's connect
+        </h1>
+        <p class="mt-4 text-lg text-offwhite/70">
+          Whether you're looking for engineering expertise, a speaker, a collaborator, or a mentor — I'd like to hear from you.
+        </p>
+      </div>
+    </Container>
+  </Section>
+
+  <Section theme="light">
+    <Container>
+      <div class="grid gap-12 lg:grid-cols-2">
+        <div>
+          <h2 class="font-heading text-2xl font-bold text-midnight">How can I help?</h2>
+          <ul class="mt-6 space-y-4" role="list">
+            <li class="flex items-start gap-3">
+              <span class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-electric"></span>
+              <div>
+                <p class="font-medium text-slate-brand">Work with me</p>
+                <p class="text-sm text-muted">Software engineering, AI systems, full-stack development</p>
+              </div>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-electric"></span>
+              <div>
+                <p class="font-medium text-slate-brand">Invite me to speak</p>
+                <p class="text-sm text-muted">Conferences, meetups, corporate events, workshops</p>
+              </div>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-electric"></span>
+              <div>
+                <p class="font-medium text-slate-brand">Collaborate</p>
+                <p class="text-sm text-muted">Open-source, research, product partnerships</p>
+              </div>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-electric"></span>
+              <div>
+                <p class="font-medium text-slate-brand">Education & mentorship</p>
+                <p class="text-sm text-muted">Workshops, courses, one-on-one mentoring</p>
+              </div>
+            </li>
+          </ul>
+        </div>
+
+        <div>
+          <form
+            action="https://api.web3forms.com/submit"
+            method="POST"
+            class="space-y-6"
+          >
+            <input type="hidden" name="access_key" value="YOUR_ACCESS_KEY" />
+
+            <div>
+              <label for="name" class="block text-sm font-medium text-slate-brand">Name</label>
+              <input
+                type="text"
+                id="name"
+                name="name"
+                required
+                class="mt-1 block w-full rounded-md border border-midnight/10 bg-white px-4 py-3 text-slate-brand placeholder:text-muted/50 focus:border-electric focus:outline-none focus:ring-1 focus:ring-electric"
+                placeholder="Your name"
+              />
+            </div>
+
+            <div>
+              <label for="email" class="block text-sm font-medium text-slate-brand">Email</label>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                required
+                class="mt-1 block w-full rounded-md border border-midnight/10 bg-white px-4 py-3 text-slate-brand placeholder:text-muted/50 focus:border-electric focus:outline-none focus:ring-1 focus:ring-electric"
+                placeholder="you@example.com"
+              />
+            </div>
+
+            <div>
+              <label for="organization" class="block text-sm font-medium text-slate-brand">Organization</label>
+              <input
+                type="text"
+                id="organization"
+                name="organization"
+                class="mt-1 block w-full rounded-md border border-midnight/10 bg-white px-4 py-3 text-slate-brand placeholder:text-muted/50 focus:border-electric focus:outline-none focus:ring-1 focus:ring-electric"
+                placeholder="Company or organization (optional)"
+              />
+            </div>
+
+            <div>
+              <label for="reason" class="block text-sm font-medium text-slate-brand">Reason for contact</label>
+              <select
+                id="reason"
+                name="reason"
+                required
+                class="mt-1 block w-full rounded-md border border-midnight/10 bg-white px-4 py-3 text-slate-brand focus:border-electric focus:outline-none focus:ring-1 focus:ring-electric"
+              >
+                <option value="">Select a reason</option>
+                <option value="work">Work with Vincent</option>
+                <option value="speaking">Invite to speak</option>
+                <option value="collaborate">Collaborate</option>
+                <option value="product">Build a product</option>
+                <option value="education">Education/mentorship</option>
+                <option value="media">Media/interview</option>
+              </select>
+            </div>
+
+            <div>
+              <label for="message" class="block text-sm font-medium text-slate-brand">Message</label>
+              <textarea
+                id="message"
+                name="message"
+                required
+                rows="4"
+                class="mt-1 block w-full rounded-md border border-midnight/10 bg-white px-4 py-3 text-slate-brand placeholder:text-muted/50 focus:border-electric focus:outline-none focus:ring-1 focus:ring-electric"
+                placeholder="Tell me about your project or request"
+              ></textarea>
+            </div>
+
+            <div>
+              <Button variant="primary" size="lg" class="w-full">Send Message</Button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </Container>
+  </Section>
+
+  <Section theme="dark">
+    <Container>
+      <div class="mx-auto max-w-2xl text-center">
+        <h2 class="font-heading text-2xl font-bold text-offwhite">Connect directly</h2>
+        <div class="mt-6 flex flex-wrap justify-center gap-6">
+          <a href="https://github.com/vincemugondora" class="text-offwhite/70 transition-colors hover:text-offwhite" target="_blank" rel="noopener noreferrer">GitHub</a>
+          <a href="https://www.linkedin.com/in/vincemugondora" class="text-offwhite/70 transition-colors hover:text-offwhite" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+        </div>
+      </div>
+    </Container>
+  </Section>
+</PageLayout>
