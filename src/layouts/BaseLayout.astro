@@ -49,7 +49,7 @@ const jsonLd = getBaseJsonLd();
     <meta name="twitter:description" content={pageDescription} />
     <meta name="twitter:image" content={ogImage} />
 
-    <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+    <script is:inline type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
   </head>
   <body class="font-body text-slate-brand bg-offwhite antialiased">
     <slot />
