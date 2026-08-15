@@ -1,0 +1,16 @@
+---
+interface Props {
+  label: string;
+  theme?: "light" | "dark";
+}
+
+const { label, theme = "light" } = Astro.props;
+
+const colors = theme === "dark"
+  ? "bg-white/10 text-offwhite"
+  : "bg-midnight/5 text-slate-brand";
+---
+
+<span class:list={["inline-block rounded-full px-3 py-1 font-mono text-xs font-medium", colors]}>
+  {label}
+</span>
