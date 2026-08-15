@@ -1,0 +1,24 @@
+---
+import Container from "@components/ui/Container.astro";
+import Button from "@components/ui/Button.astro";
+---
+
+<section class="relative flex min-h-[90vh] items-center bg-midnight text-offwhite">
+  <Container>
+    <div class="max-w-3xl">
+      <p class="font-mono text-sm uppercase tracking-widest text-gold">
+        Software Engineer &bull; AI Builder &bull; Educator
+      </p>
+      <h1 class="mt-6 font-heading text-5xl font-bold leading-tight lg:text-7xl">
+        Vincent Mugondora
+      </h1>
+      <p class="mt-6 max-w-xl text-lg leading-relaxed text-offwhite/70 lg:text-xl">
+        Building technology, developing people, and creating solutions for Africa.
+      </p>
+      <div class="mt-10 flex flex-wrap gap-4">
+        <Button href="/work" variant="primary" size="lg">View My Work</Button>
+        <Button href="/contact" variant="secondary" size="lg" class="border-offwhite/20 text-offwhite hover:bg-offwhite/5">Get In Touch</Button>
+      </div>
+    </div>
+  </Container>
+</section>
