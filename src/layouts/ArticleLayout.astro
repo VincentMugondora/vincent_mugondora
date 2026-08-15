@@ -4,14 +4,16 @@ import BaseLayout from "./BaseLayout.astro";
 interface Props {
   title: string;
   description: string;
+  image?: string;
+  canonicalURL?: string;
 }
 
-const { title, description } = Astro.props;
+const { title, description, image, canonicalURL } = Astro.props;
 ---
 
-<BaseLayout title={title} description={description}>
+<BaseLayout title={title} description={description} image={image} canonicalURL={canonicalURL}>
   <main>
-    <article>
+    <article class="prose mx-auto max-w-3xl px-6 py-16">
       <slot />
     </article>
   </main>
