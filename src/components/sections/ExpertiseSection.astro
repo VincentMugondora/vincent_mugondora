@@ -1,0 +1,203 @@
+---
+---
+
+<section class="expertise" aria-labelledby="expertise-title">
+  <header class="expertise__header">
+    <p class="badge">Expertise</p>
+    <h2 id="expertise-title">Engineering support with clear direction</h2>
+    <p class="intro">
+      A focused mix of strategy, engineering, and execution to help ideas become scalable, refined, and ready to launch with confidence.
+    </p>
+  </header>
+
+  <div class="grid" role="list" aria-label="Expertise highlights">
+    <article class="card" role="listitem">
+      <span class="chip" aria-hidden="true">¤</span>
+      <h3>Affordability</h3>
+      <p>Access high-quality engineering services at a fraction of traditional agency costs.</p>
+    </article>
+
+    <article class="card" role="listitem">
+      <span class="chip" aria-hidden="true">◍</span>
+      <h3>Consistency</h3>
+      <p>Reliable code quality and architectural standards across every deliverable.</p>
+    </article>
+
+    <article class="card" role="listitem">
+      <span class="chip" aria-hidden="true">⬡</span>
+      <h3>Scalability</h3>
+      <p>Systems built to support growing products and increasing demand.</p>
+    </article>
+
+    <article class="card card--dark card--speed" role="listitem">
+      <span class="chip chip--dark" aria-hidden="true">⚡</span>
+      <h3>Speed</h3>
+      <p>
+        Get quicker turnarounds on development projects without sacrificing quality — delivering faster at a better price.
+      </p>
+    </article>
+
+    <article class="card" role="listitem">
+      <span class="chip" aria-hidden="true">⟳</span>
+      <h3>Flexibility</h3>
+      <p>Adapt the service to cover a wide range of technical tasks as needed.</p>
+    </article>
+
+    <article class="card card--diversity" role="listitem">
+      <span class="chip" aria-hidden="true">✦</span>
+      <h3>Full-Stack</h3>
+      <p>
+        From frontend to backend, databases to deployment — one engineer covering the full picture.
+      </p>
+    </article>
+
+    <article class="card" role="listitem">
+      <span class="chip" aria-hidden="true">✓</span>
+      <h3>Support</h3>
+      <p>Dedicated communication, iterations, and ongoing maintenance as you grow.</p>
+    </article>
+
+    <article class="card" role="listitem">
+      <span class="chip" aria-hidden="true">⌁</span>
+      <h3>Transparency</h3>
+      <p>Clear progress updates, open communication, and no surprises along the way.</p>
+    </article>
+  </div>
+</section>
+
+<style>
+  .expertise {
+    max-width: 1200px;
+    margin: 0 auto;
+    background: #f4f2ed;
+    border-radius: 20px;
+    padding: clamp(20px, 3vw, 34px);
+  }
+
+  .expertise__header {
+    text-align: center;
+    max-width: 860px;
+    margin: 0 auto 18px;
+  }
+
+  .badge {
+    margin: 0 0 10px;
+    display: inline-block;
+    padding: 6px 12px;
+    border: 1px solid #e4e0d8;
+    border-radius: 999px;
+    background: #fff;
+    color: #666;
+    font-size: 12px;
+  }
+
+  .expertise__header h2 {
+    margin: 0;
+    font-family: "Lora Variable", "Lora", Georgia, "Times New Roman", serif;
+    font-size: clamp(2rem, 4.1vw, 3rem);
+    line-height: 1.06;
+    letter-spacing: -0.02em;
+    font-weight: 500;
+    color: #151515;
+  }
+
+  .intro {
+    margin: 14px auto 0;
+    color: #5f5f5f;
+    line-height: 1.55;
+    max-width: 68ch;
+    font-size: 0.95rem;
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 12px;
+  }
+
+  .card {
+    background: #fff;
+    border: 1px solid #e6e2db;
+    border-radius: 16px;
+    padding: 14px;
+    min-height: 140px;
+  }
+
+  .card h3 {
+    margin: 0;
+    font-size: 1rem;
+    font-weight: 600;
+    color: #1b1b1b;
+  }
+
+  .card p {
+    margin: 8px 0 0;
+    color: #666;
+    line-height: 1.48;
+    font-size: 0.93rem;
+  }
+
+  .chip {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    border: 1px solid #ddd8cf;
+    background: #fff;
+    display: grid;
+    place-items: center;
+    margin-bottom: 10px;
+    color: #3f3f3f;
+    font-size: 12px;
+    box-shadow: 0 2px 5px rgba(18, 18, 18, 0.06);
+  }
+
+  .card--speed {
+    grid-column: span 2;
+  }
+
+  .card--diversity {
+    grid-column: span 2;
+  }
+
+  .card--dark {
+    border-color: #2f2f2f;
+    color: #fff;
+    background:
+      radial-gradient(110% 95% at 8% 12%, rgba(255, 255, 255, 0.2), transparent 60%),
+      radial-gradient(85% 90% at 85% 88%, rgba(255, 255, 255, 0.08), transparent 58%),
+      linear-gradient(135deg, #141414 0%, #222222 45%, #101010 100%);
+    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.18);
+  }
+
+  .card--dark h3 {
+    color: #fff;
+  }
+
+  .card--dark p {
+    color: rgba(255, 255, 255, 0.82);
+  }
+
+  .chip--dark {
+    border-color: rgba(255, 255, 255, 0.34);
+    background: rgba(255, 255, 255, 0.14);
+    color: #fff;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.22);
+  }
+
+  @media (max-width: 1020px) {
+    .grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .card--speed,
+    .card--diversity {
+      grid-column: auto;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
