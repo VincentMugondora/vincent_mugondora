@@ -1,20 +1,57 @@
 ---
 import BaseLayout from "./BaseLayout.astro";
+import Navbar from "@components/navigation/Navbar.astro";
+import Footer from "@components/navigation/Footer.astro";
+import { getArticleJsonLd } from "@/lib/seo";
+import { siteConfig } from "@/config/site";
 
 interface Props {
   title: string;
   description: string;
   image?: string;
   canonicalURL?: string;
+  publishedAt?: Date;
+  updatedAt?: Date;
+  category?: string;
 }
 
-const { title, description, image, canonicalURL } = Astro.props;
+const { title, description, image, canonicalURL, publishedAt, updatedAt, category } = Astro.props;
+
+const articleUrl = canonicalURL ?? new URL(Astro.url.pathname, siteConfig.url).href;
+
+const articleJsonLd = publishedAt
+  ? getArticleJsonLd({
+      title,
+      description,
+      url: articleUrl,
+      publishedAt: publishedAt.toISOString(),
+      updatedAt: updatedAt?.toISOString(),
+      image,
+    })
+  : null;
 ---
 
 <BaseLayout title={title} description={description} image={image} canonicalURL={canonicalURL}>
-  <main>
-    <article class="prose mx-auto max-w-3xl px-6 py-16">
+  <Navbar />
+  <main id="main-content" class="pt-24 pb-16">
+    <article class="prose mx-auto max-w-3xl px-6">
       <slot />
+
+      <footer class="not-prose mt-16 border-t border-[--border] pt-8">
+        <div class="flex items-center gap-4">
+          <div class="flex h-12 w-12 items-center justify-center rounded-full bg-[--color-midnight] text-lg font-semibold text-white dark:bg-[--color-electric]">V</div>
+          <div>
+            <p class="font-heading font-medium text-[--text-primary]">
+              <a href="/about" class="no-underline hover:text-[--color-electric]">Vincent Mugondora</a>
+            </p>
+            <p class="text-sm text-[--text-secondary]">Software Developer & Technology Educator</p>
+          </div>
+        </div>
+      </footer>
     </article>
   </main>
+  <Footer />
+  {articleJsonLd && (
+    <script is:inline type="application/ld+json" set:html={JSON.stringify(articleJsonLd)} />
+  )}
 </BaseLayout>

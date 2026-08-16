@@ -17,7 +17,14 @@ const { post } = Astro.props;
 const { Content } = await render(post);
 ---
 
-<ArticleLayout title={post.data.title} description={post.data.description} image={post.data.image}>
+<ArticleLayout
+  title={post.data.title}
+  description={post.data.description}
+  image={post.data.image}
+  publishedAt={post.data.publishedAt}
+  updatedAt={post.data.updatedAt}
+  category={post.data.category}
+>
   <header class="not-prose mb-12">
     <div class="flex items-center gap-3">
       <span class="rounded-full bg-midnight/5 px-3 py-1 font-mono text-xs text-muted">
@@ -26,11 +33,22 @@ const { Content } = await render(post);
       <time class="font-mono text-xs text-muted" datetime={post.data.publishedAt.toISOString()}>
         {formatDate(post.data.publishedAt)}
       </time>
+      {post.data.updatedAt && (
+        <span class="font-mono text-xs text-muted">
+          (Updated {formatDate(post.data.updatedAt)})
+        </span>
+      )}
     </div>
     <h1 class="mt-6 font-heading text-4xl font-bold text-midnight lg:text-5xl">
       {post.data.title}
     </h1>
     <p class="mt-4 text-lg text-muted">{post.data.description}</p>
+    <div class="mt-6 flex items-center gap-3">
+      <div class="flex h-8 w-8 items-center justify-center rounded-full bg-midnight text-xs font-semibold text-white">V</div>
+      <div>
+        <p class="text-sm font-medium text-midnight">Vincent Mugondora</p>
+      </div>
+    </div>
   </header>
   <Content />
 </ArticleLayout>
