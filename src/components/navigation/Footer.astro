@@ -3,53 +3,153 @@ import { mainNav } from "@config/navigation";
 import { siteConfig } from "@config/site";
 ---
 
-<footer class="border-t border-slate-brand/8 bg-offwhite">
-  <div class="mx-auto max-w-[1200px] px-5 py-12 md:px-8 md:py-16">
-    <div class="grid gap-10 sm:grid-cols-[1.5fr_1fr_1fr]">
-      <div>
-        <a href="/" class="inline-flex items-center gap-2.5 text-midnight no-underline">
-          <span class="flex h-6 w-6 items-center justify-center rounded-full bg-midnight text-[11px] font-semibold leading-none text-white">V</span>
-          <span class="font-heading text-lg font-medium tracking-tight">{siteConfig.name}</span>
+<footer class="footer">
+  <div class="footer__inner">
+    <div class="footer__grid">
+      <div class="footer__brand">
+        <a href="/" class="footer__logo">
+          <span class="footer__mark">V</span>
+          <span class="footer__wordmark">{siteConfig.name}</span>
         </a>
-        <p class="mt-3 max-w-[30ch] text-sm leading-relaxed text-muted">
+        <p class="footer__tagline">
           {siteConfig.description}
         </p>
       </div>
 
-      <nav aria-label="Footer navigation">
-        <h3 class="mb-3 text-xs font-semibold uppercase tracking-wider text-muted">Pages</h3>
-        <ul class="flex flex-col gap-2" role="list">
+      <nav class="footer__nav" aria-label="Footer navigation">
+        <h3 class="footer__heading">Pages</h3>
+        <ul role="list">
           {mainNav.map((item) => (
             <li>
-              <a href={item.href} class="text-sm text-slate-brand/80 no-underline transition-colors hover:text-midnight">
-                {item.label}
-              </a>
+              <a href={item.href}>{item.label}</a>
             </li>
           ))}
         </ul>
       </nav>
 
-      <div>
-        <h3 class="mb-3 text-xs font-semibold uppercase tracking-wider text-muted">Connect</h3>
-        <ul class="flex flex-col gap-2" role="list">
+      <div class="footer__connect">
+        <h3 class="footer__heading">Connect</h3>
+        <ul role="list">
           <li>
-            <a href="https://github.com/vincemugondora" target="_blank" rel="noopener noreferrer" class="text-sm text-slate-brand/80 no-underline transition-colors hover:text-midnight">
-              GitHub
-            </a>
+            <a href="https://github.com/vincemugondora" target="_blank" rel="noopener noreferrer">GitHub</a>
           </li>
           <li>
-            <a href="https://www.linkedin.com/in/vincemugondora" target="_blank" rel="noopener noreferrer" class="text-sm text-slate-brand/80 no-underline transition-colors hover:text-midnight">
-              LinkedIn
-            </a>
+            <a href="https://www.linkedin.com/in/vincemugondora" target="_blank" rel="noopener noreferrer">LinkedIn</a>
           </li>
         </ul>
       </div>
     </div>
 
-    <div class="mt-10 border-t border-slate-brand/8 pt-6 text-center">
-      <p class="text-xs text-muted">
-        &copy; {new Date().getFullYear()} {siteConfig.name}. All rights reserved.
-      </p>
+    <div class="footer__bottom">
+      <p>&copy; {new Date().getFullYear()} {siteConfig.name}. All rights reserved.</p>
     </div>
   </div>
 </footer>
+
+<style>
+  .footer {
+    width: min(1200px, 100%);
+    margin: 0 auto;
+    padding: 0 clamp(18px, 3vw, 36px) clamp(18px, 3vw, 36px);
+  }
+
+  .footer__inner {
+    background: #f3f1ed;
+    border-radius: 20px;
+    padding: clamp(28px, 4vw, 48px) clamp(20px, 3vw, 40px);
+  }
+
+  .footer__grid {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 1fr;
+    gap: 32px;
+  }
+
+  .footer__logo {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+    color: #151515;
+  }
+
+  .footer__mark {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background: #111;
+    color: #fff;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 11px;
+    font-weight: 600;
+    line-height: 1;
+  }
+
+  .footer__wordmark {
+    font-size: 1.1rem;
+    font-weight: 500;
+    letter-spacing: -0.01em;
+  }
+
+  .footer__tagline {
+    margin: 12px 0 0;
+    color: #666;
+    font-size: 0.88rem;
+    line-height: 1.5;
+    max-width: 32ch;
+  }
+
+  .footer__heading {
+    margin: 0 0 12px;
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: #999;
+  }
+
+  .footer__nav ul,
+  .footer__connect ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .footer__nav a,
+  .footer__connect a {
+    text-decoration: none;
+    color: #444;
+    font-size: 0.9rem;
+    transition: color 0.18s ease;
+  }
+
+  .footer__nav a:hover,
+  .footer__connect a:hover {
+    color: #111;
+  }
+
+  .footer__bottom {
+    margin-top: 28px;
+    padding-top: 20px;
+    border-top: 1px solid #e0ddd7;
+    text-align: center;
+  }
+
+  .footer__bottom p {
+    margin: 0;
+    color: #999;
+    font-size: 0.82rem;
+  }
+
+  @media (max-width: 768px) {
+    .footer__grid {
+      grid-template-columns: 1fr;
+      gap: 24px;
+    }
+  }
+</style>

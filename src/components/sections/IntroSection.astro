@@ -1,22 +1,29 @@
 ---
+import Section from "@components/ui/Section.astro";
+import Container from "@components/ui/Container.astro";
 ---
 
-<section class="py-16 md:py-24" aria-labelledby="intro-title">
-  <div class="mx-auto max-w-[1200px] px-5 md:px-8">
-    <div class="grid gap-10 md:grid-cols-[1fr_1.2fr] md:items-center md:gap-16">
+<Section theme="light">
+  <Container>
+    <div class="grid items-center gap-12 lg:grid-cols-2">
       <div>
-        <h2 id="intro-title" class="font-heading text-[clamp(1.75rem,3.5vw,2.5rem)] font-bold leading-tight tracking-tight text-midnight">
-          Engineer, educator, entrepreneur
+        <h2 class="font-heading text-3xl font-bold text-midnight lg:text-4xl">
+          Engineering software that solves real problems
         </h2>
+        <p class="mt-6 text-lg leading-relaxed text-muted">
+          I'm a software engineer and entrepreneur based in Zimbabwe, focused on building
+          products that combine strong engineering fundamentals with practical impact. From
+          AI-powered systems to full-stack applications, I care about clean architecture,
+          performance, and building technology that serves people.
+        </p>
+        <p class="mt-4 text-lg leading-relaxed text-muted">
+          Beyond code, I teach, speak, and write about technology — helping the next
+          generation of African developers build with confidence.
+        </p>
       </div>
-      <div>
-        <p class="text-lg leading-relaxed text-slate-brand/80">
-          I'm Vincent Mugondora — a software engineer based in Zimbabwe building technology that solves real problems. I work across full-stack development, AI systems, and cloud infrastructure, with a focus on creating tools and platforms that serve African communities.
-        </p>
-        <p class="mt-4 leading-relaxed text-muted">
-          Beyond engineering, I teach, speak, and build Zimnovate — working to grow Zimbabwe's technology ecosystem from the ground up.
-        </p>
+      <div class="flex items-center justify-center">
+        <div class="aspect-square w-full max-w-sm rounded-lg border border-midnight/10 bg-midnight/5"></div>
       </div>
     </div>
-  </div>
-</section>
+  </Container>
+</Section>

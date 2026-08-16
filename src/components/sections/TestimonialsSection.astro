@@ -1,0 +1,242 @@
+---
+---
+
+<section class="testimonials" aria-labelledby="testimonials-title">
+  <header class="testimonials__header">
+    <p class="badge">Testimonials</p>
+    <h2 id="testimonials-title">What clients say</h2>
+    <p class="intro">
+      Thoughtful feedback from founders and teams who trusted the process, direction, and final result.
+    </p>
+  </header>
+
+  <div class="layout" role="list" aria-label="Client testimonials">
+    <!-- Left column — dark featured card -->
+    <article class="card card--dark card--left" role="listitem" aria-label="Tendai Moyo testimonial">
+      <p class="stars" aria-label="5 out of 5 stars">★★★★★</p>
+      <blockquote>
+        Working with Vincent felt incredibly smooth. The technical direction was clear from the beginning, and the final product captured our vision with precision and confidence.
+      </blockquote>
+      <footer class="person">
+        <span class="avatar avatar--tendai" aria-hidden="true"></span>
+        <p><strong>Tendai Moyo</strong><span>Founder, TechStart</span></p>
+      </footer>
+    </article>
+
+    <!-- Center column -->
+    <div class="stack" role="listitem" aria-label="Rudo Chikara testimonial and trust card">
+      <article class="card card--light" aria-label="Rudo Chikara testimonial">
+        <blockquote>
+          The process was thoughtful, fast, and highly organized. Every architecture decision felt intentional, and the final result made our platform feel much more polished.
+        </blockquote>
+        <footer class="person">
+          <span class="avatar avatar--rudo" aria-hidden="true"></span>
+          <p><strong>Rudo Chikara</strong><span>Product Lead</span></p>
+        </footer>
+      </article>
+
+      <article class="card card--trust" aria-label="Client trust summary">
+        <p>Trusted by 20+ clients</p>
+      </article>
+    </div>
+
+    <!-- Right column -->
+    <div class="stack" role="listitem" aria-label="Call to action and Farai Ndlovu testimonial">
+      <a class="cta" href="/contact" aria-label="Go to contact page">Let's work together</a>
+
+      <article class="card card--light" aria-label="Farai Ndlovu testimonial">
+        <blockquote>
+          Vincent helped turn a rough idea into a refined, scalable product. The work felt clean, strategic, and exactly aligned with where we wanted to go.
+        </blockquote>
+        <footer class="person">
+          <span class="avatar avatar--farai" aria-hidden="true"></span>
+          <p><strong>Farai Ndlovu</strong><span>CTO, GreenLoop</span></p>
+        </footer>
+      </article>
+    </div>
+  </div>
+</section>
+
+<style>
+  .testimonials {
+    max-width: 1200px;
+    margin: 0 auto;
+    background: #f4f2ed;
+    border-radius: 20px;
+    padding: clamp(20px, 3vw, 34px);
+  }
+
+  .testimonials__header {
+    text-align: center;
+    max-width: 820px;
+    margin: 0 auto 18px;
+  }
+
+  .badge {
+    margin: 0 0 10px;
+    display: inline-block;
+    padding: 6px 12px;
+    border: 1px solid #e4e0d8;
+    border-radius: 999px;
+    background: #fff;
+    color: #666;
+    font-size: 12px;
+  }
+
+  .testimonials__header h2 {
+    margin: 0;
+    font-family: "Lora Variable", "Lora", Georgia, "Times New Roman", serif;
+    font-size: clamp(2rem, 4.1vw, 3rem);
+    line-height: 1.06;
+    letter-spacing: -0.02em;
+    font-weight: 500;
+    color: #151515;
+  }
+
+  .intro {
+    margin: 14px auto 0;
+    color: #5f5f5f;
+    line-height: 1.55;
+    max-width: 68ch;
+    font-size: 0.95rem;
+  }
+
+  .layout {
+    display: grid;
+    grid-template-columns: 1.45fr 1fr 1fr;
+    gap: 12px;
+    align-items: stretch;
+  }
+
+  .stack {
+    display: grid;
+    gap: 12px;
+    align-content: start;
+  }
+
+  .card {
+    border-radius: 16px;
+    padding: 16px;
+    border: 1px solid #e6e2db;
+    background: #fff;
+  }
+
+  .card blockquote {
+    margin: 0;
+    color: #2d2d2d;
+    line-height: 1.52;
+    font-size: 0.96rem;
+  }
+
+  .person {
+    margin-top: 14px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .person p {
+    margin: 0;
+    display: grid;
+    gap: 2px;
+    font-size: 0.9rem;
+    color: #666;
+  }
+
+  .person strong {
+    color: #1d1d1d;
+    font-size: 0.95rem;
+    font-weight: 600;
+  }
+
+  .avatar {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    flex: 0 0 auto;
+  }
+
+  .avatar--tendai {
+    background: radial-gradient(circle at 25% 20%, #ffe7c3 0%, #c29a70 52%, #6d4f31 100%);
+  }
+
+  .avatar--rudo {
+    background: radial-gradient(circle at 25% 20%, #ffd6ea 0%, #b981a4 52%, #653853 100%);
+  }
+
+  .avatar--farai {
+    background: radial-gradient(circle at 25% 20%, #d0e8ff 0%, #7fa7cf 52%, #3a5a78 100%);
+  }
+
+  .card--left {
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .card--dark {
+    color: #fff;
+    border-color: #303030;
+    background:
+      radial-gradient(115% 95% at 8% 12%, rgba(255, 255, 255, 0.2), transparent 58%),
+      radial-gradient(80% 95% at 86% 85%, rgba(255, 255, 255, 0.08), transparent 56%),
+      linear-gradient(135deg, #141414 0%, #222 44%, #101010 100%);
+  }
+
+  .card--dark blockquote,
+  .card--dark .person p,
+  .card--dark .person strong {
+    color: #fff;
+  }
+
+  .stars {
+    margin: 0 0 12px;
+    color: #f0c768;
+    letter-spacing: 0.12em;
+    font-size: 0.95rem;
+  }
+
+  .card--trust p {
+    margin: 0;
+    font-size: 0.98rem;
+    font-weight: 500;
+    color: #2e2e2e;
+  }
+
+  .cta {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    min-height: 68px;
+    border-radius: 16px;
+    border: 1px solid #2d2d2d;
+    background: #1b1b1b;
+    color: #fff;
+    text-decoration: none;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    transition: background 0.2s ease;
+  }
+
+  .cta:hover {
+    background: #333;
+  }
+
+  .cta:focus-visible {
+    outline: 2px solid #111;
+    outline-offset: 2px;
+  }
+
+  @media (max-width: 1020px) {
+    .layout {
+      grid-template-columns: 1fr;
+    }
+
+    .card--left {
+      min-height: auto;
+    }
+  }
+</style>
