@@ -1,23 +1,111 @@
 ---
-import Section from "@components/ui/Section.astro";
-import Container from "@components/ui/Container.astro";
-import Button from "@components/ui/Button.astro";
 ---
 
-<Section theme="light" class="py-28 lg:py-36">
-  <Container>
-    <div class="mx-auto max-w-2xl text-center">
-      <h2 class="font-heading text-3xl font-bold text-midnight lg:text-4xl">
-        Let's build something together
-      </h2>
-      <p class="mt-4 text-lg text-muted">
-        Whether you need engineering expertise, a speaker for your event,
-        or a collaborator for your next project — I'd like to hear from you.
-      </p>
-      <div class="mt-8 flex flex-wrap justify-center gap-4">
-        <Button href="/contact" variant="primary" size="lg">Get In Touch</Button>
-        <Button href="/work" variant="secondary" size="lg">See My Work</Button>
-      </div>
+<section class="cta-section" aria-labelledby="cta-title">
+  <div class="cta-section__inner">
+    <p class="cta-section__badge">Get in touch</p>
+    <h2 id="cta-title" class="cta-section__title">
+      Let's build something <span class="muted">together</span>
+    </h2>
+    <p class="cta-section__description">
+      Whether you need engineering expertise, a speaker for your event, or a collaborator for your next project — I'd like to hear from you.
+    </p>
+    <div class="cta-section__actions">
+      <a class="cta-section__btn cta-section__btn--primary" href="/contact">
+        Start a project
+        <span aria-hidden="true">↗</span>
+      </a>
+      <a class="cta-section__btn cta-section__btn--secondary" href="/work">
+        View my work
+      </a>
     </div>
-  </Container>
-</Section>
+  </div>
+</section>
+
+<style>
+  .cta-section {
+    width: min(1200px, 100%);
+    margin: 0 auto;
+    padding: clamp(18px, 3vw, 36px);
+  }
+
+  .cta-section__inner {
+    background: #f3f1ed;
+    border-radius: 20px;
+    padding: clamp(40px, 6vw, 80px) clamp(20px, 4vw, 60px);
+    text-align: center;
+  }
+
+  .cta-section__badge {
+    margin: 0 auto 14px;
+    display: inline-block;
+    padding: 6px 12px;
+    border: 1px solid #e7e4de;
+    border-radius: 999px;
+    background: #fff;
+    color: #6f6f6f;
+    font-size: 12px;
+    line-height: 1;
+  }
+
+  .cta-section__title {
+    margin: 0;
+    font-family: "Lora Variable", "Lora", Georgia, "Times New Roman", serif;
+    font-weight: 500;
+    letter-spacing: -0.02em;
+    line-height: 1.05;
+    font-size: clamp(2rem, 4.2vw, 3.15rem);
+    color: #151515;
+  }
+
+  .cta-section__title .muted {
+    color: #8e8e8e;
+  }
+
+  .cta-section__description {
+    margin: 16px auto 0;
+    max-width: 54ch;
+    color: #555;
+    line-height: 1.55;
+    font-size: 0.95rem;
+  }
+
+  .cta-section__actions {
+    margin-top: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .cta-section__btn {
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    border-radius: 999px;
+    padding: 13px 22px;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 1;
+    border: 1px solid transparent;
+    transition: transform 0.18s ease, background-color 0.18s ease;
+  }
+
+  .cta-section__btn:hover {
+    transform: translateY(-1px);
+  }
+
+  .cta-section__btn--primary {
+    background: #111;
+    color: #fff;
+  }
+
+  .cta-section__btn--secondary {
+    background: transparent;
+    color: #1b1b1b;
+    border-color: #bdbdb8;
+  }
+</style>
