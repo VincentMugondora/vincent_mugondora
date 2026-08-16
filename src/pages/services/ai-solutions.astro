@@ -1,0 +1,81 @@
+---
+import PageLayout from "@layouts/PageLayout.astro";
+import Section from "@components/ui/Section.astro";
+import Container from "@components/ui/Container.astro";
+import Tag from "@components/ui/Tag.astro";
+---
+
+<PageLayout title="AI Solutions for Businesses in Zimbabwe | Vincent Mugondora" description="Practical AI solutions for businesses by Vincent Mugondora. AI chatbots, intelligent agents, and custom AI implementations for organisations in Zimbabwe and Africa.">
+  <Section theme="dark">
+    <Container>
+      <div class="max-w-3xl">
+        <p class="font-mono text-sm uppercase tracking-widest text-gold">Services</p>
+        <h1 class="mt-4 font-heading text-4xl font-bold text-offwhite lg:text-5xl">
+          AI Solutions for Businesses
+        </h1>
+        <p class="mt-6 text-lg text-offwhite/70">
+          Practical AI implementations that solve real business problems. From intelligent chatbots to custom AI agents, I help organisations in Zimbabwe and Africa integrate artificial intelligence into their workflows.
+        </p>
+      </div>
+    </Container>
+  </Section>
+
+  <Section theme="light">
+    <Container>
+      <div class="mx-auto max-w-3xl space-y-12">
+        <div>
+          <h2 class="font-heading text-2xl font-bold text-midnight">What I Build</h2>
+          <ul class="mt-6 space-y-4 text-muted">
+            <li class="flex gap-3">
+              <span class="mt-1.5 h-2 w-2 flex-shrink-0 rounded-full bg-electric"></span>
+              <span><strong class="text-midnight">AI Chatbots</strong> — Intelligent conversational agents for customer support, sales, and internal tools. WhatsApp, web, and multi-platform.</span>
+            </li>
+            <li class="flex gap-3">
+              <span class="mt-1.5 h-2 w-2 flex-shrink-0 rounded-full bg-electric"></span>
+              <span><strong class="text-midnight">AI Agents</strong> — Autonomous agents that can research, analyse, and take actions on behalf of your business.</span>
+            </li>
+            <li class="flex gap-3">
+              <span class="mt-1.5 h-2 w-2 flex-shrink-0 rounded-full bg-electric"></span>
+              <span><strong class="text-midnight">RAG Systems</strong> — AI that understands your documents, knowledge base, and business context to answer questions accurately.</span>
+            </li>
+            <li class="flex gap-3">
+              <span class="mt-1.5 h-2 w-2 flex-shrink-0 rounded-full bg-electric"></span>
+              <span><strong class="text-midnight">Custom AI Integration</strong> — Connect AI capabilities to your existing systems, workflows, and business processes.</span>
+            </li>
+          </ul>
+        </div>
+
+        <div>
+          <h2 class="font-heading text-2xl font-bold text-midnight">Technologies</h2>
+          <div class="mt-6 flex flex-wrap gap-2">
+            {["LLMs", "GPT-4", "Claude", "RAG", "LangChain", "Vector Databases", "AI Agents", "Python", "FastAPI", "WhatsApp API"].map((t) => <Tag label={t} />)}
+          </div>
+        </div>
+
+        <div>
+          <h2 class="font-heading text-2xl font-bold text-midnight">AI for African Businesses</h2>
+          <div class="mt-6 space-y-4 text-muted leading-relaxed">
+            <p>AI isn't just for Silicon Valley. Businesses in Zimbabwe and Africa can use AI to automate customer support, process documents, analyse data, and build intelligent products.</p>
+            <p>I focus on practical AI — solutions that deliver measurable business value, not experimental technology for its own sake. Every AI implementation starts with a clear business problem and a realistic assessment of what AI can solve.</p>
+            <p>Whether you need a WhatsApp chatbot that handles customer enquiries 24/7, or an AI system that processes and categorises your business documents, I build solutions that work within real-world constraints.</p>
+          </div>
+        </div>
+      </div>
+    </Container>
+  </Section>
+
+  <Section theme="dark">
+    <Container>
+      <div class="mx-auto max-w-3xl text-center">
+        <h2 class="font-heading text-3xl font-bold text-offwhite">Ready to use AI in your business?</h2>
+        <p class="mt-4 text-lg text-offwhite/70">
+          Tell me about your business challenge and I'll suggest how AI can help.
+        </p>
+        <a href="/contact" class="mt-8 inline-flex items-center gap-2 rounded-full bg-electric px-6 py-3 font-medium text-white no-underline transition-opacity hover:opacity-90">
+          Start a conversation
+          <span aria-hidden="true">&#8599;</span>
+        </a>
+      </div>
+    </Container>
+  </Section>
+</PageLayout>
