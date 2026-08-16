@@ -7,7 +7,7 @@ const currentPath = Astro.url.pathname;
 
 <header class="fixed inset-x-0 top-0 z-50 px-4 pt-4 sm:px-6 lg:px-8">
   <nav
-    class="navbar mx-auto grid max-w-[1180px] min-h-[3.5rem] items-center gap-3 rounded-xl bg-transparent px-4 py-2.5 transition-[background-color,box-shadow,border-color] duration-300 border border-transparent"
+    class="navbar mx-auto grid grid-cols-[auto_1fr_auto] max-w-[1180px] min-h-[3.5rem] items-center gap-3 rounded-xl bg-transparent px-4 py-2.5 transition-[background-color,box-shadow,border-color] duration-300 border border-transparent max-md:grid-cols-[1fr_auto]"
     data-navbar
     aria-label="Primary"
   >
@@ -119,16 +119,6 @@ const currentPath = Astro.url.pathname;
 </header>
 
 <style>
-  .navbar {
-    grid-template-columns: auto 1fr auto;
-  }
-
-  @media (max-width: 767px) {
-    .navbar {
-      grid-template-columns: 1fr auto;
-    }
-  }
-
   .navbar.scrolled {
     background-color: var(--surface-elevated);
     border-color: var(--border);
