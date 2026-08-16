@@ -1,0 +1,81 @@
+---
+import PageLayout from "@layouts/PageLayout.astro";
+import Section from "@components/ui/Section.astro";
+import Container from "@components/ui/Container.astro";
+import Tag from "@components/ui/Tag.astro";
+---
+
+<PageLayout title="Software Development Services in Zimbabwe | Vincent Mugondora" description="Custom software development services by Vincent Mugondora. Full-stack development, APIs, and system architecture for businesses in Zimbabwe and Africa.">
+  <Section theme="dark">
+    <Container>
+      <div class="max-w-3xl">
+        <p class="font-mono text-sm uppercase tracking-widest text-gold">Services</p>
+        <h1 class="mt-4 font-heading text-4xl font-bold text-offwhite lg:text-5xl">
+          Software Development Services
+        </h1>
+        <p class="mt-6 text-lg text-offwhite/70">
+          Custom software solutions built with modern technologies for businesses that need reliable, scalable applications. Based in Zimbabwe, working with clients across Africa.
+        </p>
+      </div>
+    </Container>
+  </Section>
+
+  <Section theme="light">
+    <Container>
+      <div class="mx-auto max-w-3xl space-y-12">
+        <div>
+          <h2 class="font-heading text-2xl font-bold text-midnight">What I Build</h2>
+          <ul class="mt-6 space-y-4 text-muted">
+            <li class="flex gap-3">
+              <span class="mt-1.5 h-2 w-2 flex-shrink-0 rounded-full bg-electric"></span>
+              <span><strong class="text-midnight">Full-Stack Applications</strong> — End-to-end web applications with modern frontend frameworks and robust backend systems.</span>
+            </li>
+            <li class="flex gap-3">
+              <span class="mt-1.5 h-2 w-2 flex-shrink-0 rounded-full bg-electric"></span>
+              <span><strong class="text-midnight">REST & GraphQL APIs</strong> — Well-documented, secure APIs that power your applications and integrations.</span>
+            </li>
+            <li class="flex gap-3">
+              <span class="mt-1.5 h-2 w-2 flex-shrink-0 rounded-full bg-electric"></span>
+              <span><strong class="text-midnight">System Architecture</strong> — Scalable, maintainable system design that grows with your business.</span>
+            </li>
+            <li class="flex gap-3">
+              <span class="mt-1.5 h-2 w-2 flex-shrink-0 rounded-full bg-electric"></span>
+              <span><strong class="text-midnight">Database Design</strong> — Efficient data models and database architecture for complex business requirements.</span>
+            </li>
+          </ul>
+        </div>
+
+        <div>
+          <h2 class="font-heading text-2xl font-bold text-midnight">Technologies</h2>
+          <div class="mt-6 flex flex-wrap gap-2">
+            {["TypeScript", "Python", "React", "Next.js", "Node.js", "Django", "FastAPI", "PostgreSQL", "Docker", "AWS", "Cloudflare"].map((t) => <Tag label={t} />)}
+          </div>
+        </div>
+
+        <div>
+          <h2 class="font-heading text-2xl font-bold text-midnight">How I Work</h2>
+          <div class="mt-6 space-y-4 text-muted leading-relaxed">
+            <p>I build software with a focus on reliability and performance. Clean architecture and strong fundamentals matter more than chasing trends.</p>
+            <p>Every project starts with understanding your business requirements. I then design a solution that balances technical quality with practical constraints — budget, timeline, and the real-world conditions your users face.</p>
+            <p>For businesses in Zimbabwe and Africa, this means building software that works reliably on slower connections, handles intermittent connectivity, and serves users across different devices.</p>
+          </div>
+        </div>
+      </div>
+    </Container>
+  </Section>
+
+  <Section theme="dark">
+    <Container>
+      <div class="mx-auto max-w-3xl text-center">
+        <h2 class="font-heading text-3xl font-bold text-offwhite">Need custom software?</h2>
+        <p class="mt-4 text-lg text-offwhite/70">
+          Tell me about your project and I'll get back with a clear direction.
+        </p>
+        <a href="/contact" class="mt-8 inline-flex items-center gap-2 rounded-full bg-electric px-6 py-3 font-medium text-white no-underline transition-opacity hover:opacity-90">
+          Start a conversation
+          <span aria-hidden="true">&#8599;</span>
+        </a>
+      </div>
+    </Container>
+  </Section>
+</PageLayout>

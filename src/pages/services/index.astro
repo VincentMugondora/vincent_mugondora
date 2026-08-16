@@ -1,0 +1,89 @@
+---
+import PageLayout from "@layouts/PageLayout.astro";
+import Section from "@components/ui/Section.astro";
+import Container from "@components/ui/Container.astro";
+
+const services = [
+  {
+    title: "Software Development",
+    href: "/services/software-development",
+    description: "Custom software solutions built with modern technologies. Full-stack applications, APIs, and system architecture for businesses that need reliable, scalable software.",
+    technologies: ["TypeScript", "Python", "React", "Node.js", "PostgreSQL"],
+  },
+  {
+    title: "Web Development",
+    href: "/services/web-development",
+    description: "Fast, accessible, SEO-friendly websites and web applications. Built for performance on African internet conditions with modern frameworks and best practices.",
+    technologies: ["Astro", "Next.js", "Tailwind CSS", "Cloudflare"],
+  },
+  {
+    title: "AI Solutions",
+    href: "/services/ai-solutions",
+    description: "Practical AI implementations for businesses. From intelligent chatbots to custom AI agents, I help organisations integrate artificial intelligence into their workflows.",
+    technologies: ["LLMs", "RAG", "AI Agents", "LangChain", "Vector DBs"],
+  },
+  {
+    title: "AI Automation",
+    href: "/services/ai-automation",
+    description: "Automate repetitive business processes with AI. Workflow automation, document processing, and intelligent systems that save time and reduce errors.",
+    technologies: ["AI Agents", "Automation", "APIs", "Integrations"],
+  },
+];
+---
+
+<PageLayout title="Services | Vincent Mugondora" description="Software development, web development, AI solutions and automation services by Vincent Mugondora. Building technology for businesses in Zimbabwe and Africa.">
+  <Section theme="dark">
+    <Container>
+      <div class="max-w-3xl">
+        <p class="font-mono text-sm uppercase tracking-widest text-gold">Services</p>
+        <h1 class="mt-4 font-heading text-4xl font-bold text-offwhite lg:text-5xl">
+          How I Can Help
+        </h1>
+        <p class="mt-6 text-lg text-offwhite/70">
+          I build software, AI solutions and web applications for businesses and organisations. Based in Zimbabwe, working with clients across Africa and globally.
+        </p>
+      </div>
+    </Container>
+  </Section>
+
+  <Section theme="light">
+    <Container>
+      <div class="mx-auto max-w-4xl">
+        <div class="grid gap-8 sm:grid-cols-2">
+          {services.map((service) => (
+            <a href={service.href} class="group block rounded-2xl border border-midnight/10 p-6 no-underline transition-all hover:border-electric/30 hover:shadow-lg">
+              <h2 class="font-heading text-xl font-semibold text-midnight group-hover:text-electric">
+                {service.title}
+              </h2>
+              <p class="mt-3 text-muted leading-relaxed">
+                {service.description}
+              </p>
+              <div class="mt-4 flex flex-wrap gap-2">
+                {service.technologies.map((tech) => (
+                  <span class="rounded-full bg-midnight/5 px-3 py-1 text-xs font-medium text-midnight/70">
+                    {tech}
+                  </span>
+                ))}
+              </div>
+            </a>
+          ))}
+        </div>
+      </div>
+    </Container>
+  </Section>
+
+  <Section theme="dark">
+    <Container>
+      <div class="mx-auto max-w-3xl text-center">
+        <h2 class="font-heading text-3xl font-bold text-offwhite">Ready to build something?</h2>
+        <p class="mt-4 text-lg text-offwhite/70">
+          Share your project details and I'll get back with a clear direction.
+        </p>
+        <a href="/contact" class="mt-8 inline-flex items-center gap-2 rounded-full bg-electric px-6 py-3 font-medium text-white no-underline transition-opacity hover:opacity-90">
+          Get in touch
+          <span aria-hidden="true">&#8599;</span>
+        </a>
+      </div>
+    </Container>
+  </Section>
+</PageLayout>

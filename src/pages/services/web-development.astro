@@ -1,0 +1,81 @@
+---
+import PageLayout from "@layouts/PageLayout.astro";
+import Section from "@components/ui/Section.astro";
+import Container from "@components/ui/Container.astro";
+import Tag from "@components/ui/Tag.astro";
+---
+
+<PageLayout title="Web Development Services in Zimbabwe | Vincent Mugondora" description="Fast, accessible, SEO-friendly web development services by Vincent Mugondora. Websites and web applications built for performance in Zimbabwe and Africa.">
+  <Section theme="dark">
+    <Container>
+      <div class="max-w-3xl">
+        <p class="font-mono text-sm uppercase tracking-widest text-gold">Services</p>
+        <h1 class="mt-4 font-heading text-4xl font-bold text-offwhite lg:text-5xl">
+          Web Development Services
+        </h1>
+        <p class="mt-6 text-lg text-offwhite/70">
+          Fast, accessible websites and web applications built for performance on African internet conditions. SEO-friendly by default, optimised for real users.
+        </p>
+      </div>
+    </Container>
+  </Section>
+
+  <Section theme="light">
+    <Container>
+      <div class="mx-auto max-w-3xl space-y-12">
+        <div>
+          <h2 class="font-heading text-2xl font-bold text-midnight">What I Build</h2>
+          <ul class="mt-6 space-y-4 text-muted">
+            <li class="flex gap-3">
+              <span class="mt-1.5 h-2 w-2 flex-shrink-0 rounded-full bg-electric"></span>
+              <span><strong class="text-midnight">Business Websites</strong> — Professional, fast-loading websites that represent your brand and convert visitors.</span>
+            </li>
+            <li class="flex gap-3">
+              <span class="mt-1.5 h-2 w-2 flex-shrink-0 rounded-full bg-electric"></span>
+              <span><strong class="text-midnight">Web Applications</strong> — Interactive applications with authentication, dashboards, and complex functionality.</span>
+            </li>
+            <li class="flex gap-3">
+              <span class="mt-1.5 h-2 w-2 flex-shrink-0 rounded-full bg-electric"></span>
+              <span><strong class="text-midnight">Portfolio & Personal Sites</strong> — Developer portfolios, personal brands, and content sites built for SEO.</span>
+            </li>
+            <li class="flex gap-3">
+              <span class="mt-1.5 h-2 w-2 flex-shrink-0 rounded-full bg-electric"></span>
+              <span><strong class="text-midnight">Landing Pages</strong> — High-converting landing pages for products, services, and campaigns.</span>
+            </li>
+          </ul>
+        </div>
+
+        <div>
+          <h2 class="font-heading text-2xl font-bold text-midnight">Technologies</h2>
+          <div class="mt-6 flex flex-wrap gap-2">
+            {["Astro", "Next.js", "React", "Tailwind CSS", "TypeScript", "Cloudflare Pages", "Vercel", "SEO", "Core Web Vitals"].map((t) => <Tag label={t} />)}
+          </div>
+        </div>
+
+        <div>
+          <h2 class="font-heading text-2xl font-bold text-midnight">Why Performance Matters</h2>
+          <div class="mt-6 space-y-4 text-muted leading-relaxed">
+            <p>In Zimbabwe and across Africa, internet speeds vary widely. A website that loads in 1 second on fibre takes 8 seconds on mobile data. Most visitors won't wait that long.</p>
+            <p>I build websites with performance as a first-class requirement — not an afterthought. Static generation, optimised images, minimal JavaScript, and edge deployment on Cloudflare mean your site loads fast everywhere.</p>
+            <p>Every website I build scores 90+ on Google PageSpeed Insights and follows accessibility best practices (WCAG guidelines), ensuring your content reaches the widest possible audience.</p>
+          </div>
+        </div>
+      </div>
+    </Container>
+  </Section>
+
+  <Section theme="dark">
+    <Container>
+      <div class="mx-auto max-w-3xl text-center">
+        <h2 class="font-heading text-3xl font-bold text-offwhite">Need a website?</h2>
+        <p class="mt-4 text-lg text-offwhite/70">
+          Tell me about your project and I'll get back with a clear direction.
+        </p>
+        <a href="/contact" class="mt-8 inline-flex items-center gap-2 rounded-full bg-electric px-6 py-3 font-medium text-white no-underline transition-opacity hover:opacity-90">
+          Start a conversation
+          <span aria-hidden="true">&#8599;</span>
+        </a>
+      </div>
+    </Container>
+  </Section>
+</PageLayout>
