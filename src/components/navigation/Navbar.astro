@@ -138,4 +138,24 @@ const currentPath = Astro.url.pathname;
   /* Remove default marker */
   summary::-webkit-details-marker { display: none; }
   summary { list-style: none; }
+
+  .navbar.scrolled {
+    background-color: #f6f6f4;
+    box-shadow: 0 2px 16px rgba(0, 0, 0, 0.06);
+  }
 </style>
+
+<script is:inline>
+  const navbar = document.querySelector("[data-navbar]");
+  if (navbar) {
+    function onScroll() {
+      if (window.scrollY > 20) {
+        navbar.classList.add("scrolled");
+      } else {
+        navbar.classList.remove("scrolled");
+      }
+    }
+    window.addEventListener("scroll", onScroll, { passive: true });
+    onScroll();
+  }
+</script>
