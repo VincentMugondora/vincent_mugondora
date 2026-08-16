@@ -3,38 +3,43 @@ import { mainNav } from "@config/navigation";
 import { siteConfig } from "@config/site";
 ---
 
-<footer class="footer">
+<footer class="footer" role="contentinfo">
   <div class="footer__inner">
     <div class="footer__grid">
-      <div class="footer__brand">
-        <a href="/" class="footer__logo">
-          <span class="footer__mark">V</span>
-          <span class="footer__wordmark">{siteConfig.name}</span>
+      <!-- Brand column -->
+      <div class="footer__brand-col">
+        <a href="/" class="footer__brand" aria-label={`${siteConfig.name} — Home`}>
+          <span class="footer__mark" aria-hidden="true">V</span>
+          <span class="footer__name">{siteConfig.name}</span>
         </a>
-        <p class="footer__tagline">
-          {siteConfig.description}
-        </p>
+        <p class="footer__tagline">{siteConfig.description}</p>
       </div>
 
+      <!-- Navigation column -->
       <nav class="footer__nav" aria-label="Footer navigation">
         <h3 class="footer__heading">Pages</h3>
         <ul role="list">
           {mainNav.map((item) => (
             <li>
-              <a href={item.href}>{item.label}</a>
+              <a href={item.href} class="footer__link">{item.label}</a>
             </li>
           ))}
         </ul>
       </nav>
 
+      <!-- Connect column -->
       <div class="footer__connect">
         <h3 class="footer__heading">Connect</h3>
         <ul role="list">
           <li>
-            <a href="https://github.com/vincemugondora" target="_blank" rel="noopener noreferrer">GitHub</a>
+            <a href="https://github.com/vincemugondora" target="_blank" rel="noopener noreferrer" class="footer__link">
+              GitHub
+            </a>
           </li>
           <li>
-            <a href="https://www.linkedin.com/in/vincemugondora" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+            <a href="https://www.linkedin.com/in/vincemugondora" target="_blank" rel="noopener noreferrer" class="footer__link">
+              LinkedIn
+            </a>
           </li>
         </ul>
       </div>
@@ -48,68 +53,75 @@ import { siteConfig } from "@config/site";
 
 <style>
   .footer {
-    width: min(1200px, 100%);
-    margin: 0 auto;
-    padding: 0 clamp(18px, 3vw, 36px) clamp(18px, 3vw, 36px);
+    border-top: 1px solid var(--border);
+    margin-top: 4rem;
   }
 
   .footer__inner {
-    background: #f3f1ed;
-    border-radius: 20px;
-    padding: clamp(28px, 4vw, 48px) clamp(20px, 3vw, 40px);
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 3rem 1.25rem 2rem;
   }
 
   .footer__grid {
     display: grid;
     grid-template-columns: 1.5fr 1fr 1fr;
-    gap: 32px;
+    gap: 2rem;
   }
 
-  .footer__logo {
+  /* Brand */
+  .footer__brand {
     display: inline-flex;
     align-items: center;
-    gap: 10px;
+    gap: 0.625rem;
     text-decoration: none;
-    color: #151515;
+    color: var(--text-primary);
   }
 
   .footer__mark {
-    width: 24px;
-    height: 24px;
-    border-radius: 50%;
-    background: #111;
-    color: #fff;
-    display: inline-flex;
+    display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 11px;
+    width: 1.5rem;
+    height: 1.5rem;
+    border-radius: 50%;
+    background: var(--color-midnight);
+    color: #fff;
+    font-size: 0.6875rem;
     font-weight: 600;
     line-height: 1;
   }
 
-  .footer__wordmark {
-    font-size: 1.1rem;
+  :global(.dark) .footer__mark {
+    background: var(--color-electric);
+  }
+
+  .footer__name {
+    font-family: var(--font-heading);
+    font-size: 1.0625rem;
     font-weight: 500;
     letter-spacing: -0.01em;
   }
 
   .footer__tagline {
-    margin: 12px 0 0;
-    color: #666;
-    font-size: 0.88rem;
+    margin: 0.75rem 0 0;
+    color: var(--text-secondary);
+    font-size: 0.875rem;
     line-height: 1.5;
-    max-width: 32ch;
+    max-width: 30ch;
   }
 
+  /* Headings */
   .footer__heading {
-    margin: 0 0 12px;
-    font-size: 12px;
+    margin: 0 0 0.75rem;
+    font-size: 0.6875rem;
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 0.06em;
-    color: #999;
+    color: var(--text-secondary);
   }
 
+  /* Links */
   .footer__nav ul,
   .footer__connect ul {
     list-style: none;
@@ -117,39 +129,44 @@ import { siteConfig } from "@config/site";
     padding: 0;
     display: flex;
     flex-direction: column;
-    gap: 8px;
+    gap: 0.5rem;
   }
 
-  .footer__nav a,
-  .footer__connect a {
+  .footer__link {
     text-decoration: none;
-    color: #444;
-    font-size: 0.9rem;
-    transition: color 0.18s ease;
+    color: var(--text-secondary);
+    font-size: 0.875rem;
+    transition: color 0.15s ease;
   }
 
-  .footer__nav a:hover,
-  .footer__connect a:hover {
-    color: #111;
+  .footer__link:hover {
+    color: var(--text-primary);
   }
 
+  .footer__link:focus-visible {
+    outline: 2px solid var(--color-electric);
+    outline-offset: 2px;
+    border-radius: 2px;
+  }
+
+  /* Bottom */
   .footer__bottom {
-    margin-top: 28px;
-    padding-top: 20px;
-    border-top: 1px solid #e0ddd7;
+    margin-top: 2rem;
+    padding-top: 1.25rem;
+    border-top: 1px solid var(--border);
     text-align: center;
   }
 
   .footer__bottom p {
     margin: 0;
-    color: #999;
-    font-size: 0.82rem;
+    color: var(--text-secondary);
+    font-size: 0.75rem;
   }
 
-  @media (max-width: 768px) {
+  @media (max-width: 640px) {
     .footer__grid {
       grid-template-columns: 1fr;
-      gap: 24px;
+      gap: 1.5rem;
     }
   }
 </style>

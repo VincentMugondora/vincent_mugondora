@@ -15,7 +15,7 @@ const { title, description, image, canonicalURL } = Astro.props;
 
 <BaseLayout title={title} description={description} image={image} canonicalURL={canonicalURL}>
   <Navbar />
-  <main class="page-main">
+  <main id="main-content" class="page-main">
     <slot />
   </main>
   <Footer />
