@@ -1,0 +1,321 @@
+/*
+  Static homepage hero section styles.
+  Matches requested visual direction: soft panel, editorial heading,
+  clean UI typography, responsive two-column behavior, and partner row.
+*/
+
+/* ------------------------------
+   1) Design tokens / base
+   ------------------------------ */
+:root {
+    --page-bg: #fcfbf8;
+    --panel-bg: #f1f1ef;
+    --text: #111111;
+    --muted: #8e8e8e;
+    --soft: #6f6f6f;
+    --white: #ffffff;
+    --line: #dfdfdb;
+    --overlay: rgba(17, 17, 17, 0.72);
+    --radius-xl: 26px;
+    --radius-lg: 18px;
+    --radius-md: 12px;
+    --shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background: var(--page-bg);
+    color: var(--text);
+    font-family: "Instrument Sans", -apple-system, BlinkMacSystemFont, "Segoe UI",
+        Roboto, Helvetica, Arial, sans-serif;
+}
+
+/* ------------------------------
+   2) Section layout
+   ------------------------------ */
+.hero {
+    width: min(1200px, 100%);
+    margin: 0 auto;
+    padding: clamp(18px, 3vw, 36px);
+}
+
+.hero__panel {
+    background: var(--panel-bg);
+    border-radius: var(--radius-xl);
+    padding: clamp(18px, 3vw, 34px);
+    display: grid;
+    grid-template-columns: 1.05fr 0.95fr;
+    gap: clamp(18px, 2.5vw, 30px);
+    align-items: stretch;
+}
+
+/* ------------------------------
+   3) Left column content
+   ------------------------------ */
+.hero__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 20px;
+}
+
+.hero__eyebrow {
+    margin: 0;
+    color: var(--soft);
+    font-size: 13px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    font-weight: 500;
+}
+
+.hero__title {
+    margin: 0;
+    font-family: "Lora", Georgia, "Times New Roman", serif;
+    font-size: clamp(2.2rem, 5.3vw, 4.65rem);
+    line-height: 0.95;
+    letter-spacing: -0.02em;
+    font-weight: 500;
+    max-width: 12ch;
+}
+
+.hero__title .muted {
+    color: var(--muted);
+}
+
+.hero__description {
+    margin: 0;
+    color: #383838;
+    font-size: clamp(1rem, 1.25vw, 1.1rem);
+    line-height: 1.55;
+    max-width: 46ch;
+}
+
+.hero__actions {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.button {
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 999px;
+    padding: 12px 18px;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 1;
+    border: 1px solid transparent;
+    transition: transform 0.18s ease, background-color 0.18s ease,
+        border-color 0.18s ease, color 0.18s ease;
+}
+
+.button:focus-visible {
+    outline: 2px solid #000;
+    outline-offset: 2px;
+}
+
+.button:hover {
+    transform: translateY(-1px);
+}
+
+.button--primary {
+    background: #111;
+    color: #fff;
+}
+
+.button--secondary {
+    background: transparent;
+    color: #1b1b1b;
+    border-color: #bdbdb8;
+}
+
+/* Stats */
+.hero__stats {
+    margin: 6px 0 0;
+    padding-top: 18px;
+    border-top: 1px solid var(--line);
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 10px;
+}
+
+.stat {
+    margin: 0;
+}
+
+.stat dt {
+    margin: 0;
+    font-size: 1.6rem;
+    font-weight: 600;
+    line-height: 1.05;
+}
+
+.stat dd {
+    margin: 6px 0 0;
+    color: #666;
+    font-size: 0.93rem;
+}
+
+/* ------------------------------
+   4) Right media + overlay card
+   ------------------------------ */
+.hero__media {
+    margin: 0;
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    position: relative;
+    min-height: clamp(340px, 50vw, 560px);
+    background: #c9c9c9;
+}
+
+.hero__media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+}
+
+.availability-card {
+    position: absolute;
+    left: 18px;
+    right: 18px;
+    bottom: 18px;
+    background: var(--overlay);
+    backdrop-filter: blur(5px);
+    border-radius: var(--radius-md);
+    color: var(--white);
+    padding: 16px;
+    box-shadow: var(--shadow);
+}
+
+.availability-card__label {
+    margin: 0 0 8px;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.03em;
+    color: rgba(255, 255, 255, 0.82);
+}
+
+.availability-card__title {
+    margin: 0;
+    font-size: 1.05rem;
+    font-weight: 600;
+}
+
+.availability-card__text {
+    margin: 8px 0 0;
+    color: rgba(255, 255, 255, 0.86);
+    font-size: 0.9rem;
+    line-height: 1.45;
+    max-width: 34ch;
+}
+
+.availability-card__link {
+    position: absolute;
+    right: 14px;
+    top: 14px;
+    width: 38px;
+    height: 38px;
+    border-radius: 10px;
+    background: #ffffff;
+    color: #151515;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    line-height: 1;
+}
+
+.availability-card__link:focus-visible {
+    outline: 2px solid #fff;
+    outline-offset: 2px;
+}
+
+/* ------------------------------
+   5) Partner row
+   ------------------------------ */
+.partners {
+    margin-top: 18px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px 20px;
+    align-items: center;
+    color: #666;
+    font-size: 0.95rem;
+    line-height: 1.2;
+}
+
+.partners span {
+    position: relative;
+    padding-right: 20px;
+}
+
+.partners span:not(:last-child)::after {
+    content: "•";
+    position: absolute;
+    right: 7px;
+    top: 0;
+    color: #a4a4a4;
+}
+
+/* ------------------------------
+   6) Responsive behavior
+   ------------------------------ */
+@media (max-width: 980px) {
+    .hero__panel {
+        grid-template-columns: 1fr;
+    }
+
+    .hero__media {
+        order: -1;
+        min-height: 420px;
+    }
+}
+
+@media (max-width: 640px) {
+    .hero {
+        padding: 14px;
+    }
+
+    .hero__panel {
+        border-radius: 20px;
+        padding: 16px;
+    }
+
+    .hero__stats {
+        grid-template-columns: 1fr;
+        gap: 12px;
+    }
+
+    .hero__media {
+        min-height: 340px;
+    }
+
+    /* On very small screens, make card flow naturally below image */
+    .availability-card {
+        position: static;
+        border-radius: 0;
+        margin: 0;
+    }
+
+    .availability-card__link {
+        position: static;
+        margin-top: 12px;
+    }
+}
