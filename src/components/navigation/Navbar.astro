@@ -58,7 +58,7 @@ const currentPath = Astro.url.pathname;
         <span>Menu</span>
         <span class="mobile-menu-icon relative inline-block h-[2px] w-3.5 bg-current" aria-hidden="true"></span>
       </summary>
-      <div class="absolute left-0 right-0 top-[calc(100%+8px)] z-50 rounded-[14px] border border-[#ecece9] bg-[#f6f6f4] p-4 shadow-lg sm:left-auto sm:min-w-[240px]">
+      <div class="absolute left-0 right-0 top-[calc(100%+8px)] z-50 rounded-[14px] border border-slate-brand/10 bg-offwhite p-4 shadow-lg sm:left-auto sm:min-w-[240px]">
         <ul class="flex flex-col gap-3.5" role="list">
           {mainNav.map((item) => {
             const isActive = currentPath === item.href || currentPath.startsWith(item.href + "/");
@@ -140,8 +140,9 @@ const currentPath = Astro.url.pathname;
   summary { list-style: none; }
 
   .navbar.scrolled {
-    background-color: #f6f6f4;
-    box-shadow: 0 2px 16px rgba(0, 0, 0, 0.06);
+    background-color: rgba(248, 250, 252, 0.95);
+    backdrop-filter: blur(8px);
+    box-shadow: 0 1px 3px rgba(11, 18, 32, 0.06);
   }
 </style>
 
