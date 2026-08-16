@@ -1,0 +1,81 @@
+---
+import PageLayout from "@layouts/PageLayout.astro";
+import Section from "@components/ui/Section.astro";
+import Container from "@components/ui/Container.astro";
+import Tag from "@components/ui/Tag.astro";
+---
+
+<PageLayout title="AI Automation Services | Vincent Mugondora" description="AI-powered business automation by Vincent Mugondora. Automate repetitive processes with intelligent AI workflows, document processing, and smart integrations.">
+  <Section theme="dark">
+    <Container>
+      <div class="max-w-3xl">
+        <p class="font-mono text-sm uppercase tracking-widest text-gold">Services</p>
+        <h1 class="mt-4 font-heading text-4xl font-bold text-offwhite lg:text-5xl">
+          AI Automation Services
+        </h1>
+        <p class="mt-6 text-lg text-offwhite/70">
+          Automate repetitive business processes with AI. Workflow automation, document processing, and intelligent systems that save time, reduce errors, and free your team for higher-value work.
+        </p>
+      </div>
+    </Container>
+  </Section>
+
+  <Section theme="light">
+    <Container>
+      <div class="mx-auto max-w-3xl space-y-12">
+        <div>
+          <h2 class="font-heading text-2xl font-bold text-midnight">What I Automate</h2>
+          <ul class="mt-6 space-y-4 text-muted">
+            <li class="flex gap-3">
+              <span class="mt-1.5 h-2 w-2 flex-shrink-0 rounded-full bg-electric"></span>
+              <span><strong class="text-midnight">Document Processing</strong> — Automatically extract, categorise, and route information from invoices, contracts, and business documents.</span>
+            </li>
+            <li class="flex gap-3">
+              <span class="mt-1.5 h-2 w-2 flex-shrink-0 rounded-full bg-electric"></span>
+              <span><strong class="text-midnight">Workflow Automation</strong> — Connect your tools and automate multi-step business processes with intelligent decision-making.</span>
+            </li>
+            <li class="flex gap-3">
+              <span class="mt-1.5 h-2 w-2 flex-shrink-0 rounded-full bg-electric"></span>
+              <span><strong class="text-midnight">Data Processing</strong> — Automated data entry, categorisation, and analysis that would take your team hours to do manually.</span>
+            </li>
+            <li class="flex gap-3">
+              <span class="mt-1.5 h-2 w-2 flex-shrink-0 rounded-full bg-electric"></span>
+              <span><strong class="text-midnight">Communication Automation</strong> — Intelligent email responses, message routing, and customer communication that maintains a human touch.</span>
+            </li>
+          </ul>
+        </div>
+
+        <div>
+          <h2 class="font-heading text-2xl font-bold text-midnight">Technologies</h2>
+          <div class="mt-6 flex flex-wrap gap-2">
+            {["AI Agents", "LLMs", "Python", "APIs", "Webhooks", "n8n", "Make", "Custom Integrations", "WhatsApp Business"].map((t) => <Tag label={t} />)}
+          </div>
+        </div>
+
+        <div>
+          <h2 class="font-heading text-2xl font-bold text-midnight">The Value of Automation</h2>
+          <div class="mt-6 space-y-4 text-muted leading-relaxed">
+            <p>Most businesses have processes that take hours of repetitive work every week — data entry, document handling, email responses, report generation. AI can handle these tasks accurately and consistently.</p>
+            <p>I build automation solutions that integrate with your existing tools and workflows. No need to replace your systems — I connect them intelligently so they work together with minimal manual intervention.</p>
+            <p>Every automation project starts with identifying the highest-impact opportunities: tasks that are time-consuming, error-prone, and well-defined enough for AI to handle reliably.</p>
+          </div>
+        </div>
+      </div>
+    </Container>
+  </Section>
+
+  <Section theme="dark">
+    <Container>
+      <div class="mx-auto max-w-3xl text-center">
+        <h2 class="font-heading text-3xl font-bold text-offwhite">Want to automate your workflows?</h2>
+        <p class="mt-4 text-lg text-offwhite/70">
+          Tell me which processes are taking up your team's time and I'll suggest what can be automated.
+        </p>
+        <a href="/contact" class="mt-8 inline-flex items-center gap-2 rounded-full bg-electric px-6 py-3 font-medium text-white no-underline transition-opacity hover:opacity-90">
+          Start a conversation
+          <span aria-hidden="true">&#8599;</span>
+        </a>
+      </div>
+    </Container>
+  </Section>
+</PageLayout>

@@ -1,0 +1,29 @@
+---
+import PageLayout from "@layouts/PageLayout.astro";
+import Section from "@components/ui/Section.astro";
+import Container from "@components/ui/Container.astro";
+---
+
+<PageLayout title="Page Not Found | Vincent Mugondora" description="The page you're looking for doesn't exist.">
+  <Section theme="dark">
+    <Container>
+      <div class="mx-auto max-w-2xl text-center">
+        <p class="font-mono text-6xl font-bold text-gold">404</p>
+        <h1 class="mt-4 font-heading text-3xl font-bold text-offwhite lg:text-4xl">
+          Page not found
+        </h1>
+        <p class="mt-4 text-lg text-offwhite/70">
+          The page you're looking for doesn't exist or has been moved.
+        </p>
+        <div class="mt-8 flex flex-wrap items-center justify-center gap-4">
+          <a href="/" class="inline-flex items-center gap-2 rounded-full bg-electric px-6 py-3 font-medium text-white no-underline transition-opacity hover:opacity-90">
+            Go home
+          </a>
+          <a href="/contact" class="inline-flex items-center gap-2 rounded-full border border-offwhite/20 px-6 py-3 font-medium text-offwhite no-underline transition-colors hover:border-offwhite/40">
+            Contact me
+          </a>
+        </div>
+      </div>
+    </Container>
+  </Section>
+</PageLayout>
