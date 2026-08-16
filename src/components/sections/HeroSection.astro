@@ -1,128 +1,84 @@
 ---
 ---
 
-<section class="hero" aria-labelledby="hero-title">
-  <div class="hero__panel">
-    <!-- Left column -->
-    <div class="hero__content">
-      <p class="hero__eyebrow">Software Engineer &bull; AI Builder &bull; Educator</p>
+<section class="relative pt-28 pb-16 md:pt-36 md:pb-24" aria-labelledby="hero-title">
+  <div class="mx-auto max-w-[1200px] px-5 md:px-8">
+    <div class="grid gap-10 md:grid-cols-[1.1fr_0.9fr] md:items-center md:gap-12">
+      <!-- Left column -->
+      <div class="flex flex-col gap-6">
+        <p class="text-sm font-medium uppercase tracking-widest text-muted">
+          Software Engineer &bull; AI Builder &bull; Educator
+        </p>
 
-      <h1 id="hero-title" class="hero__title">
-        Build better software, <span class="muted">faster</span>
-      </h1>
+        <h1
+          id="hero-title"
+          class="font-heading text-[clamp(2.5rem,5.5vw,4.5rem)] font-bold leading-[0.95] tracking-tight text-midnight"
+        >
+          Building technology, developing people
+        </h1>
 
-      <p class="hero__description">
-        I build refined software, AI systems, and digital solutions for ambitious teams and communities across Africa.
-      </p>
+        <p class="max-w-[48ch] text-lg leading-relaxed text-slate-brand/80">
+          I build software, AI systems, and digital solutions for ambitious teams and communities across Africa.
+        </p>
 
-      <div class="hero__actions">
-        <a class="button button--primary" href="/work">View projects</a>
-        <a class="button button--secondary" href="/contact">Get in touch</a>
+        <div class="flex flex-wrap items-center gap-3 pt-2">
+          <a
+            href="/work"
+            class="inline-flex items-center gap-2 rounded-lg bg-electric px-5 py-3 text-sm font-semibold text-white transition-all hover:-translate-y-0.5 hover:shadow-lg hover:shadow-electric/25"
+          >
+            View projects
+          </a>
+          <a
+            href="/contact"
+            class="inline-flex items-center gap-2 rounded-lg border border-slate-brand/20 px-5 py-3 text-sm font-semibold text-slate-brand transition-all hover:-translate-y-0.5 hover:border-slate-brand/40"
+          >
+            Get in touch
+          </a>
+        </div>
       </div>
 
-      <dl class="hero__stats" aria-label="Highlights">
-        <div class="stat">
-          <dt>30+</dt>
-          <dd>Projects completed</dd>
+      <!-- Right column: portrait -->
+      <figure class="relative overflow-hidden rounded-2xl bg-midnight/5">
+        <img
+          src="/vincent.avif"
+          alt="Vincent Mugondora"
+          class="aspect-[3/4] w-full object-cover object-top"
+          loading="eager"
+          fetchpriority="high"
+        />
+        <div class="absolute inset-x-4 bottom-4 rounded-xl border border-white/10 bg-midnight/80 p-4 backdrop-blur-sm">
+          <p class="text-xs font-medium text-white/70">Available for projects</p>
+          <p class="mt-1 text-sm leading-snug text-white">
+            Share a few details, and I'll get back with a clear direction.
+          </p>
         </div>
-        <div class="stat">
-          <dt>5yr</dt>
-          <dd>Experience</dd>
-        </div>
-        <div class="stat">
-          <dt>20+</dt>
-          <dd>Happy clients</dd>
-        </div>
-      </dl>
+      </figure>
     </div>
 
-    <!-- Right column: portrait + overlay card -->
-    <figure class="hero__media">
-      <img
-        src="/vincent.avif"
-        alt="Vincent Mugondora"
-      />
-
-      <figcaption class="availability-card">
-        <p class="availability-card__label">Select project</p>
-        <h2 class="availability-card__title">Available for projects</h2>
-        <p class="availability-card__text">
-          Share a few details, and I'll get back with a clear direction.
-        </p>
-        <a
-          class="availability-card__link"
-          href="/contact"
-          aria-label="Get in touch"
-        >&#8599;</a>
-      </figcaption>
-    </figure>
-  </div>
-
-  <!-- Skills carousel -->
-  <div class="skills-carousel" aria-label="Skills & technologies">
-    <div class="skills-carousel__track" aria-hidden="false">
-      <div class="skills-carousel__item">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 18v-3m0-3v-.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"/></svg>
-        <span>Python</span>
-      </div>
-      <div class="skills-carousel__item">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 7h16M4 12h16M4 17h10"/></svg>
-        <span>TypeScript</span>
-      </div>
-      <div class="skills-carousel__item">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="3"/><path d="M12 2v4m0 12v4M2 12h4m12 0h4m-2.93-7.07l-2.83 2.83m-4.48 4.48l-2.83 2.83m0-10.14l2.83 2.83m4.48 4.48l2.83 2.83"/></svg>
-        <span>React</span>
-      </div>
-      <div class="skills-carousel__item">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
-        <span>Astro</span>
-      </div>
-      <div class="skills-carousel__item">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-        <span>Node.js</span>
-      </div>
-      <div class="skills-carousel__item">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9.75 3.104v5.714a2.25 2.25 0 01-.659 1.591L5 14.5M9.75 3.104c-.251.023-.501.05-.75.082m.75-.082a24.3 24.3 0 014.5 0m0 0v5.714a2.25 2.25 0 00.659 1.591L19 14.5m-4.75-11.396c.251.023.501.05.75.082M5 14.5l-1.46 1.46a2.25 2.25 0 00-.659 1.59V19.5a2.25 2.25 0 002.25 2.25h13.74a2.25 2.25 0 002.25-2.25v-1.95a2.25 2.25 0 00-.659-1.59L19 14.5"/></svg>
-        <span>Agentic AI</span>
-      </div>
-      <div class="skills-carousel__item">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 13l4-4 4 4 4-4 4 4 4-4"/><path d="M2 17l4-4 4 4 4-4 4 4 4-4"/></svg>
-        <span>AWS</span>
-      </div>
-      <div class="skills-carousel__item">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 21l-5.2-5.2m2.2-4.8a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
-        <span>SEO</span>
-      </div>
-      <div class="skills-carousel__item">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3.75 6A2.25 2.25 0 016 3.75h2.25A2.25 2.25 0 0110.5 6v2.25a2.25 2.25 0 01-2.25 2.25H6A2.25 2.25 0 013.75 8.25V6zm0 9.75A2.25 2.25 0 016 13.5h2.25a2.25 2.25 0 012.25 2.25V18a2.25 2.25 0 01-2.25 2.25H6A2.25 2.25 0 013.75 18v-2.25zM13.5 6a2.25 2.25 0 012.25-2.25H18A2.25 2.25 0 0120.25 6v2.25A2.25 2.25 0 0118 10.5h-2.25A2.25 2.25 0 0113.5 8.25V6zm0 9.75a2.25 2.25 0 012.25-2.25H18a2.25 2.25 0 012.25 2.25V18A2.25 2.25 0 0118 20.25h-2.25a2.25 2.25 0 01-2.25-2.25v-2.25z"/></svg>
-        <span>System Architecture</span>
-      </div>
-      <div class="skills-carousel__item">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9.53 16.122a3 3 0 00-5.78 1.128 2.25 2.25 0 01-2.4 2.245 4.5 4.5 0 008.4-2.245c0-.399-.078-.78-.22-1.128zm0 0a15.998 15.998 0 003.388-1.62m-5.043-.025a15.994 15.994 0 011.622-3.395m3.42 3.42a15.995 15.995 0 004.764-4.648l3.876-5.814a1.151 1.151 0 00-1.597-1.597L14.146 6.32a15.996 15.996 0 00-4.649 4.763m3.42 3.42a6.776 6.776 0 00-3.42-3.42"/></svg>
-        <span>UI/UX Design</span>
-      </div>
-      <div class="skills-carousel__item">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"/></svg>
-        <span>Next.js</span>
-      </div>
-      <div class="skills-carousel__item">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4m0 5c0 2.21-3.582 4-8 4s-8-1.79-8-4"/></svg>
-        <span>Databases</span>
-      </div>
-      <div class="skills-carousel__item">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25"/></svg>
-        <span>Technical Writing</span>
-      </div>
-      <div class="skills-carousel__item">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z"/></svg>
-        <span>API Design</span>
+    <!-- Skills carousel -->
+    <div class="mt-12 overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_60px,black_calc(100%-60px),transparent)]" aria-label="Skills & technologies">
+      <div class="skills-track flex w-max gap-5" aria-hidden="false">
+        <span class="inline-flex items-center gap-2 whitespace-nowrap rounded-full border border-slate-brand/10 bg-offwhite px-4 py-2 text-sm font-medium text-slate-brand/70">Python</span>
+        <span class="inline-flex items-center gap-2 whitespace-nowrap rounded-full border border-slate-brand/10 bg-offwhite px-4 py-2 text-sm font-medium text-slate-brand/70">TypeScript</span>
+        <span class="inline-flex items-center gap-2 whitespace-nowrap rounded-full border border-slate-brand/10 bg-offwhite px-4 py-2 text-sm font-medium text-slate-brand/70">React</span>
+        <span class="inline-flex items-center gap-2 whitespace-nowrap rounded-full border border-slate-brand/10 bg-offwhite px-4 py-2 text-sm font-medium text-slate-brand/70">Astro</span>
+        <span class="inline-flex items-center gap-2 whitespace-nowrap rounded-full border border-slate-brand/10 bg-offwhite px-4 py-2 text-sm font-medium text-slate-brand/70">Node.js</span>
+        <span class="inline-flex items-center gap-2 whitespace-nowrap rounded-full border border-slate-brand/10 bg-offwhite px-4 py-2 text-sm font-medium text-slate-brand/70">Agentic AI</span>
+        <span class="inline-flex items-center gap-2 whitespace-nowrap rounded-full border border-slate-brand/10 bg-offwhite px-4 py-2 text-sm font-medium text-slate-brand/70">AWS</span>
+        <span class="inline-flex items-center gap-2 whitespace-nowrap rounded-full border border-slate-brand/10 bg-offwhite px-4 py-2 text-sm font-medium text-slate-brand/70">SEO</span>
+        <span class="inline-flex items-center gap-2 whitespace-nowrap rounded-full border border-slate-brand/10 bg-offwhite px-4 py-2 text-sm font-medium text-slate-brand/70">System Architecture</span>
+        <span class="inline-flex items-center gap-2 whitespace-nowrap rounded-full border border-slate-brand/10 bg-offwhite px-4 py-2 text-sm font-medium text-slate-brand/70">Next.js</span>
+        <span class="inline-flex items-center gap-2 whitespace-nowrap rounded-full border border-slate-brand/10 bg-offwhite px-4 py-2 text-sm font-medium text-slate-brand/70">Databases</span>
+        <span class="inline-flex items-center gap-2 whitespace-nowrap rounded-full border border-slate-brand/10 bg-offwhite px-4 py-2 text-sm font-medium text-slate-brand/70">API Design</span>
+        <span class="inline-flex items-center gap-2 whitespace-nowrap rounded-full border border-slate-brand/10 bg-offwhite px-4 py-2 text-sm font-medium text-slate-brand/70">UI/UX Design</span>
+        <span class="inline-flex items-center gap-2 whitespace-nowrap rounded-full border border-slate-brand/10 bg-offwhite px-4 py-2 text-sm font-medium text-slate-brand/70">Technical Writing</span>
       </div>
     </div>
   </div>
 </section>
 
 <script is:inline>
-  const track = document.querySelector('.skills-carousel__track');
+  const track = document.querySelector('.skills-track');
   if (track) {
     const items = track.innerHTML;
     track.innerHTML = items + items;
@@ -130,292 +86,14 @@
 </script>
 
 <style>
-  .hero {
-    width: min(1200px, 100%);
-    margin: 0 auto;
-    padding: 0 clamp(18px, 3vw, 36px);
-    padding-top: 100px;
+  .skills-track {
+    animation: scroll-skills 35s linear infinite;
   }
-
-  .hero__panel {
-    background: #f1f1ef;
-    border-radius: 26px;
-    padding: clamp(18px, 3vw, 34px);
-    display: grid;
-    grid-template-columns: 1.05fr 0.95fr;
-    gap: clamp(18px, 2.5vw, 30px);
-    align-items: stretch;
-  }
-
-  .hero__content {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    gap: 20px;
-  }
-
-  .hero__eyebrow {
-    margin: 0;
-    color: #6f6f6f;
-    font-size: 13px;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    font-weight: 500;
-  }
-
-  .hero__title {
-    margin: 0;
-    font-family: "Lora Variable", "Lora", Georgia, "Times New Roman", serif;
-    font-size: clamp(2.2rem, 5.3vw, 4.65rem);
-    line-height: 0.95;
-    letter-spacing: -0.02em;
-    font-weight: 500;
-    max-width: 12ch;
-    color: #111111;
-  }
-
-  .hero__title .muted {
-    color: #8e8e8e;
-  }
-
-  .hero__description {
-    margin: 0;
-    color: #383838;
-    font-size: clamp(1rem, 1.25vw, 1.1rem);
-    line-height: 1.55;
-    max-width: 46ch;
-  }
-
-  .hero__actions {
-    display: flex;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 12px;
-  }
-
-  .button {
-    text-decoration: none;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 999px;
-    padding: 12px 18px;
-    font-size: 14px;
-    font-weight: 500;
-    line-height: 1;
-    border: 1px solid transparent;
-    transition: transform 0.18s ease, background-color 0.18s ease,
-      border-color 0.18s ease, color 0.18s ease;
-  }
-
-  .button:hover {
-    transform: translateY(-1px);
-  }
-
-  .button--primary {
-    background: #111;
-    color: #fff;
-  }
-
-  .button--secondary {
-    background: transparent;
-    color: #1b1b1b;
-    border-color: #bdbdb8;
-  }
-
-  .hero__stats {
-    margin: 6px 0 0;
-    padding-top: 18px;
-    border-top: 1px solid #dfdfdb;
-    display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 10px;
-  }
-
-  .stat {
-    margin: 0;
-  }
-
-  .stat dt {
-    margin: 0;
-    font-size: 1.6rem;
-    font-weight: 600;
-    line-height: 1.05;
-    color: #111;
-  }
-
-  .stat dd {
-    margin: 6px 0 0;
-    color: #666;
-    font-size: 0.93rem;
-  }
-
-  /* Right media column */
-  .hero__media {
-    margin: 0;
-    border-radius: 18px;
-    overflow: hidden;
-    position: relative;
-    min-height: clamp(340px, 50vw, 560px);
-    background: #c9c9c9;
-  }
-
-  .hero__media img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center top;
-    display: block;
-    position: absolute;
-    inset: 0;
-    filter: grayscale(1);
-  }
-
-  /* Floating availability card */
-  .availability-card {
-    position: absolute;
-    left: 18px;
-    right: 18px;
-    bottom: 18px;
-    background: rgba(17, 17, 17, 0.72);
-    backdrop-filter: blur(5px);
-    border-radius: 12px;
-    color: #fff;
-    padding: 16px;
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
-  }
-
-  .availability-card__label {
-    margin: 0 0 8px;
-    font-size: 12px;
-    font-weight: 500;
-    letter-spacing: 0.03em;
-    color: rgba(255, 255, 255, 0.82);
-  }
-
-  .availability-card__title {
-    margin: 0;
-    font-size: 1.05rem;
-    font-weight: 600;
-  }
-
-  .availability-card__text {
-    margin: 8px 0 0;
-    color: rgba(255, 255, 255, 0.86);
-    font-size: 0.9rem;
-    line-height: 1.45;
-    max-width: 34ch;
-  }
-
-  .availability-card__link {
-    position: absolute;
-    right: 14px;
-    top: 14px;
-    width: 38px;
-    height: 38px;
-    border-radius: 10px;
-    background: #ffffff;
-    color: #151515;
-    text-decoration: none;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 18px;
-    line-height: 1;
-  }
-
-  /* Skills carousel */
-  .skills-carousel {
-    margin-top: 20px;
-    overflow: hidden;
-    mask-image: linear-gradient(to right, transparent, black 60px, black calc(100% - 60px), transparent);
-    -webkit-mask-image: linear-gradient(to right, transparent, black 60px, black calc(100% - 60px), transparent);
-  }
-
-  .skills-carousel__track {
-    display: flex;
-    gap: 24px;
-    animation: scroll-skills 30s linear infinite;
-    width: max-content;
-  }
-
-  .skills-carousel__track:hover {
+  .skills-track:hover {
     animation-play-state: paused;
   }
-
-  .skills-carousel__item {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    padding: 8px 16px;
-    border-radius: 999px;
-    background: #f1f1ef;
-    border: 1px solid #e5e5e2;
-    white-space: nowrap;
-    font-size: 0.88rem;
-    font-weight: 500;
-    color: #444;
-    transition: background 0.18s ease, border-color 0.18s ease;
-  }
-
-  .skills-carousel__item:hover {
-    background: #e8e8e5;
-    border-color: #d5d5d2;
-  }
-
-  .skills-carousel__item svg {
-    width: 16px;
-    height: 16px;
-    flex-shrink: 0;
-    color: #666;
-  }
-
   @keyframes scroll-skills {
     0% { transform: translateX(0); }
     100% { transform: translateX(-50%); }
-  }
-
-  /* Responsive */
-  @media (max-width: 980px) {
-    .hero__panel {
-      grid-template-columns: 1fr;
-    }
-
-    .hero__media {
-      order: -1;
-      min-height: 420px;
-    }
-  }
-
-  @media (max-width: 640px) {
-    .hero {
-      padding: 14px;
-      padding-top: 80px;
-    }
-
-    .hero__panel {
-      border-radius: 20px;
-      padding: 16px;
-    }
-
-    .hero__stats {
-      grid-template-columns: 1fr;
-      gap: 12px;
-    }
-
-    .hero__media {
-      min-height: 340px;
-    }
-
-    .availability-card {
-      position: static;
-      border-radius: 0 0 12px 12px;
-      margin: 0;
-    }
-
-    .availability-card__link {
-      position: static;
-      margin-top: 12px;
-    }
   }
 </style>
