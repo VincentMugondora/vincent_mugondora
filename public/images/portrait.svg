@@ -1,6 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="600" height="800" viewBox="0 0 600 800">
-  <rect width="600" height="800" fill="#d1d5db" rx="16"/>
-  <circle cx="300" cy="280" r="100" fill="#9ca3af"/>
-  <ellipse cx="300" cy="520" rx="140" ry="180" fill="#9ca3af"/>
-  <text x="300" y="720" text-anchor="middle" font-family="sans-serif" font-size="20" fill="#6b7280">Replace with your photo</text>
-</svg>
