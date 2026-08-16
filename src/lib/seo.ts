@@ -87,6 +87,17 @@ export function getBaseJsonLd() {
   };
 }
 
+export function getProfilePageJsonLd() {
+  return {
+    "@context": "https://schema.org",
+    "@type": "ProfilePage",
+    mainEntity: { "@id": `${siteConfig.url}/#person` },
+    name: `About ${siteConfig.name}`,
+    url: `${siteConfig.url}/about`,
+    description: siteConfig.description,
+  };
+}
+
 export function getArticleJsonLd(article: {
   title: string;
   description: string;

@@ -3,9 +3,13 @@ import PageLayout from "@layouts/PageLayout.astro";
 import Section from "@components/ui/Section.astro";
 import Container from "@components/ui/Container.astro";
 import Tag from "@components/ui/Tag.astro";
+import { getProfilePageJsonLd } from "@/lib/seo";
+
+const profileJsonLd = getProfilePageJsonLd();
 ---
 
 <PageLayout title="About Vincent Mugondora | Software Developer & AI Builder" description="Vincent Mugondora is a Zimbabwean software developer, AI builder and technology educator. Learn about his experience building software, AI solutions and teaching technology.">
+  <script is:inline type="application/ld+json" set:html={JSON.stringify(profileJsonLd)} />
   <Section theme="dark">
     <Container>
       <div class="max-w-3xl">
