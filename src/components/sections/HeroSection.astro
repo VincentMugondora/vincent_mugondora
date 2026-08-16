@@ -10,8 +10,12 @@ import heroImage from "@/assets/vincent.avif";
       <p class="hero__eyebrow">Software Developer &bull; AI Builder &bull; Educator</p>
 
       <h1 id="hero-title" class="hero__title">
-        Build better software, <span class="muted">faster</span>
+        Vincent Mugondora
       </h1>
+
+      <p class="hero__tagline">
+        Build better software, <span class="muted">faster</span>
+      </p>
 
       <p class="hero__description">
         I build software, AI solutions and digital products while helping students and businesses understand and use technology.
@@ -180,7 +184,18 @@ import heroImage from "@/assets/vincent.avif";
     color: #111111;
   }
 
-  .hero__title .muted {
+  .hero__tagline {
+    margin: 0;
+    font-family: "Lora Variable", "Lora", Georgia, "Times New Roman", serif;
+    font-size: clamp(1.4rem, 3vw, 2.4rem);
+    line-height: 1.15;
+    letter-spacing: -0.01em;
+    font-weight: 400;
+    color: #383838;
+    max-width: 20ch;
+  }
+
+  .hero__tagline .muted {
     color: #8e8e8e;
   }
 
