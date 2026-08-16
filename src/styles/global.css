@@ -1,5 +1,16 @@
 @import "tailwindcss";
 
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
 @theme {
   --color-midnight: #0b1220;
   --color-electric: #2563eb;
@@ -8,9 +19,9 @@
   --color-slate-brand: #1e293b;
   --color-muted: #64748b;
 
-  --font-heading: "Space Grotesk", system-ui, sans-serif;
-  --font-body: "Inter", system-ui, sans-serif;
-  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+  --font-heading: "Space Grotesk Variable", "Space Grotesk", system-ui, sans-serif;
+  --font-body: "Inter Variable", "Inter", system-ui, sans-serif;
+  --font-mono: "JetBrains Mono Variable", "JetBrains Mono", ui-monospace, monospace;
 
   --text-display: 4.5rem;
   --text-h1: 3.5rem;
@@ -22,4 +33,26 @@
   --text-body: 1rem;
   --text-body-sm: 0.875rem;
   --text-caption: 0.75rem;
+}
+
+:root {
+  --surface: var(--color-offwhite);
+  --surface-elevated: #ffffff;
+  --text-primary: var(--color-slate-brand);
+  --text-secondary: var(--color-muted);
+  --border: #e2e8f0;
+}
+
+:root.dark {
+  --surface: var(--color-midnight);
+  --surface-elevated: #131b2e;
+  --text-primary: #e2e8f0;
+  --text-secondary: #94a3b8;
+  --border: #1e293b;
+}
+
+body {
+  background-color: var(--surface);
+  color: var(--text-primary);
+  transition: background-color 0.2s ease, color 0.2s ease;
 }

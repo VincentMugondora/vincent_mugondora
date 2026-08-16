@@ -8,6 +8,10 @@ import "@/styles/typography.css";
 import { siteConfig } from "@/config/site";
 import { getBaseJsonLd } from "@/lib/seo";
 
+import interLatinUrl from "@fontsource-variable/inter/files/inter-latin-opsz-normal.woff2?url";
+import spaceGroteskLatinUrl from "@fontsource-variable/space-grotesk/files/space-grotesk-latin-wght-normal.woff2?url";
+import loraLatinUrl from "@fontsource-variable/lora/files/lora-latin-wght-normal.woff2?url";
+
 interface Props {
   title?: string;
   description?: string;
@@ -32,6 +36,11 @@ const jsonLd = getBaseJsonLd();
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="icon" href="/favicon.ico" />
     <meta name="generator" content={Astro.generator} />
+    <meta name="color-scheme" content="light dark" />
+
+    <link rel="preload" href={interLatinUrl} as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href={spaceGroteskLatinUrl} as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href={loraLatinUrl} as="font" type="font/woff2" crossorigin />
 
     <title>{pageTitle}</title>
     <meta name="description" content={pageDescription} />
@@ -51,8 +60,18 @@ const jsonLd = getBaseJsonLd();
     <meta name="twitter:image" content={ogImage} />
 
     <script is:inline type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+
+    <!-- Prevent flash of wrong theme -->
+    <script is:inline>
+      (function() {
+        var theme = localStorage.getItem('theme');
+        if (theme === 'dark' || (!theme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+          document.documentElement.classList.add('dark');
+        }
+      })();
+    </script>
   </head>
-  <body class="font-body text-slate-brand bg-offwhite antialiased">
+  <body class="font-body antialiased">
     <slot />
   </body>
 </html>

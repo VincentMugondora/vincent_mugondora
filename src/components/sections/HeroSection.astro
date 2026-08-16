@@ -1,4 +1,6 @@
 ---
+import { Image } from "astro:assets";
+import heroImage from "@/assets/vincent.avif";
 ---
 
 <section class="hero" aria-labelledby="hero-title">
@@ -38,9 +40,13 @@
 
     <!-- Right column: portrait + overlay card -->
     <figure class="hero__media">
-      <img
-        src="/vincent.avif"
+      <Image
+        src={heroImage}
         alt="Vincent Mugondora"
+        widths={[400, 600, 800]}
+        sizes="(max-width: 980px) 100vw, 45vw"
+        loading="eager"
+        fetchpriority="high"
       />
 
       <figcaption class="availability-card">

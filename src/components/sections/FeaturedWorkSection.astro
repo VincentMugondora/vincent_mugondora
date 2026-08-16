@@ -1,4 +1,5 @@
 ---
+import { Image } from "astro:assets";
 import { getFeaturedProjects } from "@lib/content";
 
 const projects = await getFeaturedProjects();
@@ -34,9 +35,11 @@ const placeholderProjects = [
         >
           <figure class="project-card__media">
             {project.data.image ? (
-              <img
+              <Image
                 src={project.data.image}
                 alt={`${project.data.title} thumbnail`}
+                width={580}
+                height={360}
                 loading="lazy"
               />
             ) : (
