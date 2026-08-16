@@ -6,14 +6,15 @@ import { siteConfig } from "@config/site";
 const currentPath = Astro.url.pathname;
 ---
 
-<header class="fixed inset-x-0 top-0 z-50 border-b border-midnight/5 bg-offwhite/80 backdrop-blur-md">
+<header class="fixed inset-x-0 top-0 z-50 border-b border-midnight/10 bg-white/80 backdrop-blur-md">
   <Container>
     <nav class="flex h-16 items-center justify-between" aria-label="Main navigation">
-      <a href="/" class="font-heading text-lg font-bold text-midnight">
+      <a href="/" class="flex items-center gap-2 font-heading text-lg font-bold text-midnight">
+        <span class="flex h-8 w-8 items-center justify-center rounded-lg bg-midnight text-white text-sm font-bold">V</span>
         {siteConfig.name}
       </a>
 
-      <ul class="hidden items-center gap-1 md:flex" role="list">
+      <ul class="hidden items-center gap-8 md:flex" role="list">
         {mainNav.map((item) => {
           const isActive = currentPath === item.href || currentPath.startsWith(item.href + "/");
           return (
@@ -21,9 +22,9 @@ const currentPath = Astro.url.pathname;
               <a
                 href={item.href}
                 class:list={[
-                  "rounded-md px-3 py-2 text-sm font-medium transition-colors",
+                  "text-sm font-medium transition-colors",
                   isActive
-                    ? "text-electric"
+                    ? "text-midnight"
                     : "text-muted hover:text-midnight",
                 ]}
                 aria-current={isActive ? "page" : undefined}
@@ -34,6 +35,18 @@ const currentPath = Astro.url.pathname;
           );
         })}
       </ul>
+
+      <div class="hidden md:block">
+        <a
+          href="/contact"
+          class="inline-flex items-center gap-2 rounded-full bg-midnight px-5 py-2.5 text-sm font-medium text-white transition-colors hover:bg-slate-brand"
+        >
+          Let's talk
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M1 13L13 1M13 1H3M13 1v10" />
+          </svg>
+        </a>
+      </div>
 
       <button
         type="button"
@@ -53,13 +66,14 @@ const currentPath = Astro.url.pathname;
 </header>
 
 <div
-  class="fixed inset-0 z-50 hidden flex-col bg-offwhite"
+  class="fixed inset-0 z-50 hidden flex-col bg-white"
   data-mobile-menu
   aria-hidden="true"
 >
   <Container>
     <div class="flex h-16 items-center justify-between">
-      <a href="/" class="font-heading text-lg font-bold text-midnight">
+      <a href="/" class="flex items-center gap-2 font-heading text-lg font-bold text-midnight">
+        <span class="flex h-8 w-8 items-center justify-center rounded-lg bg-midnight text-white text-sm font-bold">V</span>
         {siteConfig.name}
       </a>
       <button
@@ -86,8 +100,8 @@ const currentPath = Astro.url.pathname;
               class:list={[
                 "block rounded-md px-4 py-3 text-lg font-medium transition-colors",
                 isActive
-                  ? "text-electric"
-                  : "text-slate-brand hover:text-electric",
+                  ? "text-midnight"
+                  : "text-muted hover:text-midnight",
               ]}
               aria-current={isActive ? "page" : undefined}
             >
@@ -97,6 +111,17 @@ const currentPath = Astro.url.pathname;
         );
       })}
     </ul>
+    <div class="mt-8 px-4">
+      <a
+        href="/contact"
+        class="inline-flex items-center gap-2 rounded-full bg-midnight px-5 py-2.5 text-sm font-medium text-white transition-colors hover:bg-slate-brand"
+      >
+        Let's talk
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M1 13L13 1M13 1H3M13 1v10" />
+        </svg>
+      </a>
+    </div>
   </nav>
 </div>
 
