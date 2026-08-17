@@ -1,5 +1,16 @@
 ---
 import { siteConfig } from "@config/site";
+
+const currentPath = Astro.url.pathname;
+
+const navLinks = [
+  { label: "About", href: "/about" },
+  { label: "Work", href: "/work" },
+  { label: "Services", href: "/services" },
+  { label: "Writing", href: "/writing" },
+  { label: "Speaking", href: "/speaking" },
+  { label: "Contact", href: "/contact" },
+];
 ---
 
 <header class="site-header">
@@ -12,15 +23,21 @@ import { siteConfig } from "@config/site";
   </div>
 
   <nav class="header__nav" aria-label="Primary">
-    <a href="#about">About</a>
-    <a href="#work">Work</a>
-    <a href="#services">Services</a>
-    <a href="#writing">Writing</a>
-    <a href="#speaking">Speaking</a>
-    <a href="#contact">Contact</a>
+    {navLinks.map((link) => {
+      const isActive = currentPath === link.href || currentPath.startsWith(link.href + "/");
+      return (
+        <a
+          href={link.href}
+          class:list={["header__nav-link", { "header__nav-link--active": isActive }]}
+          aria-current={isActive ? "page" : undefined}
+        >
+          {link.label}
+        </a>
+      );
+    })}
   </nav>
 
-  <a class="header__cta" href="#contact">Let's work together</a>
+  <a class="header__cta" href="/contact">Let's work together</a>
 
   <button
     type="button"
@@ -35,14 +52,20 @@ import { siteConfig } from "@config/site";
 
   <div id="mobile-menu" class="header__mobile-panel" data-mobile-menu hidden>
     <nav class="header__mobile-nav">
-      <a href="#about">About</a>
-      <a href="#work">Work</a>
-      <a href="#services">Services</a>
-      <a href="#writing">Writing</a>
-      <a href="#speaking">Speaking</a>
-      <a href="#contact">Contact</a>
+      {navLinks.map((link) => {
+        const isActive = currentPath === link.href || currentPath.startsWith(link.href + "/");
+        return (
+          <a
+            href={link.href}
+            class:list={["header__mobile-link", { "header__mobile-link--active": isActive }]}
+            aria-current={isActive ? "page" : undefined}
+          >
+            {link.label}
+          </a>
+        );
+      })}
     </nav>
-    <a class="header__mobile-cta" href="#contact">Let's work together</a>
+    <a class="header__mobile-cta" href="/contact">Let's work together</a>
   </div>
 </header>
 
@@ -126,7 +149,7 @@ import { siteConfig } from "@config/site";
     }
   }
 
-  .header__nav a {
+  .header__nav-link {
     font-family: var(--font-mono);
     font-size: 0.875rem;
     font-weight: 500;
@@ -137,7 +160,11 @@ import { siteConfig } from "@config/site";
     transition: color 0.15s;
   }
 
-  .header__nav a:hover {
+  .header__nav-link:hover {
+    color: var(--color-orange);
+  }
+
+  .header__nav-link--active {
     color: var(--color-orange);
   }
 
@@ -249,7 +276,7 @@ import { siteConfig } from "@config/site";
     gap: 0.75rem;
   }
 
-  .header__mobile-nav a {
+  .header__mobile-link {
     font-family: var(--font-mono);
     font-size: 0.875rem;
     text-transform: uppercase;
@@ -258,6 +285,15 @@ import { siteConfig } from "@config/site";
     color: #111;
     padding: 0.5rem 0;
     border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    transition: color 0.15s;
+  }
+
+  .header__mobile-link:hover {
+    color: var(--color-orange);
+  }
+
+  .header__mobile-link--active {
+    color: var(--color-orange);
   }
 
   .header__mobile-cta {
