@@ -1,54 +1,594 @@
 ---
 import PageLayout from "@layouts/PageLayout.astro";
-import Section from "@components/ui/Section.astro";
-import Container from "@components/ui/Container.astro";
-import Tag from "@components/ui/Tag.astro";
 import { getAllProjects } from "@lib/content";
 
 const projects = await getAllProjects();
+
+const categories = ["All projects", "Web", "AI", "Platform", "Education"];
+
+const documentationCards = [
+  {
+    type: "Software Engineering",
+    title: "Case studies being documented",
+    description:
+      "Project details are being prepared with problem context, role, technologies, architecture decisions and lessons learned.",
+    status: "In progress",
+    tags: ["Architecture", "Code", "Systems"],
+  },
+  {
+    type: "AI & Automation",
+    title: "AI experiments coming soon",
+    description:
+      "Build notes around AI agents, automation, education-focused AI and practical AI for African businesses are being organized.",
+    status: "Research notes",
+    tags: ["AI", "Automation", "Learning"],
+  },
+  {
+    type: "Digital Products",
+    title: "Product work in review",
+    description:
+      "Selected digital product work will be published once the scope, screenshots and implementation notes are ready to share clearly.",
+    status: "Drafting",
+    tags: ["Web", "Product", "Design"],
+  },
+  {
+    type: "Technology Education",
+    title: "Teaching projects being shaped",
+    description:
+      "Education resources, workshops and practical software development material will be documented as part of the portfolio.",
+    status: "In progress",
+    tags: ["Teaching", "Students", "Practice"],
+  },
+];
 ---
 
 <PageLayout title="Work" description="Software engineering projects and case studies by Vincent Mugondora.">
-  <Section theme="dark">
-    <Container>
-      <div class="max-w-2xl">
-        <p class="font-mono text-sm uppercase tracking-widest text-gold">Portfolio</p>
-        <h1 class="mt-4 font-heading text-4xl font-bold text-offwhite lg:text-5xl">
-          Work
-        </h1>
-        <p class="mt-4 text-lg text-offwhite/70">
-          Projects that demonstrate engineering thinking, system design, and real-world impact.
+  <section class="work-page" aria-labelledby="work-title">
+    <div class="work-page__inner">
+      <header class="work-hero">
+        <div class="work-hero__badge">
+          <span aria-hidden="true"></span>
+          Projects
+        </div>
+        <h1 id="work-title" class="work-hero__title">Selected work with clear direction</h1>
+        <p class="work-hero__text">
+          A focused collection of software engineering, web, AI and digital product work shaped through clarity, practical execution and careful technical thinking.
         </p>
-      </div>
-    </Container>
-  </Section>
+      </header>
 
-  <Section theme="light">
-    <Container>
-      {projects.length > 0 ? (
-        <div class="grid gap-8 lg:grid-cols-2">
-          {projects.map((project) => (
-            <a href={`/work/${project.id}`} class="group block rounded-lg border border-midnight/10 p-8 transition-colors hover:border-electric/30">
-              <h2 class="font-heading text-xl font-semibold text-midnight group-hover:text-electric">
-                {project.data.title}
-              </h2>
-              <p class="mt-3 text-muted">{project.data.description}</p>
-              {project.data.technologies.length > 0 && (
-                <div class="mt-4 flex flex-wrap gap-2">
-                  {project.data.technologies.slice(0, 5).map((tech) => (
-                    <Tag label={tech} />
-                  ))}
-                </div>
-              )}
+      <div class="work-toolbar" aria-label="Project categories">
+        <nav class="work-filters" aria-label="Project categories">
+          {categories.map((category, index) => (
+            <a class:list={["work-filter", index === 0 && "work-filter--active"]} href="#project-list">
+              {category}
             </a>
           ))}
-        </div>
-      ) : (
-        <div class="rounded-lg border border-dashed border-midnight/20 p-16 text-center">
-          <h2 class="font-heading text-xl font-semibold text-midnight">Projects coming soon</h2>
-          <p class="mt-2 text-muted">Case studies and project details are being documented.</p>
-        </div>
-      )}
-    </Container>
-  </Section>
+        </nav>
+        <a class="work-toolbar__link" href="https://github.com/vincemugondora" target="_blank" rel="noopener noreferrer">
+          View GitHub
+          <span aria-hidden="true">↗</span>
+        </a>
+      </div>
+
+      <section id="project-list" class="projects-grid" aria-label={projects.length > 0 ? "Project list" : "Portfolio documentation status"}>
+        {projects.length > 0 ? (
+          projects.map((project, index) => (
+            <a href={`/work/${project.id}`} class="project-card group">
+              <div class:list={["project-card__visual", `project-card__visual--${(index % 4) + 1}`]}>
+                {project.data.image ? (
+                  <img src={project.data.image} alt="" loading="lazy" />
+                ) : (
+                  <div class="project-card__mockup" aria-hidden="true">
+                    <div class="project-card__mockup-bar"></div>
+                    <div class="project-card__mockup-grid">
+                      <span></span>
+                      <span></span>
+                      <span></span>
+                      <span></span>
+                    </div>
+                    <div class="project-card__mockup-line"></div>
+                  </div>
+                )}
+                <span class="project-card__pill">{project.data.status}</span>
+              </div>
+              <div class="project-card__body">
+                <div>
+                  <p class="project-card__type">{project.data.role ?? "Project"}</p>
+                  <h2 class="project-card__title">{project.data.title}</h2>
+                  <p class="project-card__description">{project.data.description}</p>
+                  {project.data.technologies.length > 0 && (
+                    <ul class="project-card__tags" aria-label="Technologies">
+                      {project.data.technologies.slice(0, 4).map((tech) => (
+                        <li>{tech}</li>
+                      ))}
+                    </ul>
+                  )}
+                </div>
+                <div class="project-card__footer">
+                  <span>View Project</span>
+                  <span class="project-card__arrow" aria-hidden="true">↗</span>
+                </div>
+              </div>
+            </a>
+          ))
+        ) : (
+          documentationCards.map((card, index) => (
+            <article class="project-card project-card--placeholder">
+              <div class:list={["project-card__visual", `project-card__visual--${index + 1}`]}>
+                <div class="project-card__mockup" aria-hidden="true">
+                  <div class="project-card__mockup-bar"></div>
+                  <div class="project-card__mockup-grid">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                  </div>
+                  <div class="project-card__mockup-line"></div>
+                </div>
+                <span class="project-card__pill">{card.status}</span>
+              </div>
+              <div class="project-card__body">
+                <div>
+                  <p class="project-card__type">{card.type}</p>
+                  <h2 class="project-card__title">{card.title}</h2>
+                  <p class="project-card__description">{card.description}</p>
+                  <ul class="project-card__tags" aria-label="Focus areas">
+                    {card.tags.map((tag) => (
+                      <li>{tag}</li>
+                    ))}
+                  </ul>
+                </div>
+                <div class="project-card__footer">
+                  <span>Details soon</span>
+                  <span class="project-card__arrow" aria-hidden="true">↗</span>
+                </div>
+              </div>
+            </article>
+          ))
+        )}
+      </section>
+
+      <div class="work-note">
+        <p>Case studies are being documented carefully so the portfolio stays useful, specific and truthful.</p>
+      </div>
+    </div>
+  </section>
 </PageLayout>
+
+<style>
+  .work-page {
+    background: #FAF9F7;
+    background-size: 40px 40px;
+    background-image:
+      linear-gradient(to right, rgba(0, 0, 0, 0.05) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(0, 0, 0, 0.05) 1px, transparent 1px);
+    padding: 3rem 1rem 6rem;
+  }
+
+  @media (min-width: 768px) {
+    .work-page {
+      padding: 5rem 3rem 8rem;
+    }
+  }
+
+  .work-page__inner {
+    width: min(80rem, 100%);
+    margin: 0 auto;
+  }
+
+  .work-hero {
+    max-width: 43rem;
+    margin-bottom: 2.5rem;
+  }
+
+  @media (min-width: 768px) {
+    .work-hero {
+      margin-bottom: 4rem;
+    }
+  }
+
+  .work-hero__badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.45rem 0.8rem;
+    border-radius: 999px;
+    background: #fff;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    color: #4b5563;
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 1.5rem;
+  }
+
+  .work-hero__badge span {
+    width: 0.4rem;
+    height: 0.4rem;
+    border-radius: 999px;
+    background: var(--color-orange);
+  }
+
+  .work-hero__title {
+    font-family: var(--font-display);
+    font-size: clamp(3.75rem, 9vw, 7rem);
+    line-height: 0.92;
+    letter-spacing: 0.025em;
+    text-transform: uppercase;
+    color: #111;
+    margin: 0 0 1.25rem;
+    max-width: 12ch;
+  }
+
+  .work-hero__text {
+    margin: 0;
+    max-width: 35rem;
+    color: #4b5563;
+    font-family: var(--font-mono);
+    font-size: clamp(0.925rem, 1.4vw, 1.0625rem);
+    line-height: 1.7;
+  }
+
+  .work-toolbar {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-bottom: 2rem;
+  }
+
+  @media (min-width: 900px) {
+    .work-toolbar {
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 3rem;
+    }
+  }
+
+  .work-filters {
+    display: flex;
+    gap: 0.5rem;
+    overflow-x: auto;
+    padding-bottom: 0.4rem;
+    scrollbar-width: none;
+  }
+
+  .work-filters::-webkit-scrollbar {
+    display: none;
+  }
+
+  @media (max-width: 767px) {
+    .work-toolbar {
+      position: sticky;
+      top: 4.5rem;
+      z-index: 20;
+      background: rgba(250, 249, 247, 0.92);
+      backdrop-filter: blur(12px);
+      border-block: 1px solid rgba(0, 0, 0, 0.08);
+      margin-inline: -1rem;
+      padding: 0.75rem 1rem 0.35rem;
+    }
+  }
+
+  .work-filter,
+  .work-toolbar__link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.35rem;
+    white-space: nowrap;
+    border-radius: 999px;
+    text-decoration: none;
+    font-size: 0.8125rem;
+    font-weight: 600;
+    line-height: 1;
+    transition: transform 0.18s ease, background 0.18s ease, color 0.18s ease;
+  }
+
+  .work-filter {
+    background: #fff;
+    color: #4b5563;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    padding: 0.75rem 1rem;
+  }
+
+  .work-filter:hover,
+  .work-toolbar__link:hover {
+    transform: translateY(-1px);
+  }
+
+  .work-filter--active {
+    background: #111;
+    border-color: #111;
+    color: #fff;
+  }
+
+  .work-toolbar__link {
+    display: none;
+    background: #111;
+    color: #fff;
+    padding: 0.85rem 1.15rem;
+  }
+
+  @media (min-width: 900px) {
+    .work-toolbar__link {
+      display: inline-flex;
+    }
+  }
+
+  .projects-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+
+  @media (min-width: 768px) {
+    .projects-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 2rem;
+    }
+  }
+
+  .project-card {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    min-height: 100%;
+    overflow: hidden;
+    border-radius: 1rem;
+    background: #fff;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    color: #111;
+    text-decoration: none;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.04);
+    transition: transform 0.22s ease, box-shadow 0.22s ease, border-color 0.22s ease;
+  }
+
+  @media (min-width: 768px) {
+    .project-card {
+      border-radius: 1.5rem;
+    }
+  }
+
+  .project-card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(230, 81, 58, 0.35);
+    box-shadow: 0 20px 45px rgba(0, 0, 0, 0.08);
+  }
+
+  .project-card--placeholder:hover {
+    transform: none;
+  }
+
+  .project-card__visual {
+    position: relative;
+    aspect-ratio: 4 / 3;
+    overflow: hidden;
+    background: #f3f4f6;
+    padding: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  @media (min-width: 768px) {
+    .project-card__visual {
+      padding: 2rem;
+    }
+  }
+
+  .project-card__visual img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+    border-radius: 0.85rem;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    transition: transform 0.5s ease;
+  }
+
+  .project-card:hover .project-card__visual img {
+    transform: scale(1.04);
+  }
+
+  .project-card__visual--1 {
+    background:
+      radial-gradient(circle at 20% 20%, rgba(230, 81, 58, 0.18), transparent 32%),
+      #eef2f7;
+  }
+
+  .project-card__visual--2 {
+    background:
+      radial-gradient(circle at 80% 15%, rgba(37, 99, 235, 0.18), transparent 34%),
+      #111;
+  }
+
+  .project-card__visual--3 {
+    background:
+      radial-gradient(circle at 15% 85%, rgba(244, 185, 66, 0.26), transparent 34%),
+      #f1f5f0;
+  }
+
+  .project-card__visual--4 {
+    background:
+      radial-gradient(circle at 80% 80%, rgba(230, 81, 58, 0.2), transparent 34%),
+      #e9eef8;
+  }
+
+  .project-card__mockup {
+    width: min(24rem, 100%);
+    aspect-ratio: 16 / 10;
+    border-radius: 1rem;
+    background: rgba(255, 255, 255, 0.88);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    box-shadow: 0 22px 50px rgba(0, 0, 0, 0.16);
+    padding: 1rem;
+  }
+
+  .project-card__visual--2 .project-card__mockup {
+    background: rgba(20, 20, 20, 0.9);
+    border-color: rgba(255, 255, 255, 0.16);
+  }
+
+  .project-card__mockup-bar {
+    height: 0.75rem;
+    width: 42%;
+    border-radius: 999px;
+    background: var(--color-orange);
+    margin-bottom: 1rem;
+  }
+
+  .project-card__mockup-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.65rem;
+    margin-bottom: 1rem;
+  }
+
+  .project-card__mockup-grid span {
+    min-height: 3rem;
+    border-radius: 0.65rem;
+    background: rgba(17, 17, 17, 0.08);
+  }
+
+  .project-card__visual--2 .project-card__mockup-grid span {
+    background: rgba(255, 255, 255, 0.12);
+  }
+
+  .project-card__mockup-line {
+    width: 72%;
+    height: 0.6rem;
+    border-radius: 999px;
+    background: rgba(17, 17, 17, 0.14);
+  }
+
+  .project-card__visual--2 .project-card__mockup-line {
+    background: rgba(255, 255, 255, 0.18);
+  }
+
+  .project-card__pill {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    border-radius: 999px;
+    padding: 0.45rem 0.7rem;
+    background: rgba(255, 255, 255, 0.9);
+    color: #4b5563;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    font-size: 0.75rem;
+    font-weight: 600;
+    backdrop-filter: blur(10px);
+  }
+
+  .project-card__visual--2 .project-card__pill {
+    background: rgba(255, 255, 255, 0.12);
+    color: #fff;
+    border-color: rgba(255, 255, 255, 0.2);
+  }
+
+  .project-card__body {
+    padding: 1.25rem;
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  @media (min-width: 768px) {
+    .project-card__body {
+      padding: 2rem;
+    }
+  }
+
+  .project-card__type {
+    margin: 0 0 0.75rem;
+    color: #6b7280;
+    font-family: var(--font-mono);
+    font-size: 0.6875rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+
+  .project-card__title {
+    margin: 0 0 0.8rem;
+    font-family: var(--font-display);
+    font-size: clamp(1.75rem, 4vw, 2.5rem);
+    line-height: 1;
+    letter-spacing: 0.025em;
+    text-transform: uppercase;
+  }
+
+  .project-card__description {
+    margin: 0 0 1.25rem;
+    color: #4b5563;
+    line-height: 1.65;
+    font-size: 0.925rem;
+  }
+
+  .project-card__tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin: 0 0 1.5rem;
+    padding: 0;
+    list-style: none;
+  }
+
+  .project-card__tags li {
+    border-radius: 0.35rem;
+    background: #FAF9F7;
+    color: #4b5563;
+    padding: 0.45rem 0.55rem;
+    font-size: 0.75rem;
+    line-height: 1;
+  }
+
+  .project-card__footer {
+    margin-top: auto;
+    padding-top: 1rem;
+    border-top: 1px solid rgba(0, 0, 0, 0.08);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    font-size: 0.875rem;
+    font-weight: 600;
+  }
+
+  .project-card__arrow {
+    width: 2rem;
+    height: 2rem;
+    border-radius: 999px;
+    background: #FAF9F7;
+    color: #111;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.18s ease, color 0.18s ease;
+  }
+
+  .project-card:hover .project-card__arrow {
+    background: #111;
+    color: #fff;
+  }
+
+  .work-note {
+    display: flex;
+    justify-content: center;
+    margin-top: 3rem;
+    text-align: center;
+  }
+
+  .work-note p {
+    max-width: 38rem;
+    margin: 0;
+    border-radius: 999px;
+    background: #fff;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    color: #4b5563;
+    padding: 0.85rem 1.25rem;
+    font-size: 0.875rem;
+    line-height: 1.5;
+  }
+</style>
