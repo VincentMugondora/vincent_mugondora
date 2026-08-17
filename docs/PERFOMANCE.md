@@ -1,5 +1,5 @@
 SYSTEM SPECIFICATION: ARCHITECTURE, PERFORMANCE & ON-PAGE SEO DIRECTIVES
-Target Domain: vincemugondora.com
+Target Domain: vincentmugondora.com
 Primary Stack: Astro (Hybrid Mode), Cloudflare Pages, Cloudflare D1/Workers (or Supabase af-south-1), Tailwind CSS, MDX
 Target Region: Southern Africa (Harare & Johannesburg Edge Nodes)
 Primary Goal: Sub-50ms TTFB regional delivery, 100/100 Core Web Vitals, sub-second LCP, zero client-side hydration waste, maximum Google Entity/Knowledge Graph indexing.
@@ -50,7 +50,7 @@ Output a public/_headers file containing strict cache rules:
  * Social Tags: Complete Open Graph (og:*) and Twitter Card (twitter:*) properties.
  * Canonical URLs: Absolute, trailing-slash-consistent URLs generated dynamically via Astro.site.
 3.2 Sitemaps, Robots.txt & Fast Indexing
- * Use @astrojs/sitemap with site: '[https://vincemugondora.com](https://vincemugondora.com)' declared in astro.config.mjs.
+ * Use @astrojs/sitemap with site: '[https://vincentmugondora.com](https://vincentmugondora.com)' declared in astro.config.mjs.
  * Generate src/pages/robots.txt.ts dynamically to reference sitemap-index.xml.
  * Enable Cloudflare Crawler Hints / IndexNow protocol for automatic search engine notification on deploy.
 3.3 Structured Data (JSON-LD Graph Architecture)
@@ -60,12 +60,12 @@ Every page MUST output a <script type="application/ld+json"> block utilizing Sch
   "@graph": [
     {
       "@type": "Person",
-      "@id": "https://vincemugondora.com/#person",
+      "@id": "https://vincentmugondora.com/#person",
       "name": "Vincent Mugondora",
-      "url": "https://vincemugondora.com",
+      "url": "https://vincentmugondora.com",
       "jobTitle": "Software Engineer & Tech Entrepreneur",
-      "worksFor": { "@id": "https://vincemugondora.com/#organization" },
-      "founder": { "@id": "https://vincemugondora.com/#organization" },
+      "worksFor": { "@id": "https://vincentmugondora.com/#organization" },
+      "founder": { "@id": "https://vincentmugondora.com/#organization" },
       "knowsAbout": [
         "Software Engineering",
         "System Architecture",
@@ -75,24 +75,24 @@ Every page MUST output a <script type="application/ld+json"> block utilizing Sch
         "Cloudflare Edge Infrastructure"
       ],
       "sameAs": [
-        "https://github.com/vincemugondora",
+        "https://github.com/vincentmugondora",
         "https://www.linkedin.com/in/vincemugondora"
       ]
     },
     {
       "@type": "Organization",
-      "@id": "https://vincemugondora.com/#organization",
+      "@id": "https://vincentmugondora.com/#organization",
       "name": "Zimnovate",
       "url": "https://zimnovate.co.zw",
-      "founder": { "@id": "https://vincemugondora.com/#person" },
+      "founder": { "@id": "https://vincentmugondora.com/#person" },
       "areaServed": { "@type": "Country", "name": "Zimbabwe" }
     },
     {
       "@type": "WebSite",
-      "@id": "https://vincemugondora.com/#website",
-      "url": "https://vincemugondora.com",
+      "@id": "https://vincentmugondora.com/#website",
+      "url": "https://vincentmugondora.com",
       "name": "Vincent Mugondora",
-      "publisher": { "@id": "https://vincemugondora.com/#person" }
+      "publisher": { "@id": "https://vincentmugondora.com/#person" }
     }
   ]
 }

@@ -1,5 +1,6 @@
 ---
 import PageLayout from "@layouts/PageLayout.astro";
+import { siteConfig } from "@config/site";
 import { getAllProjects } from "@lib/content";
 
 const projects = await getAllProjects();
@@ -64,7 +65,7 @@ const documentationCards = [
             </a>
           ))}
         </nav>
-        <a class="work-toolbar__link" href="https://github.com/vincemugondora" target="_blank" rel="noopener noreferrer">
+        <a class="work-toolbar__link" href={siteConfig.githubUrl} target="_blank" rel="noopener noreferrer">
           View GitHub
           <span aria-hidden="true">↗</span>
         </a>
@@ -177,7 +178,7 @@ const documentationCards = [
   }
 
   .work-hero {
-    max-width: 43rem;
+    width: 100%;
     margin-bottom: 2.5rem;
   }
 
@@ -218,12 +219,14 @@ const documentationCards = [
     text-transform: uppercase;
     color: #111;
     margin: 0 0 1.25rem;
-    max-width: 12ch;
+    width: 100%;
+    max-width: none;
   }
 
   .work-hero__text {
     margin: 0;
-    max-width: 35rem;
+    width: 100%;
+    max-width: none;
     color: #4b5563;
     font-family: var(--font-mono);
     font-size: clamp(0.925rem, 1.4vw, 1.0625rem);

@@ -5,6 +5,8 @@ export interface JsonLdPerson {
   "@id": string;
   name: string;
   url: string;
+  email: string;
+  telephone: string;
   jobTitle: string;
   worksFor: { "@id": string };
   founder: { "@id": string };
@@ -55,10 +57,9 @@ export function getBaseJsonLd() {
           "AI Agents",
           "Technology Education",
         ],
-        sameAs: [
-          "https://github.com/vincemugondora",
-          "https://www.linkedin.com/in/vincemugondora",
-        ],
+        email: siteConfig.email,
+        telephone: siteConfig.phone,
+        sameAs: [siteConfig.githubUrl, siteConfig.linkedinUrl],
       },
       {
         "@type": "Organization",

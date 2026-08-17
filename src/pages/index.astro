@@ -2,6 +2,7 @@
 import PageLayout from "@layouts/PageLayout.astro";
 import { Image } from "astro:assets";
 import heroImage from "@/assets/vincent.avif";
+import { siteConfig } from "@config/site";
 ---
 
 <PageLayout>
@@ -355,8 +356,8 @@ import heroImage from "@/assets/vincent.avif";
         </div>
         <div class="about__links">
           <a href="https://twitter.com/vincemugondora" target="_blank" rel="noopener noreferrer">Twitter ↗</a>
-          <a href="https://www.linkedin.com/in/vincemugondora" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a>
-          <a href="https://github.com/vincemugondora" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
+          <a href={siteConfig.linkedinUrl} target="_blank" rel="noopener noreferrer">LinkedIn ↗</a>
+          <a href={siteConfig.githubUrl} target="_blank" rel="noopener noreferrer">GitHub ↗</a>
         </div>
       </div>
     </div>
@@ -372,7 +373,7 @@ import heroImage from "@/assets/vincent.avif";
     <div class="final-cta__inner">
       <h2 class="final-cta__title">Have a problem<br/>worth solving?</h2>
       <p class="final-cta__subtitle">Let's build something great together.</p>
-      <a class="final-cta__btn" href="mailto:hello@vincentmugondora.com">Start a Conversation</a>
+      <a class="final-cta__btn" href={`mailto:${siteConfig.email}`}>Start a Conversation</a>
     </div>
   </section>
 </PageLayout>

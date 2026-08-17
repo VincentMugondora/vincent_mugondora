@@ -1,4 +1,5 @@
 ---
+import { siteConfig } from "@config/site";
 ---
 
 <footer class="site-footer">
@@ -25,10 +26,11 @@
       <div class="footer__connect-col">
         <h4 class="footer__heading">Connect</h4>
         <ul>
-          <li><a href="mailto:hello@vincentmugondora.com">Email</a></li>
+          <li><a href={`mailto:${siteConfig.email}`}>Email</a></li>
+          <li><a href={siteConfig.phoneHref}>Phone</a></li>
           <li><a href="https://twitter.com/vincemugondora" target="_blank" rel="noopener noreferrer">Twitter</a></li>
-          <li><a href="https://www.linkedin.com/in/vincemugondora" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
-          <li><a href="https://github.com/vincemugondora" target="_blank" rel="noopener noreferrer">GitHub</a></li>
+          <li><a href={siteConfig.linkedinUrl} target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
+          <li><a href={siteConfig.githubUrl} target="_blank" rel="noopener noreferrer">GitHub</a></li>
         </ul>
       </div>
     </div>

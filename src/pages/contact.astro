@@ -3,6 +3,7 @@ import PageLayout from "@layouts/PageLayout.astro";
 import Section from "@components/ui/Section.astro";
 import Container from "@components/ui/Container.astro";
 import Button from "@components/ui/Button.astro";
+import { siteConfig } from "@config/site";
 ---
 
 <PageLayout title="Contact" description="Get in touch with Vincent Mugondora for work, speaking, collaboration, or mentorship opportunities.">
@@ -144,8 +145,10 @@ import Button from "@components/ui/Button.astro";
       <div class="mx-auto max-w-2xl text-center">
         <h2 class="font-heading text-2xl font-bold text-offwhite">Connect directly</h2>
         <div class="mt-6 flex flex-wrap justify-center gap-6">
-          <a href="https://github.com/vincemugondora" class="text-offwhite/70 transition-colors hover:text-offwhite" target="_blank" rel="noopener noreferrer">GitHub</a>
-          <a href="https://www.linkedin.com/in/vincemugondora" class="text-offwhite/70 transition-colors hover:text-offwhite" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+          <a href={`mailto:${siteConfig.email}`} class="text-offwhite/70 transition-colors hover:text-offwhite">{siteConfig.email}</a>
+          <a href={siteConfig.phoneHref} class="text-offwhite/70 transition-colors hover:text-offwhite">{siteConfig.phone}</a>
+          <a href={siteConfig.githubUrl} class="text-offwhite/70 transition-colors hover:text-offwhite" target="_blank" rel="noopener noreferrer">GitHub</a>
+          <a href={siteConfig.linkedinUrl} class="text-offwhite/70 transition-colors hover:text-offwhite" target="_blank" rel="noopener noreferrer">LinkedIn</a>
         </div>
       </div>
     </Container>
