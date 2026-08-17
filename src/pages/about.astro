@@ -1,0 +1,900 @@
+---
+import PageLayout from "@layouts/PageLayout.astro";
+import CTASection from "@components/sections/CTASection.astro";
+import { Image } from "astro:assets";
+import heroImage from "@/assets/vincent.avif";
+import { getProfilePageJsonLd } from "@/lib/seo";
+
+const profileJsonLd = getProfilePageJsonLd();
+
+const workAreas = [
+  {
+    title: "Software Engineering",
+    text: "Building practical applications with attention to structure, maintainability and the real problem behind the code.",
+  },
+  {
+    title: "Web Development",
+    text: "Creating fast, accessible web experiences that combine strong technical foundations with clear communication.",
+  },
+  {
+    title: "AI & Automation",
+    text: "Exploring how AI agents, LLMs and automation can help people and organizations work more effectively.",
+  },
+  {
+    title: "Technology Education",
+    text: "Teaching software development in a practical way so students and developers can understand, build and keep growing.",
+  },
+  {
+    title: "System Design",
+    text: "Thinking through architecture, constraints, data flow and trade-offs before turning an idea into software.",
+  },
+  {
+    title: "Digital Products",
+    text: "Shaping ideas into useful products, experiments and platforms with a builder's eye for execution.",
+  },
+];
+
+const journey = [
+  {
+    label: "Learning to build",
+    text: "Vincent's work begins with a builder's mindset: learning by making, asking better technical questions and using code to turn ideas into working systems.",
+  },
+  {
+    label: "Engineering focus",
+    text: "That focus grew into software engineering, web development and system architecture, with an emphasis on performance, clarity and maintainable foundations.",
+  },
+  {
+    label: "Teaching technology",
+    text: "Alongside building, Vincent teaches technology and software development, translating technical ideas into practical learning for students and developers.",
+  },
+  {
+    label: "AI and entrepreneurship",
+    text: "The current direction brings together AI, automation, digital products and entrepreneurship, with a particular interest in useful technology for Zimbabwe and Africa.",
+  },
+];
+
+const principles = [
+  "Performance is a product decision, not an afterthought.",
+  "Simple systems are easier to understand, teach and improve.",
+  "Continuous learning keeps the work honest.",
+  "The best technology starts with a real problem.",
+  "Useful software should help people move forward.",
+];
+
+const exploring = [
+  "AI agents and practical automation",
+  "System design and software architecture",
+  "AI for education and developer learning",
+  "Technology entrepreneurship in Zimbabwe and Africa",
+  "Emerging technology that can solve local problems",
+];
+---
+
+<PageLayout title="About Vincent Mugondora | Software Engineer & AI Builder" description="Learn about Vincent Mugondora, a Zimbabwean software engineer, AI builder, technology educator and entrepreneur building useful technology for Africa.">
+  <script is:inline type="application/ld+json" set:html={JSON.stringify(profileJsonLd)} />
+
+  <section class="about-hero" aria-labelledby="about-title">
+    <div class="about-hero__container">
+      <div class="about-hero__content">
+        <div class="about-hero__badge">
+          <span class="about-hero__badge-dot"></span>
+          About Vincent
+        </div>
+        <h1 id="about-title" class="about-hero__title">Building technology, teaching people, and learning in public.</h1>
+        <p class="about-hero__desc">
+          Vincent Mugondora is a Zimbabwean software engineer, AI builder, technology educator and entrepreneur. He builds digital products, teaches practical software development and explores how AI and emerging technology can create opportunity in Zimbabwe, Africa and beyond.
+        </p>
+        <div class="about-hero__actions" aria-label="About page actions">
+          <a class="about-hero__btn about-hero__btn--dark" href="/work">View Work</a>
+          <a class="about-hero__btn about-hero__btn--orange" href="/contact">Start a Conversation</a>
+        </div>
+      </div>
+      <div class="about-hero__image">
+        <Image
+          src={heroImage}
+          alt="Vincent Mugondora"
+          widths={[400, 600, 800]}
+          sizes="(max-width: 1024px) 100vw, 50vw"
+          loading="eager"
+          fetchpriority="high"
+          class="about-hero__img"
+        />
+      </div>
+    </div>
+  </section>
+
+  <section class="about-journey" aria-labelledby="journey-title">
+    <div class="about-section__container">
+      <div class="about-section__header">
+        <div class="about-section__header-left">
+          <div class="about-section__number about-section__number--orange">01</div>
+          <h2 id="journey-title" class="about-section__title">My Journey</h2>
+        </div>
+        <p class="about-section__subtitle">From learning by building to building with purpose.</p>
+      </div>
+
+      <div class="journey-timeline">
+        {journey.map((item, index) => (
+          <article class="journey-item">
+            <div class="journey-item__marker" aria-hidden="true">{String(index + 1).padStart(2, "0")}</div>
+            <div class="journey-item__body">
+              <h3 class="journey-item__title">{item.label}</h3>
+              <p class="journey-item__text">{item.text}</p>
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="about-work" aria-labelledby="work-title">
+    <div class="about-section__container">
+      <div class="about-section__header about-section__header--dark">
+        <div class="about-section__header-left">
+          <div class="about-section__number about-section__number--orange-rotated">02</div>
+          <h2 id="work-title" class="about-section__title">What I Do</h2>
+        </div>
+        <p class="about-section__subtitle about-section__subtitle--dark">Code, teaching, systems and products.</p>
+      </div>
+
+      <div class="work-grid">
+        {workAreas.map((area, index) => (
+          <article class:list={["work-card", index === 2 && "work-card--dark", index === 5 && "work-card--accent"]}>
+            <div class="work-card__number">{String(index + 1).padStart(2, "0")}</div>
+            <h3 class="work-card__title">{area.title}</h3>
+            <p class="work-card__text">{area.text}</p>
+            <div class="work-card__bar" aria-hidden="true"></div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="about-philosophy" aria-labelledby="philosophy-title">
+    <div class="about-philosophy__bg" aria-hidden="true">THINK</div>
+    <div class="about-philosophy__inner">
+      <p class="about-philosophy__label">How I Think</p>
+      <h2 id="philosophy-title" class="about-philosophy__title">Useful software starts with clear thinking.</h2>
+      <p class="about-philosophy__subtitle">
+        I care about performance, simplicity and continuous learning because they make technology easier to trust, maintain and teach.
+      </p>
+      <ul class="principles-list">
+        {principles.map((principle) => (
+          <li>{principle}</li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <section class="teaching-impact" aria-labelledby="teaching-title">
+    <div class="teaching-impact__container">
+      <div class="teaching-impact__content">
+        <span class="teaching-impact__label">Teaching & Impact</span>
+        <h2 id="teaching-title" class="teaching-impact__title">Helping people understand technology well enough to build with it.</h2>
+        <div class="teaching-impact__text">
+          <p>
+            Vincent's work in technology education is grounded in practical software development. The goal is not to make technical topics sound impressive; it is to help students and developers understand how software works and how to apply that knowledge.
+          </p>
+          <p>
+            Through teaching, writing, workshops and mentorship-focused work, he breaks down concepts in software engineering, AI, web development and system design for people who want to build real things.
+          </p>
+        </div>
+      </div>
+      <aside class="teaching-impact__panel" aria-label="Teaching focus areas">
+        <h3>Teaching focus</h3>
+        <ul>
+          <li>Practical software development</li>
+          <li>AI and software engineering concepts</li>
+          <li>System design for growing developers</li>
+          <li>Technology careers and learning paths</li>
+        </ul>
+      </aside>
+    </div>
+  </section>
+
+  <section class="current-direction" aria-labelledby="exploring-title">
+    <div class="about-section__container">
+      <div class="split-grid">
+        <div class="split-panel split-panel--light">
+          <span class="split-panel__label">Currently Exploring</span>
+          <h2 id="exploring-title" class="split-panel__title">The next layer of the work.</h2>
+          <p class="split-panel__text">
+            The current focus is learning and building around AI, automation, system design, software architecture and emerging technology that can be applied to real problems.
+          </p>
+          <ul class="exploring-list">
+            {exploring.map((item) => (
+              <li>{item}</li>
+            ))}
+          </ul>
+        </div>
+
+        <div class="split-panel split-panel--dark">
+          <span class="split-panel__label">Beyond Code</span>
+          <h2 class="split-panel__title">A builder's view of problems.</h2>
+          <p class="split-panel__text">
+            Vincent's work also has an entrepreneurial side: looking for useful problems, shaping ideas into digital products and thinking about how technology companies can serve people well.
+          </p>
+          <p class="split-panel__text">
+            Zimnovate remains a separate commercial technology company identity, while this site is Vincent's personal home for engineering, teaching, speaking, writing and exploration.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="future-direction" aria-labelledby="future-title">
+    <div class="future-direction__inner">
+      <p class="future-direction__label">Future Direction</p>
+      <h2 id="future-title" class="future-direction__title">Building better technology and helping more people learn it.</h2>
+      <p class="future-direction__text">
+        Professionally, Vincent is moving toward work that combines strong software engineering, practical AI, technology education and contribution to African technology ecosystems. The direction is ambitious, but still grounded: keep learning, keep building and make the work useful.
+      </p>
+    </div>
+  </section>
+
+  <CTASection />
+</PageLayout>
+
+<style>
+  .about-section__container {
+    max-width: 80rem;
+    margin: 0 auto;
+  }
+
+  .about-section__header {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-bottom: 4rem;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    padding-bottom: 2rem;
+  }
+
+  @media (min-width: 768px) {
+    .about-section__header {
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: flex-end;
+    }
+  }
+
+  .about-section__header--dark {
+    border-bottom-color: rgba(255, 255, 255, 0.1);
+  }
+
+  .about-section__header-left {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .about-section__number {
+    width: 3rem;
+    height: 3rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 0.75rem;
+    font-family: var(--font-display);
+    font-size: 1.5rem;
+    color: #fff;
+  }
+
+  .about-section__number--orange,
+  .about-section__number--orange-rotated {
+    background: var(--color-orange);
+  }
+
+  .about-section__number--orange {
+    transform: rotate(-6deg);
+  }
+
+  .about-section__number--orange-rotated {
+    transform: rotate(6deg);
+  }
+
+  .about-section__title {
+    font-family: var(--font-display);
+    font-size: clamp(3rem, 8vw, 3.75rem);
+    text-transform: uppercase;
+    letter-spacing: 0.025em;
+    margin: 0;
+    line-height: 1;
+  }
+
+  .about-section__subtitle {
+    font-family: var(--font-mono);
+    color: #6b7280;
+    font-size: 0.875rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    max-width: 24rem;
+    margin: 0;
+  }
+
+  .about-section__subtitle--dark {
+    color: #9ca3af;
+  }
+
+  .about-hero {
+    padding: 6rem 1.5rem 7rem;
+    background: var(--color-surface);
+    background-size: 40px 40px;
+    background-image:
+      linear-gradient(to right, rgba(0, 0, 0, 0.05) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(0, 0, 0, 0.05) 1px, transparent 1px);
+  }
+
+  @media (min-width: 768px) {
+    .about-hero {
+      padding: 8rem 3rem;
+    }
+  }
+
+  .about-hero__container {
+    max-width: 80rem;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 3rem;
+    align-items: center;
+  }
+
+  @media (min-width: 1024px) {
+    .about-hero__container {
+      grid-template-columns: 7fr 5fr;
+      gap: 5rem;
+    }
+  }
+
+  .about-hero__content {
+    max-width: 48rem;
+  }
+
+  .about-hero__badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: #111;
+    color: #fff;
+    padding: 0.5rem 1rem;
+    font-family: var(--font-mono);
+    font-size: 0.875rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    border-radius: 0.375rem;
+    transform: rotate(-2deg);
+    margin-bottom: 1.5rem;
+  }
+
+  .about-hero__badge-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--color-orange);
+  }
+
+  .about-hero__title {
+    font-family: var(--font-display);
+    font-size: clamp(4rem, 10vw, 7rem);
+    line-height: 0.92;
+    letter-spacing: 0.025em;
+    text-transform: uppercase;
+    color: #111;
+    margin: 0 0 1.5rem;
+  }
+
+  .about-hero__desc {
+    font-family: var(--font-mono);
+    font-size: clamp(1rem, 2vw, 1.25rem);
+    line-height: 1.7;
+    color: #4b5563;
+    max-width: 48rem;
+    margin: 0 0 2.5rem;
+  }
+
+  .about-hero__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  .about-hero__btn {
+    padding: 1rem 2rem;
+    border-radius: 9999px;
+    font-family: var(--font-mono);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-size: 0.875rem;
+    text-decoration: none;
+    transition: background 0.15s, transform 0.15s;
+  }
+
+  .about-hero__btn:hover {
+    transform: translateY(-1px);
+  }
+
+  .about-hero__btn--dark {
+    background: #111;
+    color: #fff;
+  }
+
+  .about-hero__btn--dark:hover {
+    background: #333;
+  }
+
+  .about-hero__btn--orange {
+    background: var(--color-orange);
+    color: #fff;
+    border: 2px solid var(--color-orange);
+  }
+
+  .about-hero__btn--orange:hover {
+    background: var(--color-orange-600);
+    border-color: var(--color-orange-600);
+  }
+
+  .about-hero__image {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 4/5;
+    border-radius: 1.5rem;
+    overflow: hidden;
+    background: rgba(0, 0, 0, 0.05);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    transform: rotate(3deg);
+  }
+
+  .about-hero__img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.9;
+    filter: grayscale(1);
+    transition: filter 0.7s;
+  }
+
+  .about-hero__img:hover {
+    filter: grayscale(0);
+  }
+
+  .about-journey,
+  .current-direction {
+    padding: 8rem 1.5rem;
+    background: #FAF9F7;
+    background-size: 40px 40px;
+    background-image:
+      linear-gradient(to right, rgba(0, 0, 0, 0.05) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(0, 0, 0, 0.05) 1px, transparent 1px);
+  }
+
+  @media (min-width: 768px) {
+    .about-journey,
+    .current-direction {
+      padding: 8rem 3rem;
+    }
+  }
+
+  .journey-timeline {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .journey-item {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 1.25rem;
+    background: #fff;
+    border-radius: 1.5rem;
+    padding: 1.5rem;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+  }
+
+  @media (min-width: 768px) {
+    .journey-item {
+      padding: 2rem;
+    }
+  }
+
+  .journey-item__marker {
+    width: 3rem;
+    height: 3rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 0.75rem;
+    background: #111;
+    color: #fff;
+    font-family: var(--font-display);
+    font-size: 1.5rem;
+  }
+
+  .journey-item__title {
+    font-family: var(--font-display);
+    font-size: 2rem;
+    line-height: 1;
+    text-transform: uppercase;
+    letter-spacing: 0.025em;
+    margin: 0 0 0.75rem;
+  }
+
+  .journey-item__text {
+    color: #4b5563;
+    line-height: 1.7;
+    margin: 0;
+  }
+
+  .about-work,
+  .future-direction {
+    background: #111;
+    color: #fff;
+    padding: 8rem 1.5rem;
+    background-size: 40px 40px;
+    background-image:
+      linear-gradient(to right, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+  }
+
+  @media (min-width: 768px) {
+    .about-work,
+    .future-direction {
+      padding: 8rem 3rem;
+    }
+  }
+
+  .work-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  @media (min-width: 768px) {
+    .work-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .work-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  .work-card {
+    background: #fff;
+    color: #111;
+    border-radius: 1.5rem;
+    padding: 2rem;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: transform 0.2s, border-color 0.2s;
+  }
+
+  .work-card:hover {
+    transform: translateY(-2px);
+    border-color: rgba(230, 81, 58, 0.5);
+  }
+
+  .work-card--dark {
+    background: #1A1A1A;
+    color: #fff;
+  }
+
+  .work-card--dark .work-card__text {
+    color: #9ca3af;
+  }
+
+  .work-card--accent {
+    background: #FDECE9;
+    border-color: rgba(230, 81, 58, 0.2);
+  }
+
+  .work-card__number {
+    font-family: var(--font-display);
+    font-size: 2.25rem;
+    color: var(--color-orange);
+    margin-bottom: 1.5rem;
+  }
+
+  .work-card__title {
+    font-family: var(--font-display);
+    font-size: 1.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.025em;
+    margin: 0 0 0.75rem;
+    line-height: 1.05;
+  }
+
+  .work-card__text {
+    color: #4b5563;
+    font-size: 0.925rem;
+    line-height: 1.65;
+    margin: 0 0 1.5rem;
+  }
+
+  .work-card__bar {
+    width: 100%;
+    height: 4px;
+    background: rgba(0, 0, 0, 0.08);
+  }
+
+  .work-card--dark .work-card__bar {
+    background: rgba(255, 255, 255, 0.1);
+  }
+
+  .work-card:hover .work-card__bar {
+    background: var(--color-orange);
+  }
+
+  .about-philosophy {
+    padding: 8rem 1.5rem;
+    background: var(--color-orange);
+    color: #fff;
+    overflow: hidden;
+    position: relative;
+  }
+
+  @media (min-width: 768px) {
+    .about-philosophy {
+      padding: 8rem 3rem;
+    }
+  }
+
+  .about-philosophy__bg {
+    position: absolute;
+    top: 0;
+    right: 0;
+    font-family: var(--font-display);
+    font-size: 20rem;
+    line-height: 1;
+    opacity: 0.1;
+    transform: translate(25%, -25%);
+  }
+
+  .about-philosophy__inner {
+    max-width: 64rem;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+    text-align: center;
+  }
+
+  .about-philosophy__label {
+    font-family: var(--font-mono);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin: 0 0 1rem;
+  }
+
+  .about-philosophy__title {
+    font-family: var(--font-display);
+    font-size: clamp(2.5rem, 6vw, 4.5rem);
+    text-transform: uppercase;
+    letter-spacing: 0.025em;
+    margin: 0 0 1.5rem;
+    line-height: 1.1;
+  }
+
+  .about-philosophy__subtitle {
+    font-family: var(--font-mono);
+    font-size: 1.125rem;
+    color: rgba(255, 255, 255, 0.86);
+    max-width: 44rem;
+    margin: 0 auto 3rem;
+    line-height: 1.7;
+  }
+
+  .principles-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    text-align: left;
+  }
+
+  @media (min-width: 768px) {
+    .principles-list {
+      grid-template-columns: repeat(5, 1fr);
+    }
+  }
+
+  .principles-list li {
+    background: rgba(0, 0, 0, 0.12);
+    padding: 1.25rem;
+    border-radius: 1.25rem;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 0.875rem;
+    line-height: 1.6;
+  }
+
+  .teaching-impact {
+    padding: 8rem 1.5rem;
+    background: #fff;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  }
+
+  @media (min-width: 768px) {
+    .teaching-impact {
+      padding: 8rem 3rem;
+    }
+  }
+
+  .teaching-impact__container {
+    max-width: 72rem;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 3rem;
+    align-items: start;
+  }
+
+  @media (min-width: 900px) {
+    .teaching-impact__container {
+      grid-template-columns: 7fr 5fr;
+    }
+  }
+
+  .teaching-impact__label,
+  .split-panel__label,
+  .future-direction__label {
+    font-family: var(--font-mono);
+    color: var(--color-orange);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-size: 0.875rem;
+    display: block;
+    margin-bottom: 1rem;
+  }
+
+  .teaching-impact__title,
+  .split-panel__title,
+  .future-direction__title {
+    font-family: var(--font-display);
+    font-size: clamp(2.5rem, 5vw, 3.75rem);
+    text-transform: uppercase;
+    letter-spacing: 0.025em;
+    margin: 0 0 2rem;
+    line-height: 1.05;
+  }
+
+  .teaching-impact__text {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    color: #374151;
+    font-weight: 500;
+    line-height: 1.7;
+  }
+
+  .teaching-impact__text p {
+    margin: 0;
+  }
+
+  .teaching-impact__panel {
+    background: #FAF9F7;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 1.5rem;
+    padding: 2rem;
+  }
+
+  .teaching-impact__panel h3 {
+    font-family: var(--font-display);
+    font-size: 2rem;
+    text-transform: uppercase;
+    letter-spacing: 0.025em;
+    margin: 0 0 1.25rem;
+  }
+
+  .teaching-impact__panel ul,
+  .exploring-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.85rem;
+  }
+
+  .teaching-impact__panel li,
+  .exploring-list li {
+    position: relative;
+    padding-left: 1.4rem;
+    color: #4b5563;
+    line-height: 1.55;
+  }
+
+  .teaching-impact__panel li::before,
+  .exploring-list li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0.65rem;
+    width: 0.45rem;
+    height: 0.45rem;
+    border-radius: 999px;
+    background: var(--color-orange);
+  }
+
+  .split-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  @media (min-width: 900px) {
+    .split-grid {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  .split-panel {
+    border-radius: 1.5rem;
+    padding: clamp(2rem, 4vw, 3rem);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+  }
+
+  .split-panel--light {
+    background: #fff;
+  }
+
+  .split-panel--dark {
+    background: #111;
+    color: #fff;
+  }
+
+  .split-panel--dark .split-panel__text {
+    color: #9ca3af;
+  }
+
+  .split-panel__text {
+    color: #4b5563;
+    line-height: 1.7;
+    margin: 0 0 1.5rem;
+  }
+
+  .split-panel__text:last-child {
+    margin-bottom: 0;
+  }
+
+  .future-direction {
+    text-align: center;
+  }
+
+  .future-direction__inner {
+    max-width: 58rem;
+    margin: 0 auto;
+  }
+
+  .future-direction__text {
+    font-family: var(--font-mono);
+    color: #9ca3af;
+    font-size: 1.125rem;
+    line-height: 1.8;
+    margin: 0 auto;
+    max-width: 48rem;
+  }
+
+  @media (max-width: 640px) {
+    .about-hero__actions {
+      flex-direction: column;
+    }
+
+    .about-hero__btn {
+      width: 100%;
+      justify-content: center;
+      text-align: center;
+    }
+
+    .journey-item {
+      grid-template-columns: 1fr;
+    }
+
+    .about-philosophy__bg {
+      font-size: 10rem;
+    }
+  }
+</style>
