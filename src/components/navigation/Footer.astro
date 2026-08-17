@@ -1,172 +1,168 @@
 ---
-import { mainNav } from "@config/navigation";
 import { siteConfig } from "@config/site";
 ---
 
-<footer class="footer" role="contentinfo">
+<footer class="site-footer">
   <div class="footer__inner">
     <div class="footer__grid">
-      <!-- Brand column -->
       <div class="footer__brand-col">
-        <a href="/" class="footer__brand" aria-label={`${siteConfig.name} — Home`}>
-          <span class="footer__mark" aria-hidden="true">V</span>
-          <span class="footer__name">{siteConfig.name}</span>
-        </a>
-        <p class="footer__tagline">{siteConfig.description}</p>
+        <a href="/" class="footer__logo">VM.</a>
+        <p class="footer__tagline">
+          Vincent Mugondora — Software Engineer, AI Builder, Educator. Available for freelance opportunities and consulting.
+        </p>
       </div>
 
-      <!-- Navigation column -->
-      <nav class="footer__nav" aria-label="Footer navigation">
-        <h3 class="footer__heading">Pages</h3>
-        <ul role="list">
-          {mainNav.map((item) => (
-            <li>
-              <a href={item.href} class="footer__link">{item.label}</a>
-            </li>
-          ))}
+      <div class="footer__nav-col">
+        <h4 class="footer__heading">Navigation</h4>
+        <ul>
+          <li><a href="#about">About</a></li>
+          <li><a href="#work">Work</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#writing">Writing</a></li>
+          <li><a href="#speaking">Speaking</a></li>
         </ul>
-      </nav>
+      </div>
 
-      <!-- Connect column -->
-      <div class="footer__connect">
-        <h3 class="footer__heading">Connect</h3>
-        <ul role="list">
-          <li>
-            <a href="https://github.com/vincemugondora" target="_blank" rel="noopener noreferrer" class="footer__link">
-              GitHub
-            </a>
-          </li>
-          <li>
-            <a href="https://www.linkedin.com/in/vincemugondora" target="_blank" rel="noopener noreferrer" class="footer__link">
-              LinkedIn
-            </a>
-          </li>
+      <div class="footer__connect-col">
+        <h4 class="footer__heading">Connect</h4>
+        <ul>
+          <li><a href="mailto:hello@vincentmugondora.com">Email</a></li>
+          <li><a href="https://twitter.com/vincemugondora" target="_blank" rel="noopener noreferrer">Twitter</a></li>
+          <li><a href="https://www.linkedin.com/in/vincemugondora" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
+          <li><a href="https://github.com/vincemugondora" target="_blank" rel="noopener noreferrer">GitHub</a></li>
         </ul>
       </div>
     </div>
 
     <div class="footer__bottom">
-      <p>&copy; {new Date().getFullYear()} {siteConfig.name}. All rights reserved.</p>
+      <span>&copy; {new Date().getFullYear()} Vincent Mugondora. All rights reserved.</span>
+      <span>Built with purpose.</span>
     </div>
+
+    <div class="footer__watermark" aria-hidden="true">VINCENT</div>
   </div>
 </footer>
 
 <style>
-  .footer {
-    border-top: 1px solid var(--border);
-    margin-top: 4rem;
+  .site-footer {
+    background: #111;
+    color: #fff;
+    padding: 5rem 1.5rem 2.5rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    background-size: 40px 40px;
+    background-image:
+      linear-gradient(to right, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+  }
+
+  @media (min-width: 768px) {
+    .site-footer {
+      padding: 5rem 3rem 2.5rem;
+    }
   }
 
   .footer__inner {
-    max-width: 1200px;
+    max-width: 80rem;
     margin: 0 auto;
-    padding: 3rem 1.25rem 2rem;
   }
 
   .footer__grid {
     display: grid;
-    grid-template-columns: 1.5fr 1fr 1fr;
-    gap: 2rem;
+    grid-template-columns: 1fr;
+    gap: 3rem;
+    padding-bottom: 5rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    margin-bottom: 5rem;
   }
 
-  /* Brand */
-  .footer__brand {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.625rem;
-    text-decoration: none;
-    color: var(--text-primary);
+  @media (min-width: 768px) {
+    .footer__grid {
+      grid-template-columns: 2fr 1fr 1fr;
+    }
   }
 
-  .footer__mark {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 1.5rem;
-    height: 1.5rem;
-    border-radius: 50%;
-    background: var(--color-midnight);
+  .footer__logo {
+    font-family: var(--font-display);
+    font-size: 3rem;
+    letter-spacing: 0.05em;
     color: #fff;
-    font-size: 0.6875rem;
-    font-weight: 600;
-    line-height: 1;
-  }
-
-  :global(.dark) .footer__mark {
-    background: var(--color-electric);
-  }
-
-  .footer__name {
-    font-family: var(--font-heading);
-    font-size: 1.0625rem;
-    font-weight: 500;
-    letter-spacing: -0.01em;
+    text-decoration: none;
+    display: block;
+    margin-bottom: 1.5rem;
   }
 
   .footer__tagline {
-    margin: 0.75rem 0 0;
-    color: var(--text-secondary);
+    font-family: var(--font-mono);
+    color: #9ca3af;
     font-size: 0.875rem;
-    line-height: 1.5;
-    max-width: 30ch;
+    line-height: 1.6;
+    max-width: 24rem;
+    margin: 0;
   }
 
-  /* Headings */
   .footer__heading {
-    margin: 0 0 0.75rem;
-    font-size: 0.6875rem;
-    font-weight: 600;
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
     text-transform: uppercase;
-    letter-spacing: 0.06em;
-    color: var(--text-secondary);
+    letter-spacing: 0.1em;
+    color: var(--color-orange);
+    margin: 0 0 1.5rem;
   }
 
-  /* Links */
-  .footer__nav ul,
-  .footer__connect ul {
+  .footer__nav-col ul,
+  .footer__connect-col ul {
     list-style: none;
     margin: 0;
     padding: 0;
     display: flex;
     flex-direction: column;
-    gap: 0.5rem;
+    gap: 1rem;
   }
 
-  .footer__link {
-    text-decoration: none;
-    color: var(--text-secondary);
+  .footer__nav-col a,
+  .footer__connect-col a {
+    font-family: var(--font-mono);
     font-size: 0.875rem;
-    transition: color 0.15s ease;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: #9ca3af;
+    text-decoration: none;
+    transition: color 0.15s;
   }
 
-  .footer__link:hover {
-    color: var(--text-primary);
+  .footer__nav-col a:hover,
+  .footer__connect-col a:hover {
+    color: #fff;
   }
 
-  .footer__link:focus-visible {
-    outline: 2px solid var(--color-electric);
-    outline-offset: 2px;
-    border-radius: 2px;
-  }
-
-  /* Bottom */
   .footer__bottom {
-    margin-top: 2rem;
-    padding-top: 1.25rem;
-    border-top: 1px solid var(--border);
-    text-align: center;
-  }
-
-  .footer__bottom p {
-    margin: 0;
-    color: var(--text-secondary);
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    align-items: center;
+    font-family: var(--font-mono);
     font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: #6b7280;
   }
 
-  @media (max-width: 640px) {
-    .footer__grid {
-      grid-template-columns: 1fr;
-      gap: 1.5rem;
+  @media (min-width: 768px) {
+    .footer__bottom {
+      flex-direction: row;
+      justify-content: space-between;
     }
+  }
+
+  .footer__watermark {
+    margin-top: 5rem;
+    text-align: center;
+    font-family: var(--font-display);
+    font-size: 15vw;
+    line-height: 1;
+    letter-spacing: -0.03em;
+    opacity: 0.05;
+    pointer-events: none;
+    user-select: none;
   }
 </style>
