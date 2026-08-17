@@ -1,139 +1,188 @@
 ---
-import { mainNav } from "@config/navigation";
 import { siteConfig } from "@config/site";
-
-const currentPath = Astro.url.pathname;
 ---
 
-<header class="fixed inset-x-0 top-0 z-50 px-4 pt-4 sm:px-6 lg:px-8">
-  <nav
-    class="navbar mx-auto grid grid-cols-[auto_1fr_auto] max-w-[1180px] min-h-[3.5rem] items-center gap-3 rounded-xl bg-transparent px-4 py-2.5 transition-[background-color,box-shadow,border-color] duration-300 border border-transparent max-md:grid-cols-[1fr_auto]"
-    data-navbar
-    aria-label="Primary"
-  >
-    <!-- Brand -->
-    <a href="/" class="brand flex items-center gap-2.5 no-underline" aria-label={`${siteConfig.name} — Home`}>
-      <span class="flex h-6 w-6 items-center justify-center rounded-full bg-[--color-midnight] text-[11px] font-semibold leading-none text-white dark:bg-[--color-electric]">V</span>
-      <span class="font-heading text-lg font-medium tracking-tight text-[--text-primary]">{siteConfig.name}</span>
-    </a>
-
-    <!-- Desktop links -->
-    <ul class="nav-links hidden items-center justify-self-center gap-[clamp(1rem,2vw,1.75rem)] md:flex" role="list">
-      {mainNav.map((item) => {
-        const isActive = currentPath === item.href || currentPath.startsWith(item.href + "/");
-        return (
-          <li>
-            <a
-              href={item.href}
-              class:list={[
-                "text-[0.9375rem] leading-none tracking-tight no-underline transition-colors focus-visible:outline-2 focus-visible:outline-offset-3 focus-visible:outline-[--color-electric] rounded-sm",
-                isActive
-                  ? "font-semibold text-[--text-primary]"
-                  : "text-[--text-secondary] hover:text-[--text-primary]",
-              ]}
-              aria-current={isActive ? "page" : undefined}
-            >
-              {item.label}
-            </a>
-          </li>
-        );
-      })}
-    </ul>
-
-    <!-- Right actions -->
-    <div class="flex items-center gap-2 justify-self-end">
-      <!-- Theme toggle -->
-      <button
-        type="button"
-        class="flex items-center justify-center w-9 h-9 rounded-lg border border-[--border] bg-transparent text-[--text-secondary] cursor-pointer transition-colors hover:text-[--text-primary] hover:border-[--text-secondary] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[--color-electric]"
-        data-theme-toggle
-        aria-label="Toggle dark mode"
-      >
-        <svg class="icon-sun w-[18px] h-[18px]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-          <circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/>
-        </svg>
-        <svg class="icon-moon hidden w-[18px] h-[18px]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-          <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/>
-        </svg>
-      </button>
-
-      <!-- Desktop CTA -->
-      <a
-        href="/contact"
-        class="hidden md:inline-flex items-center gap-1.5 px-4 py-2.5 rounded-lg bg-[--color-midnight] dark:bg-[--color-electric] text-white text-sm font-medium leading-none no-underline transition-opacity hover:opacity-90 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[--color-electric]"
-      >
-        <span>Let&rsquo;s talk</span>
-        <span class="text-[15px] leading-none" aria-hidden="true">&#8599;</span>
-      </a>
-
-      <!-- Mobile menu toggle -->
-      <button
-        type="button"
-        class="menu-btn flex md:hidden items-center justify-center w-9 h-9 rounded-lg bg-[--color-midnight] dark:bg-[--color-electric] border-none cursor-pointer p-0 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[--color-electric]"
-        data-menu-toggle
-        aria-expanded="false"
-        aria-controls="mobile-menu"
-        aria-label="Open navigation menu"
-      >
-        <span class="hamburger" aria-hidden="true"></span>
-      </button>
+<header class="site-header">
+  <div class="header__left">
+    <a href="/" class="header__logo" aria-label={`${siteConfig.name} — Home`}>VM.</a>
+    <div class="header__status">
+      <span class="header__status-dot"></span>
+      Available Now
     </div>
+  </div>
 
-    <!-- Mobile menu panel -->
-    <div
-      id="mobile-menu"
-      class="mobile-panel col-span-full mt-1 p-4 rounded-xl bg-[--surface-elevated] border border-[--border] shadow-lg md:!hidden"
-      data-mobile-menu
-      hidden
-    >
-      <ul class="flex flex-col gap-1 list-none m-0 p-0" role="list">
-        {mainNav.map((item) => {
-          const isActive = currentPath === item.href || currentPath.startsWith(item.href + "/");
-          return (
-            <li>
-              <a
-                href={item.href}
-                class:list={[
-                  "block px-3 py-2.5 rounded-md text-base no-underline transition-colors focus-visible:outline-2 focus-visible:outline-offset-[-2px] focus-visible:outline-[--color-electric]",
-                  isActive
-                    ? "font-semibold text-[--text-primary]"
-                    : "text-[--text-secondary] hover:bg-[--border] hover:text-[--text-primary]",
-                ]}
-                aria-current={isActive ? "page" : undefined}
-              >
-                {item.label}
-              </a>
-            </li>
-          );
-        })}
-      </ul>
-      <a
-        href="/contact"
-        class="flex items-center justify-center gap-1.5 mt-3 px-4 py-3 rounded-lg bg-[--color-midnight] dark:bg-[--color-electric] text-white text-sm font-medium no-underline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[--color-electric]"
-      >
-        <span>Let&rsquo;s talk</span>
-        <span class="text-[15px] leading-none" aria-hidden="true">&#8599;</span>
-      </a>
-    </div>
+  <nav class="header__nav" aria-label="Primary">
+    <a href="#about">About</a>
+    <a href="#work">Work</a>
+    <a href="#services">Services</a>
+    <a href="#writing">Writing</a>
+    <a href="#speaking">Speaking</a>
+    <a href="#contact">Contact</a>
   </nav>
+
+  <a class="header__cta" href="#contact">Let's work together</a>
+
+  <button
+    type="button"
+    class="header__menu-btn"
+    data-menu-toggle
+    aria-expanded="false"
+    aria-controls="mobile-menu"
+    aria-label="Open navigation menu"
+  >
+    <span class="hamburger" aria-hidden="true"></span>
+  </button>
+
+  <div id="mobile-menu" class="header__mobile-panel" data-mobile-menu hidden>
+    <nav class="header__mobile-nav">
+      <a href="#about">About</a>
+      <a href="#work">Work</a>
+      <a href="#services">Services</a>
+      <a href="#writing">Writing</a>
+      <a href="#speaking">Speaking</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <a class="header__mobile-cta" href="#contact">Let's work together</a>
+  </div>
 </header>
 
 <style>
-  .navbar.scrolled {
-    background-color: var(--surface-elevated);
-    border-color: var(--border);
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+  .site-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 50;
+    background: rgba(245, 244, 240, 0.9);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    padding: 1rem 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
   }
 
-  :global(.dark) .navbar.scrolled {
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+  @media (min-width: 768px) {
+    .site-header {
+      padding: 1rem 3rem;
+    }
   }
 
-  /* Theme toggle icons */
-  :global(.dark) .icon-sun { display: none; }
-  :global(.dark) .icon-moon { display: block; }
+  .header__left {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
 
-  /* Hamburger icon */
+  .header__logo {
+    font-family: var(--font-display);
+    font-size: 1.875rem;
+    letter-spacing: 0.05em;
+    text-decoration: none;
+    color: #111;
+  }
+
+  .header__status {
+    display: none;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    background: #dcfce7;
+    color: #166534;
+    padding: 0.25rem 0.75rem;
+    border-radius: 9999px;
+  }
+
+  @media (min-width: 768px) {
+    .header__status {
+      display: flex;
+    }
+  }
+
+  .header__status-dot {
+    width: 0.5rem;
+    height: 0.5rem;
+    border-radius: 50%;
+    background: #22c55e;
+    animation: pulse 2s ease-in-out infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.5; }
+  }
+
+  .header__nav {
+    display: none;
+    align-items: center;
+    gap: 2rem;
+  }
+
+  @media (min-width: 1024px) {
+    .header__nav {
+      display: flex;
+    }
+  }
+
+  .header__nav a {
+    font-family: var(--font-mono);
+    font-size: 0.875rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    text-decoration: none;
+    color: #111;
+    transition: color 0.15s;
+  }
+
+  .header__nav a:hover {
+    color: var(--color-orange);
+  }
+
+  .header__cta {
+    display: none;
+    background: var(--color-orange);
+    color: #fff;
+    padding: 0.5rem 1.5rem;
+    border-radius: 9999px;
+    font-family: var(--font-mono);
+    font-size: 0.875rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    text-decoration: none;
+    transition: background 0.15s;
+  }
+
+  @media (min-width: 768px) {
+    .header__cta {
+      display: block;
+    }
+  }
+
+  .header__cta:hover {
+    background: var(--color-orange-600);
+  }
+
+  .header__menu-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.25rem;
+    height: 2.25rem;
+    background: #111;
+    border: none;
+    border-radius: 0.5rem;
+    cursor: pointer;
+  }
+
+  @media (min-width: 1024px) {
+    .header__menu-btn {
+      display: none;
+    }
+  }
+
   .hamburger {
     position: relative;
     display: block;
@@ -173,34 +222,62 @@ const currentPath = Astro.url.pathname;
     transform: rotate(-45deg);
   }
 
-  /* Mobile panel hidden state */
-  .mobile-panel[hidden] {
+  .header__mobile-panel {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: #fff;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    padding: 1.5rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  }
+
+  .header__mobile-panel[hidden] {
     display: none;
+  }
+
+  @media (min-width: 1024px) {
+    .header__mobile-panel {
+      display: none !important;
+    }
+  }
+
+  .header__mobile-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .header__mobile-nav a {
+    font-family: var(--font-mono);
+    font-size: 0.875rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    text-decoration: none;
+    color: #111;
+    padding: 0.5rem 0;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  }
+
+  .header__mobile-cta {
+    display: block;
+    margin-top: 1rem;
+    background: var(--color-orange);
+    color: #fff;
+    padding: 0.75rem 1.5rem;
+    border-radius: 9999px;
+    font-family: var(--font-mono);
+    font-size: 0.875rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    text-decoration: none;
+    text-align: center;
   }
 </style>
 
 <script is:inline>
   (function() {
-    var navbar = document.querySelector('[data-navbar]');
-    if (navbar) {
-      function onScroll() {
-        navbar.classList.toggle('scrolled', window.scrollY > 20);
-      }
-      window.addEventListener('scroll', onScroll, { passive: true });
-      onScroll();
-    }
-
-    var toggle = document.querySelector('[data-theme-toggle]');
-    if (toggle) {
-      toggle.addEventListener('click', function() {
-        var isDark = document.documentElement.classList.toggle('dark');
-        localStorage.setItem('theme', isDark ? 'dark' : 'light');
-        toggle.setAttribute('aria-label', isDark ? 'Switch to light mode' : 'Switch to dark mode');
-      });
-      var isDark = document.documentElement.classList.contains('dark');
-      toggle.setAttribute('aria-label', isDark ? 'Switch to light mode' : 'Switch to dark mode');
-    }
-
     var menuBtn = document.querySelector('[data-menu-toggle]');
     var mobileMenu = document.querySelector('[data-mobile-menu]');
     if (menuBtn && mobileMenu) {
