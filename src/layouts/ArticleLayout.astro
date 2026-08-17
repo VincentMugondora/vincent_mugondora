@@ -15,7 +15,7 @@ interface Props {
   category?: string;
 }
 
-const { title, description, image, canonicalURL, publishedAt, updatedAt, category } = Astro.props;
+const { title, description, image, canonicalURL, publishedAt, updatedAt } = Astro.props;
 
 const articleUrl = canonicalURL ?? new URL(Astro.url.pathname, siteConfig.url).href;
 

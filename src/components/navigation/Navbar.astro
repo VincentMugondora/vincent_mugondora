@@ -314,11 +314,11 @@ const navLinks = [
 
 <script is:inline>
   (function() {
-    var menuBtn = document.querySelector('[data-menu-toggle]');
-    var mobileMenu = document.querySelector('[data-mobile-menu]');
+    const menuBtn = document.querySelector('[data-menu-toggle]');
+    const mobileMenu = document.querySelector('[data-mobile-menu]');
     if (menuBtn && mobileMenu) {
       menuBtn.addEventListener('click', function() {
-        var isOpen = menuBtn.getAttribute('aria-expanded') === 'true';
+        const isOpen = menuBtn.getAttribute('aria-expanded') === 'true';
         menuBtn.setAttribute('aria-expanded', String(!isOpen));
         menuBtn.setAttribute('aria-label', isOpen ? 'Open navigation menu' : 'Close navigation menu');
         if (isOpen) {
