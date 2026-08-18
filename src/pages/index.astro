@@ -1,5 +1,6 @@
 ---
 import PageLayout from "@layouts/PageLayout.astro";
+import { Icon } from "astro-icon/components";
 import { Image } from "astro:assets";
 import heroImage from "@/assets/vincent.avif";
 import { siteConfig } from "@config/site";
@@ -71,7 +72,7 @@ import { siteConfig } from "@config/site";
 
       <div class="services-grid">
         <div class="service-card">
-          <div class="service-card__icon">💻</div>
+          <div class="service-card__icon"><Icon name="lucide:monitor" /></div>
           <h3 class="service-card__title">Software Development</h3>
           <p class="service-card__text">Building robust, scalable applications from frontend interfaces to backend systems.</p>
           <div class="service-card__bar"></div>
@@ -79,21 +80,21 @@ import { siteConfig } from "@config/site";
 
         <div class="service-card service-card--dark">
           <div class="service-card__glow"></div>
-          <div class="service-card__icon">🤖</div>
+          <div class="service-card__icon"><Icon name="lucide:bot" /></div>
           <h3 class="service-card__title">AI Solutions</h3>
           <p class="service-card__text">Integrating machine learning models and LLMs to automate tasks and extract insights.</p>
           <div class="service-card__bar"></div>
         </div>
 
         <div class="service-card">
-          <div class="service-card__icon">🎓</div>
+          <div class="service-card__icon"><Icon name="lucide:graduation-cap" /></div>
           <h3 class="service-card__title">Technology Education</h3>
           <p class="service-card__text">Translating complex technical concepts into accessible knowledge for teams and students.</p>
           <div class="service-card__bar"></div>
         </div>
 
         <div class="service-card service-card--accent">
-          <div class="service-card__icon">🧠</div>
+          <div class="service-card__icon"><Icon name="lucide:brain" /></div>
           <h3 class="service-card__title">Technical Thinking</h3>
           <p class="service-card__text">System architecture, database design, and strategic technical consulting.</p>
           <div class="service-card__bar"></div>
@@ -765,10 +766,17 @@ import { siteConfig } from "@config/site";
   }
 
   .service-card__icon {
-    font-size: 2.25rem;
     margin-bottom: 1.5rem;
     position: relative;
     z-index: 1;
+    width: 2.25rem;
+    height: 2.25rem;
+    color: currentColor;
+  }
+
+  .service-card__icon :global(svg) {
+    width: 100%;
+    height: 100%;
   }
 
   .service-card__title {

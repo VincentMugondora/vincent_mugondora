@@ -1,4 +1,5 @@
 ---
+import { Icon } from "astro-icon/components";
 ---
 
 <section class="services" aria-labelledby="services-title">
@@ -17,7 +18,7 @@
     <!-- Left service selector -->
     <div class="tabs__selector" role="tablist" aria-label="Services">
       <label for="tab-development" id="label-development" role="tab" tabindex="0">
-        <span class="icon" aria-hidden="true">&lt;/&gt;</span>
+        <span class="icon" aria-hidden="true"><Icon name="lucide:code" /></span>
         <span class="text-wrap">
           <span class="title">Full-Stack Development</span>
           <span class="desc">Building responsive, high-performance web applications with clean architecture, smooth interactions, and production-ready code.</span>
@@ -25,7 +26,7 @@
       </label>
 
       <label for="tab-ai-systems" id="label-ai-systems" role="tab" tabindex="0">
-        <span class="icon" aria-hidden="true">✦</span>
+        <span class="icon" aria-hidden="true"><Icon name="lucide:sparkles" /></span>
         <span class="text-wrap">
           <span class="title">AI & Agentic Systems</span>
           <span class="desc">Designing and deploying intelligent AI agents, automation pipelines, and ML-powered features that deliver real business value.</span>
@@ -33,7 +34,7 @@
       </label>
 
       <label for="tab-architecture" id="label-architecture" role="tab" tabindex="0">
-        <span class="icon" aria-hidden="true">◈</span>
+        <span class="icon" aria-hidden="true"><Icon name="lucide:cloud" /></span>
         <span class="text-wrap">
           <span class="title">Cloud & Architecture</span>
           <span class="desc">Scalable system design, AWS infrastructure, API development, and DevOps — engineered for growth and reliability.</span>
@@ -177,8 +178,11 @@
     display: grid;
     place-items: center;
     color: #3f3f3f;
-    font-weight: 600;
-    font-size: 0.92rem;
+  }
+
+  .icon :global(svg) {
+    width: 18px;
+    height: 18px;
   }
 
   .text-wrap {
