@@ -1,4 +1,5 @@
 ---
+import { Icon } from "astro-icon/components";
 ---
 
 <section class="why" aria-labelledby="why-title">
@@ -60,7 +61,7 @@
         I help founders, teams, and communities turn ideas into refined digital experiences that scale and deliver real value.
       </p>
       <p class="metric metric--light">4.9</p>
-      <p class="stars" aria-label="5 out of 5 stars">★★★★★</p>
+      <p class="stars" aria-label="5 out of 5 stars"><Icon name="lucide:star" /><Icon name="lucide:star" /><Icon name="lucide:star" /><Icon name="lucide:star" /><Icon name="lucide:star" /></p>
       <p class="label label--light">
         Trusted by clients across Africa
       </p>
@@ -271,8 +272,14 @@
   .stars {
     margin: 8px 0 0;
     color: #f3c563;
-    letter-spacing: 0.1em;
-    font-size: 0.92rem;
+    display: flex;
+    gap: 2px;
+  }
+
+  .stars :global(svg) {
+    width: 16px;
+    height: 16px;
+    fill: #f3c563;
   }
 
   .label--light {

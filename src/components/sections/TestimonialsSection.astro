@@ -1,4 +1,5 @@
 ---
+import { Icon } from "astro-icon/components";
 ---
 
 <section class="testimonials" aria-labelledby="testimonials-title">
@@ -13,7 +14,7 @@
   <div class="layout" role="list" aria-label="Client testimonials">
     <!-- Left column — dark featured card -->
     <article class="card card--dark card--left" role="listitem" aria-label="Tendai Moyo testimonial">
-      <p class="stars" aria-label="5 out of 5 stars">★★★★★</p>
+      <p class="stars" aria-label="5 out of 5 stars"><Icon name="lucide:star" /><Icon name="lucide:star" /><Icon name="lucide:star" /><Icon name="lucide:star" /><Icon name="lucide:star" /></p>
       <blockquote>
         Working with Vincent felt incredibly smooth. The technical direction was clear from the beginning, and the final product captured our vision with precision and confidence.
       </blockquote>
@@ -194,8 +195,14 @@
   .stars {
     margin: 0 0 12px;
     color: #f0c768;
-    letter-spacing: 0.12em;
-    font-size: 0.95rem;
+    display: flex;
+    gap: 2px;
+  }
+
+  .stars :global(svg) {
+    width: 16px;
+    height: 16px;
+    fill: #f0c768;
   }
 
   .card--trust p {
