@@ -1,9 +1,10 @@
 ---
+import { Icon } from "astro-icon/components";
 ---
 
 <section class="process" aria-labelledby="process-title">
   <div class="process__intro">
-    <p class="process__badge">🏆 Process</p>
+    <p class="process__badge"><Icon name="lucide:trophy" class="process__badge-icon" /> Process</p>
     <h2 id="process-title">How the process flows with clarity</h2>
     <p class="process__description">
       A clear and collaborative workflow that moves each project from first idea to polished, production-ready result.
@@ -12,7 +13,7 @@
 
   <ol class="timeline" aria-label="Project process timeline">
     <li class="timeline__item timeline__item--card">
-      <span class="timeline__icon" aria-hidden="true">◎</span>
+      <span class="timeline__icon" aria-hidden="true"><Icon name="lucide:search" /></span>
       <h3>Discovery</h3>
       <p>
         We start by understanding your goals, users, technical requirements, and the direction your project should take.
@@ -20,7 +21,7 @@
     </li>
 
     <li class="timeline__item timeline__item--card">
-      <span class="timeline__icon" aria-hidden="true">◆</span>
+      <span class="timeline__icon" aria-hidden="true"><Icon name="lucide:compass" /></span>
       <h3>Strategy</h3>
       <p>
         I define the architecture, tech stack, and development approach before writing any code.
@@ -28,7 +29,7 @@
     </li>
 
     <li class="timeline__item timeline__item--card">
-      <span class="timeline__icon" aria-hidden="true">✦</span>
+      <span class="timeline__icon" aria-hidden="true"><Icon name="lucide:pencil-ruler" /></span>
       <h3>Design & Planning</h3>
       <p>
         System design, data models, and API contracts are shaped with clear technical direction.
@@ -36,7 +37,7 @@
     </li>
 
     <li class="timeline__item">
-      <span class="timeline__icon timeline__icon--flat" aria-hidden="true">▣</span>
+      <span class="timeline__icon timeline__icon--flat" aria-hidden="true"><Icon name="lucide:code-2" /></span>
       <h3>Development</h3>
       <p>
         Clean, tested code is built iteratively with regular check-ins and transparent progress.
@@ -44,7 +45,7 @@
     </li>
 
     <li class="timeline__item">
-      <span class="timeline__icon timeline__icon--flat" aria-hidden="true">⌘</span>
+      <span class="timeline__icon timeline__icon--flat" aria-hidden="true"><Icon name="lucide:shield-check" /></span>
       <h3>Testing & QA</h3>
       <p>
         Thorough testing, performance optimization, and security review before launch.
@@ -52,7 +53,7 @@
     </li>
 
     <li class="timeline__item">
-      <span class="timeline__icon timeline__icon--flat" aria-hidden="true">✓</span>
+      <span class="timeline__icon timeline__icon--flat" aria-hidden="true"><Icon name="lucide:rocket" /></span>
       <h3>Delivery</h3>
       <p>
         Deployment, documentation, and handoff — everything ready for production.
@@ -132,6 +133,13 @@
     font-size: 0.94rem;
   }
 
+  .process__badge-icon {
+    display: inline-block;
+    width: 14px;
+    height: 14px;
+    vertical-align: -2px;
+  }
+
   .timeline__icon {
     position: absolute;
     left: -48px;
@@ -144,8 +152,11 @@
     display: grid;
     place-items: center;
     color: #424242;
-    font-size: 13px;
-    font-weight: 600;
+  }
+
+  .timeline__icon :global(svg) {
+    width: 14px;
+    height: 14px;
   }
 
   .timeline__item--card {
