@@ -1,29 +1,99 @@
 ---
 import PageLayout from "@layouts/PageLayout.astro";
-import Section from "@components/ui/Section.astro";
-import Container from "@components/ui/Container.astro";
 ---
 
 <PageLayout title="Page Not Found | Vincent Mugondora" description="The page you're looking for doesn't exist.">
-  <Section theme="dark">
-    <Container>
-      <div class="mx-auto max-w-2xl text-center">
-        <p class="font-mono text-6xl font-bold text-gold">404</p>
-        <h1 class="mt-4 font-heading text-3xl font-bold text-offwhite lg:text-4xl">
-          Page not found
-        </h1>
-        <p class="mt-4 text-lg text-offwhite/70">
-          The page you're looking for doesn't exist or has been moved.
-        </p>
-        <div class="mt-8 flex flex-wrap items-center justify-center gap-4">
-          <a href="/" class="inline-flex items-center gap-2 rounded-full bg-electric px-6 py-3 font-medium text-white no-underline transition-opacity hover:opacity-90">
-            Go home
-          </a>
-          <a href="/contact" class="inline-flex items-center gap-2 rounded-full border border-offwhite/20 px-6 py-3 font-medium text-offwhite no-underline transition-colors hover:border-offwhite/40">
-            Contact me
-          </a>
-        </div>
+  <section class="not-found">
+    <div class="not-found__inner">
+      <span class="not-found__code">404</span>
+      <h1 class="not-found__title">Page not found</h1>
+      <p class="not-found__text">
+        The page you're looking for doesn't exist or has been moved.
+      </p>
+      <div class="not-found__actions">
+        <a href="/" class="not-found__btn not-found__btn--primary">Go home</a>
+        <a href="/contact" class="not-found__btn not-found__btn--secondary">Contact me</a>
       </div>
-    </Container>
-  </Section>
+    </div>
+  </section>
 </PageLayout>
+
+<style>
+  .not-found {
+    min-height: 70vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: clamp(60px, 10vw, 120px) clamp(18px, 3vw, 36px);
+    background: #f4f2ed;
+  }
+
+  .not-found__inner {
+    text-align: center;
+    max-width: 440px;
+  }
+
+  .not-found__code {
+    display: inline-block;
+    font-family: "Lora Variable", "Lora", Georgia, serif;
+    font-weight: 500;
+    font-size: clamp(3.5rem, 8vw, 5rem);
+    color: #1b1b1b;
+    letter-spacing: -0.02em;
+    line-height: 1;
+    margin-bottom: 12px;
+  }
+
+  .not-found__title {
+    font-family: "Lora Variable", "Lora", Georgia, serif;
+    font-weight: 500;
+    letter-spacing: -0.02em;
+    line-height: 1.06;
+    font-size: clamp(1.6rem, 3.5vw, 2.2rem);
+    color: #1b1b1b;
+    margin: 0 0 12px;
+  }
+
+  .not-found__text {
+    color: #666;
+    font-size: 0.95rem;
+    line-height: 1.55;
+    margin: 0 0 32px;
+  }
+
+  .not-found__actions {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px;
+  }
+
+  .not-found__btn {
+    display: inline-block;
+    border-radius: 999px;
+    padding: 12px 28px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    text-decoration: none;
+    transition: background 0.2s, border-color 0.2s;
+  }
+
+  .not-found__btn--primary {
+    background: #1b1b1b;
+    color: #fff;
+  }
+
+  .not-found__btn--primary:hover {
+    background: #333;
+  }
+
+  .not-found__btn--secondary {
+    background: #fff;
+    color: #1b1b1b;
+    border: 1px solid #e6e2db;
+  }
+
+  .not-found__btn--secondary:hover {
+    border-color: #d4d0c8;
+  }
+</style>

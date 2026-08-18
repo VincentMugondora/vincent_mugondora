@@ -1,62 +1,176 @@
 ---
 import PageLayout from "@layouts/PageLayout.astro";
-import Section from "@components/ui/Section.astro";
-import Container from "@components/ui/Container.astro";
 ---
 
 <PageLayout title="Now" description="What Vincent Mugondora is currently working on, learning, and building.">
-  <Section theme="dark">
-    <Container>
-      <div class="max-w-2xl">
-        <p class="font-mono text-sm uppercase tracking-widest text-gold">Now</p>
-        <h1 class="mt-4 font-heading text-4xl font-bold text-offwhite lg:text-5xl">
-          What I'm doing now
-        </h1>
-        <p class="mt-4 text-lg text-offwhite/70">
-          A snapshot of my current focus, projects, and learning.
-        </p>
-      </div>
-    </Container>
-  </Section>
+  <section class="hero">
+    <div class="container">
+      <span class="badge">Now</span>
+      <h1 class="hero__title">What I'm doing now</h1>
+      <p class="hero__subtitle">
+        A snapshot of my current focus, projects, and learning.
+      </p>
+    </div>
+  </section>
 
-  <Section theme="light">
-    <Container>
-      <div class="mx-auto max-w-3xl space-y-12">
-        <div>
-          <h2 class="font-heading text-2xl font-bold text-midnight">Currently Building</h2>
-          <ul class="mt-4 space-y-3 text-muted" role="list">
-            <li class="flex items-start gap-3">
-              <span class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-electric"></span>
+  <section class="now-section">
+    <div class="container">
+      <div class="now-grid">
+        <div class="now-card">
+          <h2 class="now-card__heading">Currently Building</h2>
+          <ul class="now-card__list">
+            <li>
+              <span class="now-card__dot now-card__dot--green"></span>
               <span>This portfolio — vincentmugondora.com</span>
             </li>
-            <li class="flex items-start gap-3">
-              <span class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-electric"></span>
+            <li>
+              <span class="now-card__dot now-card__dot--green"></span>
               <span>Zimnovate projects</span>
             </li>
           </ul>
         </div>
 
-        <div>
-          <h2 class="font-heading text-2xl font-bold text-midnight">Currently Learning</h2>
-          <ul class="mt-4 space-y-3 text-muted" role="list">
-            <li class="flex items-start gap-3">
-              <span class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-gold"></span>
+        <div class="now-card">
+          <h2 class="now-card__heading">Currently Learning</h2>
+          <ul class="now-card__list">
+            <li>
+              <span class="now-card__dot now-card__dot--amber"></span>
               <span>Advanced AI agent architectures</span>
             </li>
-            <li class="flex items-start gap-3">
-              <span class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-gold"></span>
+            <li>
+              <span class="now-card__dot now-card__dot--amber"></span>
               <span>Edge computing and Cloudflare Workers</span>
             </li>
           </ul>
         </div>
 
-        <div>
-          <h2 class="font-heading text-2xl font-bold text-midnight">Current Focus</h2>
-          <p class="mt-4 text-muted">
+        <div class="now-card now-card--wide">
+          <h2 class="now-card__heading">Current Focus</h2>
+          <p class="now-card__text">
             Building Zimnovate's product pipeline, establishing my personal brand, and teaching software engineering to young developers in Zimbabwe.
           </p>
         </div>
       </div>
-    </Container>
-  </Section>
+    </div>
+  </section>
 </PageLayout>
+
+<style>
+  .hero {
+    background: #f4f2ed;
+    padding: clamp(80px, 12vw, 140px) 0 clamp(48px, 6vw, 80px);
+  }
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 clamp(18px, 3vw, 36px);
+  }
+
+  .badge {
+    display: inline-block;
+    border-radius: 999px;
+    border: 1px solid #e4e0d8;
+    background: #fff;
+    font-size: 12px;
+    padding: 6px 16px;
+    color: #5f5f5f;
+    letter-spacing: 0.04em;
+  }
+
+  .hero__title {
+    font-family: "Lora Variable", "Lora", Georgia, serif;
+    font-weight: 500;
+    letter-spacing: -0.02em;
+    line-height: 1.06;
+    font-size: clamp(2.4rem, 5vw, 3.6rem);
+    color: #1b1b1b;
+    margin: 20px 0 0;
+  }
+
+  .hero__subtitle {
+    color: #5f5f5f;
+    font-size: 0.95rem;
+    line-height: 1.55;
+    max-width: 520px;
+    margin: 14px 0 0;
+  }
+
+  .now-section {
+    padding: clamp(40px, 6vw, 80px) 0 clamp(60px, 8vw, 100px);
+  }
+
+  .now-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+    max-width: 800px;
+  }
+
+  @media (min-width: 640px) {
+    .now-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .now-card--wide {
+      grid-column: 1 / -1;
+    }
+  }
+
+  .now-card {
+    background: #fff;
+    border: 1px solid #e6e2db;
+    border-radius: 16px;
+    padding: clamp(20px, 3vw, 28px);
+  }
+
+  .now-card__heading {
+    font-family: "Lora Variable", "Lora", Georgia, serif;
+    font-weight: 500;
+    letter-spacing: -0.02em;
+    font-size: 1.15rem;
+    color: #1b1b1b;
+    margin: 0 0 16px;
+  }
+
+  .now-card__list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .now-card__list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    font-size: 0.95rem;
+    color: #5f5f5f;
+    line-height: 1.55;
+  }
+
+  .now-card__dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    flex-shrink: 0;
+    margin-top: 7px;
+  }
+
+  .now-card__dot--green {
+    background: #3fbf61;
+  }
+
+  .now-card__dot--amber {
+    background: #e5a63b;
+  }
+
+  .now-card__text {
+    color: #5f5f5f;
+    font-size: 0.95rem;
+    line-height: 1.55;
+    margin: 0;
+  }
+</style>

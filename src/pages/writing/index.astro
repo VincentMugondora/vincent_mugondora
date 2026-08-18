@@ -1,7 +1,5 @@
 ---
 import PageLayout from "@layouts/PageLayout.astro";
-import Section from "@components/ui/Section.astro";
-import Container from "@components/ui/Container.astro";
 import { getPublishedPosts } from "@lib/content";
 import { formatDate } from "@lib/utils";
 
@@ -9,47 +7,192 @@ const posts = await getPublishedPosts();
 ---
 
 <PageLayout title="Writing" description="Technical articles on software engineering, AI, system design, and technology in Africa by Vincent Mugondora.">
-  <Section theme="dark">
-    <Container>
-      <div class="max-w-2xl">
-        <p class="font-mono text-sm uppercase tracking-widest text-gold">Articles</p>
-        <h1 class="mt-4 font-heading text-4xl font-bold text-offwhite lg:text-5xl">
-          Writing
-        </h1>
-        <p class="mt-4 text-lg text-offwhite/70">
-          Technical writing on software engineering, AI, system design, and building technology in Africa.
-        </p>
-      </div>
-    </Container>
-  </Section>
+  <section class="hero">
+    <div class="container">
+      <span class="badge">Articles</span>
+      <h1 class="hero__title">Writing</h1>
+      <p class="hero__subtitle">
+        Technical writing on software engineering, AI, system design, and building technology in Africa.
+      </p>
+    </div>
+  </section>
 
-  <Section theme="light">
-    <Container>
+  <section class="articles-section">
+    <div class="container">
       {posts.length > 0 ? (
-        <div class="mx-auto max-w-3xl divide-y divide-midnight/10">
+        <div class="articles-list">
           {posts.map((post) => (
-            <a href={`/writing/${post.id}`} class="group block py-8 first:pt-0 last:pb-0">
-              <div class="flex items-center gap-3">
-                <span class="rounded-full bg-midnight/5 px-3 py-1 font-mono text-xs text-muted">
+            <a href={`/writing/${post.id}`} class="article-card">
+              <div class="article-card__meta">
+                <span class="article-card__category">
                   {post.data.category.replace("-", " ")}
                 </span>
-                <span class="font-mono text-xs text-muted">
+                <span class="article-card__date">
                   {formatDate(post.data.publishedAt)}
                 </span>
               </div>
-              <h2 class="mt-3 font-heading text-xl font-semibold text-midnight group-hover:text-electric">
-                {post.data.title}
-              </h2>
-              <p class="mt-2 text-muted">{post.data.description}</p>
+              <h2 class="article-card__title">{post.data.title}</h2>
+              <p class="article-card__desc">{post.data.description}</p>
+              <span class="article-card__link">Read article</span>
             </a>
           ))}
         </div>
       ) : (
-        <div class="rounded-lg border border-dashed border-midnight/20 p-16 text-center">
-          <h2 class="font-heading text-xl font-semibold text-midnight">Articles coming soon</h2>
-          <p class="mt-2 text-muted">Technical writing is in progress.</p>
+        <div class="empty-state">
+          <h2 class="empty-state__title">Articles coming soon</h2>
+          <p class="empty-state__text">Technical writing is in progress. Check back shortly.</p>
         </div>
       )}
-    </Container>
-  </Section>
+    </div>
+  </section>
 </PageLayout>
+
+<style>
+  .hero {
+    background: #f4f2ed;
+    padding: clamp(80px, 12vw, 140px) 0 clamp(48px, 6vw, 80px);
+  }
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 clamp(18px, 3vw, 36px);
+  }
+
+  .badge {
+    display: inline-block;
+    border-radius: 999px;
+    border: 1px solid #e4e0d8;
+    background: #fff;
+    font-size: 12px;
+    padding: 6px 16px;
+    color: #5f5f5f;
+    letter-spacing: 0.04em;
+  }
+
+  .hero__title {
+    font-family: "Lora Variable", "Lora", Georgia, serif;
+    font-weight: 500;
+    letter-spacing: -0.02em;
+    line-height: 1.06;
+    font-size: clamp(2.4rem, 5vw, 3.6rem);
+    color: #1b1b1b;
+    margin: 20px 0 0;
+  }
+
+  .hero__subtitle {
+    color: #5f5f5f;
+    font-size: 0.95rem;
+    line-height: 1.55;
+    max-width: 520px;
+    margin: 14px 0 0;
+  }
+
+  .articles-section {
+    padding: clamp(40px, 6vw, 80px) 0;
+  }
+
+  .articles-list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    max-width: 800px;
+  }
+
+  .article-card {
+    display: block;
+    background: #fff;
+    border: 1px solid #e6e2db;
+    border-radius: 16px;
+    padding: clamp(20px, 3vw, 32px);
+    text-decoration: none;
+    color: inherit;
+    transition: box-shadow 0.2s, border-color 0.2s;
+  }
+
+  .article-card:hover {
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+    border-color: #d4d0c8;
+  }
+
+  .article-card__meta {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 12px;
+  }
+
+  .article-card__category {
+    display: inline-block;
+    border-radius: 999px;
+    border: 1px solid #e4e0d8;
+    background: #f4f2ed;
+    font-size: 12px;
+    padding: 4px 12px;
+    color: #5f5f5f;
+    text-transform: capitalize;
+  }
+
+  .article-card__date {
+    font-size: 12px;
+    color: #999;
+  }
+
+  .article-card__title {
+    font-family: "Lora Variable", "Lora", Georgia, serif;
+    font-weight: 500;
+    letter-spacing: -0.02em;
+    line-height: 1.2;
+    font-size: clamp(1.1rem, 2vw, 1.35rem);
+    color: #1b1b1b;
+    margin: 0 0 8px;
+  }
+
+  .article-card:hover .article-card__title {
+    color: #333;
+  }
+
+  .article-card__desc {
+    color: #666;
+    font-size: 0.95rem;
+    line-height: 1.55;
+    margin: 0 0 16px;
+  }
+
+  .article-card__link {
+    font-size: 13px;
+    color: #1b1b1b;
+    font-weight: 500;
+    letter-spacing: 0.01em;
+  }
+
+  .article-card:hover .article-card__link {
+    text-decoration: underline;
+  }
+
+  .empty-state {
+    background: #f4f2ed;
+    border-radius: 20px;
+    padding: clamp(40px, 6vw, 80px);
+    text-align: center;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  .empty-state__title {
+    font-family: "Lora Variable", "Lora", Georgia, serif;
+    font-weight: 500;
+    letter-spacing: -0.02em;
+    line-height: 1.06;
+    font-size: 1.5rem;
+    color: #1b1b1b;
+    margin: 0 0 10px;
+  }
+
+  .empty-state__text {
+    color: #666;
+    font-size: 0.95rem;
+    line-height: 1.55;
+    margin: 0;
+  }
+</style>

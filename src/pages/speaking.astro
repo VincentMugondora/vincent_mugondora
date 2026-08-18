@@ -1,8 +1,6 @@
 ---
 import PageLayout from "@layouts/PageLayout.astro";
-import Section from "@components/ui/Section.astro";
-import Container from "@components/ui/Container.astro";
-import Button from "@components/ui/Button.astro";
+import { Icon } from "astro-icon/components";
 import { getAllSpeaking } from "@lib/content";
 import { formatDate } from "@lib/utils";
 
@@ -21,70 +19,254 @@ const topics = [
 ---
 
 <PageLayout title="Speaking" description="Vincent Mugondora speaks about AI, software engineering, technology entrepreneurship, and building tech in Africa.">
-  <Section theme="dark">
-    <Container>
-      <div class="max-w-2xl">
-        <p class="font-mono text-sm uppercase tracking-widest text-gold">Speaking</p>
-        <h1 class="mt-4 font-heading text-4xl font-bold text-offwhite lg:text-5xl">
-          Speaking & Workshops
-        </h1>
-        <p class="mt-4 text-lg text-offwhite/70">
-          I speak about AI, software engineering, technology entrepreneurship, and building tech careers — particularly in the African context.
-        </p>
-      </div>
-    </Container>
-  </Section>
+  <section class="hero">
+    <div class="container">
+      <span class="badge">Speaking</span>
+      <h1 class="hero__title">Speaking & Workshops</h1>
+      <p class="hero__subtitle">
+        I speak about AI, software engineering, technology entrepreneurship, and building tech careers — particularly in the African context.
+      </p>
+    </div>
+  </section>
 
-  <Section theme="light">
-    <Container>
-      <div class="mx-auto max-w-3xl">
-        <h2 class="font-heading text-2xl font-bold text-midnight">Topics</h2>
-        <ul class="mt-6 grid gap-3 sm:grid-cols-2" role="list">
-          {topics.map((topic) => (
-            <li class="flex items-center gap-3 rounded-md border border-midnight/10 px-4 py-3">
-              <span class="h-1.5 w-1.5 rounded-full bg-electric"></span>
-              <span class="text-sm text-slate-brand">{topic}</span>
-            </li>
+  <section class="topics-section">
+    <div class="container">
+      <h2 class="section-heading">Topics I Cover</h2>
+      <div class="topics-grid">
+        {topics.map((topic) => (
+          <div class="topic-card">
+            <span class="topic-card__dot"></span>
+            <span class="topic-card__text">{topic}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="events-section">
+    <div class="container">
+      <h2 class="section-heading">Events</h2>
+      {events.length > 0 ? (
+        <div class="events-list">
+          {events.map((event) => (
+            <div class="event-card">
+              <span class="event-card__date">{formatDate(event.data.date)}</span>
+              <h3 class="event-card__title">{event.data.title}</h3>
+              <p class="event-card__detail">
+                {event.data.event} {event.data.location && `— ${event.data.location}`}
+              </p>
+            </div>
           ))}
-        </ul>
-      </div>
-    </Container>
-  </Section>
+        </div>
+      ) : (
+        <div class="empty-state">
+          <p class="empty-state__text">Upcoming events will be listed here.</p>
+        </div>
+      )}
+    </div>
+  </section>
 
-  <Section theme="dark">
-    <Container>
-      <div class="mx-auto max-w-3xl">
-        <h2 class="font-heading text-2xl font-bold text-offwhite">Events</h2>
-        {events.length > 0 ? (
-          <div class="mt-8 space-y-6">
-            {events.map((event) => (
-              <div class="rounded-lg border border-offwhite/10 p-6">
-                <p class="font-mono text-xs text-offwhite/40">{formatDate(event.data.date)}</p>
-                <h3 class="mt-2 font-heading text-lg font-semibold text-offwhite">{event.data.title}</h3>
-                <p class="mt-1 text-sm text-offwhite/60">{event.data.event} {event.data.location && `— ${event.data.location}`}</p>
-              </div>
-            ))}
-          </div>
-        ) : (
-          <div class="mt-8 rounded-lg border border-dashed border-offwhite/20 p-12 text-center">
-            <p class="text-offwhite/60">Upcoming events will be listed here.</p>
-          </div>
-        )}
-      </div>
-    </Container>
-  </Section>
-
-  <Section theme="light">
-    <Container>
-      <div class="mx-auto max-w-2xl text-center">
-        <h2 class="font-heading text-2xl font-bold text-midnight">Invite me to speak</h2>
-        <p class="mt-4 text-muted">
+  <section class="cta-section">
+    <div class="container">
+      <div class="cta-wrapper">
+        <h2 class="cta__title">Invite me to speak</h2>
+        <p class="cta__text">
           Available for conferences, meetups, workshops, and corporate events. I tailor each talk to the audience and context.
         </p>
-        <div class="mt-8">
-          <Button href="/contact" variant="primary" size="lg">Book a Talk</Button>
-        </div>
+        <a href="/contact" class="cta__btn">Book a Talk</a>
       </div>
-    </Container>
-  </Section>
+    </div>
+  </section>
 </PageLayout>
+
+<style>
+  .hero {
+    background: #f4f2ed;
+    padding: clamp(80px, 12vw, 140px) 0 clamp(48px, 6vw, 80px);
+  }
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 clamp(18px, 3vw, 36px);
+  }
+
+  .badge {
+    display: inline-block;
+    border-radius: 999px;
+    border: 1px solid #e4e0d8;
+    background: #fff;
+    font-size: 12px;
+    padding: 6px 16px;
+    color: #5f5f5f;
+    letter-spacing: 0.04em;
+  }
+
+  .hero__title {
+    font-family: "Lora Variable", "Lora", Georgia, serif;
+    font-weight: 500;
+    letter-spacing: -0.02em;
+    line-height: 1.06;
+    font-size: clamp(2.4rem, 5vw, 3.6rem);
+    color: #1b1b1b;
+    margin: 20px 0 0;
+  }
+
+  .hero__subtitle {
+    color: #5f5f5f;
+    font-size: 0.95rem;
+    line-height: 1.55;
+    max-width: 560px;
+    margin: 14px 0 0;
+  }
+
+  .section-heading {
+    font-family: "Lora Variable", "Lora", Georgia, serif;
+    font-weight: 500;
+    letter-spacing: -0.02em;
+    line-height: 1.06;
+    font-size: clamp(1.4rem, 3vw, 1.8rem);
+    color: #1b1b1b;
+    margin: 0 0 24px;
+  }
+
+  .topics-section {
+    padding: clamp(40px, 6vw, 80px) 0;
+  }
+
+  .topics-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 12px;
+    max-width: 800px;
+  }
+
+  @media (min-width: 640px) {
+    .topics-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  .topic-card {
+    background: #fff;
+    border: 1px solid #e6e2db;
+    border-radius: 16px;
+    padding: 16px 20px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .topic-card__dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #3fbf61;
+    flex-shrink: 0;
+  }
+
+  .topic-card__text {
+    font-size: 0.95rem;
+    color: #1b1b1b;
+  }
+
+  .events-section {
+    background: #f4f2ed;
+    border-radius: 20px;
+    margin: 0 clamp(18px, 3vw, 36px);
+    padding: clamp(28px, 4vw, 48px) clamp(20px, 3vw, 34px);
+  }
+
+  .events-list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    max-width: 800px;
+  }
+
+  .event-card {
+    background: #fff;
+    border: 1px solid #e6e2db;
+    border-radius: 16px;
+    padding: clamp(18px, 3vw, 28px);
+  }
+
+  .event-card__date {
+    font-size: 12px;
+    color: #999;
+    letter-spacing: 0.02em;
+  }
+
+  .event-card__title {
+    font-family: "Lora Variable", "Lora", Georgia, serif;
+    font-weight: 500;
+    letter-spacing: -0.02em;
+    font-size: 1.1rem;
+    color: #1b1b1b;
+    margin: 8px 0 6px;
+  }
+
+  .event-card__detail {
+    font-size: 0.9rem;
+    color: #666;
+    line-height: 1.5;
+    margin: 0;
+  }
+
+  .empty-state {
+    background: #fff;
+    border: 1px dashed #e6e2db;
+    border-radius: 16px;
+    padding: clamp(32px, 4vw, 56px);
+    text-align: center;
+  }
+
+  .empty-state__text {
+    color: #666;
+    font-size: 0.95rem;
+    margin: 0;
+  }
+
+  .cta-section {
+    padding: clamp(60px, 8vw, 100px) 0;
+  }
+
+  .cta-wrapper {
+    text-align: center;
+    max-width: 520px;
+    margin: 0 auto;
+  }
+
+  .cta__title {
+    font-family: "Lora Variable", "Lora", Georgia, serif;
+    font-weight: 500;
+    letter-spacing: -0.02em;
+    line-height: 1.06;
+    font-size: clamp(1.6rem, 3vw, 2.2rem);
+    color: #1b1b1b;
+    margin: 0 0 12px;
+  }
+
+  .cta__text {
+    color: #666;
+    font-size: 0.95rem;
+    line-height: 1.55;
+    margin: 0 0 28px;
+  }
+
+  .cta__btn {
+    display: inline-block;
+    background: #1b1b1b;
+    color: #fff;
+    border-radius: 999px;
+    padding: 14px 32px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    text-decoration: none;
+    transition: background 0.2s;
+  }
+
+  .cta__btn:hover {
+    background: #333;
+  }
+</style>

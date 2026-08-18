@@ -1,81 +1,298 @@
 ---
 import PageLayout from "@layouts/PageLayout.astro";
-import Section from "@components/ui/Section.astro";
-import Container from "@components/ui/Container.astro";
-import Tag from "@components/ui/Tag.astro";
+import { Icon } from "astro-icon/components";
 ---
 
 <PageLayout title="Web Development Services in Zimbabwe" description="Fast, accessible, SEO-friendly web development services by Vincent Mugondora. Websites and web applications built for performance in Zimbabwe and Africa.">
-  <Section theme="dark">
-    <Container>
-      <div class="max-w-3xl">
-        <p class="font-mono text-sm uppercase tracking-widest text-gold">Services</p>
-        <h1 class="mt-4 font-heading text-4xl font-bold text-offwhite lg:text-5xl">
-          Web Development Services
-        </h1>
-        <p class="mt-6 text-lg text-offwhite/70">
-          Fast, accessible websites and web applications built for performance on African internet conditions. SEO-friendly by default, optimised for real users.
-        </p>
-      </div>
-    </Container>
-  </Section>
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero__container">
+      <span class="hero__badge">Services</span>
+      <h1 class="hero__title">Web Development Services</h1>
+      <p class="hero__description">
+        Fast, accessible websites and web applications built for performance on African internet conditions. SEO-friendly by default, optimised for real users.
+      </p>
+    </div>
+  </section>
 
-  <Section theme="light">
-    <Container>
-      <div class="mx-auto max-w-3xl space-y-12">
-        <div>
-          <h2 class="font-heading text-2xl font-bold text-midnight">What I Build</h2>
-          <ul class="mt-6 space-y-4 text-muted">
-            <li class="flex gap-3">
-              <span class="mt-1.5 h-2 w-2 flex-shrink-0 rounded-full bg-electric"></span>
-              <span><strong class="text-midnight">Business Websites</strong> — Professional, fast-loading websites that represent your brand and convert visitors.</span>
-            </li>
-            <li class="flex gap-3">
-              <span class="mt-1.5 h-2 w-2 flex-shrink-0 rounded-full bg-electric"></span>
-              <span><strong class="text-midnight">Web Applications</strong> — Interactive applications with authentication, dashboards, and complex functionality.</span>
-            </li>
-            <li class="flex gap-3">
-              <span class="mt-1.5 h-2 w-2 flex-shrink-0 rounded-full bg-electric"></span>
-              <span><strong class="text-midnight">Portfolio & Personal Sites</strong> — Developer portfolios, personal brands, and content sites built for SEO.</span>
-            </li>
-            <li class="flex gap-3">
-              <span class="mt-1.5 h-2 w-2 flex-shrink-0 rounded-full bg-electric"></span>
-              <span><strong class="text-midnight">Landing Pages</strong> — High-converting landing pages for products, services, and campaigns.</span>
-            </li>
-          </ul>
-        </div>
-
-        <div>
-          <h2 class="font-heading text-2xl font-bold text-midnight">Technologies</h2>
-          <div class="mt-6 flex flex-wrap gap-2">
-            {["Astro", "Next.js", "React", "Tailwind CSS", "TypeScript", "Cloudflare Pages", "Vercel", "SEO", "Core Web Vitals"].map((t) => <Tag label={t} />)}
+  <!-- What I Build -->
+  <section class="what-i-build">
+    <div class="section-container">
+      <h2 class="section-heading">What I Build</h2>
+      <ul class="build-list">
+        <li class="build-list__item">
+          <span class="build-list__icon"><Icon name="lucide:briefcase" /></span>
+          <div class="build-list__content">
+            <strong class="build-list__label">Business Websites</strong>
+            <span class="build-list__text"> — Professional, fast-loading websites that represent your brand and convert visitors.</span>
           </div>
-        </div>
-
-        <div>
-          <h2 class="font-heading text-2xl font-bold text-midnight">Why Performance Matters</h2>
-          <div class="mt-6 space-y-4 text-muted leading-relaxed">
-            <p>In Zimbabwe and across Africa, internet speeds vary widely. A website that loads in 1 second on fibre takes 8 seconds on mobile data. Most visitors won't wait that long.</p>
-            <p>I build websites with performance as a first-class requirement — not an afterthought. Static generation, optimised images, minimal JavaScript, and edge deployment on Cloudflare mean your site loads fast everywhere.</p>
-            <p>Every website I build scores 90+ on Google PageSpeed Insights and follows accessibility best practices (WCAG guidelines), ensuring your content reaches the widest possible audience.</p>
+        </li>
+        <li class="build-list__item">
+          <span class="build-list__icon"><Icon name="lucide:layout" /></span>
+          <div class="build-list__content">
+            <strong class="build-list__label">Web Applications</strong>
+            <span class="build-list__text"> — Interactive applications with authentication, dashboards, and complex functionality.</span>
           </div>
-        </div>
-      </div>
-    </Container>
-  </Section>
+        </li>
+        <li class="build-list__item">
+          <span class="build-list__icon"><Icon name="lucide:user" /></span>
+          <div class="build-list__content">
+            <strong class="build-list__label">Portfolio & Personal Sites</strong>
+            <span class="build-list__text"> — Developer portfolios, personal brands, and content sites built for SEO.</span>
+          </div>
+        </li>
+        <li class="build-list__item">
+          <span class="build-list__icon"><Icon name="lucide:rocket" /></span>
+          <div class="build-list__content">
+            <strong class="build-list__label">Landing Pages</strong>
+            <span class="build-list__text"> — High-converting landing pages for products, services, and campaigns.</span>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </section>
 
-  <Section theme="dark">
-    <Container>
-      <div class="mx-auto max-w-3xl text-center">
-        <h2 class="font-heading text-3xl font-bold text-offwhite">Need a website?</h2>
-        <p class="mt-4 text-lg text-offwhite/70">
-          Tell me about your project and I'll get back with a clear direction.
-        </p>
-        <a href="/contact" class="mt-8 inline-flex items-center gap-2 rounded-full bg-electric px-6 py-3 font-medium text-white no-underline transition-opacity hover:opacity-90">
-          Start a conversation
-          <span aria-hidden="true">&#8599;</span>
-        </a>
+  <!-- Technologies -->
+  <section class="technologies">
+    <div class="section-container">
+      <h2 class="section-heading">Technologies</h2>
+      <div class="tags">
+        {["Astro", "Next.js", "React", "Tailwind CSS", "TypeScript", "Cloudflare Pages", "Vercel", "SEO", "Core Web Vitals"].map((t) => (
+          <span class="tag">{t}</span>
+        ))}
       </div>
-    </Container>
-  </Section>
+    </div>
+  </section>
+
+  <!-- Content / Approach -->
+  <section class="approach">
+    <div class="section-container">
+      <h2 class="section-heading">Why Performance Matters</h2>
+      <div class="approach__body">
+        <p>In Zimbabwe and across Africa, internet speeds vary widely. A website that loads in 1 second on fibre takes 8 seconds on mobile data. Most visitors won't wait that long.</p>
+        <p>I build websites with performance as a first-class requirement — not an afterthought. Static generation, optimised images, minimal JavaScript, and edge deployment on Cloudflare mean your site loads fast everywhere.</p>
+        <p>Every website I build scores 90+ on Google PageSpeed Insights and follows accessibility best practices (WCAG guidelines), ensuring your content reaches the widest possible audience.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta">
+    <div class="cta__container">
+      <h2 class="cta__title">Need a website?</h2>
+      <p class="cta__text">Tell me about your project and I'll get back with a clear direction.</p>
+      <a class="cta__btn" href="/contact">
+        Start a conversation
+        <Icon name="lucide:arrow-up-right" />
+      </a>
+    </div>
+  </section>
 </PageLayout>
+
+<style>
+  /* Hero */
+  .hero {
+    background: #f2f0ec;
+    padding: clamp(60px, 10vw, 100px) clamp(18px, 3vw, 36px) clamp(40px, 6vw, 60px);
+  }
+
+  .hero__container {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .hero__badge {
+    display: inline-block;
+    border-radius: 999px;
+    border: 1px solid #e4e0d8;
+    background: #fff;
+    font-size: 12px;
+    padding: 6px 16px;
+    color: #5f5f5f;
+    letter-spacing: 0.04em;
+    margin-bottom: 20px;
+  }
+
+  .hero__title {
+    font-family: "Lora Variable", "Lora", Georgia, serif;
+    font-weight: 500;
+    letter-spacing: -0.02em;
+    font-size: clamp(2rem, 5vw, 3rem);
+    color: #1b1b1b;
+    margin: 0 0 16px;
+    line-height: 1.15;
+  }
+
+  .hero__description {
+    color: #5f5f5f;
+    font-size: 0.95rem;
+    line-height: 1.55;
+    max-width: 640px;
+    margin: 0;
+  }
+
+  /* Shared section styles */
+  .section-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 clamp(18px, 3vw, 36px);
+  }
+
+  .section-heading {
+    font-family: "Lora Variable", "Lora", Georgia, serif;
+    font-weight: 500;
+    letter-spacing: -0.02em;
+    font-size: 1.5rem;
+    color: #1b1b1b;
+    margin: 0 0 24px;
+  }
+
+  /* What I Build */
+  .what-i-build {
+    background: #f4f2ed;
+    border-radius: 20px;
+    padding: clamp(20px, 3vw, 34px);
+    margin: 32px clamp(18px, 3vw, 36px);
+  }
+
+  .what-i-build .section-container {
+    padding: 0;
+  }
+
+  .build-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+  }
+
+  .build-list__item {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    background: #fff;
+    border: 1px solid #e6e2db;
+    border-radius: 16px;
+    padding: 18px 20px;
+  }
+
+  .build-list__icon {
+    flex-shrink: 0;
+    width: 22px;
+    height: 22px;
+    color: #1b1b1b;
+    margin-top: 2px;
+  }
+
+  .build-list__icon :global(svg) {
+    width: 100%;
+    height: 100%;
+  }
+
+  .build-list__content {
+    font-size: 0.95rem;
+    line-height: 1.55;
+    color: #5f5f5f;
+  }
+
+  .build-list__label {
+    color: #1b1b1b;
+    font-weight: 600;
+  }
+
+  /* Technologies */
+  .technologies {
+    padding: clamp(40px, 5vw, 60px) 0;
+  }
+
+  .tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .tag {
+    display: inline-block;
+    border-radius: 999px;
+    border: 1px solid #e4e0d8;
+    background: #fff;
+    font-size: 12px;
+    padding: 6px 14px;
+    color: #5f5f5f;
+    letter-spacing: 0.02em;
+  }
+
+  /* Approach */
+  .approach {
+    padding: 0 0 clamp(40px, 5vw, 60px);
+  }
+
+  .approach__body {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    color: #5f5f5f;
+    font-size: 0.95rem;
+    line-height: 1.55;
+    max-width: 720px;
+  }
+
+  .approach__body p {
+    margin: 0;
+  }
+
+  /* CTA */
+  .cta {
+    background: #f4f2ed;
+    border-radius: 20px;
+    padding: clamp(40px, 5vw, 60px) clamp(20px, 3vw, 34px);
+    margin: 0 clamp(18px, 3vw, 36px) clamp(40px, 5vw, 60px);
+    text-align: center;
+  }
+
+  .cta__container {
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  .cta__title {
+    font-family: "Lora Variable", "Lora", Georgia, serif;
+    font-weight: 500;
+    letter-spacing: -0.02em;
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    color: #1b1b1b;
+    margin: 0 0 12px;
+  }
+
+  .cta__text {
+    color: #666;
+    font-size: 0.95rem;
+    line-height: 1.55;
+    margin: 0 0 28px;
+  }
+
+  .cta__btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: #1b1b1b;
+    color: #fff;
+    border-radius: 999px;
+    padding: 14px 28px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    text-decoration: none;
+    transition: background 0.2s;
+  }
+
+  .cta__btn:hover {
+    background: #333;
+  }
+
+  .cta__btn :global(svg) {
+    width: 16px;
+    height: 16px;
+  }
+</style>

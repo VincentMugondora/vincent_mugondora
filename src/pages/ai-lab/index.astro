@@ -1,57 +1,211 @@
 ---
 import PageLayout from "@layouts/PageLayout.astro";
-import Section from "@components/ui/Section.astro";
-import Container from "@components/ui/Container.astro";
-import Tag from "@components/ui/Tag.astro";
+import { Icon } from "astro-icon/components";
 import { getAllExperiments } from "@lib/content";
 
 const experiments = await getAllExperiments();
 ---
 
 <PageLayout title="AI Lab" description="AI experiments, agents, RAG systems, and automation projects by Vincent Mugondora.">
-  <Section theme="dark">
-    <Container>
-      <div class="max-w-2xl">
-        <p class="font-mono text-sm uppercase tracking-widest text-gold">Experiments</p>
-        <h1 class="mt-4 font-heading text-4xl font-bold text-offwhite lg:text-5xl">
-          AI Lab
-        </h1>
-        <p class="mt-4 text-lg text-offwhite/70">
-          Exploring AI agents, RAG systems, automation, and intelligent solutions for African businesses and education.
-        </p>
-      </div>
-    </Container>
-  </Section>
+  <section class="lab-hero">
+    <div class="lab-hero__inner">
+      <p class="badge"><Icon name="lucide:flask-conical" class="badge-icon" /> AI Lab</p>
+      <h1 class="lab-hero__title">Exploring AI agents, automation and intelligent systems</h1>
+      <p class="lab-hero__desc">
+        Research notes, experiments and builds around AI agents, RAG systems, automation, and intelligent solutions for African businesses and education.
+      </p>
+    </div>
+  </section>
 
-  <Section theme="light">
-    <Container>
-      {experiments.length > 0 ? (
-        <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {experiments.map((experiment) => (
-            <div class="rounded-lg border border-midnight/10 p-6">
-              <div class="flex items-center gap-2">
-                <Tag label={experiment.data.status} />
+  <section class="lab-content">
+    {experiments.length > 0 ? (
+      <div class="experiments-grid">
+        {experiments.map((experiment) => (
+          <article class="experiment-card">
+            <span class="experiment-card__status">{experiment.data.status}</span>
+            <h2>{experiment.data.title}</h2>
+            <p>{experiment.data.description}</p>
+            {experiment.data.technologies.length > 0 && (
+              <div class="experiment-card__tags">
+                {experiment.data.technologies.slice(0, 4).map((tech) => (
+                  <span>{tech}</span>
+                ))}
               </div>
-              <h2 class="mt-4 font-heading text-lg font-semibold text-midnight">
-                {experiment.data.title}
-              </h2>
-              <p class="mt-2 text-sm text-muted">{experiment.data.description}</p>
-              {experiment.data.technologies.length > 0 && (
-                <div class="mt-4 flex flex-wrap gap-1">
-                  {experiment.data.technologies.slice(0, 3).map((tech) => (
-                    <span class="font-mono text-xs text-muted">{tech}</span>
-                  ))}
-                </div>
-              )}
-            </div>
-          ))}
-        </div>
-      ) : (
-        <div class="rounded-lg border border-dashed border-midnight/20 p-16 text-center">
-          <h2 class="font-heading text-xl font-semibold text-midnight">Experiments coming soon</h2>
-          <p class="mt-2 text-muted">AI research notes and experiments are being documented.</p>
-        </div>
-      )}
-    </Container>
-  </Section>
+            )}
+          </article>
+        ))}
+      </div>
+    ) : (
+      <div class="empty-state">
+        <Icon name="lucide:beaker" class="empty-state__icon" />
+        <h2>Experiments coming soon</h2>
+        <p>AI research notes and experiments are being documented.</p>
+      </div>
+    )}
+  </section>
 </PageLayout>
+
+<style>
+  .lab-hero {
+    width: min(1200px, 100%);
+    margin: 0 auto;
+    padding: 100px clamp(18px, 3vw, 36px) 0;
+  }
+
+  .lab-hero__inner {
+    background: #f4f2ed;
+    border-radius: 20px;
+    padding: clamp(30px, 5vw, 60px) clamp(20px, 3vw, 34px);
+    text-align: center;
+    max-width: 100%;
+  }
+
+  .badge {
+    margin: 0 auto;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 12px;
+    border: 1px solid #e4e0d8;
+    border-radius: 999px;
+    background: #fff;
+    color: #666;
+    font-size: 12px;
+  }
+
+  .badge-icon {
+    width: 14px;
+    height: 14px;
+  }
+
+  .lab-hero__title {
+    margin: 16px auto 0;
+    font-family: "Lora Variable", "Lora", Georgia, serif;
+    font-size: clamp(2rem, 4.5vw, 3.2rem);
+    line-height: 1.08;
+    letter-spacing: -0.02em;
+    font-weight: 500;
+    color: #151515;
+    max-width: 18ch;
+  }
+
+  .lab-hero__desc {
+    margin: 14px auto 0;
+    color: #5f5f5f;
+    line-height: 1.55;
+    max-width: 60ch;
+    font-size: 0.95rem;
+  }
+
+  .lab-content {
+    width: min(1200px, 100%);
+    margin: 28px auto 0;
+    padding: clamp(20px, 3vw, 34px);
+    background: #f4f2ed;
+    border-radius: 20px;
+  }
+
+  .experiments-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+  }
+
+  .experiment-card {
+    background: #fff;
+    border: 1px solid #e6e2db;
+    border-radius: 16px;
+    padding: 18px;
+  }
+
+  .experiment-card__status {
+    display: inline-block;
+    padding: 4px 10px;
+    border: 1px solid #e4e0d8;
+    border-radius: 999px;
+    background: #f8f7f4;
+    color: #666;
+    font-size: 11px;
+    font-weight: 500;
+    margin-bottom: 12px;
+  }
+
+  .experiment-card h2 {
+    margin: 0;
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: #1b1b1b;
+  }
+
+  .experiment-card p {
+    margin: 8px 0 0;
+    color: #666;
+    line-height: 1.48;
+    font-size: 0.9rem;
+  }
+
+  .experiment-card__tags {
+    margin-top: 14px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+
+  .experiment-card__tags span {
+    padding: 4px 8px;
+    border: 1px solid #e4e0d8;
+    border-radius: 999px;
+    font-size: 11px;
+    color: #666;
+  }
+
+  .empty-state {
+    text-align: center;
+    padding: 60px 20px;
+    border: 1px dashed #d8d3ca;
+    border-radius: 16px;
+    background: #fff;
+  }
+
+  .empty-state__icon {
+    width: 40px;
+    height: 40px;
+    color: #bbb;
+    margin: 0 auto 16px;
+  }
+
+  .empty-state h2 {
+    margin: 0;
+    font-family: "Lora Variable", "Lora", Georgia, serif;
+    font-size: 1.4rem;
+    font-weight: 500;
+    color: #333;
+  }
+
+  .empty-state p {
+    margin: 8px 0 0;
+    color: #888;
+    font-size: 0.95rem;
+  }
+
+  @media (max-width: 980px) {
+    .experiments-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 640px) {
+    .lab-hero {
+      padding: 80px 14px 0;
+    }
+
+    .experiments-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .lab-content {
+      margin: 16px auto 0;
+      border-radius: 16px;
+    }
+  }
+</style>
