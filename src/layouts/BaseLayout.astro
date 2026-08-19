@@ -1,18 +1,12 @@
 ---
-import "@fontsource-variable/inter";
-import "@fontsource-variable/space-grotesk";
-import "@fontsource-variable/jetbrains-mono";
-import "@fontsource-variable/lora";
-import "@fontsource/bebas-neue";
+import "@/styles/fonts.css";
 import "@/styles/global.css";
 import "@/styles/typography.css";
 import { siteConfig } from "@/config/site";
 import { getBaseJsonLd } from "@/lib/seo";
 
-import interLatinUrl from "@fontsource-variable/inter/files/inter-latin-opsz-normal.woff2?url";
-import spaceGroteskLatinUrl from "@fontsource-variable/space-grotesk/files/space-grotesk-latin-wght-normal.woff2?url";
-import loraLatinUrl from "@fontsource-variable/lora/files/lora-latin-wght-normal.woff2?url";
 import bebasNeueLatinUrl from "@fontsource/bebas-neue/files/bebas-neue-latin-400-normal.woff2?url";
+import interLatinUrl from "@fontsource-variable/inter/files/inter-latin-wght-normal.woff2?url";
 
 interface Props {
   title?: string;
@@ -44,8 +38,6 @@ const jsonLd = getBaseJsonLd();
 
     <link rel="preload" href={bebasNeueLatinUrl} as="font" type="font/woff2" crossorigin />
     <link rel="preload" href={interLatinUrl} as="font" type="font/woff2" crossorigin />
-    <link rel="preload" href={spaceGroteskLatinUrl} as="font" type="font/woff2" crossorigin />
-    <link rel="preload" href={loraLatinUrl} as="font" type="font/woff2" crossorigin />
 
     <title>{pageTitle}</title>
     <meta name="description" content={pageDescription} />
