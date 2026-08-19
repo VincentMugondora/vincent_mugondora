@@ -12,6 +12,7 @@ import { getBaseJsonLd } from "@/lib/seo";
 import interLatinUrl from "@fontsource-variable/inter/files/inter-latin-opsz-normal.woff2?url";
 import spaceGroteskLatinUrl from "@fontsource-variable/space-grotesk/files/space-grotesk-latin-wght-normal.woff2?url";
 import loraLatinUrl from "@fontsource-variable/lora/files/lora-latin-wght-normal.woff2?url";
+import bebasNeueLatinUrl from "@fontsource/bebas-neue/files/bebas-neue-latin-400-normal.woff2?url";
 
 interface Props {
   title?: string;
@@ -41,6 +42,7 @@ const jsonLd = getBaseJsonLd();
     <meta name="generator" content={Astro.generator} />
     <meta name="color-scheme" content="light dark" />
 
+    <link rel="preload" href={bebasNeueLatinUrl} as="font" type="font/woff2" crossorigin />
     <link rel="preload" href={interLatinUrl} as="font" type="font/woff2" crossorigin />
     <link rel="preload" href={spaceGroteskLatinUrl} as="font" type="font/woff2" crossorigin />
     <link rel="preload" href={loraLatinUrl} as="font" type="font/woff2" crossorigin />
