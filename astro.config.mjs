@@ -8,6 +8,9 @@ import icon from "astro-icon";
 export default defineConfig({
   site: "https://vincentmugondora.com",
   integrations: [sitemap(), icon()],
+  build: {
+    inlineStylesheets: "always",
+  },
   vite: {
     plugins: [tailwindcss()],
   },
