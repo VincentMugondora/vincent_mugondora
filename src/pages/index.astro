@@ -185,17 +185,17 @@ import { siteConfig } from "@config/site";
       <div class="philosophy-grid">
         <div class="philosophy-card">
           <div class="philosophy-card__number">01</div>
-          <h4 class="philosophy-card__title">Understand the Problem</h4>
+          <h3 class="philosophy-card__title">Understand the Problem</h3>
           <p class="philosophy-card__text">Code is the last step. I start by asking 'why' until the actual business need is exposed.</p>
         </div>
         <div class="philosophy-card">
           <div class="philosophy-card__number">02</div>
-          <h4 class="philosophy-card__title">Design for Reality</h4>
+          <h3 class="philosophy-card__title">Design for Reality</h3>
           <p class="philosophy-card__text">Perfect architecture rarely survives contact with production. I build resilient, pragmatic systems.</p>
         </div>
         <div class="philosophy-card">
           <div class="philosophy-card__number">03</div>
-          <h4 class="philosophy-card__title">Learn in Public</h4>
+          <h3 class="philosophy-card__title">Learn in Public</h3>
           <p class="philosophy-card__text">Sharing knowledge reinforces understanding. I document my process to help others grow.</p>
         </div>
       </div>
@@ -215,7 +215,7 @@ import { siteConfig } from "@config/site";
 
       <div class="expertise-grid">
         <div class="expertise-card">
-          <h4 class="expertise-card__heading">Languages</h4>
+          <h3 class="expertise-card__heading">Languages</h3>
           <ul>
             <li>JavaScript</li>
             <li>TypeScript</li>
@@ -224,7 +224,7 @@ import { siteConfig } from "@config/site";
           </ul>
         </div>
         <div class="expertise-card">
-          <h4 class="expertise-card__heading">Frontend</h4>
+          <h3 class="expertise-card__heading">Frontend</h3>
           <ul>
             <li>React / Next.js</li>
             <li>Vue.js</li>
@@ -233,7 +233,7 @@ import { siteConfig } from "@config/site";
           </ul>
         </div>
         <div class="expertise-card">
-          <h4 class="expertise-card__heading">Backend</h4>
+          <h3 class="expertise-card__heading">Backend</h3>
           <ul>
             <li>Node.js</li>
             <li>Django / FastAPI</li>
@@ -242,7 +242,7 @@ import { siteConfig } from "@config/site";
           </ul>
         </div>
         <div class="expertise-card expertise-card--accent">
-          <h4 class="expertise-card__heading expertise-card__heading--accent">AI / ML</h4>
+          <h3 class="expertise-card__heading expertise-card__heading--accent">AI / ML</h3>
           <ul>
             <li>OpenAI API</li>
             <li>LangChain</li>
@@ -251,7 +251,7 @@ import { siteConfig } from "@config/site";
           </ul>
         </div>
         <div class="expertise-card">
-          <h4 class="expertise-card__heading">Data</h4>
+          <h3 class="expertise-card__heading">Data</h3>
           <ul>
             <li>PostgreSQL</li>
             <li>MongoDB</li>
@@ -260,7 +260,7 @@ import { siteConfig } from "@config/site";
           </ul>
         </div>
         <div class="expertise-card">
-          <h4 class="expertise-card__heading">Engineering</h4>
+          <h3 class="expertise-card__heading">Engineering</h3>
           <ul>
             <li>Docker</li>
             <li>AWS / GCP</li>
@@ -970,7 +970,8 @@ import { siteConfig } from "@config/site";
   .how-i-think__subtitle {
     font-family: var(--font-mono);
     font-size: 1.25rem;
-    color: rgba(255, 255, 255, 0.8);
+    font-weight: 700;
+    color: #fff;
     max-width: 40rem;
     margin: 0 auto 4rem;
   }
@@ -989,7 +990,7 @@ import { siteConfig } from "@config/site";
   }
 
   .philosophy-card {
-    background: rgba(0, 0, 0, 0.1);
+    background: rgba(0, 0, 0, 0.2);
     padding: 2rem;
     border-radius: 1.5rem;
     border: 1px solid rgba(255, 255, 255, 0.2);
@@ -1009,10 +1010,11 @@ import { siteConfig } from "@config/site";
     text-transform: uppercase;
     letter-spacing: 0.025em;
     margin: 0 0 0.75rem;
+    line-height: 1.2;
   }
 
   .philosophy-card__text {
-    color: rgba(255, 255, 255, 0.8);
+    color: #fff;
     font-size: 0.875rem;
     line-height: 1.6;
     margin: 0;
