@@ -7,6 +7,7 @@ import icon from "astro-icon";
 
 export default defineConfig({
   site: "https://vincentmugondora.com",
+  trailingSlash: "never",
   integrations: [sitemap(), icon()],
   build: {
     inlineStylesheets: "always",

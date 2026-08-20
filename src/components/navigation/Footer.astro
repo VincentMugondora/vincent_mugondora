@@ -20,6 +20,19 @@ import { siteConfig } from "@config/site";
           <li><a href="/services">Services</a></li>
           <li><a href="/writing">Writing</a></li>
           <li><a href="/speaking">Speaking</a></li>
+          <li><a href="/teaching">Teaching</a></li>
+          <li><a href="/ai-lab">AI Lab</a></li>
+          <li><a href="/now">Now</a></li>
+        </ul>
+      </div>
+
+      <div class="footer__services-col">
+        <h4 class="footer__heading">Services</h4>
+        <ul>
+          <li><a href="/services/software-development">Software Development</a></li>
+          <li><a href="/services/web-development">Web Development</a></li>
+          <li><a href="/services/ai-solutions">AI Solutions</a></li>
+          <li><a href="/services/ai-automation">AI Automation</a></li>
         </ul>
       </div>
 
@@ -78,7 +91,7 @@ import { siteConfig } from "@config/site";
 
   @media (min-width: 768px) {
     .footer__grid {
-      grid-template-columns: 2fr 1fr 1fr;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
     }
   }
 
@@ -111,6 +124,7 @@ import { siteConfig } from "@config/site";
   }
 
   .footer__nav-col ul,
+  .footer__services-col ul,
   .footer__connect-col ul {
     list-style: none;
     margin: 0;
@@ -121,6 +135,7 @@ import { siteConfig } from "@config/site";
   }
 
   .footer__nav-col a,
+  .footer__services-col a,
   .footer__connect-col a {
     font-family: var(--font-mono);
     font-size: 0.875rem;
@@ -132,6 +147,7 @@ import { siteConfig } from "@config/site";
   }
 
   .footer__nav-col a:hover,
+  .footer__services-col a:hover,
   .footer__connect-col a:hover {
     color: #fff;
   }
