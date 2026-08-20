@@ -301,4 +301,9 @@ If you have a business process that's eating up your team's time with repetitive
 
 ---
 
-You might also like: [How Zimbabwean Businesses Can Use AI](/writing/how-zimbabwean-businesses-can-use-ai) | [System Design Explained for Beginners](/writing/system-design-explained-for-beginners)
+**Continue the AI agents series:**
+
+- [AI Agents vs Chatbots: What's the Difference?](/writing/ai-agents-vs-chatbots)
+- [5 AI Agent Use Cases for Small Businesses](/writing/ai-agent-use-cases-for-small-businesses)
+- [How to Build Your First AI Agent (Step-by-Step)](/writing/how-to-build-your-first-ai-agent)
+- [How Zimbabwean Businesses Can Use AI](/writing/how-zimbabwean-businesses-can-use-ai)
