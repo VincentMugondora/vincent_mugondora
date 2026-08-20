@@ -1,8 +1,8 @@
 export const siteConfig = {
   name: "Vincent Mugondora",
-  title: "Vincent Mugondora | Software Developer, AI & Technology Educator",
+  title: "Vincent Mugondora — Software Developer & AI Builder in Zimbabwe",
   description:
-    "Vincent Mugondora is a Zimbabwean software developer, AI builder and technology educator creating software, AI solutions and educational resources.",
+    "Zimbabwean software developer and AI builder creating intelligent solutions for businesses. Custom software, AI agents, automation, and technology education.",
   url: "https://vincentmugondora.com",
   email: "hello@vincentmugondora.com",
   phone: "0777530322",

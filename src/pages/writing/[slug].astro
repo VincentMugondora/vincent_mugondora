@@ -3,7 +3,7 @@ import ArticleLayout from "@layouts/ArticleLayout.astro";
 import { getCollection, render } from "astro:content";
 import { formatDate } from "@lib/utils";
 import { siteConfig } from "@config/site";
-import { getBreadcrumbJsonLd } from "@/lib/seo";
+import { getBreadcrumbJsonLd, getFAQJsonLd } from "@/lib/seo";
 
 export async function getStaticPaths() {
   const posts = await getCollection("posts");
@@ -34,6 +34,26 @@ const breadcrumbs = getBreadcrumbJsonLd([
   { name: "Writing", url: `${siteConfig.url}/writing` },
   { name: post.data.title, url: `${siteConfig.url}/writing/${post.id}` },
 ]);
+
+const faqsBySlug: Record<string, Array<{question: string, answer: string}>> = {
+  "ai-agents-explained-for-beginners": [
+    {
+      question: "What is an AI agent and how does it work?",
+      answer: "An AI agent is software that receives a goal, plans how to achieve it, takes actions using tools (like APIs, databases, or email), and evaluates the results — repeating until the task is complete. Unlike a chatbot that just answers questions, an agent actively completes multi-step tasks on your behalf.",
+    },
+    {
+      question: "What does it mean to create an AI agent?",
+      answer: "Creating an AI agent means building software that combines a language model (for reasoning and planning) with tools (for taking real-world actions) and memory (for maintaining context). You define what the agent can do, connect it to the systems it needs, and give it clear instructions about its purpose.",
+    },
+    {
+      question: "What are AI agents and how do they work?",
+      answer: "AI agents are autonomous software programs that use artificial intelligence to complete tasks without step-by-step human guidance. They work in a think-act-observe loop: the AI reasons about what to do next, uses a tool to take action, observes the result, and repeats until the goal is achieved.",
+    },
+  ],
+};
+
+const faqData = faqsBySlug[post.id];
+const faqJsonLd = faqData ? getFAQJsonLd(faqData) : null;
 ---
 
 <ArticleLayout
@@ -45,6 +65,9 @@ const breadcrumbs = getBreadcrumbJsonLd([
   category={post.data.category}
 >
   <script is:inline type="application/ld+json" set:html={JSON.stringify(breadcrumbs)} />
+  {faqJsonLd && (
+    <script is:inline type="application/ld+json" set:html={JSON.stringify(faqJsonLd)} />
+  )}
 
   <header class="not-prose mb-12">
     <nav class="breadcrumb" aria-label="Breadcrumb">
