@@ -1,8 +1,9 @@
 ---
-title: "System Design Explained for Beginners"
-description: "What system design is, why it matters, and how to think about building software that scales — explained for developers who are ready to move beyond single-file projects."
+title: "System Design Explained for Beginners (With Examples)"
+description: "What system design is, why it matters, and how to think about building software that scales — explained simply for developers ready to move beyond single-file projects."
 category: "system-design"
 publishedAt: 2026-08-16
+updatedAt: 2026-08-20
 featured: true
 draft: false
 ---

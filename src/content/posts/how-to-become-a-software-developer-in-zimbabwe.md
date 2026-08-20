@@ -1,8 +1,9 @@
 ---
-title: "How to Become a Software Developer in Zimbabwe"
-description: "A practical guide to starting a software development career in Zimbabwe — from choosing your first language to landing your first job or client."
+title: "How to Become a Software Developer in Zimbabwe (2026 Guide)"
+description: "A practical, no-fluff guide to starting a software development career in Zimbabwe — from choosing your first language to landing your first job or freelance client."
 category: "zimbabwe-tech"
 publishedAt: 2026-08-16
+updatedAt: 2026-08-20
 featured: true
 draft: false
 ---

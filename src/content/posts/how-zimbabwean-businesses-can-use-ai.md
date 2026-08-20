@@ -1,8 +1,9 @@
 ---
-title: "How Zimbabwean Businesses Can Use AI"
-description: "Practical ways businesses in Zimbabwe can use artificial intelligence today — from customer support automation to document processing and intelligent workflows."
+title: "How Zimbabwean Businesses Can Use AI in 2026"
+description: "Practical ways businesses in Zimbabwe can use artificial intelligence today — customer support automation, document processing, and intelligent workflows with real examples."
 category: "zimbabwe-tech"
 publishedAt: 2026-08-16
+updatedAt: 2026-08-20
 featured: true
 draft: false
 ---
