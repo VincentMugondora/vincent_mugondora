@@ -288,38 +288,15 @@ const recentPosts = posts.slice(0, 3);
       </div>
 
       <div class="articles-grid">
-        <a class="article-card" href="#">
-          <div class="article-card__image">
-            <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuBEdHNn9bx-eSfH6HAvi5TzbdZjO5rYsYvJ5_a1EP6_byNUuRMgRpcRQUFSwmZdKLmWM8v4onazoqC-lLZkD_n11RcBrV6qtMo4Dr44diPF32Tlxdto9G17Du6Hkwcexl-iGo2sDo90KIrWFmwvmsvByQ7CT33vq2JPSkbQsX5q0w_n0_GFhAab87-6o0T6b67zdninkH0VOJ2beGi8DmSxjzM81qjV7thywIpceF-HvyY0gF4zM0AAXA=w600" alt="Article about LLMs" width="600" height="450" loading="lazy" decoding="async" />
-          </div>
-          <div class="article-card__meta">
-            <span>AI Development</span>
-            <span>5 Min Read</span>
-          </div>
-          <h3 class="article-card__title">The Reality of Integrating LLMs into Legacy Codebases</h3>
-        </a>
-
-        <a class="article-card" href="#">
-          <div class="article-card__image">
-            <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuCHv8C4OM_lFQ9opfWpDXRKVghhLzJVfyoFJfoIOpoazbwQUt45lsl0jdCSI8ghIJSrm1Abytr8lpNCriDy8VPQ7YIdiwtAse0e1mDNhaCsnJ1_iEMg_nX7ceK-wxH4wF3GpSFDfrzB3snFFY5VDyUFBJpz2P8deJ2kkigPiCYu_0n_c6mHI2m2nzvDC0sTWTaYqaYlUn-Q3EwC0Yo6hEMFAQEk0pp9csMTDOAMeGc7o6gRqRK_IC0VsQ=w600" alt="Article about state management" width="600" height="450" loading="lazy" decoding="async" />
-          </div>
-          <div class="article-card__meta">
-            <span>Frontend</span>
-            <span>8 Min Read</span>
-          </div>
-          <h3 class="article-card__title">Rethinking State Management in Large React Applications</h3>
-        </a>
-
-        <a class="article-card" href="#">
-          <div class="article-card__image">
-            <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuCH-KjSjQmFo2QWIELWeaN5_MHuoJm0yRPOdhN9iWq3LZ627k0zw0mG-jaiGrUvzYgU1uOHyBJo4stVTox78GLtC5wo9lDYEu6a4ZCtv0Vu_QeZXX45goO1XyczCAfIV_vyDSOQLrsFd33vBM1XnEEIWw6XLWgG-b1TsuC4ZrRDNdGXslQWoz41FozxlCxUNlyUwkiCFzTcSKQ_M9qvD6qWAH6GjWCNVgTytHRY0F84qTiGZIbaW2vGCA=w600" alt="Article about career growth" width="600" height="450" loading="lazy" decoding="async" />
-          </div>
-          <div class="article-card__meta">
-            <span>Career</span>
-            <span>4 Min Read</span>
-          </div>
-          <h3 class="article-card__title">From Junior to Senior: The Invisible Technical Skills</h3>
-        </a>
+        {recentPosts.map((post) => (
+          <a class="article-card" href={`/writing/${post.id}`}>
+            <div class="article-card__meta">
+              <span>{post.data.category.replace("-", " ")}</span>
+            </div>
+            <h3 class="article-card__title">{post.data.title}</h3>
+            <p class="article-card__desc">{post.data.description}</p>
+          </a>
+        ))}
       </div>
 
       <div class="writing__cta">
@@ -1177,6 +1154,17 @@ const recentPosts = posts.slice(0, 3);
     margin: 0;
     line-height: 1.2;
     transition: color 0.15s;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .article-card__desc {
+    color: #9ca3af;
+    font-size: 0.8rem;
+    line-height: 1.5;
+    margin: 0.5rem 0 0;
     display: -webkit-box;
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
