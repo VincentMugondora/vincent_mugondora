@@ -2,6 +2,8 @@
 import ArticleLayout from "@layouts/ArticleLayout.astro";
 import { getCollection, render } from "astro:content";
 import { formatDate } from "@lib/utils";
+import { siteConfig } from "@config/site";
+import { getBreadcrumbJsonLd } from "@/lib/seo";
 
 export async function getStaticPaths() {
   const posts = await getCollection("posts");
@@ -15,6 +17,23 @@ export async function getStaticPaths() {
 
 const { post } = Astro.props;
 const { Content } = await render(post);
+
+const allPosts = await getCollection("posts");
+const relatedPosts = allPosts
+  .filter((p) => !p.data.draft && p.id !== post.id)
+  .sort((a, b) => {
+    const sameCategory = (p: typeof post) => p.data.category === post.data.category;
+    if (sameCategory(a) && !sameCategory(b)) return -1;
+    if (!sameCategory(a) && sameCategory(b)) return 1;
+    return b.data.publishedAt.getTime() - a.data.publishedAt.getTime();
+  })
+  .slice(0, 3);
+
+const breadcrumbs = getBreadcrumbJsonLd([
+  { name: "Home", url: siteConfig.url },
+  { name: "Writing", url: `${siteConfig.url}/writing` },
+  { name: post.data.title, url: `${siteConfig.url}/writing/${post.id}` },
+]);
 ---
 
 <ArticleLayout
@@ -25,8 +44,17 @@ const { Content } = await render(post);
   updatedAt={post.data.updatedAt}
   category={post.data.category}
 >
+  <script is:inline type="application/ld+json" set:html={JSON.stringify(breadcrumbs)} />
+
   <header class="not-prose mb-12">
-    <div class="flex items-center gap-3">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <ol>
+        <li><a href="/">Home</a></li>
+        <li><a href="/writing">Writing</a></li>
+        <li aria-current="page">{post.data.title}</li>
+      </ol>
+    </nav>
+    <div class="flex items-center gap-3 mt-4">
       <span class="rounded-full bg-midnight/5 px-3 py-1 font-mono text-xs text-muted">
         {post.data.category.replace("-", " ")}
       </span>
@@ -51,4 +79,127 @@ const { Content } = await render(post);
     </div>
   </header>
   <Content />
+
+  {relatedPosts.length > 0 && (
+    <aside class="not-prose related-posts">
+      <h2 class="related-posts__title">Continue Reading</h2>
+      <div class="related-posts__grid">
+        {relatedPosts.map((related) => (
+          <a href={`/writing/${related.id}`} class="related-posts__card">
+            <span class="related-posts__category">{related.data.category.replace("-", " ")}</span>
+            <h3 class="related-posts__heading">{related.data.title}</h3>
+            <p class="related-posts__desc">{related.data.description}</p>
+          </a>
+        ))}
+      </div>
+    </aside>
+  )}
 </ArticleLayout>
+
+<style>
+  .breadcrumb ol {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.25rem;
+    font-size: 0.8rem;
+    color: #666;
+  }
+
+  .breadcrumb li:not(:last-child)::after {
+    content: "/";
+    margin-left: 0.25rem;
+    color: #ccc;
+  }
+
+  .breadcrumb a {
+    color: #666;
+    text-decoration: none;
+  }
+
+  .breadcrumb a:hover {
+    color: #111;
+    text-decoration: underline;
+  }
+
+  .breadcrumb [aria-current="page"] {
+    color: #333;
+    font-weight: 500;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    max-width: 30ch;
+  }
+
+  .related-posts {
+    margin-top: 4rem;
+    padding-top: 2rem;
+    border-top: 1px solid #e6e2db;
+  }
+
+  .related-posts__title {
+    font-family: "Lora Variable", "Lora", Georgia, serif;
+    font-size: 1.5rem;
+    font-weight: 500;
+    color: #1b1b1b;
+    margin: 0 0 1.5rem;
+  }
+
+  .related-posts__grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  @media (min-width: 640px) {
+    .related-posts__grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  .related-posts__card {
+    display: block;
+    padding: 1.25rem;
+    border: 1px solid #e6e2db;
+    border-radius: 12px;
+    text-decoration: none;
+    color: inherit;
+    transition: border-color 0.2s, box-shadow 0.2s;
+  }
+
+  .related-posts__card:hover {
+    border-color: #ccc;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+  }
+
+  .related-posts__category {
+    display: inline-block;
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: #888;
+    margin-bottom: 0.5rem;
+  }
+
+  .related-posts__heading {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: #1b1b1b;
+    margin: 0 0 0.5rem;
+    line-height: 1.3;
+  }
+
+  .related-posts__desc {
+    font-size: 0.8rem;
+    color: #666;
+    line-height: 1.5;
+    margin: 0;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+</style>

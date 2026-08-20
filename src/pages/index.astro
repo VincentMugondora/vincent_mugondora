@@ -4,6 +4,10 @@ import { Icon } from "astro-icon/components";
 import { Image } from "astro:assets";
 import heroImage from "@/assets/vincent.avif";
 import { siteConfig } from "@config/site";
+import { getPublishedPosts } from "@lib/content";
+
+const posts = await getPublishedPosts();
+const recentPosts = posts.slice(0, 3);
 ---
 
 <PageLayout>
