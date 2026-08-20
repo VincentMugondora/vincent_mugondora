@@ -1,9 +1,24 @@
 ---
 import PageLayout from "@layouts/PageLayout.astro";
 import { Icon } from "astro-icon/components";
+import { siteConfig } from "@config/site";
+
+const serviceJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  name: "AI Solutions for Businesses",
+  description: "Practical AI implementations for businesses in Zimbabwe and Africa. AI chatbots, intelligent agents, RAG systems, and custom AI integration.",
+  provider: { "@id": `${siteConfig.url}/#person` },
+  areaServed: [
+    { "@type": "Country", name: "Zimbabwe" },
+    { "@type": "Continent", name: "Africa" },
+  ],
+  serviceType: "AI Development",
+};
 ---
 
-<PageLayout title="AI Solutions for Businesses in Zimbabwe" description="Practical AI solutions for businesses by Vincent Mugondora. AI chatbots, intelligent agents, and custom AI implementations for organisations in Zimbabwe and Africa.">
+<PageLayout title="AI Solutions for Businesses in Zimbabwe | Vincent Mugondora" description="Practical AI solutions for businesses by Vincent Mugondora. AI chatbots, intelligent agents, and custom AI implementations for organisations in Zimbabwe and Africa.">
+  <script is:inline type="application/ld+json" set:html={JSON.stringify(serviceJsonLd)} />
   <!-- Hero -->
   <section class="hero">
     <div class="hero__container">
@@ -72,6 +87,7 @@ import { Icon } from "astro-icon/components";
         <p>AI isn't just for Silicon Valley. Businesses in Zimbabwe and Africa can use AI to automate customer support, process documents, analyse data, and build intelligent products.</p>
         <p>I focus on practical AI — solutions that deliver measurable business value, not experimental technology for its own sake. Every AI implementation starts with a clear business problem and a realistic assessment of what AI can solve.</p>
         <p>Whether you need a WhatsApp chatbot that handles customer enquiries 24/7, or an AI system that processes and categorises your business documents, I build solutions that work within real-world constraints.</p>
+        <p>Want to understand how AI agents work before investing? Read my guide: <a href="/writing/ai-agents-explained-for-beginners">What Are AI Agents? A Simple Guide for Beginners</a>. For Zimbabwe-specific applications, see <a href="/writing/how-zimbabwean-businesses-can-use-ai">How Zimbabwean Businesses Can Use AI</a>.</p>
       </div>
     </div>
   </section>
