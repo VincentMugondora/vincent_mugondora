@@ -327,3 +327,11 @@ The best architecture for a new project is almost always:
 - Deployed to one platform
 
 Then evolve deliberately as real constraints emerge. The developers who design good systems aren't the ones who know the most complex patterns — they're the ones who know when simplicity is enough.
+
+---
+
+**Related reading:**
+
+- [How to Build Your First AI Agent](/writing/how-to-build-your-first-ai-agent) — apply system design thinking to building an AI agent from scratch
+- [How to Become a Software Developer in Zimbabwe](/writing/how-to-become-a-software-developer-in-zimbabwe) — the full roadmap from beginner to working developer
+- [Best Programming Languages to Learn in Zimbabwe](/writing/best-programming-languages-to-learn-in-zimbabwe) — choosing the right language for your career goals

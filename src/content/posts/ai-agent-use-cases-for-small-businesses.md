@@ -91,3 +91,12 @@ The businesses in Zimbabwe and across Africa that are adopting AI agents now are
 You don't need to automate everything at once. Start with one use case — the one that costs you the most time or money — and prove it works. Then expand.
 
 If you want to explore whether an AI agent makes sense for your specific business problem, I offer [AI solutions for businesses](/services/ai-solutions/) including chatbots, autonomous agents, and custom integrations. [Get in touch](/contact) and tell me what's eating your team's time.
+
+---
+
+**Related reading:**
+
+- [How to Build Your First AI Agent](/writing/how-to-build-your-first-ai-agent) — build your own agent step by step
+- [How to Build an AI Chatbot for Your Business](/writing/how-to-build-an-ai-chatbot) — if a chatbot fits your needs better than a full agent
+- [AI Agents vs Chatbots: What's the Difference?](/writing/ai-agents-vs-chatbots) — understand which solution you actually need
+- [How Zimbabwean Businesses Can Use AI](/writing/how-zimbabwean-businesses-can-use-ai) — broader AI applications beyond agents

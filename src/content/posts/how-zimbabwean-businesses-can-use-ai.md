@@ -257,3 +257,12 @@ The question isn't whether your business should use AI. It's which processes to 
 ---
 
 If you want to explore how AI can specifically help your business, I build custom AI solutions for Zimbabwean and African businesses. [Let's talk about your specific situation](/contact).
+
+---
+
+**Related reading:**
+
+- [How to Build an AI Chatbot for Your Business](/writing/how-to-build-an-ai-chatbot) — step-by-step guide to building your own customer-facing chatbot
+- [AI Agents Explained for Beginners](/writing/ai-agents-explained-for-beginners) — understand what AI agents are and how they differ from chatbots
+- [5 AI Agent Use Cases for Small Businesses](/writing/ai-agent-use-cases-for-small-businesses) — practical examples with real results
+- [AI Opportunities in Zimbabwe](/writing/ai-opportunities-in-zimbabwe) — the broader AI landscape and where the market is heading

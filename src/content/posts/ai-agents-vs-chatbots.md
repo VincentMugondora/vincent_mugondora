@@ -145,3 +145,12 @@ A chatbot answers. An AI agent does.
 Both are valuable. Neither is universally better. The right choice depends on what you're trying to accomplish — not on which sounds more impressive.
 
 If you're trying to figure out which approach fits your specific situation, I [build both](/services/ai-solutions/) and can help you decide what makes sense before you spend anything. [Get in touch](/contact) and tell me what problem you're trying to solve.
+
+---
+
+**Related reading:**
+
+- [How to Build an AI Chatbot for Your Business](/writing/how-to-build-an-ai-chatbot) — step-by-step guide if you decide a chatbot is the right fit
+- [How to Build Your First AI Agent](/writing/how-to-build-your-first-ai-agent) — hands-on guide to building an agent from scratch
+- [5 AI Agent Use Cases for Small Businesses](/writing/ai-agent-use-cases-for-small-businesses) — practical examples of agents delivering real results
+- [How Zimbabwean Businesses Can Use AI](/writing/how-zimbabwean-businesses-can-use-ai) — broader AI applications for local businesses
