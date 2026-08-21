@@ -50,6 +50,76 @@ const faqsBySlug: Record<string, Array<{question: string, answer: string}>> = {
       answer: "AI agents are autonomous software programs that use artificial intelligence to complete tasks without step-by-step human guidance. They work in a think-act-observe loop: the AI reasons about what to do next, uses a tool to take action, observes the result, and repeats until the goal is achieved.",
     },
   ],
+  "ai-agents-vs-chatbots": [
+    {
+      question: "What is the difference between an AI agent and a chatbot?",
+      answer: "A chatbot responds to messages — you ask a question, it gives an answer. An AI agent completes tasks autonomously — you give it a goal, and it plans steps, uses tools, and takes actions to achieve it. Chatbots are reactive and single-turn; agents are proactive and multi-step.",
+    },
+    {
+      question: "Do I need a chatbot or an AI agent for my business?",
+      answer: "If your main need is answering customer questions faster (FAQs, pricing, hours), a chatbot is sufficient and cheaper. If you need multi-step tasks completed autonomously (processing documents, qualifying leads, updating multiple systems), you need an AI agent. Many businesses benefit from both working together.",
+    },
+    {
+      question: "Can chatbots and AI agents work together?",
+      answer: "Yes — this is often the best architecture. The chatbot serves as the customer-facing interface for quick responses, while the AI agent handles complex backend tasks when needed. The customer experiences a smooth conversation while the agent completes multi-step work behind the scenes.",
+    },
+  ],
+  "how-to-become-a-software-developer-in-zimbabwe": [
+    {
+      question: "How long does it take to become a software developer in Zimbabwe?",
+      answer: "With consistent daily practice of 1-3 hours, most people can land their first paid work within 10-12 months. This timeline includes learning fundamentals (months 1-3), building web applications (months 4-6), creating portfolio projects (months 7-9), and finding first paid work (months 10-12). Full-time dedication can accelerate this significantly.",
+    },
+    {
+      question: "What programming language should I learn first in Zimbabwe?",
+      answer: "Python or JavaScript. Python is easiest for beginners and immediately useful for web development, data, automation, and AI. JavaScript is essential for web applications and has the largest global job market. Both have strong demand in Africa and work well on low-spec hardware with limited internet.",
+    },
+    {
+      question: "Can I become a software developer without a degree in Zimbabwe?",
+      answer: "Yes. The software industry increasingly values demonstrated skills over formal qualifications. A strong GitHub portfolio with 3-5 projects, contributions to open source, and practical experience matter more than a degree. Many successful Zimbabwean developers are self-taught using free online resources.",
+    },
+  ],
+  "how-zimbabwean-businesses-can-use-ai": [
+    {
+      question: "How can businesses in Zimbabwe use AI?",
+      answer: "Zimbabwean businesses can use AI for customer support automation (WhatsApp chatbots), document processing (invoices, receipts, contracts), lead qualification, internal knowledge systems, content creation, and data analysis. The most impactful starting point is usually automating repetitive customer communication on WhatsApp.",
+    },
+    {
+      question: "How much does AI cost for a small business in Zimbabwe?",
+      answer: "AI API costs are typically $3-$10/month for a business handling 100 customer messages daily. Hosting runs $5-$50/month. The main investment is development — building and integrating a custom solution. For businesses losing hours daily to repetitive tasks, the return on investment is typically seen within 2-3 months.",
+    },
+    {
+      question: "What is the best AI solution for small businesses in Zimbabwe?",
+      answer: "For most Zimbabwean small businesses, an AI-powered WhatsApp chatbot is the highest-impact starting point. It handles customer enquiries 24/7, works on the platform customers already use, and can reduce routine support volume by 60-80%. Start there, prove the value, then expand to more complex automation.",
+    },
+  ],
+  "how-to-build-your-first-ai-agent": [
+    {
+      question: "What do I need to build an AI agent?",
+      answer: "You need basic Python knowledge (functions, loops, dictionaries, APIs), an API key from OpenAI or Anthropic, and an understanding of what AI agents are. No machine learning background, maths degree, or special hardware is required. The core pattern is simple: think, act, observe, repeat.",
+    },
+    {
+      question: "Which programming language is best for building AI agents?",
+      answer: "Python is the best choice for building AI agents. It has the most comprehensive AI/ML libraries, the best framework support (LangChain, CrewAI, Autogen), and the simplest syntax for working with APIs. Most AI agent tutorials and documentation assume Python.",
+    },
+    {
+      question: "How long does it take to build an AI agent?",
+      answer: "A basic functional agent (one task, two tools) can be built in a few hours if you understand the fundamentals. A production-ready agent with error handling, memory, and real system integrations typically takes 1-2 weeks. The core loop is simple — reliability and edge cases are where time goes.",
+    },
+  ],
+  "system-design-explained-for-beginners": [
+    {
+      question: "What is system design in software development?",
+      answer: "System design is the process of defining the architecture, components, and interactions of a software system before writing code. It's deciding how the pieces of your application fit together — databases, APIs, caching, servers — to satisfy requirements around performance, scalability, and reliability.",
+    },
+    {
+      question: "When do I need to learn system design?",
+      answer: "Once you can build features and individual applications, system design becomes the next critical skill. You need it when building anything that serves more than a handful of users, involves multiple services or databases, or needs to handle growth. It's also a key topic in senior developer and technical interviews.",
+    },
+    {
+      question: "Should I start with a monolith or microservices?",
+      answer: "Almost always start with a monolith. One backend, one database, one deployment. It's simpler to develop, deploy, and debug. Only split into microservices when you have multiple teams working on different parts of the system or specific components that need to scale independently. Most successful applications run as monoliths for years.",
+    },
+  ],
 };
 
 const faqData = faqsBySlug[post.id];
