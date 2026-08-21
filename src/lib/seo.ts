@@ -34,56 +34,26 @@ export interface JsonLdWebSite {
 export function getBaseJsonLd() {
   return {
     "@context": "https://schema.org",
-    "@graph": [
-      {
-        "@type": "Person",
-        "@id": `${siteConfig.url}/#person`,
-        name: "Vincent Mugondora",
-        url: siteConfig.url,
-        image: `${siteConfig.url}/vincent.avif`,
-        jobTitle: "Software Developer, AI Builder & Technology Educator",
-        description: siteConfig.description,
-        worksFor: { "@id": `${siteConfig.url}/#organization` },
-        founder: { "@id": `${siteConfig.url}/#organization` },
-        knowsAbout: [
-          "Software Development",
-          "Artificial Intelligence",
-          "Web Development",
-          "Python",
-          "TypeScript",
-          "React",
-          "System Design",
-          "Software Architecture",
-          "AI Agents",
-          "Technology Education",
-        ],
-        email: siteConfig.email,
-        telephone: siteConfig.phone,
-        address: {
-          "@type": "PostalAddress",
-          addressLocality: "Harare",
-          addressCountry: "ZW",
-        },
-        nationality: { "@type": "Country", name: "Zimbabwe" },
-        sameAs: [siteConfig.githubUrl, siteConfig.linkedinUrl, siteConfig.twitterUrl],
-      },
-      {
-        "@type": "Organization",
-        "@id": `${siteConfig.url}/#organization`,
-        name: "Zimnovate",
-        url: "https://zimnovate.co.zw",
-        founder: { "@id": `${siteConfig.url}/#person` },
-        areaServed: { "@type": "Country", name: "Zimbabwe" },
-      },
-      {
-        "@type": "WebSite",
-        "@id": `${siteConfig.url}/#website`,
-        url: siteConfig.url,
-        name: siteConfig.name,
-        description: siteConfig.description,
-        publisher: { "@id": `${siteConfig.url}/#person` },
-      },
-    ],
+    "@type": "WebSite",
+    name: siteConfig.name,
+    url: siteConfig.url,
+    description: siteConfig.description,
+    inLanguage: "en",
+    publisher: {
+      "@type": "Person",
+      name: "Vincent Mugondora",
+      url: siteConfig.url,
+      image: `${siteConfig.url}/vincent.avif`,
+      jobTitle: "Software Developer, AI Builder & Technology Educator",
+      email: siteConfig.email,
+      telephone: siteConfig.phone,
+      sameAs: [siteConfig.githubUrl, siteConfig.linkedinUrl, siteConfig.twitterUrl],
+    },
+    author: {
+      "@type": "Person",
+      name: "Vincent Mugondora",
+      url: siteConfig.url,
+    },
   };
 }
 
@@ -91,7 +61,15 @@ export function getProfilePageJsonLd() {
   return {
     "@context": "https://schema.org",
     "@type": "ProfilePage",
-    mainEntity: { "@id": `${siteConfig.url}/#person` },
+    mainEntity: {
+      "@type": "Person",
+      name: "Vincent Mugondora",
+      url: siteConfig.url,
+      image: `${siteConfig.url}/vincent.avif`,
+      jobTitle: "Software Developer, AI Builder & Technology Educator",
+      description: siteConfig.description,
+      sameAs: [siteConfig.githubUrl, siteConfig.linkedinUrl, siteConfig.twitterUrl],
+    },
     name: `About ${siteConfig.name}`,
     url: `${siteConfig.url}/about`,
     description: siteConfig.description,
@@ -115,8 +93,17 @@ export function getArticleJsonLd(article: {
     datePublished: article.publishedAt,
     ...(article.updatedAt && { dateModified: article.updatedAt }),
     ...(article.image && { image: article.image }),
-    author: { "@id": `${siteConfig.url}/#person` },
-    publisher: { "@id": `${siteConfig.url}/#person` },
+    author: {
+      "@type": "Person",
+      name: "Vincent Mugondora",
+      url: siteConfig.url,
+      sameAs: [siteConfig.githubUrl, siteConfig.linkedinUrl, siteConfig.twitterUrl],
+    },
+    publisher: {
+      "@type": "Person",
+      name: "Vincent Mugondora",
+      url: siteConfig.url,
+    },
   };
 }
 
