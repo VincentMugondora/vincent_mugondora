@@ -1,10 +1,10 @@
 ---
 import PageLayout from "@layouts/PageLayout.astro";
 import { Icon } from "astro-icon/components";
-import { Image } from "astro:assets";
-import heroImage from "@/assets/vincent.avif";
 import { siteConfig } from "@config/site";
 import { getPublishedPosts } from "@lib/content";
+
+const heroImage = "/vincent.avif";
 
 const posts = await getPublishedPosts();
 const recentPosts = posts.slice(0, 3);
@@ -28,11 +28,9 @@ const recentPosts = posts.slice(0, 3);
       </div>
       <div class="hero__media">
         <div class="hero__image-frame">
-          <Image
+          <img
             src={heroImage}
             alt="Vincent Mugondora"
-            widths={[400, 600, 800]}
-            sizes="(max-width: 768px) 100vw, 33vw"
             loading="eager"
             fetchpriority="high"
             class="hero__img"
