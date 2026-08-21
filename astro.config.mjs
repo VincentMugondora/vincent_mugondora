@@ -10,6 +10,7 @@ export default defineConfig({
   trailingSlash: "never",
   integrations: [sitemap(), icon()],
   build: {
+    format: "file",
     inlineStylesheets: "always",
   },
   vite: {
