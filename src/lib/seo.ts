@@ -59,7 +59,13 @@ export function getBaseJsonLd() {
         ],
         email: siteConfig.email,
         telephone: siteConfig.phone,
-        sameAs: [siteConfig.githubUrl, siteConfig.linkedinUrl],
+        address: {
+          "@type": "PostalAddress",
+          addressLocality: "Harare",
+          addressCountry: "ZW",
+        },
+        nationality: { "@type": "Country", name: "Zimbabwe" },
+        sameAs: [siteConfig.githubUrl, siteConfig.linkedinUrl, siteConfig.twitterUrl],
       },
       {
         "@type": "Organization",

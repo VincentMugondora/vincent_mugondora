@@ -9,6 +9,8 @@ export const siteConfig = {
   phoneHref: "tel:+263777530322",
   githubUrl: "https://github.com/vincentmugondora",
   linkedinUrl: "https://www.linkedin.com/in/vincent-mugondora-7b2a922b3/",
+  twitterUrl: "https://twitter.com/vincemugondora",
+  twitterHandle: "@vincemugondora",
   author: "Vincent Mugondora",
   locale: "en",
 } as const;
