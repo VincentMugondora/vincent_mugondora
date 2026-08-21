@@ -120,6 +120,76 @@ const faqsBySlug: Record<string, Array<{question: string, answer: string}>> = {
       answer: "Almost always start with a monolith. One backend, one database, one deployment. It's simpler to develop, deploy, and debug. Only split into microservices when you have multiple teams working on different parts of the system or specific components that need to scale independently. Most successful applications run as monoliths for years.",
     },
   ],
+  "best-programming-languages-to-learn-in-zimbabwe": [
+    {
+      question: "What is the best programming language to learn in Zimbabwe?",
+      answer: "Python is the best first language for most Zimbabweans. It runs well on low-spec hardware, has lightweight text-based documentation (low data usage), has the easiest syntax for beginners, and is directly relevant to the AI boom. JavaScript is the best second language, essential for web development and with the largest global job market.",
+    },
+    {
+      question: "Which programming languages have the most jobs in Zimbabwe?",
+      answer: "JavaScript/TypeScript has the largest job market both locally and remotely — every business needs web applications. Python is growing fast due to AI and data science demand. Locally, Java still has presence in banking and enterprise. For remote work, TypeScript, Python, and Go command the highest salaries.",
+    },
+    {
+      question: "Can I get a programming job in Zimbabwe without a degree?",
+      answer: "Yes. The Zimbabwean tech market, especially remote work, values demonstrated skills over formal qualifications. Build a GitHub portfolio with 3-5 projects, contribute to open source, and focus on practical skills. Many successful Zimbabwean developers are self-taught and work remotely for international companies.",
+    },
+  ],
+  "ai-opportunities-in-zimbabwe": [
+    {
+      question: "What AI opportunities exist in Zimbabwe?",
+      answer: "AI opportunities in Zimbabwe include: building chatbots and automation for local businesses, remote AI development work ($3,000-$8,000/month), data labelling and annotation services, AI consulting for enterprises adopting automation, and building AI-powered products for underserved African markets (agriculture, fintech, healthcare, education).",
+    },
+    {
+      question: "How can I start a career in AI in Zimbabwe?",
+      answer: "Learn Python first, then study machine learning fundamentals and how to work with AI APIs (OpenAI, Anthropic). Build practical projects — chatbots, document processors, automation tools. The fastest path to income is building AI solutions for local businesses (WhatsApp bots, customer support automation) while pursuing remote AI developer roles.",
+    },
+    {
+      question: "Is there demand for AI developers in Zimbabwe?",
+      answer: "Yes — demand far exceeds supply. Very few developers in Zimbabwe can build AI solutions, creating significant opportunity. Locally, businesses need chatbots and automation. Remotely, AI developers command high salaries globally. The combination of low local competition and high global demand makes this one of the best career paths available.",
+    },
+  ],
+  "how-to-start-a-tech-startup-in-zimbabwe": [
+    {
+      question: "How do I start a tech company in Zimbabwe?",
+      answer: "Start by solving a specific problem you've observed in the Zimbabwean market. Validate demand by talking to potential customers before building. Register your company (Private Limited for fundraising potential). Build a minimal first version, get paying customers quickly, and reinvest revenue. Focus on mobile-first, WhatsApp-friendly solutions.",
+    },
+    {
+      question: "What are the best tech startup ideas in Zimbabwe?",
+      answer: "High-opportunity areas include: WhatsApp-based business tools, mobile payment integrations, agricultural tech (market prices, supply chain), B2B software for local companies still using spreadsheets, education platforms, and AI-powered automation services. The best ideas solve problems that global companies ignore because the market seems too small.",
+    },
+    {
+      question: "How do I fund a tech startup in Zimbabwe?",
+      answer: "Most successful Zimbabwean startups bootstrap — they get paying customers from day one and grow from revenue. Other options include: consulting/freelancing while building your product, grants from organisations supporting African tech, angel investors in the diaspora, and regional accelerators. Avoid seeking VC funding too early.",
+    },
+  ],
+  "ai-agent-use-cases-for-small-businesses": [
+    {
+      question: "What can AI agents do for small businesses?",
+      answer: "AI agents can handle customer support (answering FAQs on WhatsApp 24/7), process documents (extracting data from invoices and receipts), qualify sales leads (engaging prospects and scoring them automatically), manage internal knowledge (answering staff questions instantly), and handle scheduling and follow-ups (never missing a prospect).",
+    },
+    {
+      question: "How much do AI agents cost for a small business?",
+      answer: "AI API costs are typically $10-$100/month for small businesses. The main investment is development — building a custom agent integrated with your specific systems and data. For businesses spending 5+ hours per week on repetitive tasks, the return on investment is usually seen within 2-3 months through reduced labour costs and faster response times.",
+    },
+    {
+      question: "Is my small business ready for AI agents?",
+      answer: "Your business is ready if you have tasks that are: repetitive (happening 5+ hours per week in roughly the same way), follow a logical process (you can write down the steps), cost-justified (the agent saves more than it costs to build), and have clear success criteria. If only one or two apply, a simpler automation may be more appropriate.",
+    },
+  ],
+  "how-to-build-an-ai-chatbot": [
+    {
+      question: "How much does it cost to build an AI chatbot?",
+      answer: "AI API costs are typically $0.001-$0.01 per customer interaction. For a business handling 100 messages daily, ongoing AI costs are $3-$10/month. Hosting runs $5-$50/month. The main cost is development — building a custom solution integrated with your business data and systems. Off-the-shelf tools are cheaper but less effective.",
+    },
+    {
+      question: "How do I build a chatbot for WhatsApp?",
+      answer: "You need: a WhatsApp Business API account (via a provider like Twilio or Meta's Cloud API), a backend server to process messages, an AI model (GPT-4 or Claude) for generating responses, and a knowledge base with your business information. The chatbot receives messages via webhook, generates AI responses using your data, and sends replies back through the API.",
+    },
+    {
+      question: "What is RAG and why does my chatbot need it?",
+      answer: "RAG (Retrieval Augmented Generation) is a technique where your chatbot searches your business documents to find relevant information before generating a response. Without RAG, the AI can only use its general training data and may hallucinate. With RAG, it answers from your actual business information — pricing, policies, product details — accurately.",
+    },
+  ],
 };
 
 const faqData = faqsBySlug[post.id];
