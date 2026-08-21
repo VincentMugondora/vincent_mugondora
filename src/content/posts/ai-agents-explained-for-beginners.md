@@ -10,7 +10,9 @@ draft: false
 
 You've probably heard the term "AI agents" thrown around a lot recently. Most explanations are either too technical or too vague. This one won't be.
 
-I build AI agents professionally — for businesses that need them to do real work. Here's what they actually are, how they work, and when they're useful.
+I build AI agents professionally — for businesses that need them to do real work. If you're evaluating AI for your business, this is the clearest way to understand what it actually is, how it works, and when it delivers value.
+
+A simple way to think about it: an AI agent is software that can do more than answer a question — it can take a task, reason through the steps, and complete the work using tools and data.
 
 ## What is an AI agent?
 

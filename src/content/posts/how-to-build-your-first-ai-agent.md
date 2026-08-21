@@ -11,6 +11,8 @@ You've read about AI agents. You understand the concept. Now you want to build o
 
 This guide walks you through building a simple but functional AI agent from scratch. By the end, you'll have a working agent that can accept a goal, use tools, and complete a multi-step task autonomously.
 
+If you want a practical first project, start with something useful for a real business: an AI agent that answers FAQs from a knowledge base, qualifies leads from incoming messages, or summarises company information from a website or document set.
+
 No PhD required. Just basic Python and curiosity.
 
 ## Prerequisites
