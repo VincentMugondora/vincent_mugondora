@@ -23,7 +23,18 @@ const pageTitle = title
   ? title.includes(siteConfig.name) ? title : `${title} | ${siteConfig.name}`
   : siteConfig.title;
 const pageDescription = description ?? siteConfig.description;
-const canonical = canonicalURL ?? new URL(Astro.url.pathname, siteConfig.url).href;
+let currentPath = Astro.url.pathname;
+if (currentPath.endsWith('/index.html')) {
+  currentPath = currentPath.slice(0, -11) || '/';
+} else if (currentPath.endsWith('.html')) {
+  currentPath = currentPath.slice(0, -5);
+} else if (currentPath === 'index.html') {
+  currentPath = '/';
+}
+if (currentPath.length > 1 && currentPath.endsWith('/')) {
+  currentPath = currentPath.slice(0, -1);
+}
+const canonical = canonicalURL ?? new URL(currentPath, siteConfig.url).href;
 const ogImage = image ?? `${siteConfig.url}/og-default.png`;
 const jsonLd = getBaseJsonLd();
 ---
