@@ -1,253 +1,288 @@
 ---
 import PageLayout from "@layouts/PageLayout.astro";
-import { Icon } from "astro-icon/components";
+
+const skillAreas = [
+  { title: "Programming", skills: "Python, JavaScript, TypeScript" },
+  { title: "Web Development", skills: "HTML, CSS, React, Node.js, Next.js" },
+  { title: "AI & Machine Learning", skills: "AI fundamentals, AI tools, AI agents, AI-assisted development" },
+  { title: "Software Engineering", skills: "Git, APIs, databases, architecture, testing" },
+  { title: "Creative Technology", skills: "Roblox, game development, Scratch" },
+  { title: "Digital Skills", skills: "SEO, productivity, technology entrepreneurship" },
+];
+
+const audiences = [
+  { title: "School students", description: "Primary and secondary school learners discovering programming and technology." },
+  { title: "Beginners", description: "People writing their first lines of code with zero prior experience." },
+  { title: "Young developers", description: "Junior developers building confidence and expanding their skills." },
+  { title: "Aspiring engineers", description: "People committed to becoming professional software engineers." },
+  { title: "Educators", description: "Teachers integrating technology and coding into their curriculum." },
+  { title: "Career changers", description: "Professionals transitioning into technology from other fields." },
+];
+
+const methods = [
+  { title: "Project-based learning", description: "Every concept is applied to a real project, not an abstract exercise." },
+  { title: "Live coding", description: "I build alongside learners so they see the thinking process, not just the result." },
+  { title: "Real-world problems", description: "Students solve problems that matter — not toy examples they'll never use again." },
+  { title: "Step-by-step", description: "Complex concepts are broken into digestible steps that build on each other." },
+  { title: "AI-assisted learning", description: "Using AI tools as learning accelerators while building genuine understanding." },
+  { title: "Building applications", description: "Students ship actual applications, not just follow tutorials." },
+];
+
+const programs = [
+  { title: "School Coding Programs", description: "Multi-week programming courses delivered to schools, introducing students to coding through hands-on projects.", type: "Ongoing" },
+  { title: "AI Workshops", description: "Focused sessions teaching AI fundamentals, AI tools, and how to build AI-powered applications.", type: "Workshop" },
+  { title: "Coding Bootcamps", description: "Intensive programs taking beginners from zero to building their first web applications.", type: "Intensive" },
+  { title: "Hackathons", description: "Collaborative events where students solve real problems by building technology solutions in teams.", type: "Event" },
+  { title: "Mentorship", description: "One-on-one and small group guidance for developers building skills and careers.", type: "Ongoing" },
+];
+
+const studentProjects = [
+  "Websites & portfolios",
+  "REST APIs",
+  "AI chatbots",
+  "Games (Roblox, Scratch)",
+  "Business applications",
+  "WhatsApp integrations",
+  "School management tools",
+  "Data dashboards",
+];
+
+const impact = [
+  { number: "100+", label: "Students taught" },
+  { number: "10+", label: "Workshops conducted" },
+  { number: "5+", label: "Schools reached" },
+  { number: "50+", label: "Projects completed" },
+];
 ---
 
-<PageLayout title="Teaching" description="Vincent Mugondora teaches software engineering, AI development, and system design through workshops and mentorship.">
-  <section class="hero">
-    <div class="container">
-      <span class="badge">Education</span>
-      <h1 class="hero__title">Teaching</h1>
-      <p class="hero__subtitle">
-        Helping developers build confidence through practical, project-based learning in software engineering, AI, and system design.
+<PageLayout title="Teaching" description="Vincent Mugondora teaches programming, AI, web development, and software engineering through practical, project-based learning in Zimbabwe.">
+  <!-- Hero -->
+  <section class="pt-[72px] py-16 md:py-24">
+    <div class="max-w-[1200px] mx-auto px-4 md:px-10">
+      <h1 class="font-display italic text-[48px] md:text-[72px] lg:text-[96px] text-[var(--color-text-primary)] leading-[1.05] font-bold tracking-tight">
+        Teaching people to <span class="marker-highlight">build</span>.
+      </h1>
+      <p class="font-body text-[16px] md:text-[18px] text-[var(--color-text-secondary)] mt-4 max-w-[640px] leading-relaxed">
+        I teach people how to build with technology — not just how to use it. Through practical, project-based learning in software engineering, AI, and web development.
       </p>
-    </div>
-  </section>
-
-  <section class="areas-section">
-    <div class="container">
-      <h2 class="section-heading">What I Teach</h2>
-      <div class="areas-grid">
-        <div class="area-card">
-          <div class="area-card__icon">
-            <Icon name="lucide:code" />
-          </div>
-          <h3 class="area-card__title">Software Engineering</h3>
-          <p class="area-card__text">Fundamentals, clean code, testing, and building production-ready applications.</p>
-        </div>
-        <div class="area-card">
-          <div class="area-card__icon">
-            <Icon name="lucide:bot" />
-          </div>
-          <h3 class="area-card__title">AI Development</h3>
-          <p class="area-card__text">Building AI agents, RAG systems, and integrating LLMs into real products.</p>
-        </div>
-        <div class="area-card">
-          <div class="area-card__icon">
-            <Icon name="lucide:boxes" />
-          </div>
-          <h3 class="area-card__title">System Design</h3>
-          <p class="area-card__text">Architecture patterns, scalability, performance, and technical decision-making.</p>
-        </div>
-        <div class="area-card">
-          <div class="area-card__icon">
-            <Icon name="lucide:globe" />
-          </div>
-          <h3 class="area-card__title">Web Development</h3>
-          <p class="area-card__text">Modern frameworks, TypeScript, performance optimization, and deployment.</p>
-        </div>
+      <div class="flex flex-col sm:flex-row sm:items-center gap-4 mt-8">
+        <a
+          href="#programs"
+          class="inline-flex items-center justify-center px-8 py-3 bg-[var(--color-primary)] text-white font-body text-[14px] font-medium rounded-[10px] hover:bg-[var(--color-primary-hover)] transition-colors duration-200"
+        >
+          View Programs
+        </a>
+        <a
+          href="/contact"
+          class="inline-flex items-center justify-center px-8 py-3 border border-[var(--color-card-border)] text-[var(--color-text-primary)] font-body text-[14px] font-medium rounded-[10px] hover:bg-[var(--color-secondary)] transition-colors duration-200"
+        >
+          Book a Workshop
+        </a>
       </div>
     </div>
   </section>
 
-  <section class="philosophy-section">
-    <div class="container">
-      <div class="philosophy-wrapper">
-        <h2 class="section-heading">Teaching Philosophy</h2>
-        <div class="philosophy-content">
-          <p>I believe in learning by building. Every concept is better understood when applied to a real problem, not an abstract exercise.</p>
-          <p>I meet students where they are — whether they're writing their first function or architecting distributed systems. The goal is always to build confidence alongside competence.</p>
-          <p>I focus on fundamentals that transfer across languages and frameworks. Tools change; thinking endures.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="cta-section">
-    <div class="container">
-      <div class="cta-wrapper">
-        <h2 class="cta__title">Work with me</h2>
-        <p class="cta__text">
-          Available for workshops, mentorship, and course development. Let's discuss how I can help your team or community grow.
+  <!-- Philosophy -->
+  <section class="bg-[var(--color-secondary)] py-16 md:py-24">
+    <div class="max-w-[900px] mx-auto px-4 md:px-10">
+      <h2 class="font-display italic text-[36px] md:text-[48px] text-[var(--color-text-primary)] mb-6 tracking-tight leading-tight">
+        How I <span class="scribble-circle">think</span> about teaching
+      </h2>
+      <div class="space-y-5 font-body text-[16px] md:text-[18px] text-[var(--color-text-secondary)] leading-relaxed">
+        <p>
+          I believe in learning by building. Every concept is better understood when applied to a real problem, not an abstract exercise.
         </p>
-        <a href="/contact" class="cta__btn">Get In Touch</a>
+        <p>
+          I meet students where they are — whether they're writing their first function or architecting distributed systems. The goal is always to build confidence alongside competence.
+        </p>
+        <p>
+          I focus on fundamentals that transfer across languages and frameworks. Tools change; thinking endures.
+        </p>
       </div>
+    </div>
+  </section>
+
+  <!-- What I Teach -->
+  <section class="py-16 md:py-24">
+    <div class="max-w-[1200px] mx-auto px-4 md:px-10">
+      <h2 class="font-display italic text-[36px] md:text-[48px] text-[var(--color-text-primary)] mb-10 tracking-tight leading-tight">
+        What I <span class="scribble-underline">teach</span>
+      </h2>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        {skillAreas.map((area) => (
+          <div class="bg-white rounded-[16px] border border-[var(--color-card-border)] p-6">
+            <h3 class="font-display italic text-[20px] font-bold text-[var(--color-text-primary)] tracking-tight">{area.title}</h3>
+            <p class="font-body text-[14px] text-[var(--color-text-secondary)] mt-2 leading-relaxed">{area.skills}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Who I Teach -->
+  <section class="bg-[var(--color-secondary)] py-16 md:py-24">
+    <div class="max-w-[1200px] mx-auto px-4 md:px-10">
+      <h2 class="font-display italic text-[36px] md:text-[48px] text-[var(--color-text-primary)] mb-10 tracking-tight leading-tight">
+        Who I <span class="marker-highlight">teach</span>
+      </h2>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        {audiences.map((aud) => (
+          <div class="bg-white rounded-[12px] border border-[var(--color-card-border)] p-5">
+            <h3 class="font-display italic text-[18px] font-bold text-[var(--color-text-primary)] tracking-tight">{aud.title}</h3>
+            <p class="font-body text-[13px] text-[var(--color-text-secondary)] mt-1.5 leading-relaxed">{aud.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- How I Teach -->
+  <section class="py-16 md:py-24">
+    <div class="max-w-[1200px] mx-auto px-4 md:px-10">
+      <h2 class="font-display italic text-[36px] md:text-[48px] text-[var(--color-text-primary)] mb-10 tracking-tight leading-tight">
+        How I <span class="scribble-circle">teach</span>
+      </h2>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        {methods.map((method) => (
+          <div class="bg-white rounded-[16px] border border-[var(--color-card-border)] p-6">
+            <h3 class="font-display italic text-[18px] font-bold text-[var(--color-text-primary)] tracking-tight">{method.title}</h3>
+            <p class="font-body text-[14px] text-[var(--color-text-secondary)] mt-2 leading-relaxed">{method.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Programs & Workshops -->
+  <section id="programs" class="bg-[var(--color-secondary)] py-16 md:py-24">
+    <div class="max-w-[1200px] mx-auto px-4 md:px-10">
+      <h2 class="font-display italic text-[36px] md:text-[48px] text-[var(--color-text-primary)] mb-10 tracking-tight leading-tight">
+        Programs & <span class="scribble-underline">workshops</span>
+      </h2>
+
+      <div class="space-y-5">
+        {programs.map((prog) => (
+          <div class="bg-white rounded-[16px] border border-[var(--color-card-border)] p-6 md:p-8 flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+            <div>
+              <h3 class="font-display italic text-[22px] md:text-[24px] font-bold text-[var(--color-text-primary)] tracking-tight">{prog.title}</h3>
+              <p class="font-body text-[14px] text-[var(--color-text-secondary)] mt-2 leading-relaxed max-w-[600px]">{prog.description}</p>
+            </div>
+            <span class="inline-flex items-center font-body text-[12px] font-medium px-3 py-1 rounded-full border border-[var(--color-card-border)] text-[var(--color-text-muted)] whitespace-nowrap shrink-0">
+              {prog.type}
+            </span>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- What Students Build -->
+  <section class="py-16 md:py-24">
+    <div class="max-w-[900px] mx-auto px-4 md:px-10">
+      <h2 class="font-display italic text-[36px] md:text-[48px] text-[var(--color-text-primary)] mb-8 tracking-tight leading-tight">
+        What students <span class="marker-highlight">build</span>
+      </h2>
+
+      <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
+        {studentProjects.map((project) => (
+          <div class="bg-[var(--color-secondary)] rounded-[10px] border border-[var(--color-card-border)] px-4 py-3 text-center">
+            <p class="font-body text-[14px] text-[var(--color-text-primary)] font-medium">{project}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Impact -->
+  <section class="bg-[var(--color-secondary)] py-16 md:py-24">
+    <div class="max-w-[900px] mx-auto px-4 md:px-10">
+      <h2 class="font-display italic text-[36px] md:text-[48px] text-[var(--color-text-primary)] mb-10 tracking-tight leading-tight">
+        Impact
+      </h2>
+
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+        {impact.map((item) => (
+          <div class="text-center">
+            <p class="font-display italic text-[36px] md:text-[44px] text-[var(--color-primary)] font-bold">{item.number}</p>
+            <p class="font-body text-[14px] text-[var(--color-text-secondary)] mt-1">{item.label}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Final CTA -->
+  <section class="py-20 md:py-28">
+    <div class="max-w-[800px] mx-auto px-4 md:px-10 text-center">
+      <h2 class="font-display italic text-[36px] md:text-[48px] text-[var(--color-text-primary)] mb-4 tracking-tight leading-tight">
+        Want me to teach at your <span class="scribble-circle">school</span> or event?
+      </h2>
+      <p class="font-body text-[16px] md:text-[18px] text-[var(--color-text-secondary)] leading-relaxed max-w-[600px] mx-auto">
+        Available for workshops, bootcamps, school programs, corporate training, mentorship, and hackathons.
+      </p>
+      <a
+        href="/contact"
+        class="inline-flex items-center justify-center px-8 py-3 bg-[var(--color-primary)] text-white font-body text-[16px] font-medium rounded-[10px] hover:bg-[var(--color-primary-hover)] active:scale-95 transition duration-200 mt-8"
+      >
+        Book a session &rarr;
+      </a>
     </div>
   </section>
 </PageLayout>
 
 <style>
-  .hero {
-    background: #f4f2ed;
-    padding: clamp(80px, 12vw, 140px) 0 clamp(48px, 6vw, 80px);
-  }
-
-  .container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 clamp(18px, 3vw, 36px);
-  }
-
-  .badge {
+  .marker-highlight {
+    position: relative;
     display: inline-block;
-    border-radius: 999px;
-    border: 1px solid #e4e0d8;
-    background: #fff;
-    font-size: 12px;
-    padding: 6px 16px;
-    color: #5f5f5f;
-    letter-spacing: 0.04em;
+    isolation: isolate;
+  }
+  .marker-highlight::before {
+    content: "";
+    position: absolute;
+    left: -0.08em;
+    right: -0.08em;
+    bottom: 0.05em;
+    height: 45%;
+    background-color: #FFB800;
+    border-radius: 20% 5% 15% 8%;
+    z-index: -1;
+    transform: rotate(-1deg);
   }
 
-  .hero__title {
-    font-family: "Lora Variable", "Lora", Georgia, serif;
-    font-weight: 500;
-    letter-spacing: -0.02em;
-    line-height: 1.06;
-    font-size: clamp(2.4rem, 5vw, 3.6rem);
-    color: #1b1b1b;
-    margin: 20px 0 0;
-  }
-
-  .hero__subtitle {
-    color: #5f5f5f;
-    font-size: 0.95rem;
-    line-height: 1.55;
-    max-width: 560px;
-    margin: 14px 0 0;
-  }
-
-  .section-heading {
-    font-family: "Lora Variable", "Lora", Georgia, serif;
-    font-weight: 500;
-    letter-spacing: -0.02em;
-    line-height: 1.06;
-    font-size: clamp(1.4rem, 3vw, 1.8rem);
-    color: #1b1b1b;
-    margin: 0 0 24px;
-  }
-
-  .areas-section {
-    padding: clamp(40px, 6vw, 80px) 0;
-  }
-
-  .areas-grid {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 16px;
-  }
-
-  @media (min-width: 640px) {
-    .areas-grid {
-      grid-template-columns: repeat(2, 1fr);
-    }
-  }
-
-  .area-card {
-    background: #fff;
-    border: 1px solid #e6e2db;
-    border-radius: 16px;
-    padding: clamp(20px, 3vw, 28px);
-    transition: box-shadow 0.2s, border-color 0.2s;
-  }
-
-  .area-card:hover {
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
-    border-color: #d4d0c8;
-  }
-
-  .area-card__icon {
-    width: 36px;
-    height: 36px;
-    color: #1b1b1b;
-    margin-bottom: 16px;
-  }
-
-  .area-card__icon :global(svg) {
-    width: 100%;
-    height: 100%;
-  }
-
-  .area-card__title {
-    font-family: "Lora Variable", "Lora", Georgia, serif;
-    font-weight: 500;
-    letter-spacing: -0.02em;
-    font-size: 1.15rem;
-    color: #1b1b1b;
-    margin: 0 0 8px;
-  }
-
-  .area-card__text {
-    color: #666;
-    font-size: 0.9rem;
-    line-height: 1.55;
-    margin: 0;
-  }
-
-  .philosophy-section {
-    padding: 0 0 clamp(40px, 6vw, 80px);
-  }
-
-  .philosophy-wrapper {
-    background: #f4f2ed;
-    border-radius: 20px;
-    padding: clamp(28px, 4vw, 48px) clamp(20px, 3vw, 34px);
-    max-width: 800px;
-  }
-
-  .philosophy-content {
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-  }
-
-  .philosophy-content p {
-    color: #5f5f5f;
-    font-size: 0.95rem;
-    line-height: 1.55;
-    margin: 0;
-  }
-
-  .cta-section {
-    padding: clamp(40px, 6vw, 80px) 0 clamp(60px, 8vw, 100px);
-  }
-
-  .cta-wrapper {
-    text-align: center;
-    max-width: 520px;
-    margin: 0 auto;
-  }
-
-  .cta__title {
-    font-family: "Lora Variable", "Lora", Georgia, serif;
-    font-weight: 500;
-    letter-spacing: -0.02em;
-    line-height: 1.06;
-    font-size: clamp(1.6rem, 3vw, 2.2rem);
-    color: #1b1b1b;
-    margin: 0 0 12px;
-  }
-
-  .cta__text {
-    color: #666;
-    font-size: 0.95rem;
-    line-height: 1.55;
-    margin: 0 0 28px;
-  }
-
-  .cta__btn {
+  .scribble-circle {
+    position: relative;
     display: inline-block;
-    background: #1b1b1b;
-    color: #fff;
-    border-radius: 999px;
-    padding: 14px 32px;
-    font-size: 0.9rem;
-    font-weight: 500;
-    text-decoration: none;
-    transition: background 0.2s;
+  }
+  .scribble-circle::after {
+    content: "";
+    position: absolute;
+    inset: -18% -12% -22% -12%;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 100' fill='none'><path d='M40 50 C 30 20, 80 8, 130 14 C 180 22, 195 55, 165 78 C 130 95, 60 92, 30 70 C 12 56, 18 32, 50 22' stroke='%2300CEB2' stroke-width='4' stroke-linecap='round'/></svg>");
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    transform: rotate(-2deg);
+    pointer-events: none;
+    z-index: -1;
   }
 
-  .cta__btn:hover {
-    background: #333;
+  .scribble-underline {
+    position: relative;
+    display: inline-block;
+  }
+  .scribble-underline::after {
+    content: "";
+    position: absolute;
+    left: -4%;
+    right: -4%;
+    bottom: -14px;
+    height: 12px;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 14' fill='none' preserveAspectRatio='none'><path d='M3 9 C 50 3, 110 12, 197 5' stroke='%231BB6F9' stroke-width='6' stroke-linecap='round'/></svg>");
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    transform: rotate(-2deg);
+    pointer-events: none;
   }
 </style>
