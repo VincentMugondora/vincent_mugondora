@@ -1,211 +1,317 @@
 ---
 import PageLayout from "@layouts/PageLayout.astro";
-import { Icon } from "astro-icon/components";
 import { getAllExperiments } from "@lib/content";
 
 const experiments = await getAllExperiments();
+
+const focusAreas = [
+  { title: "AI Agents", description: "Building systems that can reason, use tools, retrieve information and complete tasks." },
+  { title: "AI Engineering", description: "Turning LLM capabilities into reliable software systems." },
+  { title: "AI + WhatsApp", description: "Exploring how conversational AI can reach people through platforms they already use." },
+  { title: "AI for African Businesses", description: "Finding practical applications of AI for local businesses and entrepreneurs." },
+  { title: "AI + Education", description: "Exploring how AI can make technical learning more accessible." },
+];
+
+const featuredExperiments = [
+  {
+    number: "01",
+    title: "AI Opportunity Intelligence",
+    status: "Prototype",
+    description: "An experimental system exploring how AI can identify emerging business opportunities from news, market signals and local problems.",
+    exploring: ["LLM analysis", "Information retrieval", "Opportunity scoring", "African market intelligence"],
+    stack: ["Python", "FastAPI", "LLM", "PostgreSQL"],
+    slug: "ai-opportunity-intelligence",
+  },
+  {
+    number: "02",
+    title: "AI Engineering Copilot",
+    status: "Research",
+    description: "Exploring whether AI can help workers without traditional engineering degrees solve practical engineering problems.",
+    exploring: ["Domain-specific prompting", "Tool-use agents", "Knowledge retrieval", "Practical guidance"],
+    stack: ["Python", "LLM", "RAG", "FastAPI"],
+    slug: "ai-engineering-copilot",
+  },
+  {
+    number: "03",
+    title: "WhatsApp AI Assistant",
+    status: "Prototype",
+    description: "Exploring how AI-powered services can be delivered through WhatsApp rather than requiring users to learn a new application.",
+    exploring: ["Conversational AI", "WhatsApp integration", "African connectivity", "Accessibility"],
+    stack: ["Python", "WhatsApp API", "LLM", "Node.js"],
+    slug: "whatsapp-ai-assistant",
+  },
+];
+
+const africaSectors = [
+  { title: "Agriculture", description: "AI for farmers and agricultural businesses." },
+  { title: "Education", description: "AI-assisted learning and teaching." },
+  { title: "Small businesses", description: "Automation, customer support, marketing and analytics." },
+  { title: "Healthcare", description: "Information and administrative applications." },
+  { title: "Engineering", description: "AI assistance for technical workers." },
+  { title: "Financial services", description: "Automation and information systems." },
+];
+
+const currentQuestions = [
+  "Can AI make advanced technical knowledge accessible to workers without formal engineering degrees?",
+  "How can AI products work effectively on unreliable internet connections?",
+  "What does useful AI look like for a small business in Zimbabwe?",
+  "How can African developers build AI products without massive infrastructure budgets?",
+];
 ---
 
 <PageLayout title="AI Lab" description="AI experiments, agents, RAG systems, and automation projects by Vincent Mugondora.">
-  <section class="lab-hero">
-    <div class="lab-hero__inner">
-      <p class="badge"><Icon name="lucide:flask-conical" class="badge-icon" /> AI Lab</p>
-      <h1 class="lab-hero__title">Exploring AI agents, automation and intelligent systems</h1>
-      <p class="lab-hero__desc">
-        Research notes, experiments and builds around AI agents, RAG systems, automation, and intelligent solutions for African businesses and education.
+  <!-- Hero -->
+  <section class="pt-[72px] py-16 md:py-24">
+    <div class="max-w-[1200px] mx-auto px-4 md:px-10">
+      <h1 class="font-display italic text-[48px] md:text-[72px] lg:text-[96px] text-[var(--color-text-primary)] leading-[1.05] font-bold tracking-tight">
+        AI <span class="marker-highlight">Lab</span>
+      </h1>
+      <p class="font-display italic text-[24px] md:text-[28px] text-[var(--color-text-primary)] mt-4 leading-snug">
+        Where I experiment with what AI can become.
+      </p>
+      <p class="font-body text-[16px] md:text-[18px] text-[var(--color-text-secondary)] mt-4 max-w-[700px] leading-relaxed">
+        Experiments, prototypes, research, and ideas exploring AI engineering, intelligent systems, automation, and practical applications for Zimbabwe and Africa.
+      </p>
+      <a href="#experiments" class="inline-flex items-center font-body text-[14px] text-[var(--color-primary)] font-medium mt-6 hover:underline">
+        Explore Experiments &darr;
+      </a>
+    </div>
+  </section>
+
+  <!-- Current AI Focus -->
+  <section class="bg-[var(--color-secondary)] py-16 md:py-24">
+    <div class="max-w-[1200px] mx-auto px-4 md:px-10">
+      <h2 class="font-display italic text-[36px] md:text-[48px] text-[var(--color-text-primary)] mb-10 tracking-tight leading-tight">
+        What I'm <span class="scribble-circle">exploring</span>
+      </h2>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        {focusAreas.map((area) => (
+          <div class="bg-white rounded-[16px] border border-[var(--color-card-border)] p-6">
+            <h3 class="font-display italic text-[20px] font-bold text-[var(--color-text-primary)] tracking-tight mb-2">{area.title}</h3>
+            <p class="font-body text-[14px] text-[var(--color-text-secondary)] leading-relaxed">{area.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Featured Experiments -->
+  <section id="experiments" class="py-16 md:py-24">
+    <div class="max-w-[1200px] mx-auto px-4 md:px-10">
+      <h2 class="font-display italic text-[36px] md:text-[48px] text-[var(--color-text-primary)] mb-10 tracking-tight leading-tight">
+        Featured <span class="scribble-underline">Experiments</span>
+      </h2>
+
+      <div class="space-y-10">
+        {featuredExperiments.map((exp) => (
+          <div class="bg-white rounded-[16px] border border-[var(--color-card-border)] p-6 md:p-8">
+            <div class="flex flex-col md:flex-row md:items-start md:justify-between gap-4 mb-4">
+              <div>
+                <p class="font-body text-[12px] font-semibold uppercase tracking-widest text-[var(--color-primary)]">{exp.number}</p>
+                <h3 class="font-display italic text-[26px] md:text-[32px] font-bold text-[var(--color-text-primary)] tracking-tight mt-1">{exp.title}</h3>
+              </div>
+              <span class="inline-flex items-center font-body text-[12px] font-medium px-3 py-1 rounded-full border border-[var(--color-card-border)] text-[var(--color-text-muted)] whitespace-nowrap">
+                {exp.status}
+              </span>
+            </div>
+
+            <p class="font-body text-[16px] text-[var(--color-text-secondary)] leading-relaxed mb-5">{exp.description}</p>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div>
+                <p class="font-body text-[12px] font-semibold uppercase tracking-widest text-[var(--color-text-muted)] mb-2">Exploring</p>
+                <ul class="space-y-1">
+                  {exp.exploring.map((item) => (
+                    <li class="font-body text-[14px] text-[var(--color-text-secondary)]">&bull; {item}</li>
+                  ))}
+                </ul>
+              </div>
+              <div>
+                <p class="font-body text-[12px] font-semibold uppercase tracking-widest text-[var(--color-text-muted)] mb-2">Stack</p>
+                <div class="flex flex-wrap gap-2">
+                  {exp.stack.map((tech) => (
+                    <span class="font-body text-[12px] text-[var(--color-text-muted)] bg-[var(--color-secondary)] px-2.5 py-1 rounded">{tech}</span>
+                  ))}
+                </div>
+              </div>
+            </div>
+
+            <a href={`/ai-lab/${exp.slug}`} class="inline-flex items-center font-body text-[14px] text-[var(--color-primary)] font-medium mt-5 hover:underline">
+              Read Experiment &rarr;
+            </a>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- AI for Africa -->
+  <section class="bg-[var(--color-secondary)] py-16 md:py-24">
+    <div class="max-w-[1200px] mx-auto px-4 md:px-10">
+      <h2 class="font-display italic text-[36px] md:text-[48px] text-[var(--color-text-primary)] mb-4 tracking-tight leading-tight">
+        AI should work for the context it is <span class="marker-highlight">deployed</span> in.
+      </h2>
+      <p class="font-body text-[16px] md:text-[18px] text-[var(--color-text-secondary)] mb-10 max-w-[700px] leading-relaxed">
+        Exploring how AI can serve African users, businesses, and communities — not just replicate solutions built for other contexts.
+      </p>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        {africaSectors.map((sector) => (
+          <div class="bg-white rounded-[12px] border border-[var(--color-card-border)] p-5">
+            <h3 class="font-display italic text-[18px] font-bold text-[var(--color-text-primary)] tracking-tight">{sector.title}</h3>
+            <p class="font-body text-[13px] text-[var(--color-text-secondary)] mt-1">{sector.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Experiment Process -->
+  <section class="py-16 md:py-24">
+    <div class="max-w-[1200px] mx-auto px-4 md:px-10">
+      <h2 class="font-display italic text-[36px] md:text-[48px] text-[var(--color-text-primary)] mb-10 tracking-tight leading-tight">
+        How I <span class="scribble-circle">experiment</span>
+      </h2>
+
+      <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4">
+        {["Question", "Hypothesis", "Build", "Test", "Measure", "Learn"].map((step, i) => (
+          <div class="text-center">
+            <p class="font-display italic text-[28px] text-[var(--color-primary)] font-bold">{String(i + 1).padStart(2, '0')}</p>
+            <p class="font-body text-[14px] text-[var(--color-text-primary)] font-medium mt-1">{step}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Current Questions -->
+  <section class="bg-[var(--color-secondary)] py-16 md:py-24">
+    <div class="max-w-[900px] mx-auto px-4 md:px-10">
+      <h2 class="font-display italic text-[36px] md:text-[48px] text-[var(--color-text-primary)] mb-10 tracking-tight leading-tight">
+        Questions I'm trying to <span class="scribble-underline">answer</span>
+      </h2>
+
+      <div class="space-y-6">
+        {currentQuestions.map((question) => (
+          <div class="bg-white rounded-[12px] border border-[var(--color-card-border)] p-5">
+            <p class="font-body text-[16px] text-[var(--color-text-primary)] leading-relaxed italic">{question}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- AI Stack -->
+  <section class="py-16 md:py-24">
+    <div class="max-w-[900px] mx-auto px-4 md:px-10">
+      <h2 class="font-display italic text-[36px] md:text-[48px] text-[var(--color-text-primary)] mb-6 tracking-tight leading-tight">
+        Tools I experiment with
+      </h2>
+      <p class="font-body text-[16px] text-[var(--color-text-secondary)] leading-relaxed">
+        LLMs &middot; AI Agents &middot; RAG &middot; Python &middot; FastAPI &middot; PostgreSQL &middot; Vector Databases &middot; APIs &middot; Automation &middot; WhatsApp &middot; Cloud Infrastructure
       </p>
     </div>
   </section>
 
-  <section class="lab-content">
-    {experiments.length > 0 ? (
-      <div class="experiments-grid">
-        {experiments.map((experiment) => (
-          <article class="experiment-card">
-            <span class="experiment-card__status">{experiment.data.status}</span>
-            <h2>{experiment.data.title}</h2>
-            <p>{experiment.data.description}</p>
-            {experiment.data.technologies.length > 0 && (
-              <div class="experiment-card__tags">
-                {experiment.data.technologies.slice(0, 4).map((tech) => (
-                  <span>{tech}</span>
-                ))}
-              </div>
-            )}
-          </article>
-        ))}
+  <!-- All Experiments (from collection) -->
+  {experiments.length > 0 && (
+    <section class="bg-[var(--color-secondary)] py-16 md:py-24">
+      <div class="max-w-[1200px] mx-auto px-4 md:px-10">
+        <h2 class="font-display italic text-[36px] md:text-[48px] text-[var(--color-text-primary)] mb-10 tracking-tight leading-tight">
+          All Experiments
+        </h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {experiments.map((exp) => (
+            <div class="bg-white rounded-[16px] border border-[var(--color-card-border)] p-6">
+              <span class="inline-flex items-center font-body text-[11px] font-medium px-2.5 py-0.5 rounded-full border border-[var(--color-card-border)] text-[var(--color-text-muted)] mb-3">
+                {exp.data.status}
+              </span>
+              <h3 class="font-display italic text-[20px] font-bold text-[var(--color-text-primary)] tracking-tight">{exp.data.title}</h3>
+              <p class="font-body text-[14px] text-[var(--color-text-secondary)] mt-2 leading-relaxed">{exp.data.description}</p>
+              {exp.data.technologies.length > 0 && (
+                <div class="flex flex-wrap gap-1.5 mt-3">
+                  {exp.data.technologies.slice(0, 4).map((tech) => (
+                    <span class="font-body text-[11px] text-[var(--color-text-muted)] bg-[var(--color-secondary)] px-2 py-0.5 rounded">{tech}</span>
+                  ))}
+                </div>
+              )}
+            </div>
+          ))}
+        </div>
       </div>
-    ) : (
-      <div class="empty-state">
-        <Icon name="lucide:beaker" class="empty-state__icon" />
-        <h2>Experiments coming soon</h2>
-        <p>AI research notes and experiments are being documented.</p>
-      </div>
-    )}
+    </section>
+  )}
+
+  <!-- Final CTA -->
+  <section class="py-20 md:py-28">
+    <div class="max-w-[800px] mx-auto px-4 md:px-10 text-center">
+      <h2 class="font-display italic text-[36px] md:text-[48px] text-[var(--color-text-primary)] mb-4 tracking-tight leading-tight">
+        Have an interesting AI <span class="marker-highlight">problem</span>?
+      </h2>
+      <p class="font-body text-[16px] md:text-[18px] text-[var(--color-text-secondary)] leading-relaxed max-w-[600px] mx-auto">
+        I'm interested in practical AI applications, ambitious experiments, and problems worth exploring.
+      </p>
+      <a
+        href="/contact"
+        class="inline-flex items-center justify-center px-8 py-3 bg-[var(--color-primary)] text-white font-body text-[16px] font-medium rounded-[10px] hover:bg-[var(--color-primary-hover)] active:scale-95 transition duration-200 mt-8"
+      >
+        Let's explore it &rarr;
+      </a>
+    </div>
   </section>
 </PageLayout>
 
 <style>
-  .lab-hero {
-    width: min(1200px, 100%);
-    margin: 0 auto;
-    padding: 100px clamp(18px, 3vw, 36px) 0;
-  }
-
-  .lab-hero__inner {
-    background: #f4f2ed;
-    border-radius: 20px;
-    padding: clamp(30px, 5vw, 60px) clamp(20px, 3vw, 34px);
-    text-align: center;
-    max-width: 100%;
-  }
-
-  .badge {
-    margin: 0 auto;
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    padding: 6px 12px;
-    border: 1px solid #e4e0d8;
-    border-radius: 999px;
-    background: #fff;
-    color: #666;
-    font-size: 12px;
-  }
-
-  .badge-icon {
-    width: 14px;
-    height: 14px;
-  }
-
-  .lab-hero__title {
-    margin: 16px auto 0;
-    font-family: "Lora Variable", "Lora", Georgia, serif;
-    font-size: clamp(2rem, 4.5vw, 3.2rem);
-    line-height: 1.08;
-    letter-spacing: -0.02em;
-    font-weight: 500;
-    color: #151515;
-    max-width: 18ch;
-  }
-
-  .lab-hero__desc {
-    margin: 14px auto 0;
-    color: #5f5f5f;
-    line-height: 1.55;
-    max-width: 60ch;
-    font-size: 0.95rem;
-  }
-
-  .lab-content {
-    width: min(1200px, 100%);
-    margin: 28px auto 0;
-    padding: clamp(20px, 3vw, 34px);
-    background: #f4f2ed;
-    border-radius: 20px;
-  }
-
-  .experiments-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 12px;
-  }
-
-  .experiment-card {
-    background: #fff;
-    border: 1px solid #e6e2db;
-    border-radius: 16px;
-    padding: 18px;
-  }
-
-  .experiment-card__status {
+  .marker-highlight {
+    position: relative;
     display: inline-block;
-    padding: 4px 10px;
-    border: 1px solid #e4e0d8;
-    border-radius: 999px;
-    background: #f8f7f4;
-    color: #666;
-    font-size: 11px;
-    font-weight: 500;
-    margin-bottom: 12px;
+    isolation: isolate;
+  }
+  .marker-highlight::before {
+    content: "";
+    position: absolute;
+    left: -0.08em;
+    right: -0.08em;
+    bottom: 0.05em;
+    height: 45%;
+    background-color: #FFB800;
+    border-radius: 20% 5% 15% 8%;
+    z-index: -1;
+    transform: rotate(-1deg);
   }
 
-  .experiment-card h2 {
-    margin: 0;
-    font-size: 1.05rem;
-    font-weight: 600;
-    color: #1b1b1b;
+  .scribble-circle {
+    position: relative;
+    display: inline-block;
+  }
+  .scribble-circle::after {
+    content: "";
+    position: absolute;
+    inset: -18% -12% -22% -12%;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 100' fill='none'><path d='M40 50 C 30 20, 80 8, 130 14 C 180 22, 195 55, 165 78 C 130 95, 60 92, 30 70 C 12 56, 18 32, 50 22' stroke='%2300CEB2' stroke-width='4' stroke-linecap='round'/></svg>");
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    transform: rotate(-2deg);
+    pointer-events: none;
+    z-index: -1;
   }
 
-  .experiment-card p {
-    margin: 8px 0 0;
-    color: #666;
-    line-height: 1.48;
-    font-size: 0.9rem;
+  .scribble-underline {
+    position: relative;
+    display: inline-block;
   }
-
-  .experiment-card__tags {
-    margin-top: 14px;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 6px;
-  }
-
-  .experiment-card__tags span {
-    padding: 4px 8px;
-    border: 1px solid #e4e0d8;
-    border-radius: 999px;
-    font-size: 11px;
-    color: #666;
-  }
-
-  .empty-state {
-    text-align: center;
-    padding: 60px 20px;
-    border: 1px dashed #d8d3ca;
-    border-radius: 16px;
-    background: #fff;
-  }
-
-  .empty-state__icon {
-    width: 40px;
-    height: 40px;
-    color: #bbb;
-    margin: 0 auto 16px;
-  }
-
-  .empty-state h2 {
-    margin: 0;
-    font-family: "Lora Variable", "Lora", Georgia, serif;
-    font-size: 1.4rem;
-    font-weight: 500;
-    color: #333;
-  }
-
-  .empty-state p {
-    margin: 8px 0 0;
-    color: #888;
-    font-size: 0.95rem;
-  }
-
-  @media (max-width: 980px) {
-    .experiments-grid {
-      grid-template-columns: repeat(2, 1fr);
-    }
-  }
-
-  @media (max-width: 640px) {
-    .lab-hero {
-      padding: 80px 14px 0;
-    }
-
-    .experiments-grid {
-      grid-template-columns: 1fr;
-    }
-
-    .lab-content {
-      margin: 16px auto 0;
-      border-radius: 16px;
-    }
+  .scribble-underline::after {
+    content: "";
+    position: absolute;
+    left: -4%;
+    right: -4%;
+    bottom: -14px;
+    height: 12px;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 14' fill='none' preserveAspectRatio='none'><path d='M3 9 C 50 3, 110 12, 197 5' stroke='%231BB6F9' stroke-width='6' stroke-linecap='round'/></svg>");
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    transform: rotate(-2deg);
+    pointer-events: none;
   }
 </style>
