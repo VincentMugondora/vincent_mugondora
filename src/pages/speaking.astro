@@ -1,272 +1,368 @@
 ---
 import PageLayout from "@layouts/PageLayout.astro";
-import { Icon } from "astro-icon/components";
 import { getAllSpeaking } from "@lib/content";
 import { formatDate } from "@lib/utils";
 
 const events = await getAllSpeaking();
 
 const topics = [
-  "AI and Software Engineering",
-  "Building AI Products",
-  "Technology in Africa",
-  "Becoming a Software Engineer",
-  "System Design",
-  "Software Engineering Careers",
-  "Technology Entrepreneurship",
-  "Teaching Young Developers",
+  { title: "Artificial Intelligence", description: "Practical AI, AI agents, AI engineering, and the opportunities AI creates for Africa." },
+  { title: "Software Engineering", description: "Building better software, understanding architecture, and developing the mindset of an engineer." },
+  { title: "Technology in Africa", description: "Building technology around African realities, constraints and opportunities." },
+  { title: "The Future of Work", description: "How AI and automation are changing the skills people need to remain valuable." },
+  { title: "Technology Education", description: "Making software development and emerging technologies accessible to new learners." },
+  { title: "Entrepreneurship & Innovation", description: "Turning problems into products and identifying opportunities through technology." },
 ];
+
+const signatureTalks = [
+  {
+    title: "AI Beyond the Hype: Building Useful AI for Africa",
+    description: "Moving from AI demonstrations to practical systems that solve real problems in African contexts.",
+    format: "Keynote / Talk",
+    duration: "30–60 minutes",
+  },
+  {
+    title: "Can AI Turn Anyone Into an Engineer?",
+    description: "Exploring how AI could make technical knowledge accessible to people without traditional engineering backgrounds.",
+    format: "Keynote / Workshop",
+    duration: "45–90 minutes",
+  },
+  {
+    title: "Building Software for Africa",
+    description: "What changes when you build for users dealing with bandwidth, device, infrastructure and affordability constraints?",
+    format: "Talk",
+    duration: "30–60 minutes",
+  },
+  {
+    title: "From Idea to Product",
+    description: "A practical framework for turning real-world problems into technology products.",
+    format: "Workshop / Talk",
+    duration: "45–90 minutes",
+  },
+  {
+    title: "Teaching the Next Generation of Builders",
+    description: "What it takes to make technology education practical, accessible and relevant.",
+    format: "Education / Workshop",
+    duration: "30–60 minutes",
+  },
+];
+
+const audiences = [
+  { title: "Students", description: "Coding, AI, careers, innovation and building." },
+  { title: "Developers", description: "Software engineering, AI engineering and system design." },
+  { title: "Founders", description: "Technology, product development and opportunity discovery." },
+  { title: "Businesses", description: "AI adoption, automation and digital transformation." },
+  { title: "Educators", description: "Technology education and preparing learners for the future of work." },
+  { title: "Tech Communities", description: "Emerging technologies, African innovation and developer ecosystems." },
+];
+
+const workshops = [
+  {
+    title: "Building Your First AI Application",
+    duration: "2–3 hours",
+    topics: ["AI fundamentals", "Working with AI APIs", "Prompting techniques", "Building an AI feature", "Deployment"],
+  },
+  {
+    title: "Software Engineering Foundations",
+    duration: "2–3 hours",
+    topics: ["Architecture thinking", "APIs and data", "Databases", "Testing", "Deployment"],
+  },
+  {
+    title: "AI for Developers",
+    duration: "Half-day",
+    topics: ["AI agents", "RAG systems", "Tool use", "Integration patterns", "Production considerations"],
+  },
+];
+
+const formats = [
+  { name: "Keynote", duration: "30–60 min" },
+  { name: "Talk", duration: "20–45 min" },
+  { name: "Workshop", duration: "1–4 hours" },
+  { name: "Panel", duration: "30–90 min" },
+  { name: "Guest Lecture", duration: "30–90 min" },
+  { name: "Podcast / Interview", duration: "Flexible" },
+];
+
+const shortBio = "Vincent Mugondora is a Zimbabwean software engineer, AI builder, educator and entrepreneur focused on building practical technology and developing the next generation of African technologists.";
+
+const mediumBio = "Vincent Mugondora is a Zimbabwean software engineer, AI builder, educator and entrepreneur focused on building practical technology and developing the next generation of African technologists. He works across software engineering, artificial intelligence and technology education, with a particular interest in applying technology to real-world problems in Zimbabwe and Africa. Vincent builds AI-powered systems, teaches programming to students and professionals, and speaks about the intersection of technology, education and African innovation.";
 ---
 
-<PageLayout title="Speaking" description="Vincent Mugondora speaks about AI, software engineering, technology entrepreneurship, and building tech in Africa.">
-  <section class="hero">
-    <div class="container">
-      <span class="badge">Speaking</span>
-      <h1 class="hero__title">Speaking & Workshops</h1>
-      <p class="hero__subtitle">
-        I speak about AI, software engineering, technology entrepreneurship, and building tech careers — particularly in the African context.
+<PageLayout title="Speaking" description="Vincent Mugondora speaks about AI, software engineering, technology education, entrepreneurship, and building technology for Africa.">
+  <!-- Hero -->
+  <section class="pt-[72px] py-16 md:py-24">
+    <div class="max-w-[1200px] mx-auto px-4 md:px-10">
+      <h1 class="font-display italic text-[48px] md:text-[72px] lg:text-[96px] text-[var(--color-text-primary)] leading-[1.05] font-bold tracking-tight">
+        Ideas worth <span class="marker-highlight">sharing</span>.
+      </h1>
+      <p class="font-body text-[16px] md:text-[18px] text-[var(--color-text-secondary)] mt-4 max-w-[600px] leading-relaxed">
+        I speak about software engineering, AI, technology, education, entrepreneurship, and building for Africa.
       </p>
+      <div class="flex flex-col sm:flex-row sm:items-center gap-4 mt-8">
+        <a
+          href="#book"
+          class="inline-flex items-center justify-center px-8 py-3 bg-[var(--color-primary)] text-white font-body text-[14px] font-medium rounded-[10px] hover:bg-[var(--color-primary-hover)] transition-colors duration-200"
+        >
+          Invite Me to Speak
+        </a>
+      </div>
     </div>
   </section>
 
-  <section class="topics-section">
-    <div class="container">
-      <h2 class="section-heading">Topics I Cover</h2>
-      <div class="topics-grid">
+  <!-- Speaking Topics -->
+  <section class="bg-[var(--color-secondary)] py-16 md:py-24">
+    <div class="max-w-[1200px] mx-auto px-4 md:px-10">
+      <h2 class="font-display italic text-[36px] md:text-[48px] text-[var(--color-text-primary)] mb-10 tracking-tight leading-tight">
+        What I speak <span class="scribble-circle">about</span>
+      </h2>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
         {topics.map((topic) => (
-          <div class="topic-card">
-            <span class="topic-card__dot"></span>
-            <span class="topic-card__text">{topic}</span>
+          <div class="bg-white rounded-[16px] border border-[var(--color-card-border)] p-6">
+            <h3 class="font-display italic text-[20px] font-bold text-[var(--color-text-primary)] tracking-tight">{topic.title}</h3>
+            <p class="font-body text-[14px] text-[var(--color-text-secondary)] mt-2 leading-relaxed">{topic.description}</p>
           </div>
         ))}
       </div>
     </div>
   </section>
 
-  <section class="events-section">
-    <div class="container">
-      <h2 class="section-heading">Events</h2>
+  <!-- Signature Talks -->
+  <section class="py-16 md:py-24">
+    <div class="max-w-[1200px] mx-auto px-4 md:px-10">
+      <h2 class="font-display italic text-[36px] md:text-[48px] text-[var(--color-text-primary)] mb-10 tracking-tight leading-tight">
+        Signature <span class="scribble-underline">talks</span>
+      </h2>
+
+      <div class="space-y-6">
+        {signatureTalks.map((talk) => (
+          <div class="bg-white rounded-[16px] border border-[var(--color-card-border)] p-6 md:p-8">
+            <h3 class="font-display italic text-[24px] md:text-[28px] font-bold text-[var(--color-text-primary)] tracking-tight leading-snug">
+              {talk.title}
+            </h3>
+            <p class="font-body text-[16px] text-[var(--color-text-secondary)] mt-3 leading-relaxed">{talk.description}</p>
+            <div class="flex flex-wrap items-center gap-4 mt-4">
+              <span class="font-body text-[12px] font-medium text-[var(--color-text-muted)] bg-[var(--color-secondary)] px-3 py-1 rounded-full">{talk.format}</span>
+              <span class="font-body text-[12px] text-[var(--color-text-muted)]">{talk.duration}</span>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Who I Speak To -->
+  <section class="bg-[var(--color-secondary)] py-16 md:py-24">
+    <div class="max-w-[1200px] mx-auto px-4 md:px-10">
+      <h2 class="font-display italic text-[36px] md:text-[48px] text-[var(--color-text-primary)] mb-10 tracking-tight leading-tight">
+        Who I <span class="marker-highlight">speak</span> to
+      </h2>
+
+      <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4">
+        {audiences.map((aud) => (
+          <div class="bg-white rounded-[12px] border border-[var(--color-card-border)] p-4 text-center">
+            <h3 class="font-display italic text-[18px] font-bold text-[var(--color-text-primary)] tracking-tight">{aud.title}</h3>
+            <p class="font-body text-[12px] text-[var(--color-text-secondary)] mt-1 leading-relaxed">{aud.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Past Events -->
+  <section class="py-16 md:py-24">
+    <div class="max-w-[1200px] mx-auto px-4 md:px-10">
+      <h2 class="font-display italic text-[36px] md:text-[48px] text-[var(--color-text-primary)] mb-10 tracking-tight leading-tight">
+        Past <span class="scribble-underline">events</span>
+      </h2>
+
       {events.length > 0 ? (
-        <div class="events-list">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
           {events.map((event) => (
-            <div class="event-card">
-              <span class="event-card__date">{formatDate(event.data.date)}</span>
-              <h3 class="event-card__title">{event.data.title}</h3>
-              <p class="event-card__detail">
+            <div class="bg-white rounded-[16px] border border-[var(--color-card-border)] p-6">
+              <span class="font-body text-[12px] text-[var(--color-text-muted)]">{formatDate(event.data.date)}</span>
+              <h3 class="font-display italic text-[20px] font-bold text-[var(--color-text-primary)] tracking-tight mt-2">{event.data.title}</h3>
+              <p class="font-body text-[14px] text-[var(--color-text-secondary)] mt-1">
                 {event.data.event} {event.data.location && `— ${event.data.location}`}
               </p>
             </div>
           ))}
         </div>
       ) : (
-        <div class="empty-state">
-          <p class="empty-state__text">Upcoming events will be listed here.</p>
+        <div class="bg-[var(--color-secondary)] rounded-[16px] border border-dashed border-[var(--color-card-border)] p-10 text-center max-w-[600px]">
+          <p class="font-body text-[16px] text-[var(--color-text-secondary)]">Events will be listed here as they happen.</p>
         </div>
       )}
     </div>
   </section>
 
-  <section class="cta-section">
-    <div class="container">
-      <div class="cta-wrapper">
-        <h2 class="cta__title">Invite me to speak</h2>
-        <p class="cta__text">
-          Available for conferences, meetups, workshops, and corporate events. I tailor each talk to the audience and context.
-        </p>
-        <a href="/contact" class="cta__btn">Book a Talk</a>
+  <!-- Workshops -->
+  <section class="bg-[var(--color-secondary)] py-16 md:py-24">
+    <div class="max-w-[1200px] mx-auto px-4 md:px-10">
+      <h2 class="font-display italic text-[36px] md:text-[48px] text-[var(--color-text-primary)] mb-10 tracking-tight leading-tight">
+        Hands-on <span class="scribble-circle">workshops</span>
+      </h2>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        {workshops.map((ws) => (
+          <div class="bg-white rounded-[16px] border border-[var(--color-card-border)] p-6 flex flex-col">
+            <h3 class="font-display italic text-[20px] font-bold text-[var(--color-text-primary)] tracking-tight">{ws.title}</h3>
+            <p class="font-body text-[12px] font-medium text-[var(--color-primary)] mt-2">{ws.duration}</p>
+            <ul class="mt-4 space-y-1.5">
+              {ws.topics.map((t) => (
+                <li class="font-body text-[14px] text-[var(--color-text-secondary)]">&bull; {t}</li>
+              ))}
+            </ul>
+          </div>
+        ))}
       </div>
+    </div>
+  </section>
+
+  <!-- Speaking Formats -->
+  <section class="py-16 md:py-24">
+    <div class="max-w-[900px] mx-auto px-4 md:px-10">
+      <h2 class="font-display italic text-[36px] md:text-[48px] text-[var(--color-text-primary)] mb-8 tracking-tight leading-tight">
+        Formats
+      </h2>
+
+      <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3">
+        {formats.map((f) => (
+          <div class="text-center py-4">
+            <p class="font-body text-[14px] font-medium text-[var(--color-text-primary)]">{f.name}</p>
+            <p class="font-body text-[12px] text-[var(--color-text-muted)] mt-1">{f.duration}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Speaker Bio -->
+  <section class="bg-[var(--color-secondary)] py-16 md:py-24">
+    <div class="max-w-[900px] mx-auto px-4 md:px-10">
+      <h2 class="font-display italic text-[36px] md:text-[48px] text-[var(--color-text-primary)] mb-8 tracking-tight leading-tight">
+        Speaker <span class="marker-highlight">bio</span>
+      </h2>
+
+      <div class="space-y-8">
+        <div>
+          <p class="font-body text-[12px] font-semibold uppercase tracking-widest text-[var(--color-text-muted)] mb-3">Short Bio</p>
+          <div class="bg-white rounded-[12px] border border-[var(--color-card-border)] p-5">
+            <p class="font-body text-[15px] text-[var(--color-text-primary)] leading-relaxed">{shortBio}</p>
+          </div>
+        </div>
+
+        <div>
+          <p class="font-body text-[12px] font-semibold uppercase tracking-widest text-[var(--color-text-muted)] mb-3">Medium Bio</p>
+          <div class="bg-white rounded-[12px] border border-[var(--color-card-border)] p-5">
+            <p class="font-body text-[15px] text-[var(--color-text-primary)] leading-relaxed">{mediumBio}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Why Invite Me -->
+  <section class="py-16 md:py-24">
+    <div class="max-w-[1200px] mx-auto px-4 md:px-10">
+      <h2 class="font-display italic text-[36px] md:text-[48px] text-[var(--color-text-primary)] mb-10 tracking-tight leading-tight">
+        What I bring to the <span class="scribble-circle">room</span>
+      </h2>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div class="bg-white rounded-[16px] border border-[var(--color-card-border)] p-6">
+          <h3 class="font-display italic text-[20px] font-bold text-[var(--color-text-primary)] tracking-tight">Practical</h3>
+          <p class="font-body text-[14px] text-[var(--color-text-secondary)] mt-2 leading-relaxed">I focus on real applications rather than technology hype.</p>
+        </div>
+        <div class="bg-white rounded-[16px] border border-[var(--color-card-border)] p-6">
+          <h3 class="font-display italic text-[20px] font-bold text-[var(--color-text-primary)] tracking-tight">Technical</h3>
+          <p class="font-body text-[14px] text-[var(--color-text-secondary)] mt-2 leading-relaxed">I can take complex technical concepts and make them understandable.</p>
+        </div>
+        <div class="bg-white rounded-[16px] border border-[var(--color-card-border)] p-6">
+          <h3 class="font-display italic text-[20px] font-bold text-[var(--color-text-primary)] tracking-tight">African perspective</h3>
+          <p class="font-body text-[14px] text-[var(--color-text-secondary)] mt-2 leading-relaxed">My work is grounded in the realities and opportunities of Zimbabwe and Africa.</p>
+        </div>
+        <div class="bg-white rounded-[16px] border border-[var(--color-card-border)] p-6">
+          <h3 class="font-display italic text-[20px] font-bold text-[var(--color-text-primary)] tracking-tight">Interactive</h3>
+          <p class="font-body text-[14px] text-[var(--color-text-secondary)] mt-2 leading-relaxed">My sessions include demonstrations, discussions and hands-on activities.</p>
+        </div>
+        <div class="bg-white rounded-[16px] border border-[var(--color-card-border)] p-6">
+          <h3 class="font-display italic text-[20px] font-bold text-[var(--color-text-primary)] tracking-tight">Builder perspective</h3>
+          <p class="font-body text-[14px] text-[var(--color-text-secondary)] mt-2 leading-relaxed">I speak from experience building and experimenting with technology.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Book Vincent -->
+  <section id="book" class="bg-[var(--color-secondary)] py-20 md:py-28">
+    <div class="max-w-[800px] mx-auto px-4 md:px-10 text-center">
+      <h2 class="font-display italic text-[36px] md:text-[48px] text-[var(--color-text-primary)] mb-4 tracking-tight leading-tight">
+        Invite Vincent to <span class="marker-highlight">speak</span>
+      </h2>
+      <p class="font-body text-[16px] md:text-[18px] text-[var(--color-text-secondary)] leading-relaxed max-w-[600px] mx-auto">
+        Have an event, workshop, conference, school program, podcast or panel where you'd like me to contribute?
+      </p>
+      <a
+        href="/contact"
+        class="inline-flex items-center justify-center px-8 py-3 bg-[var(--color-primary)] text-white font-body text-[16px] font-medium rounded-[10px] hover:bg-[var(--color-primary-hover)] active:scale-95 transition duration-200 mt-8"
+      >
+        Request a Speaking Engagement &rarr;
+      </a>
     </div>
   </section>
 </PageLayout>
 
 <style>
-  .hero {
-    background: #f4f2ed;
-    padding: clamp(80px, 12vw, 140px) 0 clamp(48px, 6vw, 80px);
-  }
-
-  .container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 clamp(18px, 3vw, 36px);
-  }
-
-  .badge {
+  .marker-highlight {
+    position: relative;
     display: inline-block;
-    border-radius: 999px;
-    border: 1px solid #e4e0d8;
-    background: #fff;
-    font-size: 12px;
-    padding: 6px 16px;
-    color: #5f5f5f;
-    letter-spacing: 0.04em;
+    isolation: isolate;
+  }
+  .marker-highlight::before {
+    content: "";
+    position: absolute;
+    left: -0.08em;
+    right: -0.08em;
+    bottom: 0.05em;
+    height: 45%;
+    background-color: #FFB800;
+    border-radius: 20% 5% 15% 8%;
+    z-index: -1;
+    transform: rotate(-1deg);
   }
 
-  .hero__title {
-    font-family: "Lora Variable", "Lora", Georgia, serif;
-    font-weight: 500;
-    letter-spacing: -0.02em;
-    line-height: 1.06;
-    font-size: clamp(2.4rem, 5vw, 3.6rem);
-    color: #1b1b1b;
-    margin: 20px 0 0;
-  }
-
-  .hero__subtitle {
-    color: #5f5f5f;
-    font-size: 0.95rem;
-    line-height: 1.55;
-    max-width: 560px;
-    margin: 14px 0 0;
-  }
-
-  .section-heading {
-    font-family: "Lora Variable", "Lora", Georgia, serif;
-    font-weight: 500;
-    letter-spacing: -0.02em;
-    line-height: 1.06;
-    font-size: clamp(1.4rem, 3vw, 1.8rem);
-    color: #1b1b1b;
-    margin: 0 0 24px;
-  }
-
-  .topics-section {
-    padding: clamp(40px, 6vw, 80px) 0;
-  }
-
-  .topics-grid {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 12px;
-    max-width: 800px;
-  }
-
-  @media (min-width: 640px) {
-    .topics-grid {
-      grid-template-columns: repeat(2, 1fr);
-    }
-  }
-
-  .topic-card {
-    background: #fff;
-    border: 1px solid #e6e2db;
-    border-radius: 16px;
-    padding: 16px 20px;
-    display: flex;
-    align-items: center;
-    gap: 12px;
-  }
-
-  .topic-card__dot {
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-    background: #3fbf61;
-    flex-shrink: 0;
-  }
-
-  .topic-card__text {
-    font-size: 0.95rem;
-    color: #1b1b1b;
-  }
-
-  .events-section {
-    background: #f4f2ed;
-    border-radius: 20px;
-    margin: 0 clamp(18px, 3vw, 36px);
-    padding: clamp(28px, 4vw, 48px) clamp(20px, 3vw, 34px);
-  }
-
-  .events-list {
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-    max-width: 800px;
-  }
-
-  .event-card {
-    background: #fff;
-    border: 1px solid #e6e2db;
-    border-radius: 16px;
-    padding: clamp(18px, 3vw, 28px);
-  }
-
-  .event-card__date {
-    font-size: 12px;
-    color: #999;
-    letter-spacing: 0.02em;
-  }
-
-  .event-card__title {
-    font-family: "Lora Variable", "Lora", Georgia, serif;
-    font-weight: 500;
-    letter-spacing: -0.02em;
-    font-size: 1.1rem;
-    color: #1b1b1b;
-    margin: 8px 0 6px;
-  }
-
-  .event-card__detail {
-    font-size: 0.9rem;
-    color: #666;
-    line-height: 1.5;
-    margin: 0;
-  }
-
-  .empty-state {
-    background: #fff;
-    border: 1px dashed #e6e2db;
-    border-radius: 16px;
-    padding: clamp(32px, 4vw, 56px);
-    text-align: center;
-  }
-
-  .empty-state__text {
-    color: #666;
-    font-size: 0.95rem;
-    margin: 0;
-  }
-
-  .cta-section {
-    padding: clamp(60px, 8vw, 100px) 0;
-  }
-
-  .cta-wrapper {
-    text-align: center;
-    max-width: 520px;
-    margin: 0 auto;
-  }
-
-  .cta__title {
-    font-family: "Lora Variable", "Lora", Georgia, serif;
-    font-weight: 500;
-    letter-spacing: -0.02em;
-    line-height: 1.06;
-    font-size: clamp(1.6rem, 3vw, 2.2rem);
-    color: #1b1b1b;
-    margin: 0 0 12px;
-  }
-
-  .cta__text {
-    color: #666;
-    font-size: 0.95rem;
-    line-height: 1.55;
-    margin: 0 0 28px;
-  }
-
-  .cta__btn {
+  .scribble-circle {
+    position: relative;
     display: inline-block;
-    background: #1b1b1b;
-    color: #fff;
-    border-radius: 999px;
-    padding: 14px 32px;
-    font-size: 0.9rem;
-    font-weight: 500;
-    text-decoration: none;
-    transition: background 0.2s;
+  }
+  .scribble-circle::after {
+    content: "";
+    position: absolute;
+    inset: -18% -12% -22% -12%;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 100' fill='none'><path d='M40 50 C 30 20, 80 8, 130 14 C 180 22, 195 55, 165 78 C 130 95, 60 92, 30 70 C 12 56, 18 32, 50 22' stroke='%2300CEB2' stroke-width='4' stroke-linecap='round'/></svg>");
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    transform: rotate(-2deg);
+    pointer-events: none;
+    z-index: -1;
   }
 
-  .cta__btn:hover {
-    background: #333;
+  .scribble-underline {
+    position: relative;
+    display: inline-block;
+  }
+  .scribble-underline::after {
+    content: "";
+    position: absolute;
+    left: -4%;
+    right: -4%;
+    bottom: -14px;
+    height: 12px;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 14' fill='none' preserveAspectRatio='none'><path d='M3 9 C 50 3, 110 12, 197 5' stroke='%231BB6F9' stroke-width='6' stroke-linecap='round'/></svg>");
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    transform: rotate(-2deg);
+    pointer-events: none;
   }
 </style>
