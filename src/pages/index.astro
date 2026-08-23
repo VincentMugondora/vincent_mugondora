@@ -39,9 +39,10 @@ const personJsonLd = {
 <PageLayout>
   <script is:inline type="application/ld+json" set:html={JSON.stringify(personJsonLd)} />
   <!-- Hero -->
-  <section class="w-full max-w-full overflow-x-hidden pt-[72px] h-screen flex items-center">
-    <div class="max-w-[1200px] mx-auto px-4 md:px-10 py-10 md:py-16 text-center box-border w-full">
-      <h1 class="font-display italic text-[56px] md:text-[80px] lg:text-[110px] text-[var(--color-text-primary)] leading-[1.05] font-bold tracking-tight break-words">
+  <section class="relative w-full min-h-screen flex items-center justify-center overflow-hidden">
+    <div class="absolute inset-0 bg-gradient-to-b from-white via-white to-[var(--color-secondary)] opacity-40"></div>
+    <div class="relative max-w-[1200px] mx-auto px-4 md:px-10 text-center w-full">
+      <h1 class="font-display italic text-[56px] md:text-[80px] lg:text-[110px] text-[var(--color-text-primary)] leading-[1.05] font-bold tracking-tight">
         Vincent Mugondora
       </h1>
 
