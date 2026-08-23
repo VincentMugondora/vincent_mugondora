@@ -12,62 +12,37 @@
 }
 
 @theme {
-  --color-surface: #F5F4F0;
-  --color-surface-alt: #FAF9F7;
-  --color-dark: #111111;
-  --color-dark-800: #1A1A1A;
-  --color-dark-900: #0F0F0F;
-  --color-orange: #E6513A;
-  --color-orange-50: #FDECE9;
-  --color-orange-600: #C73F28;
-  --color-midnight: #0b1220;
-  --color-electric: #2563eb;
-  --color-gold: #f4b942;
-  --color-offwhite: #f8fafc;
-  --color-slate-brand: #1e293b;
-  --color-muted: #64748b;
+  --color-background: #ffffff;
+  --color-primary: hsl(316 22% 37%);
+  --color-primary-foreground: #ffffff;
+  --color-primary-hover: hsl(316 21% 30%);
+  --color-secondary: hsl(220 14% 96%);
+  --color-footer: hsl(228 18% 17%);
+  --color-divider: hsl(220 13% 91%);
+  --color-card-border: hsl(0 0% 93%);
+  --color-text-primary: hsl(0 0% 6.7%);
+  --color-text-secondary: hsl(0 0% 33.3%);
+  --color-text-muted: hsl(0 0% 54.1%);
+  --color-highlight-yellow: hsl(37 95% 59%);
+  --color-highlight-blue: hsl(197 95% 54%);
+  --color-highlight-green: hsl(168 100% 40%);
 
-  --font-display: "Bebas Neue", sans-serif;
-  --font-heading: "Bebas Neue", sans-serif;
-  --font-body: "Inter Variable", "Inter", system-ui, sans-serif;
-  --font-mono: "JetBrains Mono Variable", "JetBrains Mono", ui-monospace, monospace;
-
-  --text-display: 4.5rem;
-  --text-h1: 3.5rem;
-  --text-h2: 2.5rem;
-  --text-h3: 1.875rem;
-  --text-h4: 1.5rem;
-  --text-h5: 1.25rem;
-  --text-body-lg: 1.125rem;
-  --text-body: 1rem;
-  --text-body-sm: 0.875rem;
-  --text-caption: 0.75rem;
+  --font-display: "Caveat", cursive;
+  --font-body: "Inter", sans-serif;
 }
 
 :root {
-  --surface: var(--color-surface);
-  --surface-elevated: #ffffff;
-  --text-primary: #111111;
-  --text-secondary: #666666;
-  --border: #e2e8f0;
-}
-
-:root.dark {
-  --surface: var(--color-dark);
-  --surface-elevated: #1A1A1A;
-  --text-primary: #e2e8f0;
-  --text-secondary: #94a3b8;
-  --border: #1e293b;
+  scroll-behavior: smooth;
 }
 
 body {
   font-family: var(--font-body);
-  background-color: var(--color-surface);
-  color: #111111;
+  background-color: var(--color-background);
+  color: var(--color-text-primary);
   -webkit-font-smoothing: antialiased;
 }
 
 ::selection {
-  background-color: var(--color-orange);
+  background-color: var(--color-primary);
   color: #ffffff;
 }

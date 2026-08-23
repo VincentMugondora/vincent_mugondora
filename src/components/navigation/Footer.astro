@@ -2,185 +2,64 @@
 import { siteConfig } from "@config/site";
 ---
 
-<footer class="site-footer">
-  <div class="footer__inner">
-    <div class="footer__grid">
-      <div class="footer__brand-col">
-        <a href="/" class="footer__logo">VM.</a>
-        <p class="footer__tagline">
-          Vincent Mugondora — Software Engineer, AI Builder, Educator. Available for freelance opportunities and consulting.
-        </p>
+<footer class="bg-[var(--color-footer)] text-white overflow-hidden rounded-t-[16px] md:rounded-t-[120px]">
+  <div class="max-w-[1200px] mx-auto px-6 md:px-10 pt-24 md:pt-32 pb-16 md:pb-20">
+    <div class="grid grid-cols-1 md:grid-cols-[1fr_auto_auto] gap-12 md:gap-20">
+      <!-- Left: Tagline -->
+      <div>
+        <h2 class="font-[var(--font-display)] text-[32px] md:text-[40px] leading-tight text-white mb-6">
+          Let's build better digital products together.
+        </h2>
+        <a
+          href="/contact"
+          class="inline-flex w-full md:w-auto items-center justify-center px-8 py-3 bg-white text-[var(--color-footer)] font-[var(--font-body)] text-[16px] font-medium rounded-[10px] hover:bg-gray-100 transition-colors duration-200 md:max-w-[280px]"
+        >
+          Get in Touch
+        </a>
       </div>
 
-      <div class="footer__nav-col">
-        <h4 class="footer__heading">Navigation</h4>
-        <ul>
-          <li><a href="/about">About</a></li>
-          <li><a href="/work">Work</a></li>
-          <li><a href="/services">Services</a></li>
-          <li><a href="/writing">Writing</a></li>
-          <li><a href="/speaking">Speaking</a></li>
-          <li><a href="/teaching">Teaching</a></li>
-          <li><a href="/ai-lab">AI Lab</a></li>
-          <li><a href="/now">Now</a></li>
-        </ul>
+      <!-- Quick Links -->
+      <div>
+        <h3 class="font-[var(--font-display)] text-[24px] font-bold mb-4">Quick Links</h3>
+        <div class="flex flex-col gap-2">
+          <a href="/work" class="font-[var(--font-body)] text-[16px] text-gray-300 hover:text-white transition-colors">Work</a>
+          <a href="/about" class="font-[var(--font-body)] text-[16px] text-gray-300 hover:text-white transition-colors">About</a>
+          <a href="/writing" class="font-[var(--font-body)] text-[16px] text-gray-300 hover:text-white transition-colors">Writing</a>
+          <a href="/contact" class="font-[var(--font-body)] text-[16px] text-gray-300 hover:text-white transition-colors">Contact</a>
+        </div>
       </div>
 
-      <div class="footer__services-col">
-        <h4 class="footer__heading">Services</h4>
-        <ul>
-          <li><a href="/services/software-development">Software Development</a></li>
-          <li><a href="/services/web-development">Web Development</a></li>
-          <li><a href="/services/ai-solutions">AI Solutions</a></li>
-          <li><a href="/services/ai-automation">AI Automation</a></li>
-        </ul>
-      </div>
-
-      <div class="footer__connect-col">
-        <h4 class="footer__heading">Connect</h4>
-        <ul>
-          <li><a href={`mailto:${siteConfig.email}`}>Email</a></li>
-          <li><a href={siteConfig.phoneHref}>Phone</a></li>
-          <li><a href="https://twitter.com/vincemugondora" target="_blank" rel="noopener noreferrer">Twitter</a></li>
-          <li><a href={siteConfig.linkedinUrl} target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
-          <li><a href={siteConfig.githubUrl} target="_blank" rel="noopener noreferrer">GitHub</a></li>
-          <li style="margin-top: 0.5rem;"><a href="https://www.f6s.com/member/vincent-mugondora?follow=1" target="_blank" title="Follow vincent mugondora on F6S"><img src="https://www.f6s.com/images/f6s-follow-primary.png" border="0" width="78" height="22" alt="Follow vincent mugondora on F6S" style="width: 78px; height: 22px; padding: 0px; margin: 0px;" /></a></li>
-        </ul>
+      <!-- Contact -->
+      <div>
+        <h3 class="font-[var(--font-display)] text-[24px] font-bold mb-4">Contact</h3>
+        <div class="flex flex-col gap-3">
+          <a href={`mailto:${siteConfig.email}`} class="flex items-center gap-2 font-[var(--font-body)] text-[16px] text-gray-300 hover:text-white transition-colors">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+            {siteConfig.email}
+          </a>
+          <a href={siteConfig.phoneHref} class="flex items-center gap-2 font-[var(--font-body)] text-[16px] text-gray-300 hover:text-white transition-colors">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            +263 777 530 322
+          </a>
+          <a href={siteConfig.linkedinUrl} target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 font-[var(--font-body)] text-[16px] text-gray-300 hover:text-white transition-colors">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg>
+            Vincent Mugondora
+          </a>
+          <a href={siteConfig.githubUrl} target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 font-[var(--font-body)] text-[16px] text-gray-300 hover:text-white transition-colors">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg>
+            vincentmugondora
+          </a>
+        </div>
       </div>
     </div>
+  </div>
 
-    <div class="footer__bottom">
-      <span>&copy; {new Date().getFullYear()} Vincent Mugondora. All rights reserved.</span>
-      <span>Built with purpose.</span>
+  <!-- Bottom bar -->
+  <div class="border-t border-gray-600">
+    <div class="max-w-[1200px] mx-auto px-6 md:px-10 py-4">
+      <p class="font-[var(--font-body)] text-[14px] text-gray-400 text-center md:text-left">
+        &copy; 2026 Vincent Mugondora. All rights reserved.
+      </p>
     </div>
-
-    <div class="footer__watermark" aria-hidden="true">VINCENT</div>
   </div>
 </footer>
-
-<style>
-  .site-footer {
-    background: #111;
-    color: #fff;
-    padding: 5rem 1.5rem 2.5rem;
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
-    background-size: 40px 40px;
-    background-image:
-      linear-gradient(to right, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
-      linear-gradient(to bottom, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
-  }
-
-  @media (min-width: 768px) {
-    .site-footer {
-      padding: 5rem 3rem 2.5rem;
-    }
-  }
-
-  .footer__inner {
-    max-width: 80rem;
-    margin: 0 auto;
-  }
-
-  .footer__grid {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 3rem;
-    padding-bottom: 5rem;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-    margin-bottom: 5rem;
-  }
-
-  @media (min-width: 768px) {
-    .footer__grid {
-      grid-template-columns: 2fr 1fr 1fr 1fr;
-    }
-  }
-
-  .footer__logo {
-    font-family: var(--font-display);
-    font-size: 3rem;
-    letter-spacing: 0.05em;
-    color: #fff;
-    text-decoration: none;
-    display: block;
-    margin-bottom: 1.5rem;
-  }
-
-  .footer__tagline {
-    font-family: var(--font-mono);
-    color: #9ca3af;
-    font-size: 0.875rem;
-    line-height: 1.6;
-    max-width: 24rem;
-    margin: 0;
-  }
-
-  .footer__heading {
-    font-family: var(--font-mono);
-    font-size: 0.75rem;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    color: var(--color-orange);
-    margin: 0 0 1.5rem;
-  }
-
-  .footer__nav-col ul,
-  .footer__services-col ul,
-  .footer__connect-col ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-  }
-
-  .footer__nav-col a,
-  .footer__services-col a,
-  .footer__connect-col a {
-    font-family: var(--font-mono);
-    font-size: 0.875rem;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    color: #9ca3af;
-    text-decoration: none;
-    transition: color 0.15s;
-  }
-
-  .footer__nav-col a:hover,
-  .footer__services-col a:hover,
-  .footer__connect-col a:hover {
-    color: #fff;
-  }
-
-  .footer__bottom {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-    align-items: center;
-    font-family: var(--font-mono);
-    font-size: 0.75rem;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    color: #6b7280;
-  }
-
-  @media (min-width: 768px) {
-    .footer__bottom {
-      flex-direction: row;
-      justify-content: space-between;
-    }
-  }
-
-  .footer__watermark {
-    margin-top: 5rem;
-    text-align: center;
-    font-family: var(--font-display);
-    font-size: 15vw;
-    line-height: 1;
-    letter-spacing: -0.03em;
-    opacity: 0.05;
-    pointer-events: none;
-    user-select: none;
-  }
-</style>

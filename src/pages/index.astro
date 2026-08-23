@@ -1,175 +1,115 @@
 ---
 import PageLayout from "@layouts/PageLayout.astro";
-import { Icon } from "astro-icon/components";
 import { siteConfig } from "@config/site";
-import { getPublishedPosts } from "@lib/content";
-
-const heroImage = "/vincent.avif";
-
-const posts = await getPublishedPosts();
-const recentPosts = posts.slice(0, 3);
 ---
 
 <PageLayout>
   <!-- Hero Section -->
-  <section class="hero">
-    <div class="hero__container">
-      <div class="hero__content">
-        <div class="hero__badge">Software Developer &bull; AI Builder</div>
-        <h1 class="hero__title">
-          <span class="hero__title-first">Vincent</span>
-          <span class="hero__title-last">Mugondora</span>
-        </h1>
-        <p class="hero__tagline">Build better software, faster.</p>
-        <div class="hero__actions">
-          <a class="hero__btn hero__btn--dark" href="/work">View Work</a>
-          <a class="hero__btn hero__btn--orange" href="/contact">Let's Work Together</a>
-        </div>
-      </div>
-      <div class="hero__media">
-        <div class="hero__image-frame">
-          <img
-            src={heroImage}
-            alt="Vincent Mugondora"
-            loading="eager"
-            fetchpriority="high"
-            class="hero__img"
-          />
-        </div>
-      </div>
-    </div>
-  </section>
+  <section class="w-full max-w-full overflow-x-hidden pt-[72px]">
+    <div class="max-w-[1200px] mx-auto px-4 md:px-10 py-16 md:py-24 text-center box-border w-full">
+      <h1 class="font-[var(--font-display)] text-[48px] md:text-[72px] lg:text-[96px] text-[var(--color-text-primary)] leading-[1.05] font-bold tracking-tight">
+        Hi I'm Vincent Mugondora, a{" "}
+        <span class="relative inline-block">
+          <span class="relative z-10">Software Developer</span>
+          <span class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[105%] h-[1.1em] max-w-none pointer-events-none -z-10 rounded-[50%] border-[3px] border-[var(--color-primary)]"></span>
+        </span>
+      </h1>
 
-  <!-- Credibility Strip -->
-  <section class="credibility-strip" aria-label="Core values">
-    <div class="credibility-strip__track">
-      <span>Building</span>
-      <span class="credibility-strip__dot">&bull;</span>
-      <span>Teaching</span>
-      <span class="credibility-strip__dot">&bull;</span>
-      <span>Learning</span>
-      <span class="credibility-strip__dot">&bull;</span>
-      <span>Sharing</span>
-      <span class="credibility-strip__dot">&bull;</span>
-      <span>Building</span>
-      <span class="credibility-strip__dot">&bull;</span>
-      <span>Teaching</span>
-      <span class="credibility-strip__dot">&bull;</span>
-      <span>Learning</span>
-      <span class="credibility-strip__dot">&bull;</span>
-      <span>Sharing</span>
-    </div>
-  </section>
+      <p class="font-[var(--font-body)] text-[18px] text-[var(--color-text-secondary)] mt-8 max-w-[1100px] mx-auto leading-relaxed">
+        I build intelligent software solutions, integrate AI into real-world applications, and teach technology to help others grow.
+      </p>
 
-  <!-- What I Do -->
-  <section class="what-i-do" id="services">
-    <div class="section-container">
-      <div class="section-header">
-        <div class="section-header__left">
-          <div class="section-number section-number--orange">01</div>
-          <h2 class="section-title">What I Do</h2>
-        </div>
-        <p class="section-subtitle">Solving problems through code and communication.</p>
-      </div>
-
-      <div class="services-grid">
-        <div class="service-card">
-          <div class="service-card__icon"><Icon name="lucide:monitor" /></div>
-          <h3 class="service-card__title">Software Development</h3>
-          <p class="service-card__text">Building robust, scalable applications from frontend interfaces to backend systems.</p>
-          <div class="service-card__bar"></div>
-        </div>
-
-        <div class="service-card service-card--dark">
-          <div class="service-card__glow"></div>
-          <div class="service-card__icon"><Icon name="lucide:bot" /></div>
-          <h3 class="service-card__title">AI Solutions</h3>
-          <p class="service-card__text">Integrating machine learning models and LLMs to automate tasks and extract insights.</p>
-          <div class="service-card__bar"></div>
-        </div>
-
-        <div class="service-card">
-          <div class="service-card__icon"><Icon name="lucide:graduation-cap" /></div>
-          <h3 class="service-card__title">Technology Education</h3>
-          <p class="service-card__text">Translating complex technical concepts into accessible knowledge for teams and students.</p>
-          <div class="service-card__bar"></div>
-        </div>
-
-        <div class="service-card service-card--accent">
-          <div class="service-card__icon"><Icon name="lucide:brain" /></div>
-          <h3 class="service-card__title">Technical Thinking</h3>
-          <p class="service-card__text">System architecture, database design, and strategic technical consulting.</p>
-          <div class="service-card__bar"></div>
-        </div>
+      <div class="flex flex-col items-center gap-4 mt-10 md:flex-row md:justify-center">
+        <a
+          href="/contact"
+          class="inline-flex w-full md:w-[240px] items-center justify-center px-8 py-3 bg-[var(--color-primary)] text-white font-[var(--font-body)] text-[16px] font-medium rounded-[10px] hover:bg-[var(--color-primary-hover)] active:scale-95 transition-all duration-200"
+        >
+          Get in Touch
+        </a>
+        <a
+          href="/about"
+          class="inline-flex w-full md:w-[240px] items-center justify-center px-8 py-3 border border-[var(--color-primary)] text-[var(--color-primary)] bg-transparent font-[var(--font-body)] text-[16px] font-medium rounded-[10px] hover:bg-[var(--color-primary)] hover:text-white active:scale-95 transition-all duration-200"
+        >
+          About Me
+        </a>
       </div>
     </div>
   </section>
 
-  <!-- Featured Work -->
-  <section class="featured-work" id="work">
-    <div class="section-container">
-      <div class="section-header section-header--dark">
-        <div class="section-header__left">
-          <div class="section-number section-number--orange-rotated">02</div>
-          <h2 class="section-title">Featured Work</h2>
-        </div>
-        <p class="section-subtitle section-subtitle--dark">In-depth looks at solving real problems.</p>
-      </div>
+  <!-- Projects Section -->
+  <section id="projects" class="bg-[var(--color-secondary)] py-16 md:py-24">
+    <div class="max-w-[1200px] mx-auto px-4 md:px-10 box-border w-full">
+      <h2 class="font-[var(--font-display)] text-[36px] md:text-[48px] text-[var(--color-text-primary)] mb-2 tracking-tight leading-tight">
+        You Can <span class="scribble-circle">View</span> My{" "}
+        <span class="scribble-underline">Projects</span>.
+      </h2>
 
-      <div class="projects">
-        <!-- Project 1 -->
-        <div class="project project--reversed">
-          <div class="project__info">
-            <h3 class="project__title">Enterprise Data Pipeline</h3>
-            <div class="project__tags">
-              <span>// Backend</span>
-              <span>// Data Eng</span>
-              <span>// Python</span>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mt-10">
+        <!-- Project Card 1 -->
+        <a href="/work" class="block group">
+          <div class="bg-[var(--color-secondary)] rounded-[16px] border border-[var(--color-card-border)] overflow-hidden transition-all duration-200 hover:-translate-y-1 hover:shadow-lg cursor-pointer">
+            <div class="aspect-[4/3] overflow-hidden bg-white flex items-center justify-center">
+              <div class="w-full h-full bg-gradient-to-br from-purple-100 to-purple-50 flex items-center justify-center">
+                <span class="font-[var(--font-display)] text-[24px] text-[var(--color-text-muted)]">AI Solutions</span>
+              </div>
             </div>
-            <p class="project__desc">Architected a high-throughput data processing pipeline capable of handling millions of events daily, reducing data latency by 80% and providing real-time analytics dashboards for stakeholders.</p>
-            <a class="project__link" href="#">Read Case Study <span>↗</span></a>
-          </div>
-          <div class="project__image">
-            <div class="project__image-frame">
-              <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuBn8aa-s8msfW66PtWCc8RioHqn2_Dfo7N0wVF44yKSfLkkXp8kELj0s8MvGzrJfAp2Q6jksu4pMtlU-vOKdBVxoK7PSdpC_X3G8BC7KqhpM0qCTiVnO6vYCPYppxtxhhUMaYuqAXjJuPCCsSTkcq3gct79Esqnk1awiC_E6QGjAsW2pCQ19w_KmbFMvdOuo95GyEAspOfFQDdCWmEsYmFHSCdfqwscO4fq1f1EokfOUvVfrl7vYsQCSA=w800" alt="Enterprise Data Pipeline project" width="800" height="450" loading="lazy" decoding="async" />
+            <div class="p-5">
+              <div class="flex items-start justify-between gap-2">
+                <h3 class="font-[var(--font-display)] text-[20px] md:text-[22px] font-bold text-[var(--color-text-primary)] tracking-tight">AI-Powered Applications</h3>
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-[var(--color-text-muted)] mt-1 flex-shrink-0 group-hover:text-[var(--color-primary)] transition-colors"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg>
+              </div>
+              <p class="font-[var(--font-body)] text-base text-[var(--color-text-secondary)] mt-1 leading-relaxed">Building intelligent systems that integrate LLMs, automation, and machine learning to solve real business problems.</p>
             </div>
           </div>
-        </div>
+        </a>
 
-        <!-- Project 2 -->
-        <div class="project">
-          <div class="project__image">
-            <div class="project__image-frame">
-              <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuDFdTI-V7ZD5hNZLzi9g2_sJTSiCQ8ZOcBWYA2A_OyGVB3N3m43m_kO9uCOndvLBiVZ-0rCnBH9lk42Px14TiYOl7dkiEk59vKXLgevx6S7fLYDOi9GzIJPZfGdTYaaOZ5vN1koNvbvrL8u4f9DoaPOegTl3tZqMyCP-8oLxquxp39UaOz6klrICT1TH5BvasXMFb0ODWaXAmaQvGsZtvoPioP6jg6Y6u9ExMVcvaxESabjyp0J01VqQw=w800" alt="AI Customer Service Bot project" width="800" height="450" loading="lazy" decoding="async" />
+        <!-- Project Card 2 -->
+        <a href="/work" class="block group">
+          <div class="bg-[var(--color-secondary)] rounded-[16px] border border-[var(--color-card-border)] overflow-hidden transition-all duration-200 hover:-translate-y-1 hover:shadow-lg cursor-pointer">
+            <div class="aspect-[4/3] overflow-hidden bg-white flex items-center justify-center">
+              <div class="w-full h-full bg-gradient-to-br from-blue-100 to-blue-50 flex items-center justify-center">
+                <span class="font-[var(--font-display)] text-[24px] text-[var(--color-text-muted)]">Web Apps</span>
+              </div>
+            </div>
+            <div class="p-5">
+              <div class="flex items-start justify-between gap-2">
+                <h3 class="font-[var(--font-display)] text-[20px] md:text-[22px] font-bold text-[var(--color-text-primary)] tracking-tight">Full-Stack Web Development</h3>
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-[var(--color-text-muted)] mt-1 flex-shrink-0 group-hover:text-[var(--color-primary)] transition-colors"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg>
+              </div>
+              <p class="font-[var(--font-body)] text-base text-[var(--color-text-secondary)] mt-1 leading-relaxed">Creating robust, scalable web applications with modern frameworks, from frontend interfaces to backend APIs and databases.</p>
             </div>
           </div>
-          <div class="project__info">
-            <h3 class="project__title">AI Customer Service Bot</h3>
-            <div class="project__tags">
-              <span>// AI / LLM</span>
-              <span>// Fullstack</span>
-              <span>// TypeScript</span>
-            </div>
-            <p class="project__desc">Integrated custom-trained LLMs into an existing customer support workflow. The solution automated 40% of tier-1 support tickets while maintaining a 95% customer satisfaction rating.</p>
-            <a class="project__link" href="#">Read Case Study <span>↗</span></a>
-          </div>
-        </div>
+        </a>
 
-        <!-- Project 3 -->
-        <div class="project project--reversed">
-          <div class="project__info">
-            <h3 class="project__title">SaaS Platform Architecture</h3>
-            <div class="project__tags">
-              <span>// Architecture</span>
-              <span>// React</span>
-              <span>// Node.js</span>
+        <!-- Project Card 3 -->
+        <a href="/work" class="block group">
+          <div class="bg-[var(--color-secondary)] rounded-[16px] border border-[var(--color-card-border)] overflow-hidden transition-all duration-200 hover:-translate-y-1 hover:shadow-lg cursor-pointer">
+            <div class="aspect-[4/3] overflow-hidden bg-white flex items-center justify-center">
+              <div class="w-full h-full bg-gradient-to-br from-green-100 to-green-50 flex items-center justify-center">
+                <span class="font-[var(--font-display)] text-[24px] text-[var(--color-text-muted)]">Education</span>
+              </div>
             </div>
-            <p class="project__desc">Led the technical rewrite of a legacy monolithic application into a microservices-based SaaS platform, improving developer velocity and system reliability across a global user base.</p>
-            <a class="project__link" href="#">Read Case Study <span>↗</span></a>
+            <div class="p-5">
+              <div class="flex items-start justify-between gap-2">
+                <h3 class="font-[var(--font-display)] text-[20px] md:text-[22px] font-bold text-[var(--color-text-primary)] tracking-tight">Technology Education</h3>
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-[var(--color-text-muted)] mt-1 flex-shrink-0 group-hover:text-[var(--color-primary)] transition-colors"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg>
+              </div>
+              <p class="font-[var(--font-body)] text-base text-[var(--color-text-secondary)] mt-1 leading-relaxed">Teaching software development and AI concepts in practical, accessible ways that help students and developers grow.</p>
+            </div>
           </div>
-          <div class="project__image">
-            <div class="project__image-frame">
-              <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuB3nm5Hvu_MrEY4FPF_2Vh-H4IQsTDbBdp2KyLC35uhJCrSQ4tDAFG0PiTdbJ4_-COpiJNkPlHeVytaD-CGLIzQq7tzTGHLUlSOHz7AJe6CVqkMparI3sTGk7_EiS_w7J5BTvLNRITHmjEECWnc_LHWgzzz3duzFob6uFofb9OaX4EDMFzib7X0pCnUbppjPoquGq30nyRw29H_M-zB1G1ST6jLj3xwN3T9M4NJ6Y0WYzAbj2q1YkzrbA=w800" alt="SaaS Platform Architecture project" width="800" height="450" loading="lazy" decoding="async" />
+        </a>
+
+        <!-- Project Card 4 -->
+        <div class="block">
+          <div class="bg-[var(--color-secondary)] rounded-[16px] border border-[var(--color-card-border)] overflow-hidden transition-all duration-200">
+            <div class="aspect-[4/3] overflow-hidden bg-white flex items-center justify-center">
+              <span class="font-[var(--font-display)] text-sm tracking-wide text-[var(--color-text-muted)]">Coming soon...</span>
+            </div>
+            <div class="p-5">
+              <div class="flex items-start justify-between gap-2">
+                <h3 class="font-[var(--font-display)] text-[20px] md:text-[22px] font-bold text-[var(--color-text-primary)] tracking-tight">AI Automation Platform</h3>
+              </div>
+              <p class="font-[var(--font-body)] text-base text-[var(--color-text-secondary)] mt-1 leading-relaxed">An automation platform helping businesses streamline workflows using intelligent AI agents and custom integrations.</p>
             </div>
           </div>
         </div>
@@ -177,1251 +117,68 @@ const recentPosts = posts.slice(0, 3);
     </div>
   </section>
 
-  <!-- How I Think -->
-  <section class="how-i-think">
-    <div class="how-i-think__bg" aria-hidden="true">THINK</div>
-    <div class="how-i-think__inner">
-      <h2 class="how-i-think__title">I don't just build.<br/>I investigate.</h2>
-      <p class="how-i-think__subtitle">Great software isn't just written; it's discovered through careful inquiry and robust architecture.</p>
-
-      <div class="philosophy-grid">
-        <div class="philosophy-card">
-          <div class="philosophy-card__number">01</div>
-          <h3 class="philosophy-card__title">Understand the Problem</h3>
-          <p class="philosophy-card__text">Code is the last step. I start by asking 'why' until the actual business need is exposed.</p>
-        </div>
-        <div class="philosophy-card">
-          <div class="philosophy-card__number">02</div>
-          <h3 class="philosophy-card__title">Design for Reality</h3>
-          <p class="philosophy-card__text">Perfect architecture rarely survives contact with production. I build resilient, pragmatic systems.</p>
-        </div>
-        <div class="philosophy-card">
-          <div class="philosophy-card__number">03</div>
-          <h3 class="philosophy-card__title">Learn in Public</h3>
-          <p class="philosophy-card__text">Sharing knowledge reinforces understanding. I document my process to help others grow.</p>
-        </div>
-      </div>
+  <!-- Mini About Section -->
+  <section class="relative max-w-[1280px] mx-auto px-4 md:px-10 py-20 md:py-28 text-center overflow-visible box-border w-full">
+    <div class="relative z-10 max-w-[1180px] mx-auto w-full">
+      <h2 class="relative inline-block w-full font-[var(--font-display)] text-[36px] md:text-[48px] text-[var(--color-text-primary)] leading-tight tracking-tight">
+        Building for <span class="relative inline-block"><span class="relative z-10 bg-[var(--color-highlight-yellow)]/20 px-1">people</span></span>, building for the future.
+      </h2>
     </div>
-  </section>
 
-  <!-- Expertise -->
-  <section class="expertise" id="expertise">
-    <div class="section-container">
-      <div class="section-header">
-        <div class="section-header__left">
-          <div class="section-number section-number--dark">03</div>
-          <h2 class="section-title">Expertise</h2>
-        </div>
-        <p class="section-subtitle">Tools of the trade.</p>
-      </div>
+    <p class="font-[var(--font-body)] text-[18px] text-[var(--color-text-secondary)] mt-8 max-w-[980px] mx-auto leading-relaxed">
+      I am a software developer who enjoys turning ideas into things people can actually use.
+    </p>
 
-      <div class="expertise-grid">
-        <div class="expertise-card">
-          <h3 class="expertise-card__heading">Languages</h3>
-          <ul>
-            <li>JavaScript</li>
-            <li>TypeScript</li>
-            <li>Python</li>
-            <li>Go</li>
-          </ul>
-        </div>
-        <div class="expertise-card">
-          <h3 class="expertise-card__heading">Frontend</h3>
-          <ul>
-            <li>React / Next.js</li>
-            <li>Vue.js</li>
-            <li>Tailwind CSS</li>
-            <li>Web Components</li>
-          </ul>
-        </div>
-        <div class="expertise-card">
-          <h3 class="expertise-card__heading">Backend</h3>
-          <ul>
-            <li>Node.js</li>
-            <li>Django / FastAPI</li>
-            <li>Express</li>
-            <li>REST / GraphQL</li>
-          </ul>
-        </div>
-        <div class="expertise-card expertise-card--accent">
-          <h3 class="expertise-card__heading expertise-card__heading--accent">AI / ML</h3>
-          <ul>
-            <li>OpenAI API</li>
-            <li>LangChain</li>
-            <li>Vector DBs</li>
-            <li>Custom LLMs</li>
-          </ul>
-        </div>
-        <div class="expertise-card">
-          <h3 class="expertise-card__heading">Data</h3>
-          <ul>
-            <li>PostgreSQL</li>
-            <li>MongoDB</li>
-            <li>Redis</li>
-            <li>Snowflake</li>
-          </ul>
-        </div>
-        <div class="expertise-card">
-          <h3 class="expertise-card__heading">Engineering</h3>
-          <ul>
-            <li>Docker</li>
-            <li>AWS / GCP</li>
-            <li>CI/CD</li>
-            <li>System Design</li>
-          </ul>
-        </div>
-      </div>
+    <div class="relative font-[var(--font-body)] text-[18px] text-[var(--color-text-secondary)] mt-6 max-w-[1080px] mx-auto space-y-5 leading-relaxed">
+      <p>
+        I like working through the whole process. Understanding the problem, designing the architecture, and then bringing it to life through clean, maintainable code. For me, it's not just about making something work. It's about whether it solves the real problem and whether people can rely on it.
+      </p>
+      <p>
+        I started in web development, and over time built expertise in AI, system design, and technology education. That helps me think broadly when I build — not just the code, but how everything fits together in the real world.
+      </p>
     </div>
-  </section>
 
-  <!-- Writing -->
-  <section class="writing" id="writing">
-    <div class="section-container">
-      <div class="section-header section-header--dark">
-        <div class="section-header__left">
-          <div class="section-number section-number--orange-rotated-alt">04</div>
-          <h2 class="section-title">Writing</h2>
-        </div>
-        <p class="section-subtitle section-subtitle--dark">Ideas, Experiments & Lessons.</p>
-      </div>
-
-      <div class="articles-grid">
-        {recentPosts.map((post) => (
-          <a class="article-card" href={`/writing/${post.id}`}>
-            <div class="article-card__meta">
-              <span>{post.data.category.replace("-", " ")}</span>
-            </div>
-            <h3 class="article-card__title">{post.data.title}</h3>
-            <p class="article-card__desc">{post.data.description}</p>
-          </a>
-        ))}
-      </div>
-
-      <div class="writing__cta">
-        <a class="writing__cta-btn" href="/writing">View All Articles</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- Teaching -->
-  <section class="teaching" id="speaking">
-    <div class="teaching__inner">
-      <h2 class="teaching__title">I teach technology.</h2>
-      <p class="teaching__text">Whether speaking at conferences, running corporate workshops, or creating online courses, I break down complex technical topics so developers can build better.</p>
-      <a class="teaching__cta" href="/contact">Book me to speak or teach</a>
-    </div>
-  </section>
-
-  <!-- About -->
-  <section class="about" id="about">
-    <div class="about__container">
-      <div class="about__image-col">
-        <div class="about__image-bg"></div>
-        <img
-          src={heroImage}
-          alt="Vincent Mugondora"
-          loading="lazy"
-          class="about__img"
-        />
-      </div>
-      <div class="about__content">
-        <span class="about__label">A Little About Me</span>
-        <h2 class="about__title">Software Engineer,<br/>AI Builder, Educator.</h2>
-        <div class="about__text">
-          <p>I started coding because I loved the idea of building something out of nothing. Over the years, that passion evolved into a deep fascination with system architecture and solving hard business problems through technology.</p>
-          <p>Currently, I focus on the intersection of traditional software engineering and artificial intelligence, helping companies integrate cutting-edge AI capabilities into reliable, production-ready applications.</p>
-          <p>When I'm not writing code, I'm usually writing about it, teaching it, or trying to figure out how to make technical concepts more accessible to everyone.</p>
-        </div>
-        <div class="about__links">
-          <a href="https://twitter.com/vincemugondora" target="_blank" rel="noopener noreferrer">Twitter ↗</a>
-          <a href={siteConfig.linkedinUrl} target="_blank" rel="noopener noreferrer">LinkedIn ↗</a>
-          <a href={siteConfig.githubUrl} target="_blank" rel="noopener noreferrer">GitHub ↗</a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Vision Quote -->
-  <section class="vision-quote">
-    <h2 class="vision-quote__text">"Technology should create opportunity."</h2>
-  </section>
-
-  <!-- Final CTA -->
-  <section class="final-cta" id="contact">
-    <div class="final-cta__inner">
-      <h2 class="final-cta__title">Have a problem<br/>worth solving?</h2>
-      <p class="final-cta__subtitle">Let's build something great together.</p>
-      <a class="final-cta__btn" href={`mailto:${siteConfig.email}`}>Start a Conversation</a>
-    </div>
+    <a
+      href="/about"
+      class="inline-flex w-full md:w-auto items-center justify-center px-12 py-3 bg-[var(--color-primary)] text-white font-[var(--font-body)] text-[16px] font-medium rounded-[10px] hover:bg-[var(--color-primary-hover)] transition-colors duration-200 mt-10"
+    >
+      View Full About
+    </a>
   </section>
 </PageLayout>
 
 <style>
-  /* Grid background utility */
-  .grid-bg {
-    background-size: 40px 40px;
-    background-image:
-      linear-gradient(to right, rgba(0, 0, 0, 0.05) 1px, transparent 1px),
-      linear-gradient(to bottom, rgba(0, 0, 0, 0.05) 1px, transparent 1px);
-  }
-
-  .grid-bg-dark {
-    background-size: 40px 40px;
-    background-image:
-      linear-gradient(to right, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
-      linear-gradient(to bottom, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
-  }
-
-  /* Section shared styles */
-  .section-container {
-    max-width: 80rem;
-    margin: 0 auto;
-  }
-
-  .section-header {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-    margin-bottom: 4rem;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-    padding-bottom: 2rem;
-  }
-
-  @media (min-width: 768px) {
-    .section-header {
-      flex-direction: row;
-      justify-content: space-between;
-      align-items: flex-end;
-    }
-  }
-
-  .section-header--dark {
-    border-bottom-color: rgba(255, 255, 255, 0.1);
-  }
-
-  .section-header__left {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-  }
-
-  .section-number {
-    width: 3rem;
-    height: 3rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 0.75rem;
-    font-family: var(--font-display);
-    font-size: 1.5rem;
-    color: #fff;
-  }
-
-  .section-number--orange {
-    background: var(--color-orange);
-    transform: rotate(-6deg);
-  }
-
-  .section-number--orange-rotated {
-    background: var(--color-orange);
-    transform: rotate(6deg);
-  }
-
-  .section-number--orange-rotated-alt {
-    background: var(--color-orange);
-    transform: rotate(3deg);
-  }
-
-  .section-number--dark {
-    background: #111;
-    transform: rotate(-3deg);
-  }
-
-  .section-title {
-    font-family: var(--font-display);
-    font-size: 3.75rem;
-    text-transform: uppercase;
-    letter-spacing: 0.025em;
-    margin: 0;
-    line-height: 1;
-  }
-
-  .section-subtitle {
-    font-family: var(--font-mono);
-    color: #6b7280;
-    font-size: 0.875rem;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    max-width: 24rem;
-    margin: 0;
-  }
-
-  .section-subtitle--dark {
-    color: #9ca3af;
-  }
-
-  /* ===== HERO ===== */
-  .hero {
-    min-height: 100vh;
-    padding: 8rem 1.5rem 5rem;
-    display: flex;
-    align-items: center;
+  .scribble-circle {
     position: relative;
-    overflow: hidden;
-    background-size: 40px 40px;
-    background-image:
-      linear-gradient(to right, rgba(0, 0, 0, 0.05) 1px, transparent 1px),
-      linear-gradient(to bottom, rgba(0, 0, 0, 0.05) 1px, transparent 1px);
-  }
-
-  @media (min-width: 768px) {
-    .hero {
-      padding: 8rem 3rem 5rem;
-    }
-  }
-
-  .hero__container {
-    max-width: 80rem;
-    margin: 0 auto;
-    width: 100%;
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 2rem;
-    align-items: center;
-  }
-
-  @media (min-width: 768px) {
-    .hero__container {
-      grid-template-columns: 2fr 1fr;
-    }
-  }
-
-  .hero__badge {
     display: inline-block;
-    background: #111;
-    color: #fff;
-    padding: 0.5rem 1rem;
-    font-family: var(--font-mono);
-    font-size: 0.875rem;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    border-radius: 0.375rem;
+  }
+  .scribble-circle::after {
+    content: "";
+    position: absolute;
+    inset: -18% -12% -22% -12%;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 100' fill='none'><path d='M40 50 C 30 20, 80 8, 130 14 C 180 22, 195 55, 165 78 C 130 95, 60 92, 30 70 C 12 56, 18 32, 50 22' stroke='%2300CEB2' stroke-width='4' stroke-linecap='round'/></svg>");
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
     transform: rotate(-2deg);
-    margin-bottom: 1.5rem;
+    pointer-events: none;
+    z-index: -1;
   }
 
-  .hero__title {
-    font-family: var(--font-display);
-    font-size: clamp(4rem, 12vw, 8rem);
-    line-height: 0.9;
-    letter-spacing: -0.02em;
-    text-transform: uppercase;
-    color: #111;
-    margin: 0 0 1rem;
-    display: flex;
-    flex-direction: column;
-  }
-
-  .hero__title-first {
-    color: var(--color-orange);
-  }
-
-  .hero__tagline {
-    font-family: var(--font-mono);
-    font-size: clamp(1.25rem, 3vw, 1.875rem);
-    color: #4b5563;
-    max-width: 40rem;
-    line-height: 1.4;
-    margin: 0 0 2.5rem;
-  }
-
-  .hero__actions {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 1rem;
-  }
-
-  .hero__btn {
-    padding: 1rem 2rem;
-    border-radius: 9999px;
-    font-family: var(--font-mono);
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    font-size: 0.875rem;
-    text-decoration: none;
-    transition: background 0.15s, transform 0.15s;
-  }
-
-  .hero__btn:hover {
-    transform: translateY(-1px);
-  }
-
-  .hero__btn--dark {
-    background: #111;
-    color: #fff;
-  }
-
-  .hero__btn--dark:hover {
-    background: #333;
-  }
-
-  .hero__btn--orange {
-    background: var(--color-orange);
-    color: #fff;
-    border: 2px solid var(--color-orange);
-  }
-
-  .hero__btn--orange:hover {
-    background: var(--color-orange-600);
-    border-color: var(--color-orange-600);
-  }
-
-  .hero__media {
-    display: none;
+  .scribble-underline {
     position: relative;
-    height: 24rem;
-  }
-
-  @media (min-width: 768px) {
-    .hero__media {
-      display: block;
-    }
-  }
-
-  .hero__image-frame {
-    position: absolute;
-    inset: 0;
-    background: rgba(0, 0, 0, 0.05);
-    border-radius: 1.5rem;
-    border: 1px solid rgba(0, 0, 0, 0.1);
-    overflow: hidden;
-    transform: rotate(3deg);
-  }
-
-  .hero__img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    opacity: 0.8;
-    mix-blend-mode: multiply;
-    filter: grayscale(1);
-    transition: filter 0.7s;
-  }
-
-  .hero__img:hover {
-    filter: grayscale(0);
-  }
-
-  /* ===== CREDIBILITY STRIP ===== */
-  .credibility-strip {
-    background: #111;
-    color: #fff;
-    padding: 1.5rem 0;
-    overflow: hidden;
-    border-top: 4px solid var(--color-orange);
-  }
-
-  .credibility-strip__track {
-    display: flex;
-    white-space: nowrap;
-    animation: marquee 20s linear infinite;
-    font-family: var(--font-display);
-    font-size: 2.25rem;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    color: rgba(255, 255, 255, 0.5);
-    gap: 3rem;
-  }
-
-  .credibility-strip__dot {
-    color: var(--color-orange);
-  }
-
-  @keyframes marquee {
-    0% { transform: translateX(0); }
-    100% { transform: translateX(-50%); }
-  }
-
-  /* ===== WHAT I DO ===== */
-  .what-i-do {
-    padding: 8rem 1.5rem;
-    background: #FAF9F7;
-    background-size: 40px 40px;
-    background-image:
-      linear-gradient(to right, rgba(0, 0, 0, 0.05) 1px, transparent 1px),
-      linear-gradient(to bottom, rgba(0, 0, 0, 0.05) 1px, transparent 1px);
-  }
-
-  @media (min-width: 768px) {
-    .what-i-do {
-      padding: 8rem 3rem;
-    }
-  }
-
-  .services-grid {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 1.5rem;
-  }
-
-  @media (min-width: 768px) {
-    .services-grid {
-      grid-template-columns: repeat(2, 1fr);
-    }
-  }
-
-  @media (min-width: 1024px) {
-    .services-grid {
-      grid-template-columns: repeat(4, 1fr);
-    }
-  }
-
-  .service-card {
-    background: #fff;
-    border-radius: 1.5rem;
-    padding: 2rem;
-    border: 1px solid rgba(0, 0, 0, 0.1);
-    transition: box-shadow 0.2s, border-color 0.2s;
-    position: relative;
-    overflow: hidden;
-  }
-
-  .service-card:hover {
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
-    border-color: rgba(230, 81, 58, 0.5);
-  }
-
-  .service-card--dark {
-    background: #111;
-    color: #fff;
-    border-color: transparent;
-  }
-
-  .service-card--dark .service-card__text {
-    color: #9ca3af;
-  }
-
-  .service-card--dark .service-card__bar {
-    background: rgba(255, 255, 255, 0.1);
-  }
-
-  .service-card--dark:hover .service-card__bar {
-    background: var(--color-orange);
-  }
-
-  .service-card--accent {
-    background: #FDECE9;
-    border-color: rgba(230, 81, 58, 0.2);
-  }
-
-  .service-card--accent .service-card__title {
-    color: var(--color-orange-600);
-  }
-
-  .service-card--accent .service-card__bar {
-    background: rgba(230, 81, 58, 0.2);
-  }
-
-  .service-card--accent:hover .service-card__bar {
-    background: var(--color-orange);
-  }
-
-  .service-card__glow {
-    position: absolute;
-    top: 0;
-    right: 0;
-    width: 8rem;
-    height: 8rem;
-    background: rgba(230, 81, 58, 0.2);
-    border-radius: 0 0 0 100%;
-    transform: translate(4rem, -4rem);
-    transition: background 0.2s;
-  }
-
-  .service-card--dark:hover .service-card__glow {
-    background: rgba(230, 81, 58, 0.4);
-  }
-
-  .service-card__icon {
-    margin-bottom: 1.5rem;
-    position: relative;
-    z-index: 1;
-    width: 2.25rem;
-    height: 2.25rem;
-    color: currentColor;
-  }
-
-  .service-card__icon :global(svg) {
-    width: 100%;
-    height: 100%;
-  }
-
-  .service-card__title {
-    font-family: var(--font-display);
-    font-size: 1.5rem;
-    text-transform: uppercase;
-    letter-spacing: 0.025em;
-    margin: 0 0 0.75rem;
-    position: relative;
-    z-index: 1;
-  }
-
-  .service-card__text {
-    color: #4b5563;
-    font-size: 0.875rem;
-    line-height: 1.6;
-    margin: 0 0 1.5rem;
-    position: relative;
-    z-index: 1;
-  }
-
-  .service-card__bar {
-    width: 100%;
-    height: 4px;
-    background: rgba(0, 0, 0, 0.05);
-    transition: background 0.2s;
-    position: relative;
-    z-index: 1;
-  }
-
-  .service-card:hover .service-card__bar {
-    background: var(--color-orange);
-  }
-
-  /* ===== FEATURED WORK ===== */
-  .featured-work {
-    background: #111;
-    color: #fff;
-    padding: 8rem 1.5rem;
-    background-size: 40px 40px;
-    background-image:
-      linear-gradient(to right, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
-      linear-gradient(to bottom, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
-  }
-
-  @media (min-width: 768px) {
-    .featured-work {
-      padding: 8rem 3rem;
-    }
-  }
-
-  .projects {
-    display: flex;
-    flex-direction: column;
-    gap: 8rem;
-  }
-
-  .project {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 2rem;
-    align-items: center;
-  }
-
-  @media (min-width: 1024px) {
-    .project {
-      grid-template-columns: 7fr 5fr;
-    }
-
-    .project--reversed {
-      grid-template-columns: 5fr 7fr;
-    }
-
-    .project--reversed .project__info {
-      order: 1;
-    }
-
-    .project--reversed .project__image {
-      order: 2;
-    }
-  }
-
-  .project__title {
-    font-family: var(--font-display);
-    font-size: 2.25rem;
-    text-transform: uppercase;
-    letter-spacing: 0.025em;
-    margin: 0 0 1rem;
-  }
-
-  .project__tags {
-    display: flex;
-    gap: 1rem;
-    font-family: var(--font-mono);
-    font-size: 0.75rem;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    color: var(--color-orange);
-    margin-bottom: 1.5rem;
-  }
-
-  .project__desc {
-    color: #9ca3af;
-    line-height: 1.7;
-    margin: 0 0 2rem;
-  }
-
-  .project__link {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    font-family: var(--font-mono);
-    font-size: 0.875rem;
-    text-transform: uppercase;
-    color: #fff;
-    text-decoration: none;
-    border-bottom: 2px solid var(--color-orange);
-    padding-bottom: 0.25rem;
-    transition: color 0.15s;
-  }
-
-  .project__link:hover {
-    color: var(--color-orange);
-  }
-
-  .project__link span {
-    font-size: 1.25rem;
-  }
-
-  .project__image-frame {
-    background: #1A1A1A;
-    padding: 1rem;
-    border-radius: 1.5rem;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    transition: transform 0.5s;
-  }
-
-  .project__image-frame:hover {
-    transform: scale(1.02);
-  }
-
-  .project__image-frame img {
-    width: 100%;
-    border-radius: 1rem;
-    display: block;
-  }
-
-  /* ===== HOW I THINK ===== */
-  .how-i-think {
-    padding: 8rem 1.5rem;
-    background: var(--color-orange);
-    color: #fff;
-    overflow: hidden;
-    position: relative;
-  }
-
-  @media (min-width: 768px) {
-    .how-i-think {
-      padding: 8rem 3rem;
-    }
-  }
-
-  .how-i-think__bg {
-    position: absolute;
-    top: 0;
-    right: 0;
-    font-family: var(--font-display);
-    font-size: 20rem;
-    line-height: 1;
-    opacity: 0.1;
-    transform: translate(25%, -25%);
-  }
-
-  .how-i-think__inner {
-    max-width: 64rem;
-    margin: 0 auto;
-    position: relative;
-    z-index: 1;
-    text-align: center;
-  }
-
-  .how-i-think__title {
-    font-family: var(--font-display);
-    font-size: clamp(2.5rem, 6vw, 4.5rem);
-    text-transform: uppercase;
-    letter-spacing: 0.025em;
-    margin: 0 0 1.5rem;
-    line-height: 1.1;
-  }
-
-  .how-i-think__subtitle {
-    font-family: var(--font-mono);
-    font-size: 1.25rem;
-    font-weight: 700;
-    color: #fff;
-    max-width: 40rem;
-    margin: 0 auto 4rem;
-  }
-
-  .philosophy-grid {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 2rem;
-    text-align: left;
-  }
-
-  @media (min-width: 768px) {
-    .philosophy-grid {
-      grid-template-columns: repeat(3, 1fr);
-    }
-  }
-
-  .philosophy-card {
-    background: rgba(0, 0, 0, 0.2);
-    padding: 2rem;
-    border-radius: 1.5rem;
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    backdrop-filter: blur(4px);
-  }
-
-  .philosophy-card__number {
-    font-family: var(--font-display);
-    font-size: 2.25rem;
-    margin-bottom: 1rem;
-    opacity: 0.5;
-  }
-
-  .philosophy-card__title {
-    font-family: var(--font-display);
-    font-size: 1.5rem;
-    text-transform: uppercase;
-    letter-spacing: 0.025em;
-    margin: 0 0 0.75rem;
-    line-height: 1.2;
-  }
-
-  .philosophy-card__text {
-    color: #fff;
-    font-size: 0.875rem;
-    line-height: 1.6;
-    margin: 0;
-  }
-
-  /* ===== EXPERTISE ===== */
-  .expertise {
-    padding: 8rem 1.5rem;
-    background: var(--color-surface);
-    border-top: 1px solid rgba(0, 0, 0, 0.1);
-    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-    background-size: 40px 40px;
-    background-image:
-      linear-gradient(to right, rgba(0, 0, 0, 0.05) 1px, transparent 1px),
-      linear-gradient(to bottom, rgba(0, 0, 0, 0.05) 1px, transparent 1px);
-  }
-
-  @media (min-width: 768px) {
-    .expertise {
-      padding: 8rem 3rem;
-    }
-  }
-
-  .expertise-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 1rem;
-  }
-
-  @media (min-width: 768px) {
-    .expertise-grid {
-      grid-template-columns: repeat(3, 1fr);
-    }
-  }
-
-  @media (min-width: 1024px) {
-    .expertise-grid {
-      grid-template-columns: repeat(6, 1fr);
-    }
-  }
-
-  .expertise-card {
-    background: #fff;
-    padding: 1.5rem;
-    border-radius: 1rem;
-    border: 1px solid rgba(0, 0, 0, 0.1);
-    text-align: center;
-  }
-
-  .expertise-card--accent {
-    background: #FDECE9;
-    border-color: rgba(230, 81, 58, 0.2);
-  }
-
-  .expertise-card__heading {
-    font-family: var(--font-mono);
-    font-size: 0.75rem;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    color: var(--color-orange);
-    margin: 0 0 1rem;
-    padding-bottom: 0.5rem;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
-  }
-
-  .expertise-card__heading--accent {
-    color: var(--color-orange-600);
-    border-bottom-color: rgba(230, 81, 58, 0.1);
-  }
-
-  .expertise-card ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-  }
-
-  .expertise-card li {
-    font-size: 0.875rem;
-    font-weight: 500;
-  }
-
-  /* ===== WRITING ===== */
-  .writing {
-    background: #111;
-    color: #fff;
-    padding: 8rem 1.5rem;
-    background-size: 40px 40px;
-    background-image:
-      linear-gradient(to right, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
-      linear-gradient(to bottom, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
-  }
-
-  @media (min-width: 768px) {
-    .writing {
-      padding: 8rem 3rem;
-    }
-  }
-
-  .articles-grid {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 2rem;
-  }
-
-  @media (min-width: 768px) {
-    .articles-grid {
-      grid-template-columns: repeat(3, 1fr);
-    }
-  }
-
-  .article-card {
-    display: block;
-    text-decoration: none;
-    color: inherit;
-  }
-
-
-  .article-card__meta {
-    display: flex;
-    gap: 1rem;
-    font-family: var(--font-mono);
-    font-size: 0.625rem;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    color: var(--color-orange);
-    margin-bottom: 0.75rem;
-  }
-
-  .article-card__title {
-    font-family: var(--font-display);
-    font-size: 1.5rem;
-    text-transform: uppercase;
-    letter-spacing: 0.025em;
-    margin: 0;
-    line-height: 1.2;
-    transition: color 0.15s;
-    display: -webkit-box;
-    -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-  }
-
-  .article-card__desc {
-    color: #9ca3af;
-    font-size: 0.8rem;
-    line-height: 1.5;
-    margin: 0.5rem 0 0;
-    display: -webkit-box;
-    -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-  }
-
-  .article-card:hover .article-card__title {
-    color: var(--color-orange);
-  }
-
-  .writing__cta {
-    margin-top: 3rem;
-    text-align: center;
-  }
-
-  .writing__cta-btn {
     display: inline-block;
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    color: #fff;
-    padding: 0.75rem 2rem;
-    border-radius: 9999px;
-    font-family: var(--font-mono);
-    font-size: 0.875rem;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    text-decoration: none;
-    transition: background 0.15s, color 0.15s;
   }
-
-  .writing__cta-btn:hover {
-    background: #fff;
-    color: #111;
-  }
-
-  /* ===== TEACHING ===== */
-  .teaching {
-    padding: 6rem 1.5rem;
-    background: #fff;
-    border-top: 1px solid rgba(0, 0, 0, 0.1);
-    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-  }
-
-  @media (min-width: 768px) {
-    .teaching {
-      padding: 6rem 3rem;
-    }
-  }
-
-  .teaching__inner {
-    max-width: 56rem;
-    margin: 0 auto;
-    text-align: center;
-  }
-
-  .teaching__title {
-    font-family: var(--font-display);
-    font-size: clamp(2.5rem, 6vw, 4.5rem);
-    text-transform: uppercase;
-    letter-spacing: 0.025em;
-    margin: 0 0 1.5rem;
-  }
-
-  .teaching__text {
-    font-family: var(--font-mono);
-    color: #4b5563;
-    font-size: 1.125rem;
-    line-height: 1.7;
-    margin: 0 0 2.5rem;
-  }
-
-  .teaching__cta {
-    display: inline-block;
-    background: #111;
-    color: #fff;
-    padding: 1rem 2rem;
-    border-radius: 9999px;
-    font-family: var(--font-mono);
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    font-size: 0.875rem;
-    text-decoration: none;
-    transition: background 0.15s;
-  }
-
-  .teaching__cta:hover {
-    background: var(--color-orange);
-  }
-
-  /* ===== ABOUT ===== */
-  .about {
-    padding: 8rem 1.5rem;
-    background: #FAF9F7;
-    background-size: 40px 40px;
-    background-image:
-      linear-gradient(to right, rgba(0, 0, 0, 0.05) 1px, transparent 1px),
-      linear-gradient(to bottom, rgba(0, 0, 0, 0.05) 1px, transparent 1px);
-  }
-
-  @media (min-width: 768px) {
-    .about {
-      padding: 8rem 3rem;
-    }
-  }
-
-  .about__container {
-    max-width: 72rem;
-    margin: 0 auto;
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 3rem;
-    align-items: center;
-  }
-
-  @media (min-width: 768px) {
-    .about__container {
-      grid-template-columns: 5fr 7fr;
-    }
-  }
-
-  .about__image-col {
-    position: relative;
-  }
-
-  .about__image-bg {
+  .scribble-underline::after {
+    content: "";
     position: absolute;
-    inset: 0;
-    background: rgba(230, 81, 58, 0.2);
-    border-radius: 1.5rem;
-    transform: rotate(-3deg) translate(1rem, 1rem);
-  }
-
-  .about__img {
-    position: relative;
-    z-index: 1;
-    width: 100%;
-    border-radius: 1.5rem;
-    object-fit: cover;
-    border: 1px solid rgba(0, 0, 0, 0.1);
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
-    filter: grayscale(1);
-    transition: filter 0.5s;
-  }
-
-  .about__img:hover {
-    filter: grayscale(0);
-  }
-
-  .about__label {
-    font-family: var(--font-mono);
-    color: var(--color-orange);
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    font-size: 0.875rem;
-    display: block;
-    margin-bottom: 1rem;
-  }
-
-  .about__title {
-    font-family: var(--font-display);
-    font-size: clamp(2.5rem, 5vw, 3.75rem);
-    text-transform: uppercase;
-    letter-spacing: 0.025em;
-    margin: 0 0 2rem;
-    line-height: 1.1;
-  }
-
-  .about__text {
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
-    color: #374151;
-    font-weight: 500;
-    line-height: 1.7;
-  }
-
-  .about__text p {
-    margin: 0;
-  }
-
-  .about__links {
-    margin-top: 2.5rem;
-    display: flex;
-    gap: 1.5rem;
-  }
-
-  .about__links a {
-    font-family: var(--font-mono);
-    font-size: 0.875rem;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    color: #111;
-    text-decoration: none;
-    border-bottom: 1px solid #111;
-    padding-bottom: 0.25rem;
-    transition: color 0.15s, border-color 0.15s;
-  }
-
-  .about__links a:hover {
-    color: var(--color-orange);
-    border-color: var(--color-orange);
-  }
-
-  /* ===== VISION QUOTE ===== */
-  .vision-quote {
-    padding: 8rem 1.5rem;
-    background: #111;
-    text-align: center;
-  }
-
-  @media (min-width: 768px) {
-    .vision-quote {
-      padding: 8rem 3rem;
-    }
-  }
-
-  .vision-quote__text {
-    font-family: var(--font-display);
-    font-size: clamp(2rem, 5vw, 3.75rem);
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    color: rgba(255, 255, 255, 0.9);
-    margin: 0;
-  }
-
-  /* ===== FINAL CTA ===== */
-  .final-cta {
-    padding: 8rem 1.5rem;
-    background: var(--color-orange);
-    color: #fff;
-    text-align: center;
-    position: relative;
-    overflow: hidden;
-  }
-
-  @media (min-width: 768px) {
-    .final-cta {
-      padding: 8rem 3rem;
-    }
-  }
-
-  .final-cta__inner {
-    max-width: 48rem;
-    margin: 0 auto;
-    position: relative;
-    z-index: 1;
-  }
-
-  .final-cta__title {
-    font-family: var(--font-display);
-    font-size: clamp(3rem, 8vw, 6rem);
-    text-transform: uppercase;
-    letter-spacing: 0.025em;
-    line-height: 1;
-    margin: 0 0 2rem;
-  }
-
-  .final-cta__subtitle {
-    font-family: var(--font-mono);
-    font-size: 1.25rem;
-    color: rgba(255, 255, 255, 0.9);
-    margin: 0 0 3rem;
-  }
-
-  .final-cta__btn {
-    display: inline-block;
-    background: #111;
-    color: #fff;
-    padding: 1.25rem 2.5rem;
-    border-radius: 9999px;
-    font-family: var(--font-mono);
-    font-size: 1.125rem;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    text-decoration: none;
-    border: 1px solid #111;
-    transition: background 0.15s, color 0.15s;
-  }
-
-  .final-cta__btn:hover {
-    background: #fff;
-    color: #111;
+    left: -4%;
+    right: -4%;
+    bottom: -14px;
+    height: 12px;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 14' fill='none' preserveAspectRatio='none'><path d='M3 9 C 50 3, 110 12, 197 5' stroke='%231BB6F9' stroke-width='6' stroke-linecap='round'/></svg>");
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    transform: rotate(-2deg);
+    pointer-events: none;
   }
 </style>
