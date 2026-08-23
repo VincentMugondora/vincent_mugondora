@@ -13,7 +13,7 @@ const navLinks = [
 ];
 ---
 
-<nav class="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-sm border-b border-[var(--color-divider)]">
+<nav aria-label="Main navigation" class="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-sm border-b border-[var(--color-divider)]">
   <div class="max-w-[1200px] mx-auto px-6 md:px-10 flex items-center justify-between h-[72px]">
     <a href="/" class="flex items-center gap-2">
       <img src="/logo.avif" alt="Vincent Mugondora" class="h-9 w-9 rounded-full object-cover" />
@@ -29,6 +29,7 @@ const navLinks = [
           return (
             <a
               href={link.href}
+              aria-current={isActive ? "page" : undefined}
               class:list={[
                 "font-[var(--font-body)] text-[16px] transition-colors duration-200",
                 isActive ? "text-[var(--color-text-primary)] font-medium" : "text-[var(--color-text-secondary)] hover:text-[var(--color-text-primary)]"
@@ -74,13 +75,14 @@ const navLinks = [
   </div>
 
   <!-- Mobile menu -->
-  <div id="mobile-menu" class="md:hidden bg-white border-b border-[var(--color-divider)] px-6 pb-6 hidden" data-mobile-menu>
+  <div id="mobile-menu" class="md:hidden bg-white border-b border-[var(--color-divider)] px-6 pb-6 hidden" data-mobile-menu role="navigation" aria-label="Mobile navigation">
     <div class="flex flex-col gap-4 pt-2">
       {navLinks.map((link) => {
         const isActive = currentPath === link.href || currentPath.startsWith(link.href + "/");
         return (
           <a
             href={link.href}
+            aria-current={isActive ? "page" : undefined}
             class:list={[
               "font-[var(--font-body)] text-[18px]",
               isActive ? "text-[var(--color-text-primary)] font-medium" : "text-[var(--color-text-secondary)]"

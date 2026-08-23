@@ -127,7 +127,7 @@ const techStack = {
               <div class="bg-white rounded-[16px] border border-[var(--color-card-border)] overflow-hidden transition-all duration-200 hover:-translate-y-1 hover:shadow-lg">
                 <div class="aspect-[4/3] bg-gradient-to-br from-gray-100 to-gray-50 flex items-center justify-center overflow-hidden">
                   {project.data.image ? (
-                    <img src={project.data.image} alt="" class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-[1.02]" loading="lazy" />
+                    <img src={project.data.image} alt={project.data.title} width="400" height="300" class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-[1.02]" loading="lazy" />
                   ) : (
                     <span class="font-display italic text-[18px] text-[var(--color-text-muted)]">{project.data.title}</span>
                   )}
