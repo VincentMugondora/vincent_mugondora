@@ -218,40 +218,41 @@ const faqJsonLd = faqData ? getFAQJsonLd(faqData) : null;
       </ol>
     </nav>
     <div class="flex items-center gap-3 mt-4">
-      <span class="rounded-full bg-midnight/5 px-3 py-1 font-mono text-xs text-muted">
+      <span class="font-body text-[11px] font-semibold uppercase tracking-widest text-[var(--color-primary)]">
         {post.data.category.replace("-", " ")}
       </span>
-      <time class="font-mono text-xs text-muted" datetime={post.data.publishedAt.toISOString()}>
+      <time class="font-body text-[12px] text-[var(--color-text-muted)]" datetime={post.data.publishedAt.toISOString()}>
         {formatDate(post.data.publishedAt)}
       </time>
       {post.data.updatedAt && (
-        <span class="font-mono text-xs text-muted">
+        <span class="font-body text-[12px] text-[var(--color-text-muted)]">
           (Updated {formatDate(post.data.updatedAt)})
         </span>
       )}
     </div>
-    <h1 class="mt-6 font-heading text-4xl font-bold text-midnight lg:text-5xl">
+    <h1 class="font-display italic text-[36px] md:text-[48px] lg:text-[56px] font-bold text-[var(--color-text-primary)] tracking-tight leading-tight mt-5">
       {post.data.title}
     </h1>
-    <p class="mt-4 text-lg text-muted">{post.data.description}</p>
+    <p class="font-body text-[16px] md:text-[18px] text-[var(--color-text-secondary)] mt-4 leading-relaxed">{post.data.description}</p>
     <div class="mt-6 flex items-center gap-3">
-      <div class="flex h-8 w-8 items-center justify-center rounded-full bg-midnight text-xs font-semibold text-white">V</div>
+      <div class="flex h-9 w-9 items-center justify-center rounded-full bg-[var(--color-primary)] text-sm font-semibold text-white">V</div>
       <div>
-        <p class="text-sm font-medium text-midnight">Vincent Mugondora</p>
+        <p class="font-body text-[14px] font-medium text-[var(--color-text-primary)]">Vincent Mugondora</p>
+        <p class="font-body text-[12px] text-[var(--color-text-muted)]">Software Developer & AI Builder</p>
       </div>
     </div>
   </header>
   <Content />
 
   {relatedPosts.length > 0 && (
-    <aside class="not-prose related-posts">
-      <h2 class="related-posts__title">Continue Reading</h2>
-      <div class="related-posts__grid">
+    <aside class="not-prose mt-16 pt-10 border-t border-[var(--color-card-border)]">
+      <h2 class="font-display italic text-[28px] md:text-[32px] font-bold text-[var(--color-text-primary)] tracking-tight mb-6">Continue Reading</h2>
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
         {relatedPosts.map((related) => (
-          <a href={`/writing/${related.id}`} class="related-posts__card">
-            <span class="related-posts__category">{related.data.category.replace("-", " ")}</span>
-            <h3 class="related-posts__heading">{related.data.title}</h3>
-            <p class="related-posts__desc">{related.data.description}</p>
+          <a href={`/writing/${related.id}`} class="block p-5 rounded-[12px] border border-[var(--color-card-border)] hover:-translate-y-0.5 hover:shadow-md transition duration-200">
+            <span class="font-body text-[11px] font-semibold uppercase tracking-widest text-[var(--color-primary)]">{related.data.category.replace("-", " ")}</span>
+            <h3 class="font-display italic text-[16px] font-bold text-[var(--color-text-primary)] tracking-tight leading-snug mt-2">{related.data.title}</h3>
+            <p class="font-body text-[13px] text-[var(--color-text-secondary)] mt-1.5 leading-relaxed line-clamp-2">{related.data.description}</p>
           </a>
         ))}
       </div>
@@ -269,100 +270,31 @@ const faqJsonLd = faqData ? getFAQJsonLd(faqData) : null;
     align-items: center;
     gap: 0.25rem;
     font-size: 0.8rem;
-    color: #666;
+    color: var(--color-text-muted);
   }
 
   .breadcrumb li:not(:last-child)::after {
     content: "/";
     margin-left: 0.25rem;
-    color: #ccc;
+    color: var(--color-card-border);
   }
 
   .breadcrumb a {
-    color: #666;
+    color: var(--color-text-muted);
     text-decoration: none;
   }
 
   .breadcrumb a:hover {
-    color: #111;
+    color: var(--color-primary);
     text-decoration: underline;
   }
 
   .breadcrumb [aria-current="page"] {
-    color: #333;
+    color: var(--color-text-secondary);
     font-weight: 500;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
     max-width: 30ch;
-  }
-
-  .related-posts {
-    margin-top: 4rem;
-    padding-top: 2rem;
-    border-top: 1px solid #e6e2db;
-  }
-
-  .related-posts__title {
-    font-family: "Lora Variable", "Lora", Georgia, serif;
-    font-size: 1.5rem;
-    font-weight: 500;
-    color: #1b1b1b;
-    margin: 0 0 1.5rem;
-  }
-
-  .related-posts__grid {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 1rem;
-  }
-
-  @media (min-width: 640px) {
-    .related-posts__grid {
-      grid-template-columns: repeat(3, 1fr);
-    }
-  }
-
-  .related-posts__card {
-    display: block;
-    padding: 1.25rem;
-    border: 1px solid #e6e2db;
-    border-radius: 12px;
-    text-decoration: none;
-    color: inherit;
-    transition: border-color 0.2s, box-shadow 0.2s;
-  }
-
-  .related-posts__card:hover {
-    border-color: #ccc;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
-  }
-
-  .related-posts__category {
-    display: inline-block;
-    font-size: 0.7rem;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    color: #888;
-    margin-bottom: 0.5rem;
-  }
-
-  .related-posts__heading {
-    font-size: 0.95rem;
-    font-weight: 600;
-    color: #1b1b1b;
-    margin: 0 0 0.5rem;
-    line-height: 1.3;
-  }
-
-  .related-posts__desc {
-    font-size: 0.8rem;
-    color: #666;
-    line-height: 1.5;
-    margin: 0;
-    display: -webkit-box;
-    -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
   }
 </style>
