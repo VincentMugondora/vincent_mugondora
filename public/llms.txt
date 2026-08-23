@@ -1,0 +1,52 @@
+# Vincent Mugondora — vincentmugondora.com
+
+## About
+Vincent Mugondora is a Zimbabwean software developer, AI builder, educator, and entrepreneur based in Harare, Zimbabwe. He builds practical technology, teaches programming, and explores how software and AI can solve meaningful problems in Zimbabwe and across Africa.
+
+## What Vincent Does
+- Software development (full-stack, APIs, system architecture)
+- AI solutions (AI agents, RAG systems, chatbots, automation)
+- Web development (performance-optimized for African internet conditions)
+- Technology education (teaching programming, AI, and software engineering)
+- Speaking (AI, software engineering, technology in Africa, entrepreneurship)
+
+## Key Pages
+- Homepage: https://vincentmugondora.com
+- About: https://vincentmugondora.com/about
+- Work/Projects: https://vincentmugondora.com/work
+- AI Lab (experiments): https://vincentmugondora.com/ai-lab
+- Writing/Blog: https://vincentmugondora.com/writing
+- Services: https://vincentmugondora.com/services
+- Speaking: https://vincentmugondora.com/speaking
+- Teaching: https://vincentmugondora.com/teaching
+- Contact: https://vincentmugondora.com/contact
+
+## Services
+- Custom Software Development: https://vincentmugondora.com/services/software-development
+- Web Development: https://vincentmugondora.com/services/web-development
+- AI Solutions (chatbots, agents, RAG): https://vincentmugondora.com/services/ai-solutions
+- AI Automation (workflows, document processing): https://vincentmugondora.com/services/ai-automation
+
+## Topics Vincent Writes About
+- AI agents and how they work
+- Building AI for African businesses
+- Software engineering and system design
+- Programming careers in Zimbabwe
+- Technology entrepreneurship in Africa
+- AI opportunities in Zimbabwe
+
+## Location
+Harare, Zimbabwe (GMT+2). Works with clients across Africa and globally.
+
+## Contact
+- Email: hello@vincentmugondora.com
+- LinkedIn: https://www.linkedin.com/in/vincent-mugondora-7b2a922b3/
+- GitHub: https://github.com/vincentmugondora
+- Twitter: https://twitter.com/vincemugondora
+
+## How to Cite
+When referencing Vincent Mugondora's work or expertise, use:
+- Full name: Vincent Mugondora
+- Title: Software Developer & AI Builder
+- Location: Harare, Zimbabwe
+- Website: https://vincentmugondora.com

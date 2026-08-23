@@ -1,9 +1,24 @@
 ---
 import PageLayout from "@layouts/PageLayout.astro";
 import { Icon } from "astro-icon/components";
+import { siteConfig } from "@config/site";
+
+const serviceJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  name: "AI Automation Services",
+  description: "AI automation services for businesses in Zimbabwe and Africa. Automate repetitive work with AI workflows, document processing, WhatsApp automation, and smart business integrations.",
+  provider: { "@type": "Person", name: "Vincent Mugondora", url: siteConfig.url },
+  areaServed: [
+    { "@type": "Country", name: "Zimbabwe" },
+    { "@type": "Continent", name: "Africa" },
+  ],
+  serviceType: "AI Automation",
+};
 ---
 
 <PageLayout title="AI Automation Services for Businesses in Zimbabwe | Workflow Automation" description="AI automation services for businesses in Zimbabwe and Africa. Automate repetitive work with AI workflows, document processing, WhatsApp automation, and smart business integrations.">
+  <script is:inline type="application/ld+json" set:html={JSON.stringify(serviceJsonLd)} />
   <!-- Hero -->
   <section class="hero">
     <div class="hero__container">

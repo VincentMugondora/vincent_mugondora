@@ -1,9 +1,24 @@
 ---
 import PageLayout from "@layouts/PageLayout.astro";
 import { Icon } from "astro-icon/components";
+import { siteConfig } from "@config/site";
+
+const serviceJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  name: "Web Development Services",
+  description: "Fast, accessible, SEO-friendly web development services by Vincent Mugondora. Websites and web applications built for performance in Zimbabwe and Africa.",
+  provider: { "@type": "Person", name: "Vincent Mugondora", url: siteConfig.url },
+  areaServed: [
+    { "@type": "Country", name: "Zimbabwe" },
+    { "@type": "Continent", name: "Africa" },
+  ],
+  serviceType: "Web Development",
+};
 ---
 
 <PageLayout title="Web Development Services in Zimbabwe" description="Fast, accessible, SEO-friendly web development services by Vincent Mugondora. Websites and web applications built for performance in Zimbabwe and Africa.">
+  <script is:inline type="application/ld+json" set:html={JSON.stringify(serviceJsonLd)} />
   <!-- Hero -->
   <section class="hero">
     <div class="hero__container">

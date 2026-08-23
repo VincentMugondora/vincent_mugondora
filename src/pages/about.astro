@@ -1,9 +1,13 @@
 ---
 import PageLayout from "@layouts/PageLayout.astro";
 import { siteConfig } from "@config/site";
+import { getProfilePageJsonLd } from "@/lib/seo";
+
+const profileJsonLd = getProfilePageJsonLd();
 ---
 
 <PageLayout title="About" description="About Vincent Mugondora — software engineer, AI builder, educator and entrepreneur from Zimbabwe.">
+  <script is:inline type="application/ld+json" set:html={JSON.stringify(profileJsonLd)} />
   <!-- Hero -->
   <section class="pt-[72px] py-16 md:py-24">
     <div class="max-w-[1200px] mx-auto px-4 md:px-10">
