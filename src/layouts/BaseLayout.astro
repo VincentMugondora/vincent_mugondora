@@ -5,7 +5,6 @@ import "@/styles/typography.css";
 import { siteConfig } from "@/config/site";
 import { getBaseJsonLd } from "@/lib/seo";
 
-import bebasNeueLatinUrl from "@fontsource/bebas-neue/files/bebas-neue-latin-400-normal.woff2?url";
 import interLatinUrl from "@fontsource-variable/inter/files/inter-latin-wght-normal.woff2?url";
 
 interface Props {
@@ -49,7 +48,9 @@ const jsonLd = getBaseJsonLd();
     <meta name="generator" content={Astro.generator} />
     <meta name="color-scheme" content="light dark" />
 
-    <link rel="preload" href={bebasNeueLatinUrl} as="font" type="font/woff2" crossorigin />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;700&display=swap" rel="stylesheet" />
     <link rel="preload" href={interLatinUrl} as="font" type="font/woff2" crossorigin />
 
     <title>{pageTitle}</title>
