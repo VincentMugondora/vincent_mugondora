@@ -1,213 +1,430 @@
 ---
 import PageLayout from "@layouts/PageLayout.astro";
 import { siteConfig } from "@config/site";
-
-const heroImage = "/vincent.avif";
 ---
 
-<PageLayout title="About Vincent Mugondora | Software Developer & AI Builder" description="Learn about Vincent Mugondora — a Zimbabwean software developer, AI builder, and technology educator building useful software.">
-  <main class="pt-[72px]">
-    <!-- Hero Section -->
-    <section class="max-w-[1200px] mx-auto px-6 md:px-10 py-16 md:py-24">
-      <div class="grid grid-cols-1 lg:grid-cols-[1fr_auto] gap-12 lg:gap-16 items-start">
-        <!-- Left column -->
+<PageLayout title="About" description="About Vincent Mugondora — software engineer, AI builder, educator and entrepreneur from Zimbabwe.">
+  <!-- Hero -->
+  <section class="pt-[72px] py-16 md:py-24">
+    <div class="max-w-[1200px] mx-auto px-4 md:px-10">
+      <div class="grid grid-cols-1 md:grid-cols-[1.2fr_1fr] gap-12 items-center">
         <div>
-          <span class="inline-block font-[var(--font-display)] text-[16px] text-[var(--color-text-secondary)] border border-[var(--color-card-border)] rounded-full px-4 py-1 mb-6">
-            Available For Work
-          </span>
-          <h1 class="font-[var(--font-display)] text-[48px] md:text-[72px] lg:text-[96px] text-[var(--color-text-primary)] leading-[1.05]">
-            I do <span class="text-[var(--color-primary)]">software</span> things.
+          <h1 class="font-display italic text-[48px] md:text-[72px] lg:text-[96px] text-[var(--color-text-primary)] leading-[1.05] font-bold tracking-tight">
+            I'm Vincent Mugondora.
           </h1>
-          <p class="font-[var(--font-body)] text-[18px] text-[var(--color-text-secondary)] mt-6 max-w-[520px]">
-            I build digital products that solve real problems and work reliably.
-            My work is grounded in solid engineering principles, with a mix of system design,
-            AI integration, and a practical understanding of how software is actually built
-            and used.
+          <p class="font-body text-[18px] md:text-[20px] text-[var(--color-text-secondary)] mt-4 leading-relaxed">
+            Software engineer, AI builder, educator, and entrepreneur from Zimbabwe.
           </p>
-          <div class="flex flex-col sm:flex-row sm:items-center gap-4 mt-8">
-            <a
-              href="/contact"
-              class="flex-1 sm:flex-none inline-flex items-center justify-center px-8 py-3 bg-[var(--color-primary)] text-white font-[var(--font-body)] text-[16px] font-medium rounded-[10px] hover:bg-[var(--color-primary-hover)] transition-colors duration-200"
-            >
-              Work With Me
-            </a>
-            <a
-              href={`mailto:${siteConfig.email}`}
-              class="flex-1 sm:flex-none inline-flex items-center justify-center px-8 py-3 border border-[var(--color-card-border)] text-[var(--color-text-primary)] font-[var(--font-body)] text-[16px] font-medium rounded-[10px] hover:bg-[var(--color-secondary)] transition-colors duration-200"
-            >
-              Send Email
-            </a>
-          </div>
+          <p class="font-body text-[16px] text-[var(--color-text-secondary)] mt-4 max-w-[550px] leading-relaxed">
+            I build technology, teach people how to build it, and explore how software and AI can solve meaningful problems in Zimbabwe and across Africa.
+          </p>
         </div>
-
-        <!-- Right column: profile card + info cards -->
-        <div class="hidden sm:flex flex-col sm:flex-row lg:flex-col xl:flex-row gap-4">
-          <!-- Profile card -->
-          <div class="bg-white rounded-[16px] border border-[var(--color-card-border)] p-6 w-full sm:w-[260px] min-h-[360px] flex flex-col">
-            <div class="w-[84px] h-[84px] rounded-full overflow-hidden bg-black">
-              <img src={heroImage} alt="Vincent Mugondora" class="w-full h-full object-cover" />
-            </div>
-            <div class="mt-auto">
-              <h3 class="font-[var(--font-display)] text-[24px] font-bold text-[var(--color-text-primary)] text-left">Vincent Mugondora</h3>
-              <p class="font-[var(--font-body)] text-[16px] text-[var(--color-text-secondary)] mt-2 text-left">
-                I believe good{" "}
-                <span class="relative inline-block">
-                  <span class="absolute left-0 right-0 bottom-0 h-[45%] bg-[var(--color-highlight-yellow)] -z-10 rounded-sm opacity-40"></span>
-                  <span class="relative">Software</span>
-                </span>{" "}
-                starts with understanding people. Not assumptions, not hype. Just real problems, clearly solved.
-              </p>
-            </div>
-          </div>
-
-          <!-- Info cards column -->
-          <div class="flex flex-col gap-4 w-full sm:w-[240px]">
-            <!-- Details card -->
-            <div class="bg-white rounded-[16px] border border-[var(--color-card-border)] p-6 min-h-[280px] flex flex-col">
-              <div class="w-14 h-14 rounded-full bg-[var(--color-secondary)] flex items-center justify-center">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg>
-              </div>
-              <div class="mt-auto">
-                <h4 class="font-[var(--font-display)] text-[20px] font-bold text-[var(--color-text-primary)] italic">Details</h4>
-                <ol class="font-[var(--font-body)] text-[14px] text-[var(--color-text-secondary)] mt-2 space-y-1 list-decimal list-inside">
-                  <li>Harare, Zimbabwe</li>
-                  <li>GMT+2</li>
-                  <li>Open to remote work</li>
-                </ol>
-              </div>
-            </div>
-
-            <!-- How I Work card -->
-            <div class="bg-white rounded-[16px] border border-[var(--color-card-border)] p-6 min-h-[280px] flex flex-col">
-              <div class="w-14 h-14 rounded-full bg-[var(--color-secondary)] flex items-center justify-center">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20a8 8 0 1 0 0-16 8 8 0 0 0 0 16Z"/><path d="M12 14a2 2 0 1 0 0-4 2 2 0 0 0 0 4Z"/><path d="M12 2v2"/><path d="M12 22v-2"/><path d="m17 20.66-1-1.73"/><path d="M11 10.27 7 3.34"/><path d="m20.66 17-1.73-1"/><path d="m3.34 7 1.73 1"/><path d="M14 12h8"/><path d="M2 12h2"/><path d="m20.66 7-1.73 1"/><path d="m3.34 17 1.73-1"/><path d="m17 3.34-1 1.73"/><path d="m11 13.73-4 6.93"/></svg>
-              </div>
-              <div class="mt-auto">
-                <h4 class="font-[var(--font-display)] text-[20px] font-bold text-[var(--color-text-primary)] italic">How I Work</h4>
-                <ol class="font-[var(--font-body)] text-[14px] text-[var(--color-text-secondary)] mt-2 space-y-1 list-decimal list-inside">
-                  <li>I start with the problem, not the tools.</li>
-                  <li>I build, test, and iterate quickly.</li>
-                  <li>Then I refine until it's solid.</li>
-                </ol>
-              </div>
-            </div>
+        <div class="flex justify-center md:justify-end">
+          <div class="w-[280px] h-[340px] md:w-[320px] md:h-[400px] rounded-[20px] bg-gradient-to-br from-purple-100 to-purple-50 border border-[var(--color-card-border)] flex items-center justify-center overflow-hidden">
+            <span class="font-display italic text-[20px] text-[var(--color-text-muted)]">Photo</span>
           </div>
         </div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- Timeline Section -->
-    <section class="max-w-[1200px] mx-auto px-6 md:px-10 py-16 md:py-24">
-      <h2 class="font-[var(--font-display)] text-[36px] md:text-[48px] text-[var(--color-text-primary)]">
-        How I got <span class="scribble-underline scribble-tight">here</span>.
+  <!-- Who I Am -->
+  <section class="py-16 md:py-24">
+    <div class="max-w-[900px] mx-auto px-4 md:px-10">
+      <h2 class="font-display italic text-[36px] md:text-[48px] text-[var(--color-text-primary)] mb-6 tracking-tight leading-tight">
+        More than a <span class="marker-highlight">developer</span>.
       </h2>
-      <p class="font-[var(--font-body)] text-[16px] text-[var(--color-text-secondary)] mt-2 max-w-[500px]">
-        A timeline of the work I've done, what I've learned, and the experiences that shaped how I build today.
+      <div class="space-y-5 font-body text-[16px] md:text-[18px] text-[var(--color-text-secondary)] leading-relaxed">
+        <p>
+          I'm interested in the intersection of software engineering, artificial intelligence, education and entrepreneurship. I don't only want to write code — I want to understand problems and turn them into useful systems and products.
+        </p>
+        <p>
+          I think about how technology fits into the real world: the constraints of bandwidth, the needs of actual users, the economics of building in Africa, and the responsibility that comes with teaching people to build.
+        </p>
+        <p>
+          My work spans building production software, experimenting with AI applications, teaching the next generation of developers, and exploring how technology can create genuine opportunity.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- My Story -->
+  <section class="bg-[var(--color-secondary)] py-16 md:py-24">
+    <div class="max-w-[900px] mx-auto px-4 md:px-10">
+      <h2 class="font-display italic text-[36px] md:text-[48px] text-[var(--color-text-primary)] mb-10 tracking-tight leading-tight">
+        How I got <span class="scribble-underline">here</span>
+      </h2>
+
+      <div class="space-y-8">
+        <div class="flex gap-6">
+          <div class="flex flex-col items-center">
+            <div class="w-3 h-3 rounded-full bg-[var(--color-primary)]"></div>
+            <div class="w-px flex-1 bg-[var(--color-divider)]"></div>
+          </div>
+          <div class="pb-2">
+            <p class="font-body text-[12px] font-semibold uppercase tracking-widest text-[var(--color-primary)]">Discovery</p>
+            <p class="font-body text-[16px] text-[var(--color-text-secondary)] mt-1 leading-relaxed">Discovered technology and became fascinated by how software could solve real-world problems.</p>
+          </div>
+        </div>
+
+        <div class="flex gap-6">
+          <div class="flex flex-col items-center">
+            <div class="w-3 h-3 rounded-full bg-[var(--color-primary)]"></div>
+            <div class="w-px flex-1 bg-[var(--color-divider)]"></div>
+          </div>
+          <div class="pb-2">
+            <p class="font-body text-[12px] font-semibold uppercase tracking-widest text-[var(--color-primary)]">Learning</p>
+            <p class="font-body text-[16px] text-[var(--color-text-secondary)] mt-1 leading-relaxed">Started learning software development — HTML, CSS, JavaScript, then deeper into backend systems, databases, and architecture.</p>
+          </div>
+        </div>
+
+        <div class="flex gap-6">
+          <div class="flex flex-col items-center">
+            <div class="w-3 h-3 rounded-full bg-[var(--color-primary)]"></div>
+            <div class="w-px flex-1 bg-[var(--color-divider)]"></div>
+          </div>
+          <div class="pb-2">
+            <p class="font-body text-[12px] font-semibold uppercase tracking-widest text-[var(--color-primary)]">Building</p>
+            <p class="font-body text-[16px] text-[var(--color-text-secondary)] mt-1 leading-relaxed">Built first real projects — web applications, APIs, and tools that people actually used.</p>
+          </div>
+        </div>
+
+        <div class="flex gap-6">
+          <div class="flex flex-col items-center">
+            <div class="w-3 h-3 rounded-full bg-[var(--color-primary)]"></div>
+            <div class="w-px flex-1 bg-[var(--color-divider)]"></div>
+          </div>
+          <div class="pb-2">
+            <p class="font-body text-[12px] font-semibold uppercase tracking-widest text-[var(--color-primary)]">Teaching</p>
+            <p class="font-body text-[16px] text-[var(--color-text-secondary)] mt-1 leading-relaxed">Started teaching software development, mentoring students, and creating educational content.</p>
+          </div>
+        </div>
+
+        <div class="flex gap-6">
+          <div class="flex flex-col items-center">
+            <div class="w-3 h-3 rounded-full bg-[var(--color-primary)]"></div>
+            <div class="w-px flex-1 bg-[var(--color-divider)]"></div>
+          </div>
+          <div class="pb-2">
+            <p class="font-body text-[12px] font-semibold uppercase tracking-widest text-[var(--color-primary)]">AI & Products</p>
+            <p class="font-body text-[16px] text-[var(--color-text-secondary)] mt-1 leading-relaxed">Moved deeper into AI — building intelligent applications, agents, and automation systems. Started building products.</p>
+          </div>
+        </div>
+
+        <div class="flex gap-6">
+          <div class="flex flex-col items-center">
+            <div class="w-3 h-3 rounded-full bg-[var(--color-primary)]"></div>
+          </div>
+          <div class="pb-2">
+            <p class="font-body text-[12px] font-semibold uppercase tracking-widest text-[var(--color-primary)]">Now</p>
+            <p class="font-body text-[16px] text-[var(--color-text-secondary)] mt-1 leading-relaxed">Building for Zimbabwe and Africa — creating technology that solves problems for people who understand them firsthand.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- What I Believe -->
+  <section class="py-16 md:py-24">
+    <div class="max-w-[1200px] mx-auto px-4 md:px-10">
+      <h2 class="font-display italic text-[36px] md:text-[48px] text-[var(--color-text-primary)] mb-4 tracking-tight leading-tight">
+        Technology should create <span class="scribble-underline">opportunity</span>.
+      </h2>
+      <p class="font-body text-[16px] md:text-[18px] text-[var(--color-text-secondary)] mb-10 max-w-[700px] leading-relaxed">
+        I believe technology is most valuable when it solves problems people actually experience.
       </p>
 
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-12 items-stretch">
-        <!-- Timeline Card 1 -->
-        <div class="bg-white rounded-[16px] border border-[var(--color-card-border)] p-6 flex flex-col h-full min-h-[440px]">
-          <div class="h-[180px] flex items-start">
-            <div class="w-14 h-14 rounded-full bg-[var(--color-secondary)] flex items-center justify-center">
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m18 16 4-4-4-4"/><path d="m6 8-4 4 4 4"/><path d="m14.5 4-5 16"/></svg>
-            </div>
-          </div>
-          <div>
-            <p class="font-[var(--font-body)] text-[14px] text-[var(--color-text-muted)]">
-              <span class="font-medium text-[var(--color-text-primary)]">Software Development</span> 2022 – Present
-            </p>
-            <h3 class="font-[var(--font-display)] text-[22px] font-bold text-[var(--color-text-primary)] italic mt-2">Full-Stack Engineer</h3>
-            <p class="font-[var(--font-body)] text-[14px] text-[var(--color-text-secondary)] mt-3 leading-relaxed">
-              Building web applications, APIs, and AI-integrated systems. Focused on creating reliable software that solves real problems for businesses and users.
-            </p>
-          </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div class="bg-white rounded-[16px] border border-[var(--color-card-border)] p-6">
+          <h3 class="font-display italic text-[22px] font-bold text-[var(--color-text-primary)] tracking-tight mb-2">Build for reality</h3>
+          <p class="font-body text-[14px] text-[var(--color-text-secondary)] leading-relaxed">Technology should work in the environments where people actually use it.</p>
         </div>
-
-        <!-- Timeline Card 2 -->
-        <div class="bg-white rounded-[16px] border border-[var(--color-card-border)] p-6 flex flex-col h-full min-h-[440px]">
-          <div class="h-[180px] flex items-start">
-            <div class="w-14 h-14 rounded-full bg-[var(--color-secondary)] flex items-center justify-center">
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 8V4H8"/><rect width="16" height="12" x="4" y="8" rx="2"/><path d="M2 14h2"/><path d="M20 14h2"/><path d="M15 13v2"/><path d="M9 13v2"/></svg>
-            </div>
-          </div>
-          <div>
-            <p class="font-[var(--font-body)] text-[14px] text-[var(--color-text-muted)]">
-              <span class="font-medium text-[var(--color-text-primary)]">AI & Automation</span> 2023 – Present
-            </p>
-            <h3 class="font-[var(--font-display)] text-[22px] font-bold text-[var(--color-text-primary)] italic mt-2">AI Builder</h3>
-            <p class="font-[var(--font-body)] text-[14px] text-[var(--color-text-secondary)] mt-3 leading-relaxed">
-              Exploring and building AI-powered solutions — from LLM integrations and intelligent agents to automation workflows that help businesses work more efficiently.
-            </p>
-          </div>
+        <div class="bg-white rounded-[16px] border border-[var(--color-card-border)] p-6">
+          <h3 class="font-display italic text-[22px] font-bold text-[var(--color-text-primary)] tracking-tight mb-2">Learn by building</h3>
+          <p class="font-body text-[14px] text-[var(--color-text-secondary)] leading-relaxed">The fastest way to understand technology is to create with it.</p>
         </div>
-
-        <!-- Timeline Card 3 -->
-        <div class="bg-white rounded-[16px] border border-[var(--color-card-border)] p-6 flex flex-col h-full min-h-[440px]">
-          <div class="h-[180px] flex items-start">
-            <div class="w-14 h-14 rounded-full bg-[var(--color-secondary)] flex items-center justify-center">
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
-            </div>
-          </div>
-          <div>
-            <p class="font-[var(--font-body)] text-[14px] text-[var(--color-text-muted)]">
-              <span class="font-medium text-[var(--color-text-primary)]">Education</span> 2023 – Present
-            </p>
-            <h3 class="font-[var(--font-display)] text-[22px] font-bold text-[var(--color-text-primary)] italic mt-2">Technology Educator</h3>
-            <p class="font-[var(--font-body)] text-[14px] text-[var(--color-text-secondary)] mt-3 leading-relaxed">
-              Teaching software development by focusing on fundamentals and real projects. Helping students understand how to think about problems, structure solutions, and write code that works.
-            </p>
-          </div>
+        <div class="bg-white rounded-[16px] border border-[var(--color-card-border)] p-6">
+          <h3 class="font-display italic text-[22px] font-bold text-[var(--color-text-primary)] tracking-tight mb-2">Share what you learn</h3>
+          <p class="font-body text-[14px] text-[var(--color-text-secondary)] leading-relaxed">Knowledge becomes more valuable when it helps someone else move forward.</p>
+        </div>
+        <div class="bg-white rounded-[16px] border border-[var(--color-card-border)] p-6">
+          <h3 class="font-display italic text-[22px] font-bold text-[var(--color-text-primary)] tracking-tight mb-2">Africa should build</h3>
+          <p class="font-body text-[14px] text-[var(--color-text-secondary)] leading-relaxed">African developers shouldn't only consume technology. We should build systems that understand African problems and contexts.</p>
         </div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- Tools Section -->
-    <section class="bg-[var(--color-secondary)] py-16 md:py-24">
-      <div class="max-w-[1200px] mx-auto px-6 md:px-10 text-center">
-        <h2 class="font-[var(--font-display)] text-[36px] md:text-[48px] text-[var(--color-text-primary)] italic">Tools I trust.</h2>
-        <p class="font-[var(--font-body)] text-[16px] text-[var(--color-text-secondary)] mt-2">
-          Not a long list. Just the tools I actually use and understand well.
-        </p>
+  <!-- What I Do -->
+  <section class="bg-[var(--color-secondary)] py-16 md:py-24">
+    <div class="max-w-[1200px] mx-auto px-4 md:px-10">
+      <h2 class="font-display italic text-[36px] md:text-[48px] text-[var(--color-text-primary)] mb-10 tracking-tight leading-tight">
+        What I <span class="scribble-circle">Do</span>
+      </h2>
 
-        <div class="flex flex-wrap items-center justify-center gap-8 md:gap-14 mt-12">
-          <div class="flex flex-col items-center gap-2">
-            <div class="w-14 h-14 rounded-full bg-white border border-[var(--color-card-border)] flex items-center justify-center">
-              <span class="font-bold text-[var(--color-text-primary)] text-xs">TS</span>
-            </div>
-            <span class="text-[12px] text-[var(--color-text-secondary)]">TypeScript</span>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <a href="/work" class="block group bg-white rounded-[16px] border border-[var(--color-card-border)] p-6 hover:border-[var(--color-primary)] transition-colors">
+          <h3 class="font-display italic text-[22px] font-bold text-[var(--color-text-primary)] tracking-tight mb-2">Software Engineering</h3>
+          <p class="font-body text-[14px] text-[var(--color-text-secondary)] leading-relaxed">I design and build web applications, APIs and software systems.</p>
+          <span class="inline-flex items-center font-body text-[13px] text-[var(--color-primary)] font-medium mt-3 group-hover:underline">Explore my work &rarr;</span>
+        </a>
+        <a href="/ai-lab" class="block group bg-white rounded-[16px] border border-[var(--color-card-border)] p-6 hover:border-[var(--color-primary)] transition-colors">
+          <h3 class="font-display italic text-[22px] font-bold text-[var(--color-text-primary)] tracking-tight mb-2">AI</h3>
+          <p class="font-body text-[14px] text-[var(--color-text-secondary)] leading-relaxed">I explore AI applications, agents, automation and intelligent systems.</p>
+          <span class="inline-flex items-center font-body text-[13px] text-[var(--color-primary)] font-medium mt-3 group-hover:underline">Explore AI Lab &rarr;</span>
+        </a>
+        <a href="/teaching" class="block group bg-white rounded-[16px] border border-[var(--color-card-border)] p-6 hover:border-[var(--color-primary)] transition-colors">
+          <h3 class="font-display italic text-[22px] font-bold text-[var(--color-text-primary)] tracking-tight mb-2">Education</h3>
+          <p class="font-body text-[14px] text-[var(--color-text-secondary)] leading-relaxed">I teach software development and technology and mentor emerging developers.</p>
+          <span class="inline-flex items-center font-body text-[13px] text-[var(--color-primary)] font-medium mt-3 group-hover:underline">Explore teaching &rarr;</span>
+        </a>
+        <a href="/work" class="block group bg-white rounded-[16px] border border-[var(--color-card-border)] p-6 hover:border-[var(--color-primary)] transition-colors">
+          <h3 class="font-display italic text-[22px] font-bold text-[var(--color-text-primary)] tracking-tight mb-2">Entrepreneurship</h3>
+          <p class="font-body text-[14px] text-[var(--color-text-secondary)] leading-relaxed">I experiment with products and businesses designed around real problems.</p>
+          <span class="inline-flex items-center font-body text-[13px] text-[var(--color-primary)] font-medium mt-3 group-hover:underline">Explore &rarr;</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Experience -->
+  <section class="py-16 md:py-24">
+    <div class="max-w-[900px] mx-auto px-4 md:px-10">
+      <h2 class="font-display italic text-[36px] md:text-[48px] text-[var(--color-text-primary)] mb-10 tracking-tight leading-tight">
+        Experience
+      </h2>
+
+      <div class="space-y-8">
+        <div class="border-b border-[var(--color-divider)] pb-8">
+          <div class="flex flex-col md:flex-row md:items-start md:justify-between gap-1 mb-2">
+            <h3 class="font-display italic text-[22px] font-bold text-[var(--color-text-primary)] tracking-tight">Senior Instructor / Hub Lead</h3>
+            <span class="font-body text-[13px] text-[var(--color-text-muted)]">2026 &mdash; Present</span>
           </div>
-          <div class="flex flex-col items-center gap-2">
-            <div class="w-14 h-14 rounded-full bg-white border border-[var(--color-card-border)] flex items-center justify-center">
-              <span class="font-bold text-[var(--color-text-primary)] text-xs">Py</span>
-            </div>
-            <span class="text-[12px] text-[var(--color-text-secondary)]">Python</span>
+          <p class="font-body text-[14px] text-[var(--color-primary)] font-medium mb-2">Organization &middot; Zimbabwe</p>
+          <ul class="font-body text-[14px] text-[var(--color-text-secondary)] leading-relaxed space-y-1">
+            <li>Leading software development instruction and curriculum design</li>
+            <li>Mentoring junior developers and managing student projects</li>
+            <li>Building internal tools and AI-powered educational resources</li>
+          </ul>
+        </div>
+
+        <div class="border-b border-[var(--color-divider)] pb-8">
+          <div class="flex flex-col md:flex-row md:items-start md:justify-between gap-1 mb-2">
+            <h3 class="font-display italic text-[22px] font-bold text-[var(--color-text-primary)] tracking-tight">Junior Software Developer Instructor</h3>
+            <span class="font-body text-[13px] text-[var(--color-text-muted)]">2025 &mdash; 2026</span>
           </div>
-          <div class="flex flex-col items-center gap-2">
-            <div class="w-14 h-14 rounded-full bg-white border border-[var(--color-card-border)] flex items-center justify-center">
-              <span class="font-bold text-[var(--color-text-primary)] text-xs">Re</span>
-            </div>
-            <span class="text-[12px] text-[var(--color-text-secondary)]">React</span>
-          </div>
-          <div class="flex flex-col items-center gap-2">
-            <div class="w-14 h-14 rounded-full bg-white border border-[var(--color-card-border)] flex items-center justify-center">
-              <span class="font-bold text-[var(--color-text-primary)] text-xs">Nj</span>
-            </div>
-            <span class="text-[12px] text-[var(--color-text-secondary)]">Node.js</span>
-          </div>
-          <div class="flex flex-col items-center gap-2">
-            <div class="w-14 h-14 rounded-full bg-white border border-[var(--color-card-border)] flex items-center justify-center">
-              <span class="font-bold text-[var(--color-text-primary)] text-xs">AI</span>
-            </div>
-            <span class="text-[12px] text-[var(--color-text-secondary)]">AI / LLMs</span>
-          </div>
+          <p class="font-body text-[14px] text-[var(--color-primary)] font-medium mb-2">Organization &middot; Zimbabwe</p>
+          <ul class="font-body text-[14px] text-[var(--color-text-secondary)] leading-relaxed space-y-1">
+            <li>Teaching web development fundamentals and modern frameworks</li>
+            <li>Creating practical assignments and project-based learning experiences</li>
+          </ul>
         </div>
       </div>
-    </section>
-  </main>
+
+      <a href="/cv" class="inline-flex items-center font-body text-[14px] text-[var(--color-primary)] font-medium mt-8 hover:underline">
+        Download CV &rarr;
+      </a>
+    </div>
+  </section>
+
+  <!-- Education & Learning -->
+  <section class="bg-[var(--color-secondary)] py-16 md:py-24">
+    <div class="max-w-[900px] mx-auto px-4 md:px-10">
+      <h2 class="font-display italic text-[36px] md:text-[48px] text-[var(--color-text-primary)] mb-10 tracking-tight leading-tight">
+        Education & <span class="marker-highlight">Learning</span>
+      </h2>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+        <div class="bg-white rounded-[12px] border border-[var(--color-card-border)] p-5">
+          <h3 class="font-display italic text-[18px] font-bold text-[var(--color-text-primary)] tracking-tight">Software Engineering</h3>
+          <p class="font-body text-[13px] text-[var(--color-text-secondary)] mt-1">Full-stack development, system design, architecture</p>
+        </div>
+        <div class="bg-white rounded-[12px] border border-[var(--color-card-border)] p-5">
+          <h3 class="font-display italic text-[18px] font-bold text-[var(--color-text-primary)] tracking-tight">AI / Machine Learning</h3>
+          <p class="font-body text-[13px] text-[var(--color-text-secondary)] mt-1">LLMs, AI agents, RAG, automation systems</p>
+        </div>
+        <div class="bg-white rounded-[12px] border border-[var(--color-card-border)] p-5">
+          <h3 class="font-display italic text-[18px] font-bold text-[var(--color-text-primary)] tracking-tight">System Design</h3>
+          <p class="font-body text-[13px] text-[var(--color-text-secondary)] mt-1">Scalable architecture, APIs, databases</p>
+        </div>
+        <div class="bg-white rounded-[12px] border border-[var(--color-card-border)] p-5">
+          <h3 class="font-display italic text-[18px] font-bold text-[var(--color-text-primary)] tracking-tight">Product Development</h3>
+          <p class="font-body text-[13px] text-[var(--color-text-secondary)] mt-1">Agile, user research, MVP methodology</p>
+        </div>
+        <div class="bg-white rounded-[12px] border border-[var(--color-card-border)] p-5">
+          <h3 class="font-display italic text-[18px] font-bold text-[var(--color-text-primary)] tracking-tight">SEO & Growth</h3>
+          <p class="font-body text-[13px] text-[var(--color-text-secondary)] mt-1">Technical SEO, content strategy, analytics</p>
+        </div>
+        <div class="bg-white rounded-[12px] border border-[var(--color-card-border)] p-5">
+          <h3 class="font-display italic text-[18px] font-bold text-[var(--color-text-primary)] tracking-tight">Education</h3>
+          <p class="font-body text-[13px] text-[var(--color-text-secondary)] mt-1">Curriculum design, technical instruction</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Teaching & Community -->
+  <section class="py-16 md:py-24">
+    <div class="max-w-[900px] mx-auto px-4 md:px-10 text-center">
+      <h2 class="font-display italic text-[36px] md:text-[48px] text-[var(--color-text-primary)] mb-4 tracking-tight leading-tight">
+        I don't just build technology. I help people <span class="scribble-underline">learn</span> to build it.
+      </h2>
+      <p class="font-body text-[16px] md:text-[18px] text-[var(--color-text-secondary)] leading-relaxed max-w-[600px] mx-auto">
+        Teaching is a core part of my professional identity — from workshops and mentoring to curriculum development and community building.
+      </p>
+      <a href="/teaching" class="inline-flex items-center justify-center px-8 py-3 bg-[var(--color-primary)] text-white font-body text-[16px] font-medium rounded-[10px] hover:bg-[var(--color-primary-hover)] active:scale-95 transition duration-200 mt-8">
+        Explore Teaching &rarr;
+      </a>
+    </div>
+  </section>
+
+  <!-- How I Work -->
+  <section class="bg-[var(--color-secondary)] py-16 md:py-24">
+    <div class="max-w-[1200px] mx-auto px-4 md:px-10">
+      <h2 class="font-display italic text-[36px] md:text-[48px] text-[var(--color-text-primary)] mb-10 tracking-tight leading-tight">
+        How I <span class="scribble-circle">work</span>
+      </h2>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div class="bg-white rounded-[16px] border border-[var(--color-card-border)] p-6">
+          <p class="font-display italic text-[28px] text-[var(--color-primary)] font-bold mb-2">01</p>
+          <h3 class="font-display italic text-[20px] font-bold text-[var(--color-text-primary)] tracking-tight mb-1">Understand</h3>
+          <p class="font-body text-[14px] text-[var(--color-text-secondary)] leading-relaxed">Start with the problem rather than the technology.</p>
+        </div>
+        <div class="bg-white rounded-[16px] border border-[var(--color-card-border)] p-6">
+          <p class="font-display italic text-[28px] text-[var(--color-primary)] font-bold mb-2">02</p>
+          <h3 class="font-display italic text-[20px] font-bold text-[var(--color-text-primary)] tracking-tight mb-1">Research</h3>
+          <p class="font-body text-[14px] text-[var(--color-text-secondary)] leading-relaxed">Understand users, constraints and existing solutions.</p>
+        </div>
+        <div class="bg-white rounded-[16px] border border-[var(--color-card-border)] p-6">
+          <p class="font-display italic text-[28px] text-[var(--color-primary)] font-bold mb-2">03</p>
+          <h3 class="font-display italic text-[20px] font-bold text-[var(--color-text-primary)] tracking-tight mb-1">Design</h3>
+          <p class="font-body text-[14px] text-[var(--color-text-secondary)] leading-relaxed">Think through architecture and user experience.</p>
+        </div>
+        <div class="bg-white rounded-[16px] border border-[var(--color-card-border)] p-6">
+          <p class="font-display italic text-[28px] text-[var(--color-primary)] font-bold mb-2">04</p>
+          <h3 class="font-display italic text-[20px] font-bold text-[var(--color-text-primary)] tracking-tight mb-1">Build</h3>
+          <p class="font-body text-[14px] text-[var(--color-text-secondary)] leading-relaxed">Create a focused, usable solution.</p>
+        </div>
+        <div class="bg-white rounded-[16px] border border-[var(--color-card-border)] p-6">
+          <p class="font-display italic text-[28px] text-[var(--color-primary)] font-bold mb-2">05</p>
+          <h3 class="font-display italic text-[20px] font-bold text-[var(--color-text-primary)] tracking-tight mb-1">Measure</h3>
+          <p class="font-body text-[14px] text-[var(--color-text-secondary)] leading-relaxed">Test performance, usability and outcomes.</p>
+        </div>
+        <div class="bg-white rounded-[16px] border border-[var(--color-card-border)] p-6">
+          <p class="font-display italic text-[28px] text-[var(--color-primary)] font-bold mb-2">06</p>
+          <h3 class="font-display italic text-[20px] font-bold text-[var(--color-text-primary)] tracking-tight mb-1">Iterate</h3>
+          <p class="font-body text-[14px] text-[var(--color-text-secondary)] leading-relaxed">Improve based on evidence.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Vision -->
+  <section class="py-16 md:py-24">
+    <div class="max-w-[900px] mx-auto px-4 md:px-10 text-center">
+      <h2 class="font-display italic text-[36px] md:text-[48px] text-[var(--color-text-primary)] mb-6 tracking-tight leading-tight">
+        Where I'm going
+      </h2>
+      <p class="font-body text-[16px] md:text-[18px] text-[var(--color-text-secondary)] leading-relaxed max-w-[700px] mx-auto">
+        I want to contribute to an Africa where more of our problems are solved by people who understand them firsthand — and where technology creates opportunities rather than simply replacing them.
+      </p>
+      <p class="font-display italic text-[24px] md:text-[28px] text-[var(--color-text-primary)] mt-8">
+        Zimbabwe &rarr; Africa &rarr; Global
+      </p>
+    </div>
+  </section>
+
+  <!-- Current Focus -->
+  <section class="bg-[var(--color-secondary)] py-16 md:py-24">
+    <div class="max-w-[1200px] mx-auto px-4 md:px-10">
+      <h2 class="font-display italic text-[36px] md:text-[48px] text-[var(--color-text-primary)] mb-10 tracking-tight leading-tight text-center">
+        Right <span class="marker-highlight">now</span>
+      </h2>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div class="text-center">
+          <p class="font-body text-[12px] font-semibold uppercase tracking-widest text-[var(--color-primary)] mb-2">Building</p>
+          <p class="font-body text-[15px] text-[var(--color-text-secondary)] leading-relaxed">AI-powered products for African businesses</p>
+        </div>
+        <div class="text-center">
+          <p class="font-body text-[12px] font-semibold uppercase tracking-widest text-[var(--color-primary)] mb-2">Learning</p>
+          <p class="font-body text-[15px] text-[var(--color-text-secondary)] leading-relaxed">AI agents + system architecture</p>
+        </div>
+        <div class="text-center">
+          <p class="font-body text-[12px] font-semibold uppercase tracking-widest text-[var(--color-primary)] mb-2">Exploring</p>
+          <p class="font-body text-[15px] text-[var(--color-text-secondary)] leading-relaxed">Technology opportunities in Zimbabwe</p>
+        </div>
+        <div class="text-center">
+          <p class="font-body text-[12px] font-semibold uppercase tracking-widest text-[var(--color-primary)] mb-2">Teaching</p>
+          <p class="font-body text-[15px] text-[var(--color-text-secondary)] leading-relaxed">Software development + AI</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Final CTA -->
+  <section class="py-20 md:py-28">
+    <div class="max-w-[800px] mx-auto px-4 md:px-10 text-center">
+      <h2 class="font-display italic text-[36px] md:text-[48px] text-[var(--color-text-primary)] mb-4 tracking-tight leading-tight">
+        Let's build something <span class="scribble-underline">meaningful</span>.
+      </h2>
+      <p class="font-body text-[16px] md:text-[18px] text-[var(--color-text-secondary)] leading-relaxed max-w-[600px] mx-auto">
+        Whether you're building a product, exploring an idea, looking for a speaker, or interested in technology and education — I'd be happy to hear from you.
+      </p>
+      <div class="flex flex-col items-center gap-4 mt-8 md:flex-row md:justify-center">
+        <a
+          href="/contact"
+          class="inline-flex w-full md:w-auto items-center justify-center px-8 py-3 bg-[var(--color-primary)] text-white font-body text-[16px] font-medium rounded-[10px] hover:bg-[var(--color-primary-hover)] active:scale-95 transition duration-200"
+        >
+          Work with me &rarr;
+        </a>
+        <a
+          href="/speaking"
+          class="inline-flex w-full md:w-auto items-center justify-center px-8 py-3 border border-[var(--color-primary)] text-[var(--color-primary)] font-body text-[16px] font-medium rounded-[10px] hover:bg-[var(--color-primary)] hover:text-white active:scale-95 transition duration-200"
+        >
+          Invite me to speak &rarr;
+        </a>
+      </div>
+    </div>
+  </section>
 </PageLayout>
 
 <style>
+  .marker-highlight {
+    position: relative;
+    display: inline-block;
+    isolation: isolate;
+  }
+  .marker-highlight::before {
+    content: "";
+    position: absolute;
+    left: -0.08em;
+    right: -0.08em;
+    bottom: 0.05em;
+    height: 45%;
+    background-color: #FFB800;
+    border-radius: 20% 5% 15% 8%;
+    z-index: -1;
+    transform: rotate(-1deg);
+  }
+
+  .scribble-circle {
+    position: relative;
+    display: inline-block;
+  }
+  .scribble-circle::after {
+    content: "";
+    position: absolute;
+    inset: -18% -12% -22% -12%;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 100' fill='none'><path d='M40 50 C 30 20, 80 8, 130 14 C 180 22, 195 55, 165 78 C 130 95, 60 92, 30 70 C 12 56, 18 32, 50 22' stroke='%2300CEB2' stroke-width='4' stroke-linecap='round'/></svg>");
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    transform: rotate(-2deg);
+    pointer-events: none;
+    z-index: -1;
+  }
+
   .scribble-underline {
     position: relative;
     display: inline-block;
@@ -224,8 +441,5 @@ const heroImage = "/vincent.avif";
     background-size: 100% 100%;
     transform: rotate(-2deg);
     pointer-events: none;
-  }
-  .scribble-underline.scribble-tight::after {
-    bottom: -6px;
   }
 </style>
