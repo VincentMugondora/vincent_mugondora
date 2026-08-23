@@ -4,7 +4,7 @@
   font-style: normal;
   font-display: swap;
   font-weight: 400 700;
-  src: url('/fonts/Caveat-VariableFont_wght.ttf') format('truetype');
+  src: url('/fonts/Caveat-VariableFont_wght.woff2') format('woff2');
 }
 
 /* Inter Variable — body font */
@@ -13,7 +13,7 @@
   font-style: normal;
   font-display: swap;
   font-weight: 100 900;
-  src: url('/fonts/Inter-VariableFont_opsz,wght.ttf') format('truetype');
+  src: url('/fonts/Inter-VariableFont_opsz,wght.woff2') format('woff2');
 }
 
 /* Inter Variable Italic */
@@ -22,5 +22,5 @@
   font-style: italic;
   font-display: swap;
   font-weight: 100 900;
-  src: url('/fonts/Inter-Italic-VariableFont_opsz,wght.ttf') format('truetype');
+  src: url('/fonts/Inter-Italic-VariableFont_opsz,wght.woff2') format('woff2');
 }
