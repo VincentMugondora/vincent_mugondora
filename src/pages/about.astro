@@ -1,764 +1,231 @@
 ---
 import PageLayout from "@layouts/PageLayout.astro";
-import { Icon } from "astro-icon/components";
-import { getProfilePageJsonLd } from "@/lib/seo";
+import { siteConfig } from "@config/site";
 
 const heroImage = "/vincent.avif";
-
-const profileJsonLd = getProfilePageJsonLd();
-
-const workAreas = [
-  {
-    title: "Software Engineering",
-    text: "Building practical applications with attention to structure, maintainability and the real problem behind the code.",
-    icon: "lucide:code-2",
-  },
-  {
-    title: "Web Development",
-    text: "Creating fast, accessible web experiences that combine strong technical foundations with clear communication.",
-    icon: "lucide:globe",
-  },
-  {
-    title: "AI & Automation",
-    text: "Exploring how AI agents, LLMs and automation can help people and organizations work more effectively.",
-    icon: "lucide:bot",
-  },
-  {
-    title: "Technology Education",
-    text: "Teaching software development in a practical way so students and developers can understand, build and keep growing.",
-    icon: "lucide:graduation-cap",
-  },
-  {
-    title: "System Design",
-    text: "Thinking through architecture, constraints, data flow and trade-offs before turning an idea into software.",
-    icon: "lucide:layers",
-  },
-  {
-    title: "Digital Products",
-    text: "Shaping ideas into useful products, experiments and platforms with a builder's eye for execution.",
-    icon: "lucide:rocket",
-  },
-];
-
-const journey = [
-  {
-    label: "Learning to build",
-    text: "Vincent's work begins with a builder's mindset: learning by making, asking better technical questions and using code to turn ideas into working systems.",
-    icon: "lucide:hammer",
-  },
-  {
-    label: "Engineering focus",
-    text: "That focus grew into software engineering, web development and system architecture, with an emphasis on performance, clarity and maintainable foundations.",
-    icon: "lucide:wrench",
-  },
-  {
-    label: "Teaching technology",
-    text: "Alongside building, Vincent teaches technology and software development, translating technical ideas into practical learning for students and developers.",
-    icon: "lucide:book-open",
-  },
-  {
-    label: "AI and entrepreneurship",
-    text: "The current direction brings together AI, automation, digital products and entrepreneurship, with a particular interest in useful technology for Zimbabwe and Africa.",
-    icon: "lucide:sparkles",
-  },
-];
-
-const principles = [
-  { text: "Performance is a product decision, not an afterthought.", icon: "lucide:gauge" },
-  { text: "Simple systems are easier to understand, teach and improve.", icon: "lucide:minimize-2" },
-  { text: "Continuous learning keeps the work honest.", icon: "lucide:refresh-cw" },
-  { text: "The best technology starts with a real problem.", icon: "lucide:target" },
-  { text: "Useful software should help people move forward.", icon: "lucide:arrow-up-right" },
-];
-
-const exploring = [
-  "AI agents and practical automation",
-  "System design and software architecture",
-  "AI for education and developer learning",
-  "Technology entrepreneurship in Zimbabwe and Africa",
-  "Emerging technology that can solve local problems",
-];
 ---
 
-<PageLayout title="About Vincent Mugondora | Software Engineer & AI Builder" description="Learn about Vincent Mugondora, a Zimbabwean software engineer, AI builder, technology educator and entrepreneur building useful technology for Africa.">
-  <script is:inline type="application/ld+json" set:html={JSON.stringify(profileJsonLd)} />
+<PageLayout title="About Vincent Mugondora | Software Developer & AI Builder" description="Learn about Vincent Mugondora — a Zimbabwean software developer, AI builder, and technology educator building useful software.">
+  <main class="pt-[72px]">
+    <!-- Hero Section -->
+    <section class="max-w-[1200px] mx-auto px-6 md:px-10 py-16 md:py-24">
+      <div class="grid grid-cols-1 lg:grid-cols-[1fr_auto] gap-12 lg:gap-16 items-start">
+        <!-- Left column -->
+        <div>
+          <span class="inline-block font-[var(--font-display)] text-[16px] text-[var(--color-text-secondary)] border border-[var(--color-card-border)] rounded-full px-4 py-1 mb-6">
+            Available For Work
+          </span>
+          <h1 class="font-[var(--font-display)] text-[48px] md:text-[72px] lg:text-[96px] text-[var(--color-text-primary)] leading-[1.05]">
+            I do <span class="text-[var(--color-primary)]">software</span> things.
+          </h1>
+          <p class="font-[var(--font-body)] text-[18px] text-[var(--color-text-secondary)] mt-6 max-w-[520px]">
+            I build digital products that solve real problems and work reliably.
+            My work is grounded in solid engineering principles, with a mix of system design,
+            AI integration, and a practical understanding of how software is actually built
+            and used.
+          </p>
+          <div class="flex flex-col sm:flex-row sm:items-center gap-4 mt-8">
+            <a
+              href="/contact"
+              class="flex-1 sm:flex-none inline-flex items-center justify-center px-8 py-3 bg-[var(--color-primary)] text-white font-[var(--font-body)] text-[16px] font-medium rounded-[10px] hover:bg-[var(--color-primary-hover)] transition-colors duration-200"
+            >
+              Work With Me
+            </a>
+            <a
+              href={`mailto:${siteConfig.email}`}
+              class="flex-1 sm:flex-none inline-flex items-center justify-center px-8 py-3 border border-[var(--color-card-border)] text-[var(--color-text-primary)] font-[var(--font-body)] text-[16px] font-medium rounded-[10px] hover:bg-[var(--color-secondary)] transition-colors duration-200"
+            >
+              Send Email
+            </a>
+          </div>
+        </div>
 
-  <section class="about-hero">
-    <div class="about-hero__panel">
-      <div class="about-hero__content">
-        <p class="badge">About Vincent</p>
-        <h1 class="about-hero__title">Building technology, teaching people, and learning in public.</h1>
-        <p class="about-hero__desc">
-          Vincent Mugondora is a Zimbabwean software engineer, AI builder, technology educator and entrepreneur. He builds digital products, teaches practical software development and explores how AI and emerging technology can create opportunity in Zimbabwe, Africa and beyond.
-        </p>
-        <div class="about-hero__actions">
-          <a class="btn btn--dark" href="/work">View Work</a>
-          <a class="btn btn--outline" href="/contact">Start a Conversation</a>
+        <!-- Right column: profile card + info cards -->
+        <div class="hidden sm:flex flex-col sm:flex-row lg:flex-col xl:flex-row gap-4">
+          <!-- Profile card -->
+          <div class="bg-white rounded-[16px] border border-[var(--color-card-border)] p-6 w-full sm:w-[260px] min-h-[360px] flex flex-col">
+            <div class="w-[84px] h-[84px] rounded-full overflow-hidden bg-black">
+              <img src={heroImage} alt="Vincent Mugondora" class="w-full h-full object-cover" />
+            </div>
+            <div class="mt-auto">
+              <h3 class="font-[var(--font-display)] text-[24px] font-bold text-[var(--color-text-primary)] text-left">Vincent Mugondora</h3>
+              <p class="font-[var(--font-body)] text-[16px] text-[var(--color-text-secondary)] mt-2 text-left">
+                I believe good{" "}
+                <span class="relative inline-block">
+                  <span class="absolute left-0 right-0 bottom-0 h-[45%] bg-[var(--color-highlight-yellow)] -z-10 rounded-sm opacity-40"></span>
+                  <span class="relative">Software</span>
+                </span>{" "}
+                starts with understanding people. Not assumptions, not hype. Just real problems, clearly solved.
+              </p>
+            </div>
+          </div>
+
+          <!-- Info cards column -->
+          <div class="flex flex-col gap-4 w-full sm:w-[240px]">
+            <!-- Details card -->
+            <div class="bg-white rounded-[16px] border border-[var(--color-card-border)] p-6 min-h-[280px] flex flex-col">
+              <div class="w-14 h-14 rounded-full bg-[var(--color-secondary)] flex items-center justify-center">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg>
+              </div>
+              <div class="mt-auto">
+                <h4 class="font-[var(--font-display)] text-[20px] font-bold text-[var(--color-text-primary)] italic">Details</h4>
+                <ol class="font-[var(--font-body)] text-[14px] text-[var(--color-text-secondary)] mt-2 space-y-1 list-decimal list-inside">
+                  <li>Harare, Zimbabwe</li>
+                  <li>GMT+2</li>
+                  <li>Open to remote work</li>
+                </ol>
+              </div>
+            </div>
+
+            <!-- How I Work card -->
+            <div class="bg-white rounded-[16px] border border-[var(--color-card-border)] p-6 min-h-[280px] flex flex-col">
+              <div class="w-14 h-14 rounded-full bg-[var(--color-secondary)] flex items-center justify-center">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20a8 8 0 1 0 0-16 8 8 0 0 0 0 16Z"/><path d="M12 14a2 2 0 1 0 0-4 2 2 0 0 0 0 4Z"/><path d="M12 2v2"/><path d="M12 22v-2"/><path d="m17 20.66-1-1.73"/><path d="M11 10.27 7 3.34"/><path d="m20.66 17-1.73-1"/><path d="m3.34 7 1.73 1"/><path d="M14 12h8"/><path d="M2 12h2"/><path d="m20.66 7-1.73 1"/><path d="m3.34 17 1.73-1"/><path d="m17 3.34-1 1.73"/><path d="m11 13.73-4 6.93"/></svg>
+              </div>
+              <div class="mt-auto">
+                <h4 class="font-[var(--font-display)] text-[20px] font-bold text-[var(--color-text-primary)] italic">How I Work</h4>
+                <ol class="font-[var(--font-body)] text-[14px] text-[var(--color-text-secondary)] mt-2 space-y-1 list-decimal list-inside">
+                  <li>I start with the problem, not the tools.</li>
+                  <li>I build, test, and iterate quickly.</li>
+                  <li>Then I refine until it's solid.</li>
+                </ol>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
-      <figure class="about-hero__media">
-        <img
-          src={heroImage}
-          alt="Vincent Mugondora"
-          loading="eager"
-          fetchpriority="high"
-        />
-      </figure>
-    </div>
-  </section>
+    </section>
 
-  <section class="section-wrap" aria-labelledby="journey-title">
-    <header class="section-header">
-      <p class="badge">Journey</p>
-      <h2 id="journey-title" class="section-title">From learning by building to building with purpose</h2>
-      <p class="section-intro">A path shaped by curiosity, code and the drive to create something useful.</p>
-    </header>
+    <!-- Timeline Section -->
+    <section class="max-w-[1200px] mx-auto px-6 md:px-10 py-16 md:py-24">
+      <h2 class="font-[var(--font-display)] text-[36px] md:text-[48px] text-[var(--color-text-primary)]">
+        How I got <span class="scribble-underline scribble-tight">here</span>.
+      </h2>
+      <p class="font-[var(--font-body)] text-[16px] text-[var(--color-text-secondary)] mt-2 max-w-[500px]">
+        A timeline of the work I've done, what I've learned, and the experiences that shaped how I build today.
+      </p>
 
-    <div class="journey-grid">
-      {journey.map((item, index) => (
-        <article class="journey-card">
-          <span class="journey-card__icon"><Icon name={item.icon} /></span>
-          <div class="journey-card__body">
-            <h3>{item.label}</h3>
-            <p>{item.text}</p>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-12 items-stretch">
+        <!-- Timeline Card 1 -->
+        <div class="bg-white rounded-[16px] border border-[var(--color-card-border)] p-6 flex flex-col h-full min-h-[440px]">
+          <div class="h-[180px] flex items-start">
+            <div class="w-14 h-14 rounded-full bg-[var(--color-secondary)] flex items-center justify-center">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m18 16 4-4-4-4"/><path d="m6 8-4 4 4 4"/><path d="m14.5 4-5 16"/></svg>
+            </div>
           </div>
-        </article>
-      ))}
-    </div>
-  </section>
+          <div>
+            <p class="font-[var(--font-body)] text-[14px] text-[var(--color-text-muted)]">
+              <span class="font-medium text-[var(--color-text-primary)]">Software Development</span> 2022 – Present
+            </p>
+            <h3 class="font-[var(--font-display)] text-[22px] font-bold text-[var(--color-text-primary)] italic mt-2">Full-Stack Engineer</h3>
+            <p class="font-[var(--font-body)] text-[14px] text-[var(--color-text-secondary)] mt-3 leading-relaxed">
+              Building web applications, APIs, and AI-integrated systems. Focused on creating reliable software that solves real problems for businesses and users.
+            </p>
+          </div>
+        </div>
 
-  <section class="section-wrap section-wrap--dark" aria-labelledby="work-title">
-    <header class="section-header section-header--dark">
-      <p class="badge badge--dark">Expertise</p>
-      <h2 id="work-title" class="section-title section-title--light">What I Do</h2>
-      <p class="section-intro section-intro--light">Code, teaching, systems and products.</p>
-    </header>
+        <!-- Timeline Card 2 -->
+        <div class="bg-white rounded-[16px] border border-[var(--color-card-border)] p-6 flex flex-col h-full min-h-[440px]">
+          <div class="h-[180px] flex items-start">
+            <div class="w-14 h-14 rounded-full bg-[var(--color-secondary)] flex items-center justify-center">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 8V4H8"/><rect width="16" height="12" x="4" y="8" rx="2"/><path d="M2 14h2"/><path d="M20 14h2"/><path d="M15 13v2"/><path d="M9 13v2"/></svg>
+            </div>
+          </div>
+          <div>
+            <p class="font-[var(--font-body)] text-[14px] text-[var(--color-text-muted)]">
+              <span class="font-medium text-[var(--color-text-primary)]">AI & Automation</span> 2023 – Present
+            </p>
+            <h3 class="font-[var(--font-display)] text-[22px] font-bold text-[var(--color-text-primary)] italic mt-2">AI Builder</h3>
+            <p class="font-[var(--font-body)] text-[14px] text-[var(--color-text-secondary)] mt-3 leading-relaxed">
+              Exploring and building AI-powered solutions — from LLM integrations and intelligent agents to automation workflows that help businesses work more efficiently.
+            </p>
+          </div>
+        </div>
 
-    <div class="work-grid">
-      {workAreas.map((area) => (
-        <article class="work-card">
-          <span class="work-card__icon"><Icon name={area.icon} /></span>
-          <h3>{area.title}</h3>
-          <p>{area.text}</p>
-        </article>
-      ))}
-    </div>
-  </section>
+        <!-- Timeline Card 3 -->
+        <div class="bg-white rounded-[16px] border border-[var(--color-card-border)] p-6 flex flex-col h-full min-h-[440px]">
+          <div class="h-[180px] flex items-start">
+            <div class="w-14 h-14 rounded-full bg-[var(--color-secondary)] flex items-center justify-center">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+            </div>
+          </div>
+          <div>
+            <p class="font-[var(--font-body)] text-[14px] text-[var(--color-text-muted)]">
+              <span class="font-medium text-[var(--color-text-primary)]">Education</span> 2023 – Present
+            </p>
+            <h3 class="font-[var(--font-display)] text-[22px] font-bold text-[var(--color-text-primary)] italic mt-2">Technology Educator</h3>
+            <p class="font-[var(--font-body)] text-[14px] text-[var(--color-text-secondary)] mt-3 leading-relaxed">
+              Teaching software development by focusing on fundamentals and real projects. Helping students understand how to think about problems, structure solutions, and write code that works.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
 
-  <section class="section-wrap" aria-labelledby="philosophy-title">
-    <header class="section-header">
-      <p class="badge">How I Think</p>
-      <h2 id="philosophy-title" class="section-title">Useful software starts with clear thinking</h2>
-      <p class="section-intro">I care about performance, simplicity and continuous learning because they make technology easier to trust, maintain and teach.</p>
-    </header>
-
-    <div class="principles-grid">
-      {principles.map((principle) => (
-        <article class="principle-card">
-          <span class="principle-card__icon"><Icon name={principle.icon} /></span>
-          <p>{principle.text}</p>
-        </article>
-      ))}
-    </div>
-  </section>
-
-  <section class="section-wrap" aria-labelledby="teaching-title">
-    <header class="section-header">
-      <p class="badge">Teaching & Impact</p>
-      <h2 id="teaching-title" class="section-title">Helping people understand technology well enough to build with it</h2>
-    </header>
-
-    <div class="teaching-grid">
-      <div class="teaching-content">
-        <p>
-          Vincent's work in technology education is grounded in practical software development. The goal is not to make technical topics sound impressive; it is to help students and developers understand how software works and how to apply that knowledge.
+    <!-- Tools Section -->
+    <section class="bg-[var(--color-secondary)] py-16 md:py-24">
+      <div class="max-w-[1200px] mx-auto px-6 md:px-10 text-center">
+        <h2 class="font-[var(--font-display)] text-[36px] md:text-[48px] text-[var(--color-text-primary)] italic">Tools I trust.</h2>
+        <p class="font-[var(--font-body)] text-[16px] text-[var(--color-text-secondary)] mt-2">
+          Not a long list. Just the tools I actually use and understand well.
         </p>
-        <p>
-          Through teaching, writing, workshops and mentorship-focused work, he breaks down concepts in software engineering, AI, web development and system design for people who want to build real things.
-        </p>
-      </div>
-      <aside class="teaching-panel">
-        <h3>Teaching focus</h3>
-        <ul>
-          <li><Icon name="lucide:check" /> Practical software development</li>
-          <li><Icon name="lucide:check" /> AI and software engineering concepts</li>
-          <li><Icon name="lucide:check" /> System design for growing developers</li>
-          <li><Icon name="lucide:check" /> Technology careers and learning paths</li>
-        </ul>
-      </aside>
-    </div>
-  </section>
 
-  <section class="section-wrap" aria-labelledby="exploring-title">
-    <div class="exploring-grid">
-      <div class="exploring-card">
-        <p class="badge">Currently Exploring</p>
-        <h2 id="exploring-title">The next layer of the work</h2>
-        <p class="exploring-card__text">The current focus is learning and building around AI, automation, system design, software architecture and emerging technology that can be applied to real problems.</p>
-        <ul class="exploring-list">
-          {exploring.map((item) => (
-            <li><Icon name="lucide:arrow-right" /> {item}</li>
-          ))}
-        </ul>
+        <div class="flex flex-wrap items-center justify-center gap-8 md:gap-14 mt-12">
+          <div class="flex flex-col items-center gap-2">
+            <div class="w-14 h-14 rounded-full bg-white border border-[var(--color-card-border)] flex items-center justify-center">
+              <span class="font-bold text-[var(--color-text-primary)] text-xs">TS</span>
+            </div>
+            <span class="text-[12px] text-[var(--color-text-secondary)]">TypeScript</span>
+          </div>
+          <div class="flex flex-col items-center gap-2">
+            <div class="w-14 h-14 rounded-full bg-white border border-[var(--color-card-border)] flex items-center justify-center">
+              <span class="font-bold text-[var(--color-text-primary)] text-xs">Py</span>
+            </div>
+            <span class="text-[12px] text-[var(--color-text-secondary)]">Python</span>
+          </div>
+          <div class="flex flex-col items-center gap-2">
+            <div class="w-14 h-14 rounded-full bg-white border border-[var(--color-card-border)] flex items-center justify-center">
+              <span class="font-bold text-[var(--color-text-primary)] text-xs">Re</span>
+            </div>
+            <span class="text-[12px] text-[var(--color-text-secondary)]">React</span>
+          </div>
+          <div class="flex flex-col items-center gap-2">
+            <div class="w-14 h-14 rounded-full bg-white border border-[var(--color-card-border)] flex items-center justify-center">
+              <span class="font-bold text-[var(--color-text-primary)] text-xs">Nj</span>
+            </div>
+            <span class="text-[12px] text-[var(--color-text-secondary)]">Node.js</span>
+          </div>
+          <div class="flex flex-col items-center gap-2">
+            <div class="w-14 h-14 rounded-full bg-white border border-[var(--color-card-border)] flex items-center justify-center">
+              <span class="font-bold text-[var(--color-text-primary)] text-xs">AI</span>
+            </div>
+            <span class="text-[12px] text-[var(--color-text-secondary)]">AI / LLMs</span>
+          </div>
+        </div>
       </div>
-
-      <div class="exploring-card exploring-card--dark">
-        <p class="badge badge--dark">Beyond Code</p>
-        <h2>A builder's view of problems</h2>
-        <p class="exploring-card__text">Vincent's work also has an entrepreneurial side: looking for useful problems, shaping ideas into digital products and thinking about how technology companies can serve people well.</p>
-        <p class="exploring-card__text">Zimnovate remains a separate commercial technology company identity, while this site is Vincent's personal home for engineering, teaching, speaking, writing and exploration.</p>
-      </div>
-    </div>
-  </section>
-
-  <section class="cta-section">
-    <div class="cta-inner">
-      <h2>Building better technology and helping more people learn it.</h2>
-      <p>The direction is ambitious, but still grounded: keep learning, keep building and make the work useful.</p>
-      <a class="btn btn--dark" href="/contact">Start a Conversation</a>
-    </div>
-  </section>
+    </section>
+  </main>
 </PageLayout>
 
 <style>
-  .about-hero {
-    width: min(1200px, 100%);
-    margin: 0 auto;
-    padding: 100px clamp(18px, 3vw, 36px) 0;
-  }
-
-  .about-hero__panel {
-    background: #f1f1ef;
-    border-radius: 26px;
-    padding: clamp(18px, 3vw, 34px);
-    display: grid;
-    grid-template-columns: 1.1fr 0.9fr;
-    gap: clamp(18px, 2.5vw, 30px);
-    align-items: center;
-  }
-
-  .about-hero__content {
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-  }
-
-  .about-hero__title {
-    margin: 0;
-    font-family: "Lora Variable", "Lora", Georgia, serif;
-    font-size: clamp(2rem, 4.5vw, 3.4rem);
-    line-height: 1.08;
-    letter-spacing: -0.02em;
-    font-weight: 500;
-    color: #111;
-    max-width: 18ch;
-  }
-
-  .about-hero__desc {
-    margin: 0;
-    color: #5f5f5f;
-    line-height: 1.6;
-    font-size: 0.95rem;
-    max-width: 52ch;
-  }
-
-  .about-hero__actions {
-    display: flex;
-    gap: 12px;
-    flex-wrap: wrap;
-    margin-top: 4px;
-  }
-
-  .about-hero__media {
-    margin: 0;
-    border-radius: 18px;
-    overflow: hidden;
-    aspect-ratio: 4/5;
-    background: #c9c9c9;
-  }
-
-  .about-hero__media img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center top;
-    display: block;
-    filter: grayscale(1);
-    transition: filter 0.5s;
-  }
-
-  .about-hero__media:hover img {
-    filter: grayscale(0);
-  }
-
-  /* Shared */
-  .badge {
-    margin: 0;
+  .scribble-underline {
+    position: relative;
     display: inline-block;
-    padding: 6px 12px;
-    border: 1px solid #e4e0d8;
-    border-radius: 999px;
-    background: #fff;
-    color: #666;
-    font-size: 12px;
-    width: fit-content;
   }
-
-  .badge--dark {
-    background: rgba(255, 255, 255, 0.1);
-    border-color: rgba(255, 255, 255, 0.2);
-    color: rgba(255, 255, 255, 0.8);
+  .scribble-underline::after {
+    content: "";
+    position: absolute;
+    left: -4%;
+    right: -4%;
+    bottom: -14px;
+    height: 12px;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 14' fill='none' preserveAspectRatio='none'><path d='M3 9 C 50 3, 110 12, 197 5' stroke='%231BB6F9' stroke-width='6' stroke-linecap='round'/></svg>");
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    transform: rotate(-2deg);
+    pointer-events: none;
   }
-
-  .btn {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    padding: 12px 22px;
-    border-radius: 999px;
-    font-size: 14px;
-    font-weight: 500;
-    text-decoration: none;
-    transition: background 0.2s, transform 0.2s;
-  }
-
-  .btn:hover {
-    transform: translateY(-1px);
-  }
-
-  .btn--dark {
-    background: #1b1b1b;
-    color: #fff;
-  }
-
-  .btn--dark:hover {
-    background: #333;
-  }
-
-  .btn--outline {
-    background: transparent;
-    color: #1b1b1b;
-    border: 1px solid #bdbdb8;
-  }
-
-  .btn--outline:hover {
-    border-color: #888;
-  }
-
-  .section-wrap {
-    width: min(1200px, 100%);
-    margin: 28px auto 0;
-    padding: clamp(20px, 3vw, 34px);
-    background: #f4f2ed;
-    border-radius: 20px;
-  }
-
-  .section-wrap--dark {
-    background: #1b1b1b;
-  }
-
-  .section-header {
-    text-align: center;
-    max-width: 820px;
-    margin: 0 auto 24px;
-  }
-
-  .section-header--dark .section-title {
-    color: #fff;
-  }
-
-  .section-title {
-    margin: 12px 0 0;
-    font-family: "Lora Variable", "Lora", Georgia, serif;
-    font-size: clamp(2rem, 4.2vw, 3rem);
-    line-height: 1.08;
-    letter-spacing: -0.02em;
-    font-weight: 500;
-    color: #151515;
-  }
-
-  .section-title--light {
-    color: #fff;
-  }
-
-  .section-intro {
-    margin: 12px auto 0;
-    color: #5f5f5f;
-    line-height: 1.55;
-    max-width: 66ch;
-    font-size: 0.95rem;
-  }
-
-  .section-intro--light {
-    color: rgba(255, 255, 255, 0.7);
-  }
-
-  /* Journey */
-  .journey-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 12px;
-  }
-
-  .journey-card {
-    background: #fff;
-    border: 1px solid #e6e2db;
-    border-radius: 16px;
-    padding: 20px;
-    display: grid;
-    grid-template-columns: 40px 1fr;
-    gap: 14px;
-    align-items: start;
-  }
-
-  .journey-card__icon {
-    width: 36px;
-    height: 36px;
-    border-radius: 10px;
-    border: 1px solid #ddd8d1;
-    background: #f8f7f4;
-    display: grid;
-    place-items: center;
-    color: #3f3f3f;
-  }
-
-  .journey-card__icon :global(svg) {
-    width: 18px;
-    height: 18px;
-  }
-
-  .journey-card h3 {
-    margin: 0;
-    font-size: 1.02rem;
-    font-weight: 600;
-    color: #1a1a1a;
-  }
-
-  .journey-card p {
-    margin: 6px 0 0;
-    color: #666;
-    line-height: 1.5;
-    font-size: 0.92rem;
-  }
-
-  /* Work cards */
-  .work-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 12px;
-  }
-
-  .work-card {
-    background: #fff;
-    border: 1px solid #e6e2db;
-    border-radius: 16px;
-    padding: 18px;
-    transition: transform 0.2s, border-color 0.2s;
-  }
-
-  .work-card:hover {
-    transform: translateY(-2px);
-    border-color: #ccc;
-  }
-
-  .work-card__icon {
-    width: 32px;
-    height: 32px;
-    border-radius: 8px;
-    border: 1px solid #ddd8d1;
-    background: #f8f7f4;
-    display: grid;
-    place-items: center;
-    color: #3f3f3f;
-    margin-bottom: 12px;
-  }
-
-  .work-card__icon :global(svg) {
-    width: 16px;
-    height: 16px;
-  }
-
-  .work-card h3 {
-    margin: 0;
-    font-size: 1rem;
-    font-weight: 600;
-    color: #1b1b1b;
-  }
-
-  .work-card p {
-    margin: 8px 0 0;
-    color: #666;
-    line-height: 1.48;
-    font-size: 0.92rem;
-  }
-
-  /* Principles */
-  .principles-grid {
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    gap: 12px;
-  }
-
-  .principle-card {
-    background: #fff;
-    border: 1px solid #e6e2db;
-    border-radius: 16px;
-    padding: 16px;
-    min-height: 140px;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-  }
-
-  .principle-card__icon {
-    width: 28px;
-    height: 28px;
-    border-radius: 50%;
-    border: 1px solid #ddd8cf;
-    background: #fff;
-    display: grid;
-    place-items: center;
-    color: #3f3f3f;
-    box-shadow: 0 2px 5px rgba(18, 18, 18, 0.06);
-  }
-
-  .principle-card__icon :global(svg) {
-    width: 14px;
-    height: 14px;
-  }
-
-  .principle-card p {
-    margin: 0;
-    color: #555;
-    line-height: 1.48;
-    font-size: 0.9rem;
-  }
-
-  /* Teaching */
-  .teaching-grid {
-    display: grid;
-    grid-template-columns: 1.2fr 0.8fr;
-    gap: 16px;
-    align-items: start;
-  }
-
-  .teaching-content {
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-  }
-
-  .teaching-content p {
-    margin: 0;
-    color: #5f5f5f;
-    line-height: 1.6;
-    font-size: 0.95rem;
-  }
-
-  .teaching-panel {
-    background: #fff;
-    border: 1px solid #e6e2db;
-    border-radius: 16px;
-    padding: 20px;
-  }
-
-  .teaching-panel h3 {
-    margin: 0 0 14px;
-    font-family: "Lora Variable", "Lora", Georgia, serif;
-    font-size: 1.2rem;
-    font-weight: 500;
-    color: #1b1b1b;
-  }
-
-  .teaching-panel ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-  }
-
-  .teaching-panel li {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    color: #555;
-    font-size: 0.92rem;
-  }
-
-  .teaching-panel li :global(svg) {
-    width: 14px;
-    height: 14px;
-    color: #3fbf61;
-    flex-shrink: 0;
-  }
-
-  /* Exploring */
-  .exploring-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 16px;
-  }
-
-  .exploring-card {
-    background: #fff;
-    border: 1px solid #e6e2db;
-    border-radius: 16px;
-    padding: 24px;
-  }
-
-  .exploring-card--dark {
-    background: #1b1b1b;
-    border-color: #333;
-    color: #fff;
-  }
-
-  .exploring-card--dark .exploring-card__text {
-    color: rgba(255, 255, 255, 0.7);
-  }
-
-  .exploring-card h2 {
-    margin: 12px 0 0;
-    font-family: "Lora Variable", "Lora", Georgia, serif;
-    font-size: clamp(1.4rem, 2.5vw, 1.8rem);
-    line-height: 1.15;
-    letter-spacing: -0.02em;
-    font-weight: 500;
-    color: #151515;
-  }
-
-  .exploring-card--dark h2 {
-    color: #fff;
-  }
-
-  .exploring-card__text {
-    margin: 12px 0 0;
-    color: #5f5f5f;
-    line-height: 1.55;
-    font-size: 0.92rem;
-  }
-
-  .exploring-list {
-    list-style: none;
-    margin: 16px 0 0;
-    padding: 0;
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-  }
-
-  .exploring-list li {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    color: #555;
-    font-size: 0.92rem;
-  }
-
-  .exploring-list li :global(svg) {
-    width: 14px;
-    height: 14px;
-    color: #888;
-    flex-shrink: 0;
-  }
-
-  /* CTA */
-  .cta-section {
-    width: min(1200px, 100%);
-    margin: 28px auto 0;
-    padding: clamp(20px, 3vw, 34px);
-    background: #1b1b1b;
-    border-radius: 20px;
-    text-align: center;
-  }
-
-  .cta-inner {
-    max-width: 640px;
-    margin: 0 auto;
-    padding: 40px 20px;
-  }
-
-  .cta-inner h2 {
-    margin: 0;
-    font-family: "Lora Variable", "Lora", Georgia, serif;
-    font-size: clamp(1.6rem, 3.5vw, 2.4rem);
-    line-height: 1.15;
-    letter-spacing: -0.02em;
-    font-weight: 500;
-    color: #fff;
-  }
-
-  .cta-inner p {
-    margin: 14px 0 0;
-    color: rgba(255, 255, 255, 0.65);
-    line-height: 1.55;
-    font-size: 0.95rem;
-  }
-
-  .cta-inner .btn {
-    margin-top: 24px;
-    background: #fff;
-    color: #1b1b1b;
-  }
-
-  .cta-inner .btn:hover {
-    background: #f0f0f0;
-  }
-
-  /* Responsive */
-  @media (max-width: 980px) {
-    .about-hero__panel {
-      grid-template-columns: 1fr;
-    }
-
-    .about-hero__media {
-      order: -1;
-      aspect-ratio: 16/9;
-    }
-
-    .journey-grid {
-      grid-template-columns: 1fr;
-    }
-
-    .work-grid {
-      grid-template-columns: repeat(2, 1fr);
-    }
-
-    .principles-grid {
-      grid-template-columns: repeat(2, 1fr);
-    }
-
-    .teaching-grid {
-      grid-template-columns: 1fr;
-    }
-
-    .exploring-grid {
-      grid-template-columns: 1fr;
-    }
-  }
-
-  @media (max-width: 640px) {
-    .about-hero {
-      padding: 80px 14px 0;
-    }
-
-    .about-hero__panel {
-      border-radius: 20px;
-      padding: 16px;
-    }
-
-    .work-grid {
-      grid-template-columns: 1fr;
-    }
-
-    .principles-grid {
-      grid-template-columns: 1fr;
-    }
-
-    .section-wrap {
-      margin: 16px auto 0;
-      border-radius: 16px;
-    }
+  .scribble-underline.scribble-tight::after {
+    bottom: -6px;
   }
 </style>

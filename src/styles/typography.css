@@ -1,8 +1,8 @@
 .prose {
   font-family: var(--font-body);
-  font-size: var(--text-body-lg);
+  font-size: 1.125rem;
   line-height: 1.75;
-  color: var(--color-slate-brand);
+  color: var(--color-text-secondary);
 }
 
 .prose h1,
@@ -10,32 +10,32 @@
 .prose h3,
 .prose h4,
 .prose h5 {
-  font-family: var(--font-heading);
-  font-weight: 600;
+  font-family: var(--font-display);
+  font-weight: 700;
   line-height: 1.2;
-  color: var(--color-midnight);
+  color: var(--color-text-primary);
 }
 
 .prose h1 {
-  font-size: var(--text-h1);
+  font-size: 3.5rem;
   margin-top: 0;
   margin-bottom: 1.5rem;
 }
 
 .prose h2 {
-  font-size: var(--text-h2);
+  font-size: 2.5rem;
   margin-top: 3rem;
   margin-bottom: 1rem;
 }
 
 .prose h3 {
-  font-size: var(--text-h3);
+  font-size: 1.875rem;
   margin-top: 2.5rem;
   margin-bottom: 0.75rem;
 }
 
 .prose h4 {
-  font-size: var(--text-h4);
+  font-size: 1.5rem;
   margin-top: 2rem;
   margin-bottom: 0.5rem;
 }
@@ -45,29 +45,27 @@
 }
 
 .prose a {
-  color: var(--color-electric);
+  color: var(--color-primary);
   text-decoration: underline;
   text-underline-offset: 2px;
 }
 
 .prose a:hover {
-  color: var(--color-midnight);
+  color: var(--color-primary-hover);
 }
 
 .prose code {
-  font-family: var(--font-mono);
   font-size: 0.875em;
-  background-color: #f1f5f9;
+  background-color: var(--color-secondary);
   padding: 0.125rem 0.375rem;
   border-radius: 0.25rem;
 }
 
 .prose pre {
-  font-family: var(--font-mono);
-  font-size: var(--text-body-sm);
+  font-size: 0.875rem;
   line-height: 1.6;
-  background-color: var(--color-midnight);
-  color: var(--color-offwhite);
+  background-color: var(--color-footer);
+  color: #ffffff;
   padding: 1.5rem;
   border-radius: 0.5rem;
   overflow-x: auto;
@@ -82,12 +80,12 @@
 }
 
 .prose blockquote {
-  border-left: 3px solid var(--color-electric);
+  border-left: 3px solid var(--color-primary);
   padding-left: 1.5rem;
   margin-left: 0;
   margin-bottom: 1.5rem;
   font-style: italic;
-  color: var(--color-muted);
+  color: var(--color-text-muted);
 }
 
 .prose ul,
@@ -108,6 +106,6 @@
 
 .prose hr {
   border: none;
-  border-top: 1px solid #e2e8f0;
+  border-top: 1px solid var(--color-divider);
   margin: 3rem 0;
 }
