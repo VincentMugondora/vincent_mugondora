@@ -1,177 +1,102 @@
 ---
 import PageLayout from "@layouts/PageLayout.astro";
 import { siteConfig } from "@config/site";
-
-const reasons = [
-  { icon: "code", title: "Build something", description: "Websites, software, AI products, prototypes" },
-  { icon: "bot", title: "AI & Innovation", description: "AI ideas, automation, emerging technology" },
-  { icon: "school", title: "Teaching & Training", description: "Workshops, coding programs, mentorship" },
-  { icon: "mic", title: "Speaking", description: "Technology, AI, engineering, African innovation" },
-  { icon: "handshake", title: "Collaboration", description: "Projects, startups, hackathons, research" },
-  { icon: "lightbulb", title: "Just an idea", description: "Something interesting worth exploring" },
-];
-
-const availability = [
-  "Interesting technology projects",
-  "AI collaborations",
-  "Speaking opportunities",
-  "Teaching and training",
-  "African technology initiatives",
-];
 ---
 
 <PageLayout title="Let's Talk" description="Get in touch with Vincent Mugondora for software development, AI solutions, speaking, teaching, or collaboration.">
-  <!-- Hero -->
-  <section class="pt-[72px] py-16 md:py-24">
-    <div class="max-w-[900px] mx-auto px-4 md:px-10 text-center">
-      <h1 class="font-display italic text-[48px] md:text-[72px] lg:text-[96px] text-[var(--color-text-primary)] leading-[1.05] font-bold tracking-tight">
-        Let's <span class="marker-highlight">Talk</span>.
+  <main class="pt-[72px]">
+    <!-- Hero -->
+    <section class="max-w-[1200px] mx-auto px-6 md:px-10 py-16 md:py-24 text-center">
+      <h1 class="font-display italic text-[48px] md:text-[64px] lg:text-[96px] text-[var(--color-text-primary)] leading-[1.1]">
+        Got something you're
+        <br />
+        <span class="scribble-circle">working</span> on?
       </h1>
-      <p class="font-body text-[16px] md:text-[18px] text-[var(--color-text-secondary)] mt-4 max-w-[600px] mx-auto leading-relaxed">
-        Have an idea, problem, opportunity, or project worth exploring? Ideas start with conversations.
+
+      <p class="font-body text-[16px] text-[var(--color-text-secondary)] mt-6 max-w-[600px] mx-auto leading-relaxed">
+        I'm always open to new ideas, collaborations, or problems that need solving.
+        Send me a message and I'll get back to you within a day.
       </p>
-    </div>
-  </section>
 
-  <!-- Reasons to Contact -->
-  <section class="bg-[var(--color-secondary)] py-16 md:py-24">
-    <div class="max-w-[1200px] mx-auto px-4 md:px-10">
-      <h2 class="font-display italic text-[36px] md:text-[48px] text-[var(--color-text-primary)] mb-10 tracking-tight leading-tight text-center">
-        What can we <span class="scribble-circle">talk</span> about?
-      </h2>
-
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
-        {reasons.map((reason) => (
-          <div class="bg-white rounded-[16px] border border-[var(--color-card-border)] p-6 hover:-translate-y-0.5 hover:shadow-md transition duration-200">
-            <h3 class="font-display italic text-[20px] font-bold text-[var(--color-text-primary)] tracking-tight">{reason.title}</h3>
-            <p class="font-body text-[14px] text-[var(--color-text-secondary)] mt-2 leading-relaxed">{reason.description}</p>
-          </div>
-        ))}
+      <div class="mt-8">
+        <span class="inline-block font-display text-[12px] text-[var(--color-text-muted)] border border-[var(--color-card-border)] rounded-full px-4 py-1">
+          Best way to reach me
+        </span>
       </div>
-    </div>
-  </section>
 
-  <!-- Contact Form -->
-  <section class="py-16 md:py-24">
-    <div class="max-w-[640px] mx-auto px-4 md:px-10">
-      <h2 class="font-display italic text-[36px] md:text-[48px] text-[var(--color-text-primary)] mb-8 tracking-tight leading-tight">
-        Tell me what's on your <span class="scribble-underline">mind</span>
-      </h2>
-
-      <form action="https://formspree.io/f/placeholder" method="POST" class="space-y-5">
-        <div>
-          <label class="font-body text-[13px] font-medium text-[var(--color-text-primary)] block mb-1.5">Name</label>
-          <input
-            type="text"
-            name="name"
-            required
-            class="w-full font-body text-[15px] text-[var(--color-text-primary)] bg-white border border-[var(--color-card-border)] rounded-[10px] px-4 py-3 outline-none focus:border-[var(--color-primary)] transition-colors"
-            placeholder="Your name"
-          />
-        </div>
-        <div>
-          <label class="font-body text-[13px] font-medium text-[var(--color-text-primary)] block mb-1.5">Email</label>
-          <input
-            type="email"
-            name="email"
-            required
-            class="w-full font-body text-[15px] text-[var(--color-text-primary)] bg-white border border-[var(--color-card-border)] rounded-[10px] px-4 py-3 outline-none focus:border-[var(--color-primary)] transition-colors"
-            placeholder="you@email.com"
-          />
-        </div>
-        <div>
-          <label class="font-body text-[13px] font-medium text-[var(--color-text-primary)] block mb-1.5">What would you like to discuss?</label>
-          <select
-            name="topic"
-            class="w-full font-body text-[15px] text-[var(--color-text-primary)] bg-white border border-[var(--color-card-border)] rounded-[10px] px-4 py-3 outline-none focus:border-[var(--color-primary)] transition-colors"
-          >
-            <option value="">Select a topic</option>
-            <option value="build">Build a project</option>
-            <option value="ai">AI / Innovation</option>
-            <option value="teaching">Teaching / Training</option>
-            <option value="speaking">Speaking</option>
-            <option value="collaboration">Collaboration</option>
-            <option value="other">Something else</option>
-          </select>
-        </div>
-        <div>
-          <label class="font-body text-[13px] font-medium text-[var(--color-text-primary)] block mb-1.5">Message</label>
-          <textarea
-            name="message"
-            required
-            rows="5"
-            class="w-full font-body text-[15px] text-[var(--color-text-primary)] bg-white border border-[var(--color-card-border)] rounded-[10px] px-4 py-3 outline-none focus:border-[var(--color-primary)] transition-colors resize-y"
-            placeholder="Tell me about your idea, project, or question..."
-          ></textarea>
-        </div>
-        <button
-          type="submit"
-          class="w-full inline-flex items-center justify-center px-8 py-3.5 bg-[var(--color-primary)] text-white font-body text-[16px] font-medium rounded-[10px] hover:bg-[var(--color-primary-hover)] active:scale-[0.98] transition duration-200"
+      <div class="inline-flex items-center gap-3 mt-4">
+        <a
+          href={`mailto:${siteConfig.email}`}
+          class="font-display italic text-[24px] md:text-[32px] text-[var(--color-text-primary)] hover:text-[var(--color-primary)] transition-colors cursor-pointer"
         >
-          Start the conversation &rarr;
+          {siteConfig.email}
+        </a>
+        <button
+          id="copy-email-btn"
+          class="inline-flex items-center justify-center p-2 rounded-lg hover:bg-[var(--color-secondary)] transition-colors duration-200 text-[var(--color-text-secondary)] hover:text-[var(--color-text-primary)]"
+          title="Copy email address"
+          data-email={siteConfig.email}
+        >
+          <svg id="copy-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg>
+          <svg id="check-icon" class="hidden" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path class="text-[var(--color-primary)]" d="M20 6 9 17l-5-5"/></svg>
         </button>
-      </form>
-    </div>
-  </section>
+      </div>
 
-  <!-- Have an idea? -->
-  <section class="bg-[var(--color-secondary)] py-16 md:py-24">
-    <div class="max-w-[800px] mx-auto px-4 md:px-10 text-center">
-      <h2 class="font-display italic text-[32px] md:text-[40px] text-[var(--color-text-primary)] mb-4 tracking-tight leading-tight">
-        Have a problem you think technology could <span class="marker-highlight">solve</span>?
-      </h2>
-      <p class="font-body text-[16px] text-[var(--color-text-secondary)] max-w-[560px] mx-auto leading-relaxed">
-        You don't need to have the solution figured out. Tell me about the problem. We can explore whether there's something worth building.
-      </p>
-    </div>
-  </section>
-
-  <!-- Direct Contact & Email -->
-  <section class="py-16 md:py-24">
-    <div class="max-w-[1200px] mx-auto px-4 md:px-10">
-      <h2 class="font-display italic text-[36px] md:text-[48px] text-[var(--color-text-primary)] mb-10 tracking-tight leading-tight">
-        Prefer somewhere <span class="scribble-underline">else</span>?
-      </h2>
-
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-        <!-- Email -->
-        <div class="bg-white rounded-[16px] border border-[var(--color-card-border)] p-6 flex flex-col">
-          <div class="w-12 h-12 rounded-full bg-[var(--color-secondary)] flex items-center justify-center mb-4">
-            <svg class="w-5 h-5 text-[var(--color-primary)]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" />
-            </svg>
-          </div>
-          <h3 class="font-display italic text-[20px] font-bold text-[var(--color-text-primary)] tracking-tight">Email</h3>
-          <p class="font-body text-[13px] text-[var(--color-text-secondary)] mt-1">Best way to reach me. I reply within a day.</p>
-          <div class="mt-auto pt-4 flex items-center gap-2">
-            <a href={`mailto:${siteConfig.email}`} class="font-body text-[14px] text-[var(--color-primary)] font-medium hover:underline">{siteConfig.email}</a>
-            <button
-              id="copy-email-btn"
-              class="p-1.5 rounded-md hover:bg-[var(--color-secondary)] transition-colors text-[var(--color-text-muted)] hover:text-[var(--color-text-primary)]"
-              title="Copy email"
-              data-email={siteConfig.email}
-            >
-              <svg id="copy-icon" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg>
-              <svg id="check-icon" class="hidden" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
-            </button>
-          </div>
+      <!-- Service tags -->
+      <div class="flex flex-wrap items-center justify-center gap-y-4 gap-x-8 mt-10">
+        <div class="flex items-center gap-1.5 font-body text-[13px] text-[var(--color-text-secondary)]">
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#FAB130" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m18 16 4-4-4-4"/><path d="m6 8-4 4 4 4"/><path d="m14.5 4-5 16"/></svg>
+          Software Development
         </div>
+        <div class="flex items-center gap-1.5 font-body text-[13px] text-[var(--color-text-secondary)]">
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1BB6F9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 8V4H8"/><rect width="16" height="12" x="4" y="8" rx="2"/><path d="M2 14h2"/><path d="M20 14h2"/><path d="M15 13v2"/><path d="M9 13v2"/></svg>
+          AI Solutions
+        </div>
+        <div class="flex items-center gap-1.5 font-body text-[13px] text-[var(--color-text-secondary)]">
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#724B68" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="M3 9h18"/><path d="M9 21V9"/></svg>
+          Web Applications
+        </div>
+        <div class="flex items-center gap-1.5 font-body text-[13px] text-[var(--color-text-secondary)]">
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#00CEB2" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+          Technology Education
+        </div>
+        <div class="flex items-center gap-1.5 font-body text-[13px] text-[var(--color-text-secondary)]">
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#FD787D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"/></svg>
+          AI Agents & Automation
+        </div>
+      </div>
+    </section>
 
-        <!-- WhatsApp -->
+    <!-- Other ways section -->
+    <section class="max-w-[1200px] mx-auto px-6 md:px-10 py-8 md:py-16">
+      <h2 class="font-display italic text-[36px] md:text-[48px] text-[var(--color-text-primary)]">
+        Other ways to <span class="scribble-circle">reach</span> me.
+      </h2>
+      <p class="font-body text-[16px] text-[var(--color-text-secondary)] mt-2">
+        Email is best, but if you prefer something else, here are a few options.
+      </p>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-10 items-stretch">
+        <!-- Phone / WhatsApp -->
         <a
           href="https://wa.me/263777530322?text=Hi%20Vincent%2C%20I'd%20like%20to%20discuss%20a%20project"
           target="_blank"
           rel="noopener noreferrer"
-          class="bg-white rounded-[16px] border border-[var(--color-card-border)] p-6 flex flex-col hover:border-[var(--color-primary)] transition-colors"
+          class="bg-white rounded-[16px] border border-[var(--color-card-border)] p-6 flex flex-col h-full min-h-[440px] hover:border-[var(--color-primary)] transition-colors"
         >
-          <div class="w-12 h-12 rounded-full bg-[var(--color-secondary)] flex items-center justify-center mb-4">
-            <svg class="w-5 h-5 text-[var(--color-primary)]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M8.625 9.75a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H8.25m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H12m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0h-.375m-13.5 3.01c0 1.6 1.123 2.994 2.707 3.227 1.087.16 2.185.283 3.293.369V21l4.184-4.183a1.14 1.14 0 01.778-.332 48.294 48.294 0 005.83-.498c1.585-.233 2.708-1.626 2.708-3.228V6.741c0-1.602-1.123-2.995-2.707-3.228A48.394 48.394 0 0012 3c-2.392 0-4.744.175-7.043.513C3.373 3.746 2.25 5.14 2.25 6.741v6.018z" />
-            </svg>
+          <div class="h-[180px] flex items-start">
+            <div class="w-14 h-14 rounded-full bg-[var(--color-secondary)] flex items-center justify-center">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            </div>
           </div>
-          <h3 class="font-display italic text-[20px] font-bold text-[var(--color-text-primary)] tracking-tight">WhatsApp</h3>
-          <p class="font-body text-[13px] text-[var(--color-text-secondary)] mt-1">Quick chats or follow-ups. Available GMT+2.</p>
-          <p class="font-body text-[14px] text-[var(--color-primary)] font-medium mt-auto pt-4">+263 777 530 322</p>
+          <div class="mt-auto">
+            <p class="font-body text-[16px] text-[var(--color-text-primary)] font-medium">+263 777 530 322</p>
+            <h3 class="font-display text-[22px] font-bold text-[var(--color-text-primary)] italic mt-1">Phone / WhatsApp</h3>
+            <ul class="font-body text-[14px] text-[var(--color-text-secondary)] mt-3 space-y-1 list-disc list-inside">
+              <li>Best for quick chats or follow-ups.</li>
+              <li>Available during GMT+2 hours.</li>
+            </ul>
+          </div>
         </a>
 
         <!-- LinkedIn -->
@@ -179,60 +104,82 @@ const availability = [
           href={siteConfig.linkedinUrl}
           target="_blank"
           rel="noopener noreferrer"
-          class="bg-white rounded-[16px] border border-[var(--color-card-border)] p-6 flex flex-col hover:border-[var(--color-primary)] transition-colors"
+          class="bg-white rounded-[16px] border border-[var(--color-card-border)] p-6 flex flex-col h-full min-h-[440px] hover:border-[var(--color-primary)] transition-colors"
         >
-          <div class="w-12 h-12 rounded-full bg-[var(--color-secondary)] flex items-center justify-center mb-4">
-            <svg class="w-5 h-5 text-[var(--color-primary)]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244" />
-            </svg>
+          <div class="h-[180px] flex items-start">
+            <div class="w-14 h-14 rounded-full bg-[var(--color-secondary)] flex items-center justify-center">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg>
+            </div>
           </div>
-          <h3 class="font-display italic text-[20px] font-bold text-[var(--color-text-primary)] tracking-tight">LinkedIn</h3>
-          <p class="font-body text-[13px] text-[var(--color-text-secondary)] mt-1">Connect professionally or say hello.</p>
-          <p class="font-body text-[14px] text-[var(--color-primary)] font-medium mt-auto pt-4">Vincent Mugondora &nearr;</p>
+          <div class="mt-auto">
+            <span class="font-body text-[16px] text-[var(--color-primary)] underline font-medium">Vincent Mugondora</span>
+            <h3 class="font-display text-[22px] font-bold text-[var(--color-text-primary)] italic mt-1">LinkedIn</h3>
+            <ul class="font-body text-[14px] text-[var(--color-text-secondary)] mt-3 space-y-1 list-disc list-inside">
+              <li>Connect professionally or just say hi.</li>
+              <li>I check in a few times a week.</li>
+            </ul>
+          </div>
+        </a>
+
+        <!-- GitHub -->
+        <a
+          href={siteConfig.githubUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="bg-white rounded-[16px] border border-[var(--color-card-border)] p-6 flex flex-col h-full min-h-[440px] hover:border-[var(--color-primary)] transition-colors"
+        >
+          <div class="h-[180px] flex items-start">
+            <div class="w-14 h-14 rounded-full bg-[var(--color-secondary)] flex items-center justify-center">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg>
+            </div>
+          </div>
+          <div class="mt-auto">
+            <span class="font-body text-[16px] text-[var(--color-text-primary)] font-medium">View Projects</span>
+            <h3 class="font-display text-[22px] font-bold text-[var(--color-text-primary)] italic mt-1">GitHub</h3>
+            <ul class="font-body text-[14px] text-[var(--color-text-secondary)] mt-3 space-y-1 list-disc list-inside">
+              <li>Open-source work and side projects.</li>
+              <li>See how I write and structure code.</li>
+            </ul>
+          </div>
         </a>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Availability -->
-  <section class="bg-[var(--color-secondary)] py-16 md:py-24">
-    <div class="max-w-[900px] mx-auto px-4 md:px-10">
-      <h2 class="font-display italic text-[32px] md:text-[40px] text-[var(--color-text-primary)] mb-6 tracking-tight leading-tight">
-        Currently open to
-      </h2>
-      <div class="flex flex-wrap gap-3">
-        {availability.map((item) => (
-          <span class="font-body text-[14px] text-[var(--color-text-primary)] bg-white border border-[var(--color-card-border)] px-4 py-2 rounded-full">
-            {item}
-          </span>
-        ))}
+    <!-- CTA Banner -->
+    <section class="max-w-[1200px] mx-auto px-6 md:px-10 py-8 md:py-16">
+      <div class="bg-[var(--color-footer)] rounded-[24px] px-8 md:px-16 py-12 md:py-16 text-center">
+        <h2 class="font-display italic text-[36px] md:text-[48px] text-white">
+          Currently <span class="text-[#FFB800]">open</span> to new work.
+        </h2>
+        <p class="font-body text-[16px] text-gray-300 mt-4 max-w-[600px] mx-auto leading-relaxed">
+          I'm available for freelance projects, contract roles, or ongoing work. I enjoy working with teams that care about building things properly and keeping things simple.
+        </p>
+        <div class="flex flex-wrap items-center justify-center gap-3 mt-6">
+          <span class="font-body text-[13px] text-gray-300 border border-gray-500 rounded-full px-4 py-1.5">Open to projects</span>
+          <span class="font-body text-[13px] text-gray-300 border border-gray-500 rounded-full px-4 py-1.5">Remote or hybrid</span>
+          <span class="font-body text-[13px] text-gray-300 border border-gray-500 rounded-full px-4 py-1.5">Contract or freelance</span>
+          <span class="font-body text-[13px] text-gray-300 border border-gray-500 rounded-full px-4 py-1.5">Flexible hours (GMT+2)</span>
+        </div>
+        <div class="flex flex-wrap items-center justify-center gap-4 mt-8">
+          <a
+            href={`mailto:${siteConfig.email}`}
+            class="inline-flex w-full max-w-[320px] items-center justify-center h-[48px] bg-white text-[var(--color-footer)] font-body text-[16px] font-medium rounded-[10px] hover:bg-gray-100 transition-colors duration-200 md:w-[220px] md:max-w-none"
+          >
+            Send me an email
+          </a>
+          <a
+            href="/about"
+            class="inline-flex w-full max-w-[320px] items-center justify-center h-[48px] border border-white text-white font-body text-[16px] font-medium rounded-[10px] hover:bg-white hover:text-[var(--color-footer)] transition-colors duration-200 md:w-[220px] md:max-w-none"
+          >
+            Learn More
+          </a>
+        </div>
       </div>
-      <p class="font-body text-[14px] text-[var(--color-text-muted)] mt-6">
-        Based in Zimbabwe &middot; Building for Africa &middot; Open to the world
-      </p>
-    </div>
-  </section>
+    </section>
+  </main>
 </PageLayout>
 
 <style>
-  .marker-highlight {
-    position: relative;
-    display: inline-block;
-    isolation: isolate;
-  }
-  .marker-highlight::before {
-    content: "";
-    position: absolute;
-    left: -0.08em;
-    right: -0.08em;
-    bottom: 0.05em;
-    height: 45%;
-    background-color: #FFB800;
-    border-radius: 20% 5% 15% 8%;
-    z-index: -1;
-    transform: rotate(-1deg);
-  }
-
   .scribble-circle {
     position: relative;
     display: inline-block;
@@ -247,24 +194,6 @@ const availability = [
     transform: rotate(-2deg);
     pointer-events: none;
     z-index: -1;
-  }
-
-  .scribble-underline {
-    position: relative;
-    display: inline-block;
-  }
-  .scribble-underline::after {
-    content: "";
-    position: absolute;
-    left: -4%;
-    right: -4%;
-    bottom: -14px;
-    height: 12px;
-    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 14' fill='none' preserveAspectRatio='none'><path d='M3 9 C 50 3, 110 12, 197 5' stroke='%231BB6F9' stroke-width='6' stroke-linecap='round'/></svg>");
-    background-repeat: no-repeat;
-    background-size: 100% 100%;
-    transform: rotate(-2deg);
-    pointer-events: none;
   }
 </style>
 
