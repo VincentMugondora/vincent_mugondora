@@ -11,17 +11,71 @@ const navLinks = [
 ];
 ---
 
-<nav aria-label="Main navigation" class="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-sm border-b border-[var(--color-divider)]">
-  <div class="max-w-[1200px] mx-auto px-6 md:px-10 flex items-center justify-between h-[72px]">
-    <a href="/" class="flex items-center gap-2">
-      <img src="/logo.avif" alt="Vincent Mugondora" class="h-9 w-9 rounded-full object-cover" />
-      <span class="hidden md:inline font-[var(--font-body)] font-bold text-[18px] text-[var(--color-text-primary)]">Vincent Mugondora</span>
-      <span class="inline md:hidden font-[var(--font-body)] font-bold text-[18px] text-[var(--color-text-primary)]">Mugondora</span>
-    </a>
+<header>
+  <nav aria-label="Main navigation" class="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-sm border-b border-[var(--color-divider)]">
+    <div class="max-w-[1200px] mx-auto px-6 md:px-10 flex items-center justify-between h-[72px]">
+      <a href="/" class="flex items-center gap-2">
+        <img src="/logo.avif" alt="Vincent Mugondora" class="h-9 w-9 rounded-full object-cover" />
+        <span class="hidden md:inline font-[var(--font-body)] font-bold text-[18px] text-[var(--color-text-primary)]">Vincent Mugondora</span>
+        <span class="inline md:hidden font-[var(--font-body)] font-bold text-[18px] text-[var(--color-text-primary)]">Mugondora</span>
+      </a>
 
-    <div class="flex items-center gap-2 md:gap-8">
-      <!-- Desktop nav -->
-      <div class="hidden md:flex items-center gap-8">
+      <div class="flex items-center gap-2 md:gap-8">
+        <!-- Desktop nav -->
+        <div class="hidden md:flex items-center gap-8">
+          {navLinks.map((link) => {
+            const isActive = currentPath === link.href || currentPath.startsWith(link.href + "/");
+            return (
+              <a
+                href={link.href}
+                aria-current={isActive ? "page" : undefined}
+                class:list={[
+                  "font-[var(--font-body)] text-[16px] transition-colors duration-200",
+                  isActive ? "text-[var(--color-text-primary)] font-medium" : "text-[var(--color-text-secondary)] hover:text-[var(--color-text-primary)]"
+                ]}
+              >
+                {link.label}
+              </a>
+            );
+          })}
+        </div>
+
+        <a
+          href="/contact"
+          class="hidden md:inline-flex items-center justify-center px-6 py-2.5 bg-[var(--color-primary)] text-white font-[var(--font-body)] text-[16px] font-medium rounded-[10px] hover:bg-[var(--color-primary-hover)] active:scale-95 transition-all duration-200"
+        >
+          Let's Talk
+        </a>
+
+        <div class="flex items-center gap-1 md:hidden">
+          <a
+            href="/contact"
+            class="inline-flex items-center justify-center px-4 py-2 bg-[var(--color-primary)] text-white font-[var(--font-body)] text-[16px] font-medium rounded-[8px] hover:bg-[var(--color-primary-hover)] transition-colors duration-200"
+          >
+            Let's Talk
+          </a>
+          <button
+            type="button"
+            class="p-2 text-[var(--color-text-primary)]"
+            data-menu-toggle
+            aria-expanded="false"
+            aria-controls="mobile-menu"
+            aria-label="Toggle menu"
+          >
+            <svg class="menu-open w-6 h-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+            </svg>
+            <svg class="menu-close w-6 h-6 hidden" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mobile menu -->
+    <div id="mobile-menu" class="md:hidden bg-white border-b border-[var(--color-divider)] px-6 pb-6 hidden" data-mobile-menu role="navigation" aria-label="Mobile navigation">
+      <div class="flex flex-col gap-4 pt-2">
         {navLinks.map((link) => {
           const isActive = currentPath === link.href || currentPath.startsWith(link.href + "/");
           return (
@@ -29,8 +83,8 @@ const navLinks = [
               href={link.href}
               aria-current={isActive ? "page" : undefined}
               class:list={[
-                "font-[var(--font-body)] text-[16px] transition-colors duration-200",
-                isActive ? "text-[var(--color-text-primary)] font-medium" : "text-[var(--color-text-secondary)] hover:text-[var(--color-text-primary)]"
+                "font-[var(--font-body)] text-[18px]",
+                isActive ? "text-[var(--color-text-primary)] font-medium" : "text-[var(--color-text-secondary)]"
               ]}
             >
               {link.label}
@@ -38,61 +92,9 @@ const navLinks = [
           );
         })}
       </div>
-
-      <a
-        href="/contact"
-        class="hidden md:inline-flex items-center justify-center px-6 py-2.5 bg-[var(--color-primary)] text-white font-[var(--font-body)] text-[16px] font-medium rounded-[10px] hover:bg-[var(--color-primary-hover)] active:scale-95 transition-all duration-200"
-      >
-        Let's Talk
-      </a>
-
-      <div class="flex items-center gap-1 md:hidden">
-        <a
-          href="/contact"
-          class="inline-flex items-center justify-center px-4 py-2 bg-[var(--color-primary)] text-white font-[var(--font-body)] text-[16px] font-medium rounded-[8px] hover:bg-[var(--color-primary-hover)] transition-colors duration-200"
-        >
-          Let's Talk
-        </a>
-        <button
-          type="button"
-          class="p-2 text-[var(--color-text-primary)]"
-          data-menu-toggle
-          aria-expanded="false"
-          aria-controls="mobile-menu"
-          aria-label="Toggle menu"
-        >
-          <svg class="menu-open w-6 h-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
-          </svg>
-          <svg class="menu-close w-6 h-6 hidden" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
-          </svg>
-        </button>
-      </div>
     </div>
-  </div>
-
-  <!-- Mobile menu -->
-  <div id="mobile-menu" class="md:hidden bg-white border-b border-[var(--color-divider)] px-6 pb-6 hidden" data-mobile-menu role="navigation" aria-label="Mobile navigation">
-    <div class="flex flex-col gap-4 pt-2">
-      {navLinks.map((link) => {
-        const isActive = currentPath === link.href || currentPath.startsWith(link.href + "/");
-        return (
-          <a
-            href={link.href}
-            aria-current={isActive ? "page" : undefined}
-            class:list={[
-              "font-[var(--font-body)] text-[18px]",
-              isActive ? "text-[var(--color-text-primary)] font-medium" : "text-[var(--color-text-secondary)]"
-            ]}
-          >
-            {link.label}
-          </a>
-        );
-      })}
-    </div>
-  </div>
-</nav>
+  </nav>
+</header>
 
 <script is:inline>
   (function() {
