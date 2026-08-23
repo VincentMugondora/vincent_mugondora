@@ -1,8 +1,43 @@
 ---
 import PageLayout from "@layouts/PageLayout.astro";
+import { siteConfig } from "@config/site";
+
+const personJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  name: "Vincent Mugondora",
+  url: siteConfig.url,
+  image: `${siteConfig.url}/vincent.avif`,
+  jobTitle: "Software Developer & AI Builder",
+  description: siteConfig.description,
+  email: siteConfig.email,
+  telephone: siteConfig.phone,
+  address: {
+    "@type": "PostalAddress",
+    addressLocality: "Harare",
+    addressCountry: "ZW",
+  },
+  knowsAbout: [
+    "Software Engineering",
+    "Artificial Intelligence",
+    "AI Agents",
+    "Web Development",
+    "Python",
+    "JavaScript",
+    "TypeScript",
+    "RAG Systems",
+    "System Design",
+    "Technology Education",
+    "AI Automation",
+    "Technology in Africa",
+    "Software Development in Zimbabwe",
+  ],
+  sameAs: [siteConfig.githubUrl, siteConfig.linkedinUrl, siteConfig.twitterUrl],
+};
 ---
 
 <PageLayout>
+  <script is:inline type="application/ld+json" set:html={JSON.stringify(personJsonLd)} />
   <!-- Hero -->
   <section class="w-full max-w-full overflow-x-hidden pt-[72px] h-screen flex items-center">
     <div class="max-w-[1200px] mx-auto px-4 md:px-10 py-10 md:py-16 text-center box-border w-full">
