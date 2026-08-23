@@ -2,77 +2,65 @@
 import { siteConfig } from "@config/site";
 ---
 
-<footer class="bg-[var(--color-footer)] text-white overflow-hidden rounded-t-[16px] md:rounded-t-[120px]">
-  <!-- CTA area -->
-  <div class="max-w-[800px] mx-auto px-6 md:px-10 pt-24 md:pt-32 pb-12 text-center">
-    <h2 class="font-display italic text-[32px] md:text-[40px] leading-tight text-white mb-4">
-      Let's build something meaningful.
-    </h2>
-    <p class="font-body text-[16px] text-gray-300 leading-relaxed max-w-[600px] mx-auto">
-      Have a problem worth solving, a product to build, an idea to explore, or an opportunity to collaborate?
-    </p>
-    <div class="flex flex-col items-center gap-4 mt-8 md:flex-row md:justify-center">
-      <a
-        href="/contact"
-        class="inline-flex w-full md:w-[220px] items-center justify-center px-8 py-3 bg-white text-[var(--color-footer)] font-body text-[16px] font-medium rounded-[10px] hover:bg-gray-100 active:scale-95 transition duration-200"
-      >
-        Start a Conversation &rarr;
-      </a>
-      <a
-        href="/work"
-        class="inline-flex w-full md:w-[220px] items-center justify-center px-8 py-3 border border-white/30 text-white font-body text-[16px] font-medium rounded-[10px] hover:bg-white/10 active:scale-95 transition duration-200"
-      >
-        View My Work &rarr;
-      </a>
-    </div>
-    <p class="font-body text-[14px] text-gray-400 mt-6">
-      Available for selected collaborations, speaking opportunities and technology projects.
-    </p>
-  </div>
+<footer class="bg-[var(--color-footer)] text-white rounded-t-[16px] md:rounded-t-[80px]">
+  <div class="max-w-[1200px] mx-auto px-6 md:px-10 py-12 md:py-16">
+    <!-- CTA + Links row -->
+    <div class="grid grid-cols-1 md:grid-cols-[1.5fr_1fr_1fr_1fr] gap-10 md:gap-12">
+      <!-- CTA -->
+      <div>
+        <h2 class="font-display italic text-[24px] md:text-[28px] leading-tight text-white mb-3">
+          Let's build something meaningful.
+        </h2>
+        <p class="font-body text-[14px] text-gray-400 mb-4">
+          Available for collaborations, speaking and projects.
+        </p>
+        <a
+          href="/contact"
+          class="inline-flex items-center px-6 py-2.5 bg-white text-[var(--color-footer)] font-body text-[14px] font-medium rounded-[8px] hover:bg-gray-100 transition-colors"
+        >
+          Let's Talk &rarr;
+        </a>
+      </div>
 
-  <!-- Links -->
-  <div class="max-w-[1200px] mx-auto px-6 md:px-10 pb-16 md:pb-20">
-    <div class="grid grid-cols-1 md:grid-cols-[1fr_auto_auto_auto] gap-12 md:gap-16 border-t border-gray-600 pt-12">
       <!-- Explore -->
       <div>
-        <h3 class="font-display italic text-[24px] font-bold mb-4">Explore</h3>
-        <div class="flex flex-col gap-2">
-          <a href="/work" class="font-body text-[16px] text-gray-300 hover:text-white transition-colors">Work</a>
-          <a href="/ai-lab" class="font-body text-[16px] text-gray-300 hover:text-white transition-colors">AI Lab</a>
-          <a href="/writing" class="font-body text-[16px] text-gray-300 hover:text-white transition-colors">Writing</a>
-          <a href="/about" class="font-body text-[16px] text-gray-300 hover:text-white transition-colors">About</a>
-          <a href="/speaking" class="font-body text-[16px] text-gray-300 hover:text-white transition-colors">Speaking</a>
-          <a href="/teaching" class="font-body text-[16px] text-gray-300 hover:text-white transition-colors">Teaching</a>
-          <a href="/contact" class="font-body text-[16px] text-gray-300 hover:text-white transition-colors">Contact</a>
+        <h3 class="font-body text-[12px] font-semibold uppercase tracking-widest text-gray-400 mb-3">Explore</h3>
+        <div class="flex flex-col gap-1.5">
+          <a href="/work" class="font-body text-[14px] text-gray-300 hover:text-white transition-colors">Work</a>
+          <a href="/ai-lab" class="font-body text-[14px] text-gray-300 hover:text-white transition-colors">AI Lab</a>
+          <a href="/writing" class="font-body text-[14px] text-gray-300 hover:text-white transition-colors">Writing</a>
+          <a href="/about" class="font-body text-[14px] text-gray-300 hover:text-white transition-colors">About</a>
+          <a href="/speaking" class="font-body text-[14px] text-gray-300 hover:text-white transition-colors">Speaking</a>
+          <a href="/teaching" class="font-body text-[14px] text-gray-300 hover:text-white transition-colors">Teaching</a>
         </div>
       </div>
 
       <!-- Connect -->
       <div>
-        <h3 class="font-display italic text-[24px] font-bold mb-4">Connect</h3>
-        <div class="flex flex-col gap-2">
-          <a href={siteConfig.linkedinUrl} target="_blank" rel="noopener noreferrer" class="font-body text-[16px] text-gray-300 hover:text-white transition-colors">LinkedIn</a>
-          <a href={siteConfig.githubUrl} target="_blank" rel="noopener noreferrer" class="font-body text-[16px] text-gray-300 hover:text-white transition-colors">GitHub</a>
-          <a href={siteConfig.twitterUrl} target="_blank" rel="noopener noreferrer" class="font-body text-[16px] text-gray-300 hover:text-white transition-colors">X</a>
+        <h3 class="font-body text-[12px] font-semibold uppercase tracking-widest text-gray-400 mb-3">Connect</h3>
+        <div class="flex flex-col gap-1.5">
+          <a href={siteConfig.linkedinUrl} target="_blank" rel="noopener noreferrer" class="font-body text-[14px] text-gray-300 hover:text-white transition-colors">LinkedIn</a>
+          <a href={siteConfig.githubUrl} target="_blank" rel="noopener noreferrer" class="font-body text-[14px] text-gray-300 hover:text-white transition-colors">GitHub</a>
+          <a href={siteConfig.twitterUrl} target="_blank" rel="noopener noreferrer" class="font-body text-[14px] text-gray-300 hover:text-white transition-colors">X</a>
         </div>
       </div>
 
       <!-- Professional -->
       <div>
-        <h3 class="font-display italic text-[24px] font-bold mb-4">Professional</h3>
-        <div class="flex flex-col gap-2">
-          <a href={`mailto:${siteConfig.email}`} class="font-body text-[16px] text-gray-300 hover:text-white transition-colors">Email</a>
-          <a href="/contact" class="font-body text-[16px] text-gray-300 hover:text-white transition-colors">Contact</a>
+        <h3 class="font-body text-[12px] font-semibold uppercase tracking-widest text-gray-400 mb-3">Professional</h3>
+        <div class="flex flex-col gap-1.5">
+          <a href={`mailto:${siteConfig.email}`} class="font-body text-[14px] text-gray-300 hover:text-white transition-colors">Email</a>
+          <a href="/contact" class="font-body text-[14px] text-gray-300 hover:text-white transition-colors">Contact</a>
         </div>
       </div>
     </div>
   </div>
 
   <!-- Bottom bar -->
-  <div class="border-t border-gray-600">
+  <div class="border-t border-gray-700">
     <div class="max-w-[1200px] mx-auto px-6 md:px-10 py-4">
-      <p class="font-[var(--font-body)] text-[14px] text-gray-400 text-center md:text-left">
-        &copy; 2026 Vincent Mugondora. All rights reserved.
+      <p class="font-body text-[13px] text-gray-500 text-center md:text-left">
+        &copy; 2026 Vincent Mugondora
       </p>
     </div>
   </div>
