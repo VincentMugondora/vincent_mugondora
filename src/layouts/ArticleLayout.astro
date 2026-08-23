@@ -37,14 +37,14 @@ const articleJsonLd = publishedAt
     <article class="prose mx-auto max-w-3xl px-6">
       <slot />
 
-      <footer class="not-prose mt-16 border-t border-[--border] pt-8">
+      <footer class="not-prose mt-16 border-t border-[var(--color-card-border)] pt-8">
         <div class="flex items-center gap-4">
-          <div class="flex h-12 w-12 items-center justify-center rounded-full bg-[--color-midnight] text-lg font-semibold text-white dark:bg-[--color-electric]">V</div>
+          <div class="flex h-12 w-12 items-center justify-center rounded-full bg-[var(--color-primary)] text-lg font-semibold text-white">V</div>
           <div>
-            <p class="font-heading font-medium text-[--text-primary]">
-              <a href="/about" class="no-underline hover:text-[--color-electric]">Vincent Mugondora</a>
+            <p class="font-body font-medium text-[var(--color-text-primary)]">
+              <a href="/about" class="no-underline hover:text-[var(--color-primary)]">Vincent Mugondora</a>
             </p>
-            <p class="text-sm text-[--text-secondary]">Software Developer & Technology Educator</p>
+            <p class="font-body text-sm text-[var(--color-text-secondary)]">Software Developer & AI Builder</p>
           </div>
         </div>
       </footer>

@@ -4,195 +4,259 @@ import { getPublishedPosts } from "@lib/content";
 import { formatDate } from "@lib/utils";
 
 const posts = await getPublishedPosts();
+
+const featuredPost = posts.find((post) => post.data.featured) ?? posts[0];
+const latestPosts = posts.filter((post) => post !== featuredPost).slice(0, 6);
+
+const categories = [
+  { key: "ai", label: "AI & Intelligent Systems" },
+  { key: "engineering", label: "Software Engineering" },
+  { key: "africa", label: "Building in Africa" },
+  { key: "entrepreneurship", label: "Entrepreneurship" },
+  { key: "education", label: "Learning & Teaching" },
+];
+
+function getPostsByCategory(cat: string) {
+  return posts.filter((post) => post.data.category === cat);
+}
+
+function estimateReadTime(post: any) {
+  return `${Math.max(5, Math.ceil((post.body?.length ?? 1500) / 1200))} min read`;
+}
 ---
 
-<PageLayout title="Writing" description="Technical articles on software engineering, AI, system design, and technology in Africa by Vincent Mugondora.">
-  <section class="hero">
-    <div class="container">
-      <span class="badge">Articles</span>
-      <h1 class="hero__title">Writing</h1>
-      <p class="hero__subtitle">
-        Technical writing on software engineering, AI, system design, and building technology in Africa.
+<PageLayout title="Writing" description="Ideas, lessons, experiments and observations on software engineering, AI, technology, entrepreneurship and building in Africa — by Vincent Mugondora.">
+  <!-- Hero -->
+  <section class="pt-[72px] py-16 md:py-24">
+    <div class="max-w-[1200px] mx-auto px-4 md:px-10">
+      <h1 class="font-display italic text-[48px] md:text-[72px] lg:text-[96px] text-[var(--color-text-primary)] leading-[1.05] font-bold tracking-tight">
+        Thinking in <span class="marker-highlight">public</span>.
+      </h1>
+      <p class="font-body text-[16px] md:text-[18px] text-[var(--color-text-secondary)] mt-4 max-w-[700px] leading-relaxed">
+        Ideas, lessons, experiments and observations on software engineering, AI, technology, entrepreneurship and building in Africa.
       </p>
+
+      <div class="flex flex-wrap gap-2 mt-8">
+        {categories.map((cat) => (
+          <a href={`#${cat.key}`} class="font-body text-[13px] text-[var(--color-text-muted)] bg-[var(--color-secondary)] border border-[var(--color-card-border)] px-3.5 py-1.5 rounded-full hover:text-[var(--color-primary)] hover:border-[var(--color-primary)] transition-colors">
+            {cat.label}
+          </a>
+        ))}
+      </div>
     </div>
   </section>
 
-  <section class="articles-section">
-    <div class="container">
-      {posts.length > 0 ? (
-        <div class="articles-list">
-          {posts.map((post) => (
-            <a href={`/writing/${post.id}`} class="article-card">
-              <div class="article-card__meta">
-                <span class="article-card__category">
-                  {post.data.category.replace("-", " ")}
-                </span>
-                <span class="article-card__date">
-                  {formatDate(post.data.publishedAt)}
-                </span>
+  <!-- Featured Article -->
+  {featuredPost && (
+    <section class="bg-[var(--color-secondary)] py-16 md:py-24">
+      <div class="max-w-[1200px] mx-auto px-4 md:px-10">
+        <p class="font-body text-[12px] font-semibold uppercase tracking-widest text-[var(--color-primary)] mb-6">Featured</p>
+
+        <a href={`/writing/${featuredPost.id}`} class="block bg-white rounded-[16px] border border-[var(--color-card-border)] p-8 md:p-12 hover:-translate-y-1 hover:shadow-lg transition duration-200">
+          <p class="font-body text-[12px] font-medium uppercase tracking-widest text-[var(--color-text-muted)] mb-3">
+            {featuredPost.data.category.replace("-", " ")}
+          </p>
+          <h2 class="font-display italic text-[32px] md:text-[44px] font-bold text-[var(--color-text-primary)] tracking-tight leading-tight">
+            {featuredPost.data.title}
+          </h2>
+          <p class="font-body text-[16px] md:text-[18px] text-[var(--color-text-secondary)] mt-4 leading-relaxed max-w-[700px]">
+            {featuredPost.data.description}
+          </p>
+          <span class="inline-flex items-center font-body text-[14px] text-[var(--color-primary)] font-medium mt-6 hover:underline">
+            Read Article &rarr;
+          </span>
+        </a>
+      </div>
+    </section>
+  )}
+
+  <!-- Latest Writing -->
+  {latestPosts.length > 0 && (
+    <section class="py-16 md:py-24">
+      <div class="max-w-[1200px] mx-auto px-4 md:px-10">
+        <h2 class="font-display italic text-[36px] md:text-[48px] text-[var(--color-text-primary)] mb-10 tracking-tight leading-tight">
+          Latest <span class="scribble-underline">writing</span>
+        </h2>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {latestPosts.map((post) => (
+            <a href={`/writing/${post.id}`} class="block bg-white rounded-[16px] border border-[var(--color-card-border)] p-6 hover:-translate-y-1 hover:shadow-lg transition duration-200">
+              <p class="font-body text-[11px] font-semibold uppercase tracking-widest text-[var(--color-primary)] mb-3">
+                {post.data.category.replace("-", " ")}
+              </p>
+              <h3 class="font-display italic text-[20px] font-bold text-[var(--color-text-primary)] tracking-tight leading-snug">
+                {post.data.title}
+              </h3>
+              <p class="font-body text-[14px] text-[var(--color-text-secondary)] mt-2 leading-relaxed line-clamp-3">
+                {post.data.description}
+              </p>
+              <div class="flex items-center gap-2 mt-4">
+                <span class="font-body text-[12px] text-[var(--color-text-muted)]">{formatDate(post.data.publishedAt)}</span>
+                <span class="font-body text-[12px] text-[var(--color-text-muted)]">&middot;</span>
+                <span class="font-body text-[12px] text-[var(--color-text-muted)]">{estimateReadTime(post)}</span>
               </div>
-              <h2 class="article-card__title">{post.data.title}</h2>
-              <p class="article-card__desc">{post.data.description}</p>
-              <span class="article-card__link">Read article</span>
             </a>
           ))}
         </div>
-      ) : (
-        <div class="empty-state">
-          <h2 class="empty-state__title">Articles coming soon</h2>
-          <p class="empty-state__text">Technical writing is in progress. Check back shortly.</p>
+      </div>
+    </section>
+  )}
+
+  <!-- Category Sections -->
+  {categories.map((cat, i) => {
+    const catPosts = getPostsByCategory(cat.key);
+    if (catPosts.length === 0) return null;
+    const isAlt = i % 2 === 0;
+    return (
+      <section id={cat.key} class={`py-16 md:py-24 ${isAlt ? "bg-[var(--color-secondary)]" : ""}`}>
+        <div class="max-w-[1200px] mx-auto px-4 md:px-10">
+          <h2 class="font-display italic text-[32px] md:text-[40px] text-[var(--color-text-primary)] mb-8 tracking-tight leading-tight">
+            {cat.label}
+          </h2>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+            {catPosts.map((post) => (
+              <a href={`/writing/${post.id}`} class="block bg-white rounded-[12px] border border-[var(--color-card-border)] p-5 hover:-translate-y-0.5 hover:shadow-md transition duration-200">
+                <h3 class="font-display italic text-[18px] font-bold text-[var(--color-text-primary)] tracking-tight leading-snug">
+                  {post.data.title}
+                </h3>
+                <p class="font-body text-[13px] text-[var(--color-text-secondary)] mt-1.5 leading-relaxed line-clamp-2">
+                  {post.data.description}
+                </p>
+                <span class="font-body text-[12px] text-[var(--color-text-muted)] mt-2 inline-block">{formatDate(post.data.publishedAt)}</span>
+              </a>
+            ))}
+          </div>
         </div>
-      )}
+      </section>
+    );
+  })}
+
+  <!-- Topics Overview (when few posts exist per category) -->
+  {posts.length < 20 && (
+    <section class="py-16 md:py-24">
+      <div class="max-w-[1200px] mx-auto px-4 md:px-10">
+        <h2 class="font-display italic text-[36px] md:text-[48px] text-[var(--color-text-primary)] mb-10 tracking-tight leading-tight">
+          What I <span class="scribble-circle">write</span> about
+        </h2>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div class="bg-white rounded-[16px] border border-[var(--color-card-border)] p-6">
+            <h3 class="font-display italic text-[20px] font-bold text-[var(--color-text-primary)] tracking-tight">Software Engineering</h3>
+            <p class="font-body text-[14px] text-[var(--color-text-secondary)] mt-2 leading-relaxed">Architecture, APIs, backend development, performance, testing and engineering decisions.</p>
+          </div>
+          <div class="bg-white rounded-[16px] border border-[var(--color-card-border)] p-6">
+            <h3 class="font-display italic text-[20px] font-bold text-[var(--color-text-primary)] tracking-tight">AI & Intelligent Systems</h3>
+            <p class="font-body text-[14px] text-[var(--color-text-secondary)] mt-2 leading-relaxed">Agents, LLMs, RAG, AI engineering, experiments and practical applications.</p>
+          </div>
+          <div class="bg-white rounded-[16px] border border-[var(--color-card-border)] p-6">
+            <h3 class="font-display italic text-[20px] font-bold text-[var(--color-text-primary)] tracking-tight">Technology in Africa</h3>
+            <p class="font-body text-[14px] text-[var(--color-text-secondary)] mt-2 leading-relaxed">Zimbabwean technology, African infrastructure, connectivity, digital transformation.</p>
+          </div>
+          <div class="bg-white rounded-[16px] border border-[var(--color-card-border)] p-6">
+            <h3 class="font-display italic text-[20px] font-bold text-[var(--color-text-primary)] tracking-tight">Entrepreneurship</h3>
+            <p class="font-body text-[14px] text-[var(--color-text-secondary)] mt-2 leading-relaxed">Building products, startups, opportunity discovery and business lessons.</p>
+          </div>
+          <div class="bg-white rounded-[16px] border border-[var(--color-card-border)] p-6">
+            <h3 class="font-display italic text-[20px] font-bold text-[var(--color-text-primary)] tracking-tight">Learning & Teaching</h3>
+            <p class="font-body text-[14px] text-[var(--color-text-secondary)] mt-2 leading-relaxed">Teaching programming, mentoring, curriculum design and education technology.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  )}
+
+  <!-- All Articles (Archive) -->
+  {posts.length > 6 && (
+    <section class="bg-[var(--color-secondary)] py-16 md:py-24">
+      <div class="max-w-[900px] mx-auto px-4 md:px-10">
+        <h2 class="font-display italic text-[36px] md:text-[48px] text-[var(--color-text-primary)] mb-10 tracking-tight leading-tight">
+          All articles
+        </h2>
+        <div class="space-y-4">
+          {posts.map((post) => (
+            <a href={`/writing/${post.id}`} class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1 sm:gap-4 py-3 border-b border-[var(--color-card-border)] hover:text-[var(--color-primary)] transition-colors group">
+              <h3 class="font-body text-[15px] font-medium text-[var(--color-text-primary)] group-hover:text-[var(--color-primary)] transition-colors">{post.data.title}</h3>
+              <div class="flex items-center gap-2 shrink-0">
+                <span class="font-body text-[12px] text-[var(--color-text-muted)]">{post.data.category.replace("-", " ")}</span>
+                <span class="font-body text-[12px] text-[var(--color-text-muted)]">&middot;</span>
+                <span class="font-body text-[12px] text-[var(--color-text-muted)]">{formatDate(post.data.publishedAt)}</span>
+              </div>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+  )}
+
+  <!-- Final CTA -->
+  <section class="py-20 md:py-28">
+    <div class="max-w-[800px] mx-auto px-4 md:px-10 text-center">
+      <h2 class="font-display italic text-[36px] md:text-[48px] text-[var(--color-text-primary)] mb-4 tracking-tight leading-tight">
+        Have a topic you'd like me to <span class="marker-highlight">explore</span>?
+      </h2>
+      <p class="font-body text-[16px] md:text-[18px] text-[var(--color-text-secondary)] leading-relaxed max-w-[600px] mx-auto">
+        I write about things I'm building, learning and thinking about. If something resonates, let's talk.
+      </p>
+      <a
+        href="/contact"
+        class="inline-flex items-center justify-center px-8 py-3 bg-[var(--color-primary)] text-white font-body text-[16px] font-medium rounded-[10px] hover:bg-[var(--color-primary-hover)] active:scale-95 transition duration-200 mt-8"
+      >
+        Get in touch &rarr;
+      </a>
     </div>
   </section>
 </PageLayout>
 
 <style>
-  .hero {
-    background: #f4f2ed;
-    padding: clamp(80px, 12vw, 140px) 0 clamp(48px, 6vw, 80px);
-  }
-
-  .container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 clamp(18px, 3vw, 36px);
-  }
-
-  .badge {
+  .marker-highlight {
+    position: relative;
     display: inline-block;
-    border-radius: 999px;
-    border: 1px solid #e4e0d8;
-    background: #fff;
-    font-size: 12px;
-    padding: 6px 16px;
-    color: #5f5f5f;
-    letter-spacing: 0.04em;
+    isolation: isolate;
+  }
+  .marker-highlight::before {
+    content: "";
+    position: absolute;
+    left: -0.08em;
+    right: -0.08em;
+    bottom: 0.05em;
+    height: 45%;
+    background-color: #FFB800;
+    border-radius: 20% 5% 15% 8%;
+    z-index: -1;
+    transform: rotate(-1deg);
   }
 
-  .hero__title {
-    font-family: "Lora Variable", "Lora", Georgia, serif;
-    font-weight: 500;
-    letter-spacing: -0.02em;
-    line-height: 1.06;
-    font-size: clamp(2.4rem, 5vw, 3.6rem);
-    color: #1b1b1b;
-    margin: 20px 0 0;
-  }
-
-  .hero__subtitle {
-    color: #5f5f5f;
-    font-size: 0.95rem;
-    line-height: 1.55;
-    max-width: 520px;
-    margin: 14px 0 0;
-  }
-
-  .articles-section {
-    padding: clamp(40px, 6vw, 80px) 0;
-  }
-
-  .articles-list {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    max-width: 800px;
-  }
-
-  .article-card {
-    display: block;
-    background: #fff;
-    border: 1px solid #e6e2db;
-    border-radius: 16px;
-    padding: clamp(20px, 3vw, 32px);
-    text-decoration: none;
-    color: inherit;
-    transition: box-shadow 0.2s, border-color 0.2s;
-  }
-
-  .article-card:hover {
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
-    border-color: #d4d0c8;
-  }
-
-  .article-card__meta {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    margin-bottom: 12px;
-  }
-
-  .article-card__category {
+  .scribble-circle {
+    position: relative;
     display: inline-block;
-    border-radius: 999px;
-    border: 1px solid #e4e0d8;
-    background: #f4f2ed;
-    font-size: 12px;
-    padding: 4px 12px;
-    color: #5f5f5f;
-    text-transform: capitalize;
+  }
+  .scribble-circle::after {
+    content: "";
+    position: absolute;
+    inset: -18% -12% -22% -12%;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 100' fill='none'><path d='M40 50 C 30 20, 80 8, 130 14 C 180 22, 195 55, 165 78 C 130 95, 60 92, 30 70 C 12 56, 18 32, 50 22' stroke='%2300CEB2' stroke-width='4' stroke-linecap='round'/></svg>");
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    transform: rotate(-2deg);
+    pointer-events: none;
+    z-index: -1;
   }
 
-  .article-card__date {
-    font-size: 12px;
-    color: #999;
+  .scribble-underline {
+    position: relative;
+    display: inline-block;
   }
-
-  .article-card__title {
-    font-family: "Lora Variable", "Lora", Georgia, serif;
-    font-weight: 500;
-    letter-spacing: -0.02em;
-    line-height: 1.2;
-    font-size: clamp(1.1rem, 2vw, 1.35rem);
-    color: #1b1b1b;
-    margin: 0 0 8px;
-  }
-
-  .article-card:hover .article-card__title {
-    color: #333;
-  }
-
-  .article-card__desc {
-    color: #666;
-    font-size: 0.95rem;
-    line-height: 1.55;
-    margin: 0 0 16px;
-  }
-
-  .article-card__link {
-    font-size: 13px;
-    color: #1b1b1b;
-    font-weight: 500;
-    letter-spacing: 0.01em;
-  }
-
-  .article-card:hover .article-card__link {
-    text-decoration: underline;
-  }
-
-  .empty-state {
-    background: #f4f2ed;
-    border-radius: 20px;
-    padding: clamp(40px, 6vw, 80px);
-    text-align: center;
-    max-width: 600px;
-    margin: 0 auto;
-  }
-
-  .empty-state__title {
-    font-family: "Lora Variable", "Lora", Georgia, serif;
-    font-weight: 500;
-    letter-spacing: -0.02em;
-    line-height: 1.06;
-    font-size: 1.5rem;
-    color: #1b1b1b;
-    margin: 0 0 10px;
-  }
-
-  .empty-state__text {
-    color: #666;
-    font-size: 0.95rem;
-    line-height: 1.55;
-    margin: 0;
+  .scribble-underline::after {
+    content: "";
+    position: absolute;
+    left: -4%;
+    right: -4%;
+    bottom: -14px;
+    height: 12px;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 14' fill='none' preserveAspectRatio='none'><path d='M3 9 C 50 3, 110 12, 197 5' stroke='%231BB6F9' stroke-width='6' stroke-linecap='round'/></svg>");
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    transform: rotate(-2deg);
+    pointer-events: none;
   }
 </style>
