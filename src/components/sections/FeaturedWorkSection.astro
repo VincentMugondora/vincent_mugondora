@@ -5,12 +5,12 @@ import { getFeaturedProjects } from "@lib/content";
 const projects = await getFeaturedProjects();
 
 const placeholderProjects = [
-  { title: "Zimnovate Platform", description: "Full-stack web application for Zimbabwe's tech ecosystem", color: "#1a1a2e" },
-  { title: "AI Writing Assistant", description: "Agentic AI tool for content generation and optimization", color: "#16213e" },
-  { title: "EdTech Dashboard", description: "Learning management system for African universities", color: "#0f3460" },
-  { title: "Cloud Migration Tool", description: "AWS infrastructure automation for enterprise clients", color: "#1a1a1a" },
-  { title: "Portfolio Builder", description: "Modern portfolio generator built with Astro and React", color: "#2d2d2d" },
-  { title: "API Gateway Service", description: "High-performance REST API with real-time capabilities", color: "#1b2838" },
+  { title: "Zimnovate Platform", description: "Full-stack web application for Zimbabwe's tech ecosystem", image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=580&h=360&fit=crop&auto=format&q=75", imageAlt: "Data analytics screens representing a tech platform" },
+  { title: "AI Writing Assistant", description: "Agentic AI tool for content generation and optimization", image: "https://images.unsplash.com/photo-1455390582262-044cdead277a?w=580&h=360&fit=crop&auto=format&q=75", imageAlt: "Person writing representing AI-assisted content creation" },
+  { title: "EdTech Dashboard", description: "Learning management system for African universities", image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=580&h=360&fit=crop&auto=format&q=75", imageAlt: "Data dashboard representing education technology analytics" },
+  { title: "Cloud Migration Tool", description: "AWS infrastructure automation for enterprise clients", image: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=580&h=360&fit=crop&auto=format&q=75", imageAlt: "Digital globe with network connections representing cloud infrastructure" },
+  { title: "Portfolio Builder", description: "Modern portfolio generator built with Astro and React", image: "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=580&h=360&fit=crop&auto=format&q=75", imageAlt: "Laptop with code editor representing web development" },
+  { title: "API Gateway Service", description: "High-performance REST API with real-time capabilities", image: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=580&h=360&fit=crop&auto=format&q=75", imageAlt: "Programming code on screen representing API development" },
 ];
 ---
 
@@ -62,9 +62,14 @@ const placeholderProjects = [
           aria-label={`View ${project.title} project`}
         >
           <figure class="project-card__media">
-            <div class="project-card__placeholder" style={`background: ${project.color}`}>
-              <span>{project.title.charAt(0)}</span>
-            </div>
+            <img
+              src={project.image}
+              alt={project.imageAlt}
+              width="580"
+              height="360"
+              loading="lazy"
+              decoding="async"
+            />
           </figure>
           <div class="project-card__meta">
             <h3>{project.title}</h3>

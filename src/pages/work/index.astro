@@ -16,7 +16,8 @@ const featuredProjects = [
     category: "AI / Product",
     stack: ["Python", "FastAPI", "PostgreSQL", "AI"],
     slug: "ai-opportunity-intelligence",
-    gradient: "from-purple-100 to-purple-50",
+    image: "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=700&h=525&fit=crop&auto=format&q=75",
+    imageAlt: "AI neural network visualization representing intelligent opportunity discovery",
   },
   {
     number: "02",
@@ -26,7 +27,8 @@ const featuredProjects = [
     category: "SaaS / Education",
     stack: ["Next.js", "TypeScript", "PostgreSQL", "Prisma"],
     slug: "school-management-platform",
-    gradient: "from-blue-100 to-blue-50",
+    image: "https://images.unsplash.com/photo-1580582932707-520aed937b7b?w=700&h=525&fit=crop&auto=format&q=75",
+    imageAlt: "School classroom environment representing education management software",
   },
   {
     number: "03",
@@ -36,7 +38,8 @@ const featuredProjects = [
     category: "AI / Automation",
     stack: ["Python", "FastAPI", "WhatsApp API", "AI"],
     slug: "ai-whatsapp-assistant",
-    gradient: "from-green-100 to-green-50",
+    image: "https://images.unsplash.com/photo-1611746872915-64382b5c76da?w=700&h=525&fit=crop&auto=format&q=75",
+    imageAlt: "Mobile phone with messaging app representing WhatsApp AI integration",
   },
 ];
 
@@ -72,8 +75,16 @@ const techStack = {
         {featuredProjects.map((project) => (
           <a href={`/work/${project.slug}`} class="block group">
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
-              <div class={`aspect-[4/3] rounded-[16px] bg-gradient-to-br ${project.gradient} flex items-center justify-center overflow-hidden border border-[var(--color-card-border)] transition-all duration-300 group-hover:-translate-y-1 group-hover:shadow-lg`}>
-                <span class="font-display italic text-[24px] text-[var(--color-text-muted)]">{project.title}</span>
+              <div class="aspect-[4/3] rounded-[16px] overflow-hidden border border-[var(--color-card-border)] transition-all duration-300 group-hover:-translate-y-1 group-hover:shadow-lg">
+                <img
+                  src={project.image}
+                  alt={project.imageAlt}
+                  width="700"
+                  height="525"
+                  loading="lazy"
+                  decoding="async"
+                  class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-[1.03]"
+                />
               </div>
               <div>
                 <p class="font-body text-[12px] font-semibold uppercase tracking-widest text-[var(--color-primary)] mb-2">{project.number} &mdash; {project.category}</p>
