@@ -1,9 +1,16 @@
 ---
 import PageLayout from "@layouts/PageLayout.astro";
 import { siteConfig } from "@config/site";
+import { getBreadcrumbJsonLd } from "@/lib/seo";
+
+const breadcrumbJsonLd = getBreadcrumbJsonLd([
+  { name: "Home", url: siteConfig.url },
+  { name: "Contact", url: `${siteConfig.url}/contact` },
+]);
 ---
 
-<PageLayout title="Let's Talk" description="Get in touch with Vincent Mugondora for software development, AI solutions, speaking, teaching, or collaboration.">
+<PageLayout title="Contact Vincent Mugondora — Software Developer & AI Builder" description="Get in touch with Vincent Mugondora for software development, AI solutions, speaking, teaching, or collaboration in Zimbabwe.">
+  <script is:inline type="application/ld+json" set:html={JSON.stringify(breadcrumbJsonLd)} />
   <main class="pt-[72px]">
     <!-- Hero -->
     <section class="max-w-[1200px] mx-auto px-6 md:px-10 py-16 md:py-24 text-center">
