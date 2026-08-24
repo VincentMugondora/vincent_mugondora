@@ -27,297 +27,181 @@ const serviceJsonLd = {
 <PageLayout title="AI Solutions for Businesses in Zimbabwe | AI Chatbots & Agents" description="AI solutions for businesses in Zimbabwe and Africa. AI chatbot development, AI agents, workflow automation, and practical business AI for customer support and operations.">
   <script is:inline type="application/ld+json" set:html={JSON.stringify(serviceJsonLd)} />
   <script is:inline type="application/ld+json" set:html={JSON.stringify(breadcrumbJsonLd)} />
+
   <!-- Hero -->
-  <section class="hero">
-    <div class="hero__container">
-      <span class="hero__badge">Services</span>
-      <h1 class="hero__title">AI Solutions for Businesses</h1>
-      <p class="hero__description">
+  <section class="pt-[72px] py-16 md:py-24">
+    <div class="max-w-[1200px] mx-auto px-4 md:px-10">
+      <span class="inline-block font-display text-[12px] text-[var(--color-text-secondary)] border border-[var(--color-card-border)] rounded-full px-4 py-1 mb-6">
+        Services
+      </span>
+      <h1 class="font-display italic text-[48px] md:text-[64px] lg:text-[72px] text-[var(--color-text-primary)] leading-[1.05] font-bold tracking-tight">
+        AI <span class="marker-highlight">Solutions</span>
+      </h1>
+      <p class="font-body text-[16px] md:text-[18px] text-[var(--color-text-secondary)] mt-6 max-w-[600px] leading-relaxed">
         AI solutions for businesses that want faster customer support, cleaner internal systems, and practical automation that saves time. I build AI chatbots, AI agents, and custom business AI systems for organisations in Zimbabwe and across Africa.
       </p>
     </div>
   </section>
 
   <!-- What I Build -->
-  <section class="what-i-build">
-    <div class="section-container">
-      <h2 class="section-heading">What I Build</h2>
-      <ul class="build-list">
-        <li class="build-list__item">
-          <span class="build-list__icon"><Icon name="lucide:message-circle" /></span>
-          <div class="build-list__content">
-            <strong class="build-list__label">AI Chatbots</strong>
-            <span class="build-list__text"> — Intelligent conversational agents for customer support, sales, and internal tools. WhatsApp, web, and multi-platform.</span>
+  <section class="bg-[var(--color-secondary)] py-16 md:py-24">
+    <div class="max-w-[900px] mx-auto px-4 md:px-10">
+      <h2 class="font-display italic text-[36px] md:text-[48px] text-[var(--color-text-primary)] mb-8 tracking-tight leading-tight">
+        What I <span class="scribble-underline">build</span>
+      </h2>
+
+      <div class="space-y-4">
+        <div class="bg-white rounded-[16px] border border-[var(--color-card-border)] p-6 flex items-start gap-4">
+          <div class="w-10 h-10 rounded-[10px] bg-[var(--color-secondary)] flex items-center justify-center flex-shrink-0 text-[var(--color-text-primary)]">
+            <Icon name="lucide:message-circle" class="w-5 h-5" />
           </div>
-        </li>
-        <li class="build-list__item">
-          <span class="build-list__icon"><Icon name="lucide:bot" /></span>
-          <div class="build-list__content">
-            <strong class="build-list__label">AI Agents</strong>
-            <span class="build-list__text"> — Autonomous agents that can research, analyse, and take actions on behalf of your business.</span>
+          <div>
+            <h3 class="font-display italic text-[20px] font-bold text-[var(--color-text-primary)] tracking-tight">AI Chatbots</h3>
+            <p class="font-body text-[14px] text-[var(--color-text-secondary)] mt-1 leading-relaxed">Intelligent conversational agents for customer support, sales, and internal tools. WhatsApp, web, and multi-platform.</p>
           </div>
-        </li>
-        <li class="build-list__item">
-          <span class="build-list__icon"><Icon name="lucide:book-open" /></span>
-          <div class="build-list__content">
-            <strong class="build-list__label">RAG Systems</strong>
-            <span class="build-list__text"> — AI that understands your documents, knowledge base, and business context to answer questions accurately.</span>
+        </div>
+
+        <div class="bg-white rounded-[16px] border border-[var(--color-card-border)] p-6 flex items-start gap-4">
+          <div class="w-10 h-10 rounded-[10px] bg-[var(--color-secondary)] flex items-center justify-center flex-shrink-0 text-[var(--color-text-primary)]">
+            <Icon name="lucide:bot" class="w-5 h-5" />
           </div>
-        </li>
-        <li class="build-list__item">
-          <span class="build-list__icon"><Icon name="lucide:puzzle" /></span>
-          <div class="build-list__content">
-            <strong class="build-list__label">Custom AI Integration</strong>
-            <span class="build-list__text"> — Connect AI capabilities to your existing systems, workflows, and business processes.</span>
+          <div>
+            <h3 class="font-display italic text-[20px] font-bold text-[var(--color-text-primary)] tracking-tight">AI Agents</h3>
+            <p class="font-body text-[14px] text-[var(--color-text-secondary)] mt-1 leading-relaxed">Autonomous agents that can research, analyse, and take actions on behalf of your business.</p>
           </div>
-        </li>
-      </ul>
+        </div>
+
+        <div class="bg-white rounded-[16px] border border-[var(--color-card-border)] p-6 flex items-start gap-4">
+          <div class="w-10 h-10 rounded-[10px] bg-[var(--color-secondary)] flex items-center justify-center flex-shrink-0 text-[var(--color-text-primary)]">
+            <Icon name="lucide:book-open" class="w-5 h-5" />
+          </div>
+          <div>
+            <h3 class="font-display italic text-[20px] font-bold text-[var(--color-text-primary)] tracking-tight">RAG Systems</h3>
+            <p class="font-body text-[14px] text-[var(--color-text-secondary)] mt-1 leading-relaxed">AI that understands your documents, knowledge base, and business context to answer questions accurately.</p>
+          </div>
+        </div>
+
+        <div class="bg-white rounded-[16px] border border-[var(--color-card-border)] p-6 flex items-start gap-4">
+          <div class="w-10 h-10 rounded-[10px] bg-[var(--color-secondary)] flex items-center justify-center flex-shrink-0 text-[var(--color-text-primary)]">
+            <Icon name="lucide:puzzle" class="w-5 h-5" />
+          </div>
+          <div>
+            <h3 class="font-display italic text-[20px] font-bold text-[var(--color-text-primary)] tracking-tight">Custom AI Integration</h3>
+            <p class="font-body text-[14px] text-[var(--color-text-secondary)] mt-1 leading-relaxed">Connect AI capabilities to your existing systems, workflows, and business processes.</p>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 
   <!-- Technologies -->
-  <section class="technologies">
-    <div class="section-container">
-      <h2 class="section-heading">Technologies</h2>
-      <div class="tags">
+  <section class="py-16 md:py-24">
+    <div class="max-w-[900px] mx-auto px-4 md:px-10">
+      <h2 class="font-display italic text-[36px] md:text-[48px] text-[var(--color-text-primary)] mb-6 tracking-tight leading-tight">
+        Technologies
+      </h2>
+      <div class="flex flex-wrap gap-2">
         {["LLMs", "GPT-4", "Claude", "RAG", "LangChain", "Vector Databases", "AI Agents", "Python", "FastAPI", "WhatsApp API"].map((t) => (
-          <span class="tag">{t}</span>
+          <span class="font-body text-[12px] text-[var(--color-text-muted)] border border-[var(--color-card-border)] rounded-full px-4 py-1.5">{t}</span>
         ))}
       </div>
     </div>
   </section>
 
-  <!-- Content / Approach -->
-  <section class="approach">
-    <div class="section-container">
-      <h2 class="section-heading">AI for African Businesses</h2>
-      <div class="approach__body">
+  <!-- AI for African Businesses -->
+  <section class="bg-[var(--color-secondary)] py-16 md:py-24">
+    <div class="max-w-[900px] mx-auto px-4 md:px-10">
+      <h2 class="font-display italic text-[36px] md:text-[48px] text-[var(--color-text-primary)] mb-6 tracking-tight leading-tight">
+        AI for <span class="scribble-circle">African</span> businesses
+      </h2>
+      <div class="space-y-5 font-body text-[16px] md:text-[18px] text-[var(--color-text-secondary)] leading-relaxed max-w-[640px]">
         <p>AI isn't just for Silicon Valley. Businesses in Zimbabwe and Africa can use AI to automate customer support, process documents, analyse data, and build intelligent products.</p>
         <p>I focus on practical AI — solutions that deliver measurable business value, not experimental technology for its own sake. Every AI implementation starts with a clear business problem and a realistic assessment of what AI can solve.</p>
         <p>Whether you need a WhatsApp chatbot that handles customer enquiries 24/7, or an AI system that processes and categorises your business documents, I build solutions that work within real-world constraints.</p>
-        <p><strong>Common business use cases:</strong> AI customer support, WhatsApp business automation, lead qualification, internal knowledge search, and document processing for repetitive admin work.</p>
-        <p>Want to understand how AI agents work before investing? Read my guide: <a href="/writing/ai-agents-explained-for-beginners">What Are AI Agents? A Simple Guide for Beginners</a>. For Zimbabwe-specific applications, see <a href="/writing/how-zimbabwean-businesses-can-use-ai">How Zimbabwean Businesses Can Use AI</a>. If you want concrete examples, read <a href="/writing/ai-agent-use-cases-for-small-businesses">5 AI Agent Use Cases for Small Businesses</a>. If you need operational automation too, see my <a href="/services/ai-automation">AI automation services</a>.</p>
+      </div>
+
+      <div class="mt-10 bg-white rounded-[16px] border border-[var(--color-card-border)] p-6">
+        <h3 class="font-display italic text-[20px] font-bold text-[var(--color-text-primary)] tracking-tight mb-3">Learn more</h3>
+        <ul class="space-y-2 font-body text-[14px] text-[var(--color-text-secondary)] leading-relaxed">
+          <li><a href="/writing/ai-agents-explained-for-beginners" class="text-[var(--color-primary)] hover:underline">What Are AI Agents? A Simple Guide for Beginners</a></li>
+          <li><a href="/writing/how-zimbabwean-businesses-can-use-ai" class="text-[var(--color-primary)] hover:underline">How Zimbabwean Businesses Can Use AI</a></li>
+          <li><a href="/writing/ai-agent-use-cases-for-small-businesses" class="text-[var(--color-primary)] hover:underline">5 AI Agent Use Cases for Small Businesses</a></li>
+          <li><a href="/services/ai-automation" class="text-[var(--color-primary)] hover:underline">AI Automation Services</a></li>
+        </ul>
       </div>
     </div>
   </section>
 
   <!-- CTA -->
-  <section class="cta">
-    <div class="cta__container">
-      <h2 class="cta__title">Ready to use AI in your business?</h2>
-      <p class="cta__text">Tell me about your business challenge and I'll suggest how AI can help.</p>
-      <a class="cta__btn" href="/contact">
+  <section class="py-20 md:py-28">
+    <div class="max-w-[800px] mx-auto px-4 md:px-10 text-center">
+      <h2 class="font-display italic text-[36px] md:text-[48px] text-[var(--color-text-primary)] mb-4 tracking-tight leading-tight">
+        Ready to use <span class="marker-highlight">AI</span> in your business?
+      </h2>
+      <p class="font-body text-[16px] md:text-[18px] text-[var(--color-text-secondary)] leading-relaxed max-w-[500px] mx-auto">
+        Tell me about your business challenge and I'll suggest how AI can help.
+      </p>
+      <a
+        href="/contact"
+        class="inline-flex items-center justify-center gap-2 px-8 py-3 bg-[var(--color-primary)] text-white font-body text-[14px] font-medium rounded-[10px] hover:bg-[var(--color-primary-hover)] transition-colors duration-200 mt-8"
+      >
         Start a conversation
-        <Icon name="lucide:arrow-up-right" />
+        <Icon name="lucide:arrow-up-right" class="w-4 h-4" />
       </a>
     </div>
   </section>
 </PageLayout>
 
 <style>
-  /* Hero */
-  .hero {
-    background: #f2f0ec;
-    padding: clamp(60px, 10vw, 100px) clamp(18px, 3vw, 36px) clamp(40px, 6vw, 60px);
-  }
-
-  .hero__container {
-    max-width: 1200px;
-    margin: 0 auto;
-  }
-
-  .hero__badge {
+  .marker-highlight {
+    position: relative;
     display: inline-block;
-    border-radius: 999px;
-    border: 1px solid #e4e0d8;
-    background: #fff;
-    font-size: 12px;
-    padding: 6px 16px;
-    color: #5f5f5f;
-    letter-spacing: 0.04em;
-    margin-bottom: 20px;
+    isolation: isolate;
+  }
+  .marker-highlight::before {
+    content: "";
+    position: absolute;
+    left: -0.08em;
+    right: -0.08em;
+    bottom: 0.05em;
+    height: 45%;
+    background-color: #FFB800;
+    border-radius: 20% 5% 15% 8%;
+    z-index: -1;
+    transform: rotate(-1deg);
   }
 
-  .hero__title {
-    font-family: "Lora Variable", "Lora", Georgia, serif;
-    font-weight: 500;
-    letter-spacing: -0.02em;
-    font-size: clamp(2rem, 5vw, 3rem);
-    color: #1b1b1b;
-    margin: 0 0 16px;
-    line-height: 1.15;
-  }
-
-  .hero__description {
-    color: #5f5f5f;
-    font-size: 0.95rem;
-    line-height: 1.55;
-    max-width: 640px;
-    margin: 0;
-  }
-
-  /* Shared section styles */
-  .section-container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 clamp(18px, 3vw, 36px);
-  }
-
-  .section-heading {
-    font-family: "Lora Variable", "Lora", Georgia, serif;
-    font-weight: 500;
-    letter-spacing: -0.02em;
-    font-size: 1.5rem;
-    color: #1b1b1b;
-    margin: 0 0 24px;
-  }
-
-  /* What I Build */
-  .what-i-build {
-    background: #f4f2ed;
-    border-radius: 20px;
-    padding: clamp(20px, 3vw, 34px);
-    margin: 32px clamp(18px, 3vw, 36px);
-  }
-
-  .what-i-build .section-container {
-    padding: 0;
-  }
-
-  .build-list {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    display: flex;
-    flex-direction: column;
-    gap: 18px;
-  }
-
-  .build-list__item {
-    display: flex;
-    align-items: flex-start;
-    gap: 14px;
-    background: #fff;
-    border: 1px solid #e6e2db;
-    border-radius: 16px;
-    padding: 18px 20px;
-  }
-
-  .build-list__icon {
-    flex-shrink: 0;
-    width: 22px;
-    height: 22px;
-    color: #1b1b1b;
-    margin-top: 2px;
-  }
-
-  .build-list__icon :global(svg) {
-    width: 100%;
-    height: 100%;
-  }
-
-  .build-list__content {
-    font-size: 0.95rem;
-    line-height: 1.55;
-    color: #5f5f5f;
-  }
-
-  .build-list__label {
-    color: #1b1b1b;
-    font-weight: 600;
-  }
-
-  /* Technologies */
-  .technologies {
-    padding: clamp(40px, 5vw, 60px) 0;
-  }
-
-  .tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-  }
-
-  .tag {
+  .scribble-circle {
+    position: relative;
     display: inline-block;
-    border-radius: 999px;
-    border: 1px solid #e4e0d8;
-    background: #fff;
-    font-size: 12px;
-    padding: 6px 14px;
-    color: #5f5f5f;
-    letter-spacing: 0.02em;
+  }
+  .scribble-circle::after {
+    content: "";
+    position: absolute;
+    inset: -18% -12% -22% -12%;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 100' fill='none'><path d='M40 50 C 30 20, 80 8, 130 14 C 180 22, 195 55, 165 78 C 130 95, 60 92, 30 70 C 12 56, 18 32, 50 22' stroke='%2300CEB2' stroke-width='4' stroke-linecap='round'/></svg>");
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    transform: rotate(-2deg);
+    pointer-events: none;
+    z-index: -1;
   }
 
-  /* Approach */
-  .approach {
-    padding: 0 0 clamp(40px, 5vw, 60px);
+  .scribble-underline {
+    position: relative;
+    display: inline-block;
   }
-
-  .approach__body {
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-    color: #5f5f5f;
-    font-size: 0.95rem;
-    line-height: 1.55;
-    max-width: 720px;
-  }
-
-  .approach__body p {
-    margin: 0;
-  }
-
-  /* CTA */
-  .cta {
-    background: #f4f2ed;
-    border-radius: 20px;
-    padding: clamp(40px, 5vw, 60px) clamp(20px, 3vw, 34px);
-    margin: 0 clamp(18px, 3vw, 36px) clamp(40px, 5vw, 60px);
-    text-align: center;
-  }
-
-  .cta__container {
-    max-width: 600px;
-    margin: 0 auto;
-  }
-
-  .cta__title {
-    font-family: "Lora Variable", "Lora", Georgia, serif;
-    font-weight: 500;
-    letter-spacing: -0.02em;
-    font-size: clamp(1.5rem, 3vw, 2rem);
-    color: #1b1b1b;
-    margin: 0 0 12px;
-  }
-
-  .cta__text {
-    color: #666;
-    font-size: 0.95rem;
-    line-height: 1.55;
-    margin: 0 0 28px;
-  }
-
-  .cta__btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    background: #1b1b1b;
-    color: #fff;
-    border-radius: 999px;
-    padding: 14px 28px;
-    font-size: 0.9rem;
-    font-weight: 500;
-    text-decoration: none;
-    transition: background 0.2s;
-  }
-
-  .cta__btn:hover {
-    background: #333;
-  }
-
-  .cta__btn :global(svg) {
-    width: 16px;
-    height: 16px;
+  .scribble-underline::after {
+    content: "";
+    position: absolute;
+    left: -4%;
+    right: -4%;
+    bottom: -14px;
+    height: 12px;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 14' fill='none' preserveAspectRatio='none'><path d='M3 9 C 50 3, 110 12, 197 5' stroke='%231BB6F9' stroke-width='6' stroke-linecap='round'/></svg>");
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    transform: rotate(-2deg);
+    pointer-events: none;
   }
 </style>
