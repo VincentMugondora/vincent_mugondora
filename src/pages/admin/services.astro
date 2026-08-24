@@ -1,0 +1,158 @@
+---
+import AdminLayout from "@layouts/AdminLayout.astro";
+export const prerender = false;
+---
+
+<AdminLayout title="Services" active="services">
+  <div class="page-header">
+    <h1>Services</h1>
+    <button class="btn btn-primary" onclick="showForm()">+ New Service</button>
+  </div>
+
+  <div class="card" id="form-card" style="display: none; margin-bottom: 1.5rem;">
+    <h3 style="margin-bottom: 1rem;" id="form-title">New Service</h3>
+    <form id="item-form">
+      <input type="hidden" id="item-id" />
+      <div class="form-row">
+        <div class="form-group">
+          <label for="title">Title</label>
+          <input type="text" id="title" required />
+        </div>
+        <div class="form-group">
+          <label for="slug">Slug</label>
+          <input type="text" id="slug" required />
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="description">Description</label>
+        <textarea id="description" rows="3" required></textarea>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label for="technologies">Technologies (comma-separated)</label>
+          <input type="text" id="technologies" />
+        </div>
+        <div class="form-group">
+          <label for="icon">Icon</label>
+          <input type="text" id="icon" placeholder="code, globe, brain, zap" />
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="order">Display Order</label>
+        <input type="number" id="order" value="0" />
+      </div>
+      <div style="display: flex; gap: 0.75rem; margin-top: 1rem;">
+        <button type="submit" class="btn btn-primary">Save</button>
+        <button type="button" class="btn btn-secondary" onclick="hideForm()">Cancel</button>
+      </div>
+    </form>
+  </div>
+
+  <div class="card">
+    <div class="table-wrapper">
+      <table>
+        <thead>
+          <tr>
+            <th>Title</th>
+            <th>Icon</th>
+            <th>Order</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody id="items-table"></tbody>
+      </table>
+      <div class="empty-state" id="empty" style="display: none;">
+        <p>No services yet.</p>
+      </div>
+    </div>
+  </div>
+
+  <script is:inline>
+    let items = [];
+
+    async function loadItems() {
+      items = await apiCall('/api/services');
+      renderTable();
+    }
+
+    function renderTable() {
+      const tbody = document.getElementById('items-table');
+      const empty = document.getElementById('empty');
+      if (!items.length) { tbody.innerHTML = ''; empty.style.display = 'block'; return; }
+      empty.style.display = 'none';
+      tbody.innerHTML = items.map(p => `
+        <tr>
+          <td><strong>${p.title}</strong></td>
+          <td>${p.icon || '-'}</td>
+          <td>${p.order}</td>
+          <td class="actions">
+            <button class="btn btn-secondary btn-sm" onclick="editItem(${p.id})">Edit</button>
+            <button class="btn btn-danger btn-sm" onclick="deleteItem(${p.id})">Delete</button>
+          </td>
+        </tr>
+      `).join('');
+    }
+
+    function showForm(item = null) {
+      document.getElementById('form-card').style.display = 'block';
+      document.getElementById('form-title').textContent = item ? 'Edit Service' : 'New Service';
+      document.getElementById('item-id').value = item ? item.id : '';
+      document.getElementById('title').value = item ? item.title : '';
+      document.getElementById('slug').value = item ? item.slug : '';
+      document.getElementById('description').value = item ? item.description : '';
+      const techs = item ? (Array.isArray(item.technologies) ? item.technologies.join(', ') : '') : '';
+      document.getElementById('technologies').value = techs;
+      document.getElementById('icon').value = item ? (item.icon || '') : '';
+      document.getElementById('order').value = item ? (item.order || 0) : 0;
+    }
+
+    function hideForm() { document.getElementById('form-card').style.display = 'none'; }
+
+    function editItem(id) {
+      const item = items.find(p => p.id === id);
+      if (item) showForm(item);
+    }
+
+    async function deleteItem(id) {
+      if (!confirm('Delete this service?')) return;
+      try {
+        await apiCall('/api/services', 'DELETE', { id });
+        showToast('Service deleted');
+        loadItems();
+      } catch (e) { showToast(e.message, 'error'); }
+    }
+
+    document.getElementById('item-form').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const id = document.getElementById('item-id').value;
+      const techStr = document.getElementById('technologies').value;
+      const data = {
+        title: document.getElementById('title').value,
+        slug: document.getElementById('slug').value,
+        description: document.getElementById('description').value,
+        technologies: techStr ? techStr.split(',').map(t => t.trim()) : [],
+        icon: document.getElementById('icon').value || null,
+        order: Number(document.getElementById('order').value) || 0,
+      };
+      try {
+        if (id) {
+          await apiCall('/api/services', 'PUT', { id: Number(id), ...data });
+          showToast('Service updated');
+        } else {
+          await apiCall('/api/services', 'POST', data);
+          showToast('Service created');
+        }
+        hideForm();
+        loadItems();
+      } catch (e) { showToast(e.message, 'error'); }
+    });
+
+    document.getElementById('title').addEventListener('input', (e) => {
+      if (!document.getElementById('item-id').value) {
+        document.getElementById('slug').value = e.target.value.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
+      }
+    });
+
+    loadItems();
+  </script>
+</AdminLayout>
