@@ -1,12 +1,12 @@
 import type { APIRoute } from "astro";
+import { env } from "cloudflare:workers";
 import { signToken } from "@lib/auth";
 
 export const prerender = false;
 
-export const POST: APIRoute = async ({ request, locals }) => {
-  const env = (locals as { runtime: { env: Env } }).runtime.env;
+export const POST: APIRoute = async ({ request }) => {
   const { password } = await request.json();
-  const adminPassword = (env as unknown as Record<string, string>).ADMIN_PASSWORD;
+  const adminPassword = (env as typeof env & { ADMIN_PASSWORD?: string }).ADMIN_PASSWORD;
 
   if (!adminPassword) {
     return Response.json({ error: "Admin password not configured" }, { status: 500 });
