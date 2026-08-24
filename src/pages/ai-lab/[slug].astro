@@ -1,0 +1,108 @@
+---
+import ArticleLayout from "@layouts/ArticleLayout.astro";
+import { getCollection, render } from "astro:content";
+import { siteConfig } from "@config/site";
+import { getBreadcrumbJsonLd } from "@/lib/seo";
+
+export async function getStaticPaths() {
+  const experiments = await getCollection("experiments");
+  return experiments.map((experiment) => ({
+    params: { slug: experiment.id },
+    props: { experiment },
+  }));
+}
+
+const { experiment } = Astro.props;
+const { Content } = await render(experiment);
+
+const breadcrumbs = getBreadcrumbJsonLd([
+  { name: "Home", url: siteConfig.url },
+  { name: "AI Lab", url: `${siteConfig.url}/ai-lab` },
+  { name: experiment.data.title, url: `${siteConfig.url}/ai-lab/${experiment.id}` },
+]);
+---
+
+<ArticleLayout
+  title={experiment.data.title}
+  description={experiment.data.description}
+  publishedAt={experiment.data.publishedAt}
+>
+  <script is:inline type="application/ld+json" set:html={JSON.stringify(breadcrumbs)} />
+
+  <header class="not-prose mb-12">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <ol>
+        <li><a href="/">Home</a></li>
+        <li><a href="/ai-lab">AI Lab</a></li>
+        <li aria-current="page">{experiment.data.title}</li>
+      </ol>
+    </nav>
+    <div class="flex flex-wrap items-center gap-3 mt-4">
+      <span class="inline-flex items-center font-body text-[11px] font-semibold uppercase tracking-widest text-[var(--color-primary)]">
+        Experiment
+      </span>
+      <span class="inline-flex items-center font-body text-[12px] font-medium px-2.5 py-0.5 rounded-full border border-[var(--color-card-border)] text-[var(--color-text-muted)]">
+        {experiment.data.status}
+      </span>
+    </div>
+    <h1 class="font-display italic text-[36px] md:text-[48px] lg:text-[56px] font-bold text-[var(--color-text-primary)] tracking-tight leading-tight mt-5">
+      {experiment.data.title}
+    </h1>
+    <p class="font-body text-[16px] md:text-[18px] text-[var(--color-text-secondary)] mt-4 leading-relaxed">{experiment.data.description}</p>
+
+    {experiment.data.technologies.length > 0 && (
+      <div class="flex flex-wrap gap-2 mt-5">
+        {experiment.data.technologies.map((tech) => (
+          <span class="font-body text-[12px] text-[var(--color-text-muted)] bg-[var(--color-secondary)] px-2.5 py-1 rounded">{tech}</span>
+        ))}
+      </div>
+    )}
+  </header>
+
+  <Content />
+
+  <aside class="not-prose mt-16 pt-10 border-t border-[var(--color-card-border)]">
+    <a href="/ai-lab" class="inline-flex items-center font-body text-[14px] text-[var(--color-primary)] font-medium hover:underline">
+      &larr; Back to AI Lab
+    </a>
+  </aside>
+</ArticleLayout>
+
+<style>
+  .breadcrumb ol {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.25rem;
+    font-size: 0.8rem;
+    color: var(--color-text-muted);
+  }
+
+  .breadcrumb li:not(:last-child)::after {
+    content: "/";
+    margin-left: 0.25rem;
+    color: var(--color-card-border);
+  }
+
+  .breadcrumb a {
+    color: var(--color-text-muted);
+    text-decoration: none;
+  }
+
+  .breadcrumb a:hover {
+    color: var(--color-primary);
+    text-decoration: underline;
+  }
+
+  .breadcrumb [aria-current="page"] {
+    color: var(--color-text-secondary);
+    font-weight: 500;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    max-width: 30ch;
+  }
+</style>
