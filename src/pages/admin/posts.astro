@@ -1,0 +1,184 @@
+---
+import AdminLayout from "@layouts/AdminLayout.astro";
+export const prerender = false;
+---
+
+<AdminLayout title="Posts" active="posts">
+  <div class="page-header">
+    <h1>Posts</h1>
+    <button class="btn btn-primary" onclick="showForm()">+ New Post</button>
+  </div>
+
+  <div class="card" id="form-card" style="display: none; margin-bottom: 1.5rem;">
+    <h3 style="margin-bottom: 1rem;" id="form-title">New Post</h3>
+    <form id="post-form">
+      <input type="hidden" id="post-id" />
+      <div class="form-row">
+        <div class="form-group">
+          <label for="title">Title</label>
+          <input type="text" id="title" required />
+        </div>
+        <div class="form-group">
+          <label for="slug">Slug</label>
+          <input type="text" id="slug" required />
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="description">Description</label>
+        <textarea id="description" rows="2" required></textarea>
+      </div>
+      <div class="form-group">
+        <label for="content">Content</label>
+        <textarea id="content" rows="10" required></textarea>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label for="category">Category</label>
+          <input type="text" id="category" required />
+        </div>
+        <div class="form-group">
+          <label for="published_at">Published Date</label>
+          <input type="date" id="published_at" required />
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label for="image">Image URL</label>
+          <input type="url" id="image" />
+        </div>
+        <div class="form-group">
+          <label for="featured">Options</label>
+          <div style="display: flex; gap: 1.5rem; padding-top: 0.5rem;">
+            <label style="display: flex; align-items: center; gap: 0.5rem; cursor: pointer;">
+              <input type="checkbox" id="featured" /> Featured
+            </label>
+            <label style="display: flex; align-items: center; gap: 0.5rem; cursor: pointer;">
+              <input type="checkbox" id="draft" /> Draft
+            </label>
+          </div>
+        </div>
+      </div>
+      <div style="display: flex; gap: 0.75rem; margin-top: 1rem;">
+        <button type="submit" class="btn btn-primary">Save</button>
+        <button type="button" class="btn btn-secondary" onclick="hideForm()">Cancel</button>
+      </div>
+    </form>
+  </div>
+
+  <div class="card">
+    <div class="table-wrapper">
+      <table>
+        <thead>
+          <tr>
+            <th>Title</th>
+            <th>Category</th>
+            <th>Status</th>
+            <th>Published</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody id="posts-table"></tbody>
+      </table>
+      <div class="empty-state" id="empty" style="display: none;">
+        <p>No posts yet. Create your first one!</p>
+      </div>
+    </div>
+  </div>
+
+  <script is:inline>
+    let posts = [];
+
+    async function loadPosts() {
+      posts = await apiCall('/api/posts');
+      renderTable();
+    }
+
+    function renderTable() {
+      const tbody = document.getElementById('posts-table');
+      const empty = document.getElementById('empty');
+      if (!posts.length) { tbody.innerHTML = ''; empty.style.display = 'block'; return; }
+      empty.style.display = 'none';
+      tbody.innerHTML = posts.map(p => `
+        <tr>
+          <td><strong>${p.title}</strong></td>
+          <td>${p.category}</td>
+          <td><span class="badge ${p.draft ? 'badge-yellow' : 'badge-green'}">${p.draft ? 'Draft' : 'Published'}</span></td>
+          <td>${p.publishedAt || p.published_at || '-'}</td>
+          <td class="actions">
+            <button class="btn btn-secondary btn-sm" onclick="editPost(${p.id})">Edit</button>
+            <button class="btn btn-danger btn-sm" onclick="deletePost(${p.id})">Delete</button>
+          </td>
+        </tr>
+      `).join('');
+    }
+
+    function showForm(post = null) {
+      document.getElementById('form-card').style.display = 'block';
+      document.getElementById('form-title').textContent = post ? 'Edit Post' : 'New Post';
+      document.getElementById('post-id').value = post ? post.id : '';
+      document.getElementById('title').value = post ? post.title : '';
+      document.getElementById('slug').value = post ? post.slug : '';
+      document.getElementById('description').value = post ? post.description : '';
+      document.getElementById('content').value = post ? post.content : '';
+      document.getElementById('category').value = post ? post.category : '';
+      document.getElementById('published_at').value = post ? (post.publishedAt || post.published_at || '') : new Date().toISOString().split('T')[0];
+      document.getElementById('image').value = post ? (post.image || '') : '';
+      document.getElementById('featured').checked = post ? post.featured : false;
+      document.getElementById('draft').checked = post ? post.draft : false;
+      document.getElementById('form-card').scrollIntoView({ behavior: 'smooth' });
+    }
+
+    function hideForm() { document.getElementById('form-card').style.display = 'none'; }
+
+    function editPost(id) {
+      const post = posts.find(p => p.id === id);
+      if (post) showForm(post);
+    }
+
+    async function deletePost(id) {
+      if (!confirm('Delete this post?')) return;
+      try {
+        await apiCall('/api/posts', 'DELETE', { id });
+        showToast('Post deleted');
+        loadPosts();
+      } catch (e) { showToast(e.message, 'error'); }
+    }
+
+    document.getElementById('post-form').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const id = document.getElementById('post-id').value;
+      const data = {
+        title: document.getElementById('title').value,
+        slug: document.getElementById('slug').value,
+        description: document.getElementById('description').value,
+        content: document.getElementById('content').value,
+        category: document.getElementById('category').value,
+        published_at: document.getElementById('published_at').value,
+        image: document.getElementById('image').value || null,
+        featured: document.getElementById('featured').checked,
+        draft: document.getElementById('draft').checked,
+      };
+      try {
+        if (id) {
+          await apiCall('/api/posts', 'PUT', { id: Number(id), ...data });
+          showToast('Post updated');
+        } else {
+          await apiCall('/api/posts', 'POST', data);
+          showToast('Post created');
+        }
+        hideForm();
+        loadPosts();
+      } catch (e) { showToast(e.message, 'error'); }
+    });
+
+    // Auto-generate slug from title
+    document.getElementById('title').addEventListener('input', (e) => {
+      if (!document.getElementById('post-id').value) {
+        document.getElementById('slug').value = e.target.value.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
+      }
+    });
+
+    loadPosts();
+    if (new URLSearchParams(window.location.search).has('new')) showForm();
+  </script>
+</AdminLayout>
