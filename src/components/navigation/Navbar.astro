@@ -3,6 +3,16 @@ const currentPath = Astro.url.pathname;
 
 const navLinks = [
   { label: "Work", href: "/work" },
+  {
+    label: "Services",
+    href: "/services",
+    children: [
+      { label: "Software Development", href: "/services/software-development" },
+      { label: "Web Development", href: "/services/web-development" },
+      { label: "AI Solutions", href: "/services/ai-solutions" },
+      { label: "AI Automation", href: "/services/ai-automation" },
+    ],
+  },
   { label: "AI Lab", href: "/ai-lab" },
   { label: "Writing", href: "/writing" },
   { label: "About", href: "/about" },
@@ -25,6 +35,54 @@ const navLinks = [
         <div class="hidden md:flex items-center gap-8">
           {navLinks.map((link) => {
             const isActive = currentPath === link.href || currentPath.startsWith(link.href + "/");
+
+            if (link.children) {
+              return (
+                <div class="relative" data-dropdown>
+                  <button
+                    type="button"
+                    class:list={[
+                      "flex items-center gap-1 font-[var(--font-body)] text-[16px] transition-colors duration-200",
+                      isActive ? "text-[var(--color-text-primary)] font-medium" : "text-[var(--color-text-secondary)] hover:text-[var(--color-text-primary)]"
+                    ]}
+                    aria-expanded="false"
+                    aria-haspopup="true"
+                  >
+                    {link.label}
+                    <svg class="w-3.5 h-3.5 transition-transform duration-200" data-dropdown-arrow viewBox="0 0 20 20" fill="currentColor">
+                      <path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z" clip-rule="evenodd" />
+                    </svg>
+                  </button>
+                  <div class="absolute top-full left-1/2 -translate-x-1/2 pt-2 opacity-0 invisible transition-all duration-200" data-dropdown-menu>
+                    <div class="bg-white border border-[var(--color-card-border)] rounded-[12px] shadow-lg py-2 min-w-[220px]">
+                      <a
+                        href={link.href}
+                        class="block px-4 py-2.5 font-[var(--font-body)] text-[14px] text-[var(--color-text-secondary)] hover:text-[var(--color-text-primary)] hover:bg-[var(--color-secondary)] transition-colors duration-150"
+                      >
+                        All Services
+                      </a>
+                      <div class="h-px bg-[var(--color-divider)] mx-3 my-1"></div>
+                      {link.children.map((child) => {
+                        const childActive = currentPath === child.href;
+                        return (
+                          <a
+                            href={child.href}
+                            aria-current={childActive ? "page" : undefined}
+                            class:list={[
+                              "block px-4 py-2.5 font-[var(--font-body)] text-[14px] transition-colors duration-150",
+                              childActive ? "text-[var(--color-primary)] font-medium bg-[var(--color-secondary)]" : "text-[var(--color-text-secondary)] hover:text-[var(--color-text-primary)] hover:bg-[var(--color-secondary)]"
+                            ]}
+                          >
+                            {child.label}
+                          </a>
+                        );
+                      })}
+                    </div>
+                  </div>
+                </div>
+              );
+            }
+
             return (
               <a
                 href={link.href}
@@ -78,6 +136,45 @@ const navLinks = [
       <div class="flex flex-col gap-4 pt-2">
         {navLinks.map((link) => {
           const isActive = currentPath === link.href || currentPath.startsWith(link.href + "/");
+
+          if (link.children) {
+            return (
+              <div data-mobile-dropdown>
+                <button
+                  type="button"
+                  class:list={[
+                    "flex items-center justify-between w-full font-[var(--font-body)] text-[18px]",
+                    isActive ? "text-[var(--color-text-primary)] font-medium" : "text-[var(--color-text-secondary)]"
+                  ]}
+                  data-mobile-dropdown-toggle
+                >
+                  {link.label}
+                  <svg class="w-4 h-4 transition-transform duration-200" data-mobile-dropdown-arrow viewBox="0 0 20 20" fill="currentColor">
+                    <path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z" clip-rule="evenodd" />
+                  </svg>
+                </button>
+                <div class="hidden pl-4 mt-2 flex flex-col gap-2 border-l-2 border-[var(--color-divider)]" data-mobile-dropdown-menu>
+                  <a href={link.href} class="font-[var(--font-body)] text-[16px] text-[var(--color-text-secondary)]">All Services</a>
+                  {link.children.map((child) => {
+                    const childActive = currentPath === child.href;
+                    return (
+                      <a
+                        href={child.href}
+                        aria-current={childActive ? "page" : undefined}
+                        class:list={[
+                          "font-[var(--font-body)] text-[16px]",
+                          childActive ? "text-[var(--color-primary)] font-medium" : "text-[var(--color-text-secondary)]"
+                        ]}
+                      >
+                        {child.label}
+                      </a>
+                    );
+                  })}
+                </div>
+              </div>
+            );
+          }
+
           return (
             <a
               href={link.href}
@@ -109,5 +206,49 @@ const navLinks = [
         menuBtn.querySelector('.menu-close').classList.toggle('hidden');
       });
     }
+
+    // Desktop dropdowns
+    document.querySelectorAll('[data-dropdown]').forEach(function(dropdown) {
+      const btn = dropdown.querySelector('button');
+      const menu = dropdown.querySelector('[data-dropdown-menu]');
+      const arrow = dropdown.querySelector('[data-dropdown-arrow]');
+      let timeout;
+
+      function open() {
+        clearTimeout(timeout);
+        btn.setAttribute('aria-expanded', 'true');
+        menu.classList.remove('opacity-0', 'invisible');
+        menu.classList.add('opacity-100', 'visible');
+        arrow.style.transform = 'rotate(180deg)';
+      }
+
+      function close() {
+        timeout = setTimeout(function() {
+          btn.setAttribute('aria-expanded', 'false');
+          menu.classList.add('opacity-0', 'invisible');
+          menu.classList.remove('opacity-100', 'visible');
+          arrow.style.transform = '';
+        }, 150);
+      }
+
+      dropdown.addEventListener('mouseenter', open);
+      dropdown.addEventListener('mouseleave', close);
+      btn.addEventListener('click', function() {
+        if (btn.getAttribute('aria-expanded') === 'true') close();
+        else open();
+      });
+    });
+
+    // Mobile dropdowns
+    document.querySelectorAll('[data-mobile-dropdown-toggle]').forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        const parent = btn.closest('[data-mobile-dropdown]');
+        const menu = parent.querySelector('[data-mobile-dropdown-menu]');
+        const arrow = parent.querySelector('[data-mobile-dropdown-arrow]');
+        const isOpen = !menu.classList.contains('hidden');
+        menu.classList.toggle('hidden');
+        arrow.style.transform = isOpen ? '' : 'rotate(180deg)';
+      });
+    });
   })();
 </script>
