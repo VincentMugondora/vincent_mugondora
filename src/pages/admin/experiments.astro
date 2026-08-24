@@ -1,0 +1,181 @@
+---
+import AdminLayout from "@layouts/AdminLayout.astro";
+export const prerender = false;
+---
+
+<AdminLayout title="Experiments" active="experiments">
+  <div class="page-header">
+    <h1>Experiments</h1>
+    <button class="btn btn-primary" onclick="showForm()">+ New Experiment</button>
+  </div>
+
+  <div class="card" id="form-card" style="display: none; margin-bottom: 1.5rem;">
+    <h3 style="margin-bottom: 1rem;" id="form-title">New Experiment</h3>
+    <form id="item-form">
+      <input type="hidden" id="item-id" />
+      <div class="form-row">
+        <div class="form-group">
+          <label for="title">Title</label>
+          <input type="text" id="title" required />
+        </div>
+        <div class="form-group">
+          <label for="slug">Slug</label>
+          <input type="text" id="slug" required />
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="description">Description</label>
+        <textarea id="description" rows="2" required></textarea>
+      </div>
+      <div class="form-group">
+        <label for="content">Content</label>
+        <textarea id="content" rows="6" required></textarea>
+      </div>
+      <div class="form-group">
+        <label for="problem">Problem</label>
+        <textarea id="problem" rows="3"></textarea>
+      </div>
+      <div class="form-group">
+        <label for="hypothesis">Hypothesis</label>
+        <textarea id="hypothesis" rows="3"></textarea>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label for="technologies">Technologies (comma-separated)</label>
+          <input type="text" id="technologies" />
+        </div>
+        <div class="form-group">
+          <label for="status">Status</label>
+          <select id="status">
+            <option value="active">Active</option>
+            <option value="completed">Completed</option>
+            <option value="paused">Paused</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="published_at">Published Date</label>
+        <input type="date" id="published_at" />
+      </div>
+      <div style="display: flex; gap: 0.75rem; margin-top: 1rem;">
+        <button type="submit" class="btn btn-primary">Save</button>
+        <button type="button" class="btn btn-secondary" onclick="hideForm()">Cancel</button>
+      </div>
+    </form>
+  </div>
+
+  <div class="card">
+    <div class="table-wrapper">
+      <table>
+        <thead>
+          <tr>
+            <th>Title</th>
+            <th>Status</th>
+            <th>Published</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody id="items-table"></tbody>
+      </table>
+      <div class="empty-state" id="empty" style="display: none;">
+        <p>No experiments yet.</p>
+      </div>
+    </div>
+  </div>
+
+  <script is:inline>
+    let items = [];
+
+    async function loadItems() {
+      items = await apiCall('/api/experiments');
+      renderTable();
+    }
+
+    function renderTable() {
+      const tbody = document.getElementById('items-table');
+      const empty = document.getElementById('empty');
+      if (!items.length) { tbody.innerHTML = ''; empty.style.display = 'block'; return; }
+      empty.style.display = 'none';
+      tbody.innerHTML = items.map(p => `
+        <tr>
+          <td><strong>${p.title}</strong></td>
+          <td><span class="badge ${p.status === 'active' ? 'badge-green' : 'badge-blue'}">${p.status}</span></td>
+          <td>${p.publishedAt || p.published_at || '-'}</td>
+          <td class="actions">
+            <button class="btn btn-secondary btn-sm" onclick="editItem(${p.id})">Edit</button>
+            <button class="btn btn-danger btn-sm" onclick="deleteItem(${p.id})">Delete</button>
+          </td>
+        </tr>
+      `).join('');
+    }
+
+    function showForm(item = null) {
+      document.getElementById('form-card').style.display = 'block';
+      document.getElementById('form-title').textContent = item ? 'Edit Experiment' : 'New Experiment';
+      document.getElementById('item-id').value = item ? item.id : '';
+      document.getElementById('title').value = item ? item.title : '';
+      document.getElementById('slug').value = item ? item.slug : '';
+      document.getElementById('description').value = item ? item.description : '';
+      document.getElementById('content').value = item ? item.content : '';
+      document.getElementById('problem').value = item ? (item.problem || '') : '';
+      document.getElementById('hypothesis').value = item ? (item.hypothesis || '') : '';
+      const techs = item ? (Array.isArray(item.technologies) ? item.technologies.join(', ') : '') : '';
+      document.getElementById('technologies').value = techs;
+      document.getElementById('status').value = item ? (item.status || 'active') : 'active';
+      document.getElementById('published_at').value = item ? (item.publishedAt || item.published_at || '') : new Date().toISOString().split('T')[0];
+    }
+
+    function hideForm() { document.getElementById('form-card').style.display = 'none'; }
+
+    function editItem(id) {
+      const item = items.find(p => p.id === id);
+      if (item) showForm(item);
+    }
+
+    async function deleteItem(id) {
+      if (!confirm('Delete this experiment?')) return;
+      try {
+        await apiCall('/api/experiments', 'DELETE', { id });
+        showToast('Experiment deleted');
+        loadItems();
+      } catch (e) { showToast(e.message, 'error'); }
+    }
+
+    document.getElementById('item-form').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const id = document.getElementById('item-id').value;
+      const techStr = document.getElementById('technologies').value;
+      const data = {
+        title: document.getElementById('title').value,
+        slug: document.getElementById('slug').value,
+        description: document.getElementById('description').value,
+        content: document.getElementById('content').value,
+        problem: document.getElementById('problem').value || null,
+        hypothesis: document.getElementById('hypothesis').value || null,
+        technologies: techStr ? techStr.split(',').map(t => t.trim()) : [],
+        status: document.getElementById('status').value,
+        published_at: document.getElementById('published_at').value || null,
+      };
+      try {
+        if (id) {
+          await apiCall('/api/experiments', 'PUT', { id: Number(id), ...data });
+          showToast('Experiment updated');
+        } else {
+          await apiCall('/api/experiments', 'POST', data);
+          showToast('Experiment created');
+        }
+        hideForm();
+        loadItems();
+      } catch (e) { showToast(e.message, 'error'); }
+    });
+
+    document.getElementById('title').addEventListener('input', (e) => {
+      if (!document.getElementById('item-id').value) {
+        document.getElementById('slug').value = e.target.value.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
+      }
+    });
+
+    loadItems();
+    if (new URLSearchParams(window.location.search).has('new')) showForm();
+  </script>
+</AdminLayout>
