@@ -43,268 +43,103 @@ const services = [
 
 <PageLayout title="Services | Software Development, Web Development & AI" description="Software development, web development, AI solutions and automation services by Vincent Mugondora. Building technology for businesses in Zimbabwe and Africa.">
   <script is:inline type="application/ld+json" set:html={JSON.stringify(breadcrumbJsonLd)} />
-  <section class="hero">
-    <div class="hero__container">
-      <span class="hero__badge">Services</span>
-      <h1 class="hero__heading">How I Can Help</h1>
-      <p class="hero__description">
+
+  <!-- Hero -->
+  <section class="pt-[72px] py-16 md:py-24">
+    <div class="max-w-[1200px] mx-auto px-4 md:px-10">
+      <span class="inline-block font-display text-[12px] text-[var(--color-text-secondary)] border border-[var(--color-card-border)] rounded-full px-4 py-1 mb-6">
+        Services
+      </span>
+      <h1 class="font-display italic text-[48px] md:text-[64px] lg:text-[72px] text-[var(--color-text-primary)] leading-[1.05] font-bold tracking-tight">
+        How I can <span class="marker-highlight">help</span>
+      </h1>
+      <p class="font-body text-[16px] md:text-[18px] text-[var(--color-text-secondary)] mt-6 max-w-[600px] leading-relaxed">
         I build software, AI solutions and web applications for businesses and organisations. Based in Zimbabwe, working with clients across Africa and globally.
       </p>
     </div>
   </section>
 
-  <section class="services">
-    <div class="services__container">
-      <div class="services__grid">
+  <!-- Services Grid -->
+  <section class="bg-[var(--color-secondary)] py-16 md:py-24">
+    <div class="max-w-[1200px] mx-auto px-4 md:px-10">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
         {services.map((service) => (
-          <a href={service.href} class="card">
-            <div class="card__icon">
-              <Icon name={service.icon} />
+          <a href={service.href} class="group block bg-white rounded-[16px] border border-[var(--color-card-border)] p-6 md:p-8 hover:border-[var(--color-primary)] transition-all duration-200 hover:-translate-y-0.5 hover:shadow-lg">
+            <div class="flex items-start justify-between mb-4">
+              <div class="w-11 h-11 rounded-[12px] bg-[var(--color-secondary)] flex items-center justify-center text-[var(--color-text-primary)]">
+                <Icon name={service.icon} class="w-5 h-5" />
+              </div>
+              <span class="w-8 h-8 rounded-full bg-[var(--color-secondary)] flex items-center justify-center text-[var(--color-text-primary)] opacity-0 -translate-x-1 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-200">
+                <Icon name="lucide:arrow-right" class="w-4 h-4" />
+              </span>
             </div>
-            <h2 class="card__title">{service.title}</h2>
-            <p class="card__description">{service.description}</p>
-            <div class="card__technologies">
+            <h2 class="font-display italic text-[22px] md:text-[24px] font-bold text-[var(--color-text-primary)] tracking-tight mb-2">{service.title}</h2>
+            <p class="font-body text-[14px] text-[var(--color-text-secondary)] leading-relaxed mb-4">{service.description}</p>
+            <div class="flex flex-wrap gap-2">
               {service.technologies.map((tech) => (
-                <span class="card__pill">{tech}</span>
+                <span class="font-body text-[11px] text-[var(--color-text-muted)] border border-[var(--color-card-border)] rounded-full px-3 py-1">{tech}</span>
               ))}
             </div>
-            <span class="card__arrow" aria-hidden="true">
-              <Icon name="lucide:arrow-right" />
-            </span>
           </a>
         ))}
       </div>
     </div>
   </section>
 
-  <section class="cta">
-    <div class="cta__container">
-      <h2 class="cta__heading">Ready to build something?</h2>
-      <p class="cta__description">
+  <!-- CTA -->
+  <section class="py-20 md:py-28">
+    <div class="max-w-[800px] mx-auto px-4 md:px-10 text-center">
+      <h2 class="font-display italic text-[36px] md:text-[48px] text-[var(--color-text-primary)] mb-4 tracking-tight leading-tight">
+        Ready to build <span class="scribble-underline">something</span>?
+      </h2>
+      <p class="font-body text-[16px] md:text-[18px] text-[var(--color-text-secondary)] leading-relaxed max-w-[500px] mx-auto">
         Share your project details and I'll get back with a clear direction.
       </p>
-      <a href="/contact" class="cta__button">
+      <a
+        href="/contact"
+        class="inline-flex items-center justify-center gap-2 px-8 py-3 bg-[var(--color-primary)] text-white font-body text-[14px] font-medium rounded-[10px] hover:bg-[var(--color-primary-hover)] transition-colors duration-200 mt-8"
+      >
         Get in touch
-        <Icon name="lucide:arrow-up-right" />
+        <Icon name="lucide:arrow-up-right" class="w-4 h-4" />
       </a>
     </div>
   </section>
 </PageLayout>
 
 <style>
-  .hero {
-    background: #f2f0ec;
-    padding: clamp(48px, 8vw, 96px) clamp(20px, 4vw, 40px);
-  }
-
-  .hero__container {
-    max-width: 1200px;
-    margin: 0 auto;
-  }
-
-  .hero__badge {
-    display: inline-block;
-    border-radius: 999px;
-    border: 1px solid #e4e0d8;
-    background: #fff;
-    padding: 6px 16px;
-    font-size: 12px;
-    font-weight: 500;
-    letter-spacing: 0.04em;
-    text-transform: uppercase;
-    color: #5f5f5f;
-  }
-
-  .hero__heading {
-    font-family: "Lora Variable", "Lora", Georgia, serif;
-    font-weight: 500;
-    font-size: clamp(2.2rem, 5vw, 3.2rem);
-    letter-spacing: -0.02em;
-    line-height: 1.06;
-    color: #1a1a1a;
-    margin: 20px 0 0;
-  }
-
-  .hero__description {
-    max-width: 600px;
-    margin: 16px 0 0;
-    color: #5f5f5f;
-    font-size: 1.05rem;
-    line-height: 1.55;
-  }
-
-  .services {
-    background: #f4f2ed;
-    padding: clamp(32px, 5vw, 64px) clamp(20px, 4vw, 40px);
-  }
-
-  .services__container {
-    max-width: 1200px;
-    margin: 0 auto;
-  }
-
-  .services__grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 20px;
-  }
-
-  @media (max-width: 768px) {
-    .services__grid {
-      grid-template-columns: 1fr;
-    }
-  }
-
-  .card {
+  .marker-highlight {
     position: relative;
-    display: flex;
-    flex-direction: column;
-    background: #fff;
-    border: 1px solid #e6e2db;
-    border-radius: 16px;
-    padding: clamp(24px, 3vw, 32px);
-    text-decoration: none;
-    color: inherit;
-    transition: box-shadow 0.25s ease, border-color 0.25s ease, transform 0.25s ease;
-  }
-
-  .card:hover {
-    border-color: #d4d0c8;
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.06);
-    transform: translateY(-2px);
-  }
-
-  .card__icon {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 44px;
-    height: 44px;
-    border-radius: 12px;
-    background: #f4f2ed;
-    color: #1a1a1a;
-    margin-bottom: 16px;
-  }
-
-  .card__icon :global(svg) {
-    width: 22px;
-    height: 22px;
-  }
-
-  .card__title {
-    font-family: "Lora Variable", "Lora", Georgia, serif;
-    font-weight: 500;
-    font-size: 1.25rem;
-    letter-spacing: -0.02em;
-    line-height: 1.2;
-    color: #1a1a1a;
-    margin: 0 0 10px;
-  }
-
-  .card__description {
-    color: #666;
-    font-size: 0.95rem;
-    line-height: 1.55;
-    margin: 0 0 16px;
-    flex: 1;
-  }
-
-  .card__technologies {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 6px;
-  }
-
-  .card__pill {
     display: inline-block;
-    border-radius: 999px;
-    border: 1px solid #e4e0d8;
-    background: #fff;
-    padding: 4px 12px;
-    font-size: 12px;
-    font-weight: 400;
-    color: #5f5f5f;
+    isolation: isolate;
   }
-
-  .card__arrow {
+  .marker-highlight::before {
+    content: "";
     position: absolute;
-    top: clamp(24px, 3vw, 32px);
-    right: clamp(24px, 3vw, 32px);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 32px;
-    height: 32px;
-    border-radius: 999px;
-    background: #f4f2ed;
-    color: #1a1a1a;
-    opacity: 0;
-    transform: translateX(-4px);
-    transition: opacity 0.25s ease, transform 0.25s ease;
+    left: -0.08em;
+    right: -0.08em;
+    bottom: 0.05em;
+    height: 45%;
+    background-color: #FFB800;
+    border-radius: 20% 5% 15% 8%;
+    z-index: -1;
+    transform: rotate(-1deg);
   }
 
-  .card:hover .card__arrow {
-    opacity: 1;
-    transform: translateX(0);
+  .scribble-underline {
+    position: relative;
+    display: inline-block;
   }
-
-  .card__arrow :global(svg) {
-    width: 16px;
-    height: 16px;
-  }
-
-  .cta {
-    background: #262626;
-    border-radius: 20px;
-    margin: 0 clamp(20px, 4vw, 40px) clamp(32px, 5vw, 64px);
-    padding: clamp(40px, 6vw, 80px) clamp(24px, 4vw, 48px);
-    text-align: center;
-  }
-
-  .cta__container {
-    max-width: 600px;
-    margin: 0 auto;
-  }
-
-  .cta__heading {
-    font-family: "Lora Variable", "Lora", Georgia, serif;
-    font-weight: 500;
-    font-size: clamp(1.6rem, 4vw, 2.2rem);
-    letter-spacing: -0.02em;
-    line-height: 1.06;
-    color: #fff;
-    margin: 0;
-  }
-
-  .cta__description {
-    color: rgba(255, 255, 255, 0.7);
-    font-size: 1rem;
-    line-height: 1.55;
-    margin: 16px 0 0;
-  }
-
-  .cta__button {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    margin-top: 28px;
-    padding: 12px 28px;
-    border-radius: 999px;
-    background: #fff;
-    color: #111;
-    font-size: 0.95rem;
-    font-weight: 500;
-    text-decoration: none;
-    transition: background 0.2s ease, transform 0.2s ease;
-  }
-
-  .cta__button:hover {
-    background: #f2f0ec;
-    transform: translateY(-1px);
-  }
-
-  .cta__button :global(svg) {
-    width: 16px;
-    height: 16px;
+  .scribble-underline::after {
+    content: "";
+    position: absolute;
+    left: -4%;
+    right: -4%;
+    bottom: -14px;
+    height: 12px;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 14' fill='none' preserveAspectRatio='none'><path d='M3 9 C 50 3, 110 12, 197 5' stroke='%231BB6F9' stroke-width='6' stroke-linecap='round'/></svg>");
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    transform: rotate(-2deg);
+    pointer-events: none;
   }
 </style>
