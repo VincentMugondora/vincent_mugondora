@@ -1,0 +1,148 @@
+---
+import AdminLayout from "@layouts/AdminLayout.astro";
+export const prerender = false;
+---
+
+<AdminLayout title="Programs" active="programs">
+  <div class="page-header">
+    <h1>Programs</h1>
+    <button class="btn btn-primary" onclick="showForm()">+ New Program</button>
+  </div>
+
+  <div class="card" id="form-card" style="display: none; margin-bottom: 1.5rem;">
+    <h3 style="margin-bottom: 1rem;" id="form-title">New Program</h3>
+    <form id="item-form">
+      <input type="hidden" id="item-id" />
+      <div class="form-row">
+        <div class="form-group">
+          <label for="title">Title</label>
+          <input type="text" id="title" required />
+        </div>
+        <div class="form-group">
+          <label for="audience">Audience</label>
+          <input type="text" id="audience" placeholder="e.g. Beginners, Startups" />
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label for="format">Format</label>
+          <input type="text" id="format" placeholder="e.g. Online, Workshop" />
+        </div>
+        <div class="form-group">
+          <label for="order">Sort Order (0 is first)</label>
+          <input type="number" id="order" value="0" />
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="description">Description</label>
+        <textarea id="description" rows="3" required></textarea>
+      </div>
+      
+      <div style="display: flex; gap: 0.75rem; margin-top: 1rem;">
+        <button type="submit" class="btn btn-primary">Save</button>
+        <button type="button" class="btn btn-secondary" onclick="hideForm()">Cancel</button>
+      </div>
+    </form>
+  </div>
+
+  <div class="card">
+    <div class="table-wrapper">
+      <table>
+        <thead>
+          <tr>
+            <th>Title</th>
+            <th>Audience</th>
+            <th>Format</th>
+            <th>Order</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody id="items-table"></tbody>
+      </table>
+      <div class="empty-state" id="empty" style="display: none;">
+        <p>No programs yet.</p>
+      </div>
+    </div>
+  </div>
+
+  <script is:inline>
+    let items = [];
+
+    async function loadItems() {
+      items = await apiCall('/api/programs');
+      items.sort((a, b) => a.order - b.order);
+      renderTable();
+    }
+
+    function renderTable() {
+      const tbody = document.getElementById('items-table');
+      const empty = document.getElementById('empty');
+      if (!items.length) { tbody.innerHTML = ''; empty.style.display = 'block'; return; }
+      empty.style.display = 'none';
+      tbody.innerHTML = items.map(p => `
+        <tr>
+          <td><strong>${p.title}</strong></td>
+          <td>${p.audience || '-'}</td>
+          <td>${p.format || '-'}</td>
+          <td>${p.order}</td>
+          <td class="actions">
+            <button class="btn btn-secondary btn-sm" onclick="editItem(${p.id})">Edit</button>
+            <button class="btn btn-danger btn-sm" onclick="deleteItem(${p.id})">Delete</button>
+          </td>
+        </tr>
+      `).join('');
+    }
+
+    function showForm(item = null) {
+      document.getElementById('form-card').style.display = 'block';
+      document.getElementById('form-title').textContent = item ? 'Edit Program' : 'New Program';
+      document.getElementById('item-id').value = item ? item.id : '';
+      document.getElementById('title').value = item ? item.title : '';
+      document.getElementById('audience').value = item ? (item.audience || '') : '';
+      document.getElementById('format').value = item ? (item.format || '') : '';
+      document.getElementById('order').value = item ? (item.order || 0) : 0;
+      document.getElementById('description').value = item ? item.description : '';
+    }
+
+    function hideForm() { document.getElementById('form-card').style.display = 'none'; }
+
+    function editItem(id) {
+      const item = items.find(p => p.id === id);
+      if (item) showForm(item);
+    }
+
+    async function deleteItem(id) {
+      if (!confirm('Delete this program?')) return;
+      try {
+        await apiCall('/api/programs', 'DELETE', { id });
+        showToast('Program deleted');
+        loadItems();
+      } catch (e) { showToast(e.message, 'error'); }
+    }
+
+    document.getElementById('item-form').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const id = document.getElementById('item-id').value;
+      const data = {
+        title: document.getElementById('title').value,
+        audience: document.getElementById('audience').value || null,
+        format: document.getElementById('format').value || null,
+        order: Number(document.getElementById('order').value),
+        description: document.getElementById('description').value,
+      };
+      try {
+        if (id) {
+          await apiCall('/api/programs', 'PUT', { id: Number(id), ...data });
+          showToast('Program updated');
+        } else {
+          await apiCall('/api/programs', 'POST', data);
+          showToast('Program created');
+        }
+        hideForm();
+        loadItems();
+      } catch (e) { showToast(e.message, 'error'); }
+    });
+
+    loadItems();
+  </script>
+</AdminLayout>

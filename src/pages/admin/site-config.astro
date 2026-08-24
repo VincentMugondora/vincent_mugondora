@@ -1,0 +1,123 @@
+---
+import AdminLayout from "@layouts/AdminLayout.astro";
+export const prerender = false;
+---
+
+<AdminLayout title="Site Config" active="site config">
+  <div class="page-header">
+    <h1>Site Configuration</h1>
+    <button class="btn btn-primary" onclick="showForm()">+ New Config Item</button>
+  </div>
+
+  <div class="card" id="form-card" style="display: none; margin-bottom: 1.5rem;">
+    <h3 style="margin-bottom: 1rem;" id="form-title">New Config Item</h3>
+    <form id="item-form">
+      <input type="hidden" id="item-id" />
+      <div class="form-row">
+        <div class="form-group">
+          <label for="key">Key</label>
+          <input type="text" id="key" required placeholder="e.g. twitter_url" />
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="value">Value</label>
+        <textarea id="value" rows="3" required></textarea>
+      </div>
+      
+      <div style="display: flex; gap: 0.75rem; margin-top: 1rem;">
+        <button type="submit" class="btn btn-primary">Save</button>
+        <button type="button" class="btn btn-secondary" onclick="hideForm()">Cancel</button>
+      </div>
+    </form>
+  </div>
+
+  <div class="card">
+    <div class="table-wrapper">
+      <table>
+        <thead>
+          <tr>
+            <th>Key</th>
+            <th>Value</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody id="items-table"></tbody>
+      </table>
+      <div class="empty-state" id="empty" style="display: none;">
+        <p>No configuration items yet.</p>
+      </div>
+    </div>
+  </div>
+
+  <script is:inline>
+    let items = [];
+
+    async function loadItems() {
+      items = await apiCall('/api/site-config');
+      renderTable();
+    }
+
+    function renderTable() {
+      const tbody = document.getElementById('items-table');
+      const empty = document.getElementById('empty');
+      if (!items.length) { tbody.innerHTML = ''; empty.style.display = 'block'; return; }
+      empty.style.display = 'none';
+      tbody.innerHTML = items.map(p => `
+        <tr>
+          <td><strong>${p.key}</strong></td>
+          <td style="max-width: 400px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">${p.value}</td>
+          <td class="actions">
+            <button class="btn btn-secondary btn-sm" onclick="editItem(${p.id})">Edit</button>
+            <button class="btn btn-danger btn-sm" onclick="deleteItem(${p.id})">Delete</button>
+          </td>
+        </tr>
+      `).join('');
+    }
+
+    function showForm(item = null) {
+      document.getElementById('form-card').style.display = 'block';
+      document.getElementById('form-title').textContent = item ? 'Edit Config Item' : 'New Config Item';
+      document.getElementById('item-id').value = item ? item.id : '';
+      document.getElementById('key').value = item ? item.key : '';
+      document.getElementById('value').value = item ? item.value : '';
+    }
+
+    function hideForm() { document.getElementById('form-card').style.display = 'none'; }
+
+    function editItem(id) {
+      const item = items.find(p => p.id === id);
+      if (item) showForm(item);
+    }
+
+    async function deleteItem(id) {
+      if (!confirm('Delete this config item?')) return;
+      try {
+        await apiCall('/api/site-config', 'DELETE', { id });
+        showToast('Config item deleted');
+        loadItems();
+      } catch (e) { showToast(e.message, 'error'); }
+    }
+
+    document.getElementById('item-form').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const id = document.getElementById('item-id').value;
+      const data = {
+        key: document.getElementById('key').value,
+        value: document.getElementById('value').value,
+      };
+      try {
+        if (id) {
+          await apiCall('/api/site-config', 'PUT', { id: Number(id), ...data });
+          showToast('Config item updated');
+        } else {
+          await apiCall('/api/site-config', 'POST', data);
+          showToast('Config item created');
+        }
+        hideForm();
+        loadItems();
+      } catch (e) { showToast(e.message, 'error'); }
+    });
+
+    loadItems();
+  </script>
+</AdminLayout>

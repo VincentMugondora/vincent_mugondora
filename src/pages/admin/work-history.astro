@@ -1,0 +1,181 @@
+---
+import AdminLayout from "@layouts/AdminLayout.astro";
+export const prerender = false;
+---
+
+<AdminLayout title="Work History" active="work history">
+  <div class="page-header">
+    <h1>Work History</h1>
+    <button class="btn btn-primary" onclick="showForm()">+ New Role</button>
+  </div>
+
+  <div class="card" id="form-card" style="display: none; margin-bottom: 1.5rem;">
+    <h3 style="margin-bottom: 1rem;" id="form-title">New Role</h3>
+    <form id="item-form">
+      <input type="hidden" id="item-id" />
+      <div class="form-row">
+        <div class="form-group">
+          <label for="title">Job Title</label>
+          <input type="text" id="title" required />
+        </div>
+        <div class="form-group">
+          <label for="company">Company</label>
+          <input type="text" id="company" required />
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label for="location">Location</label>
+          <input type="text" id="location" />
+        </div>
+        <div class="form-group">
+          <label for="order">Sort Order (0 is first)</label>
+          <input type="number" id="order" value="0" />
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label for="start_date">Start Date</label>
+          <input type="date" id="start_date" required />
+        </div>
+        <div class="form-group">
+          <label for="end_date">End Date</label>
+          <input type="date" id="end_date" />
+        </div>
+      </div>
+      <div class="form-group">
+        <label style="display: flex; align-items: center; gap: 0.5rem; cursor: pointer;">
+          <input type="checkbox" id="is_current" onchange="toggleEndDate()" /> Currently working here
+        </label>
+      </div>
+      <div class="form-group">
+        <label for="description">Description</label>
+        <textarea id="description" rows="4"></textarea>
+      </div>
+      
+      <div style="display: flex; gap: 0.75rem; margin-top: 1rem;">
+        <button type="submit" class="btn btn-primary">Save</button>
+        <button type="button" class="btn btn-secondary" onclick="hideForm()">Cancel</button>
+      </div>
+    </form>
+  </div>
+
+  <div class="card">
+    <div class="table-wrapper">
+      <table>
+        <thead>
+          <tr>
+            <th>Role</th>
+            <th>Company</th>
+            <th>Duration</th>
+            <th>Order</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody id="items-table"></tbody>
+      </table>
+      <div class="empty-state" id="empty" style="display: none;">
+        <p>No work history yet.</p>
+      </div>
+    </div>
+  </div>
+
+  <script is:inline>
+    let items = [];
+
+    function toggleEndDate() {
+      const isCurrent = document.getElementById('is_current').checked;
+      const endDate = document.getElementById('end_date');
+      if (isCurrent) {
+        endDate.value = '';
+        endDate.disabled = true;
+      } else {
+        endDate.disabled = false;
+      }
+    }
+
+    async function loadItems() {
+      items = await apiCall('/api/work-history');
+      items.sort((a, b) => a.order - b.order);
+      renderTable();
+    }
+
+    function renderTable() {
+      const tbody = document.getElementById('items-table');
+      const empty = document.getElementById('empty');
+      if (!items.length) { tbody.innerHTML = ''; empty.style.display = 'block'; return; }
+      empty.style.display = 'none';
+      tbody.innerHTML = items.map(p => `
+        <tr>
+          <td><strong>${p.title}</strong></td>
+          <td>${p.company}</td>
+          <td>${p.start_date || p.startDate} - ${p.is_current || p.isCurrent ? 'Present' : (p.end_date || p.endDate || '?')}</td>
+          <td>${p.order}</td>
+          <td class="actions">
+            <button class="btn btn-secondary btn-sm" onclick="editItem(${p.id})">Edit</button>
+            <button class="btn btn-danger btn-sm" onclick="deleteItem(${p.id})">Delete</button>
+          </td>
+        </tr>
+      `).join('');
+    }
+
+    function showForm(item = null) {
+      document.getElementById('form-card').style.display = 'block';
+      document.getElementById('form-title').textContent = item ? 'Edit Role' : 'New Role';
+      document.getElementById('item-id').value = item ? item.id : '';
+      document.getElementById('title').value = item ? item.title : '';
+      document.getElementById('company').value = item ? item.company : '';
+      document.getElementById('location').value = item ? (item.location || '') : '';
+      document.getElementById('order').value = item ? (item.order || 0) : 0;
+      document.getElementById('start_date').value = item ? (item.start_date || item.startDate || '') : '';
+      document.getElementById('end_date').value = item ? (item.end_date || item.endDate || '') : '';
+      document.getElementById('is_current').checked = item ? (item.is_current || item.isCurrent || false) : false;
+      document.getElementById('description').value = item ? (item.description || '') : '';
+      toggleEndDate();
+    }
+
+    function hideForm() { document.getElementById('form-card').style.display = 'none'; }
+
+    function editItem(id) {
+      const item = items.find(p => p.id === id);
+      if (item) showForm(item);
+    }
+
+    async function deleteItem(id) {
+      if (!confirm('Delete this role?')) return;
+      try {
+        await apiCall('/api/work-history', 'DELETE', { id });
+        showToast('Role deleted');
+        loadItems();
+      } catch (e) { showToast(e.message, 'error'); }
+    }
+
+    document.getElementById('item-form').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const id = document.getElementById('item-id').value;
+      const data = {
+        title: document.getElementById('title').value,
+        company: document.getElementById('company').value,
+        location: document.getElementById('location').value || null,
+        order: Number(document.getElementById('order').value),
+        start_date: document.getElementById('start_date').value,
+        end_date: document.getElementById('end_date').value || null,
+        is_current: document.getElementById('is_current').checked,
+        description: document.getElementById('description').value || null,
+      };
+      try {
+        if (id) {
+          await apiCall('/api/work-history', 'PUT', { id: Number(id), ...data });
+          showToast('Role updated');
+        } else {
+          await apiCall('/api/work-history', 'POST', data);
+          showToast('Role created');
+        }
+        hideForm();
+        loadItems();
+      } catch (e) { showToast(e.message, 'error'); }
+    });
+
+    loadItems();
+  </script>
+</AdminLayout>

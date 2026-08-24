@@ -1,4 +1,5 @@
 import type { APIRoute } from "astro";
+import { signToken } from "@lib/auth";
 
 export const prerender = false;
 
@@ -15,7 +16,8 @@ export const POST: APIRoute = async ({ request, locals }) => {
     return Response.json({ error: "Invalid password" }, { status: 401 });
   }
 
-  const token = btoa(`admin:${Date.now()}:${crypto.randomUUID()}`);
+  const payload = btoa(`admin:${Date.now()}:${crypto.randomUUID()}`);
+  const token = await signToken(payload, adminPassword);
 
   return Response.json({ token }, {
     status: 200,

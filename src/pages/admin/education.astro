@@ -1,0 +1,148 @@
+---
+import AdminLayout from "@layouts/AdminLayout.astro";
+export const prerender = false;
+---
+
+<AdminLayout title="Education" active="education">
+  <div class="page-header">
+    <h1>Education</h1>
+    <button class="btn btn-primary" onclick="showForm()">+ New Education</button>
+  </div>
+
+  <div class="card" id="form-card" style="display: none; margin-bottom: 1.5rem;">
+    <h3 style="margin-bottom: 1rem;" id="form-title">New Education</h3>
+    <form id="item-form">
+      <input type="hidden" id="item-id" />
+      <div class="form-row">
+        <div class="form-group">
+          <label for="title">Title / Degree</label>
+          <input type="text" id="title" required />
+        </div>
+        <div class="form-group">
+          <label for="institution">Institution</label>
+          <input type="text" id="institution" />
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label for="category">Category</label>
+          <input type="text" id="category" placeholder="e.g. University, Bootcamp" />
+        </div>
+        <div class="form-group">
+          <label for="order">Sort Order (0 is first)</label>
+          <input type="number" id="order" value="0" />
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="description">Description</label>
+        <textarea id="description" rows="3"></textarea>
+      </div>
+      
+      <div style="display: flex; gap: 0.75rem; margin-top: 1rem;">
+        <button type="submit" class="btn btn-primary">Save</button>
+        <button type="button" class="btn btn-secondary" onclick="hideForm()">Cancel</button>
+      </div>
+    </form>
+  </div>
+
+  <div class="card">
+    <div class="table-wrapper">
+      <table>
+        <thead>
+          <tr>
+            <th>Title</th>
+            <th>Institution</th>
+            <th>Category</th>
+            <th>Order</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody id="items-table"></tbody>
+      </table>
+      <div class="empty-state" id="empty" style="display: none;">
+        <p>No education records yet.</p>
+      </div>
+    </div>
+  </div>
+
+  <script is:inline>
+    let items = [];
+
+    async function loadItems() {
+      items = await apiCall('/api/education');
+      items.sort((a, b) => a.order - b.order);
+      renderTable();
+    }
+
+    function renderTable() {
+      const tbody = document.getElementById('items-table');
+      const empty = document.getElementById('empty');
+      if (!items.length) { tbody.innerHTML = ''; empty.style.display = 'block'; return; }
+      empty.style.display = 'none';
+      tbody.innerHTML = items.map(p => `
+        <tr>
+          <td><strong>${p.title}</strong></td>
+          <td>${p.institution || '-'}</td>
+          <td>${p.category || '-'}</td>
+          <td>${p.order}</td>
+          <td class="actions">
+            <button class="btn btn-secondary btn-sm" onclick="editItem(${p.id})">Edit</button>
+            <button class="btn btn-danger btn-sm" onclick="deleteItem(${p.id})">Delete</button>
+          </td>
+        </tr>
+      `).join('');
+    }
+
+    function showForm(item = null) {
+      document.getElementById('form-card').style.display = 'block';
+      document.getElementById('form-title').textContent = item ? 'Edit Education' : 'New Education';
+      document.getElementById('item-id').value = item ? item.id : '';
+      document.getElementById('title').value = item ? item.title : '';
+      document.getElementById('institution').value = item ? (item.institution || '') : '';
+      document.getElementById('category').value = item ? (item.category || '') : '';
+      document.getElementById('order').value = item ? (item.order || 0) : 0;
+      document.getElementById('description').value = item ? (item.description || '') : '';
+    }
+
+    function hideForm() { document.getElementById('form-card').style.display = 'none'; }
+
+    function editItem(id) {
+      const item = items.find(p => p.id === id);
+      if (item) showForm(item);
+    }
+
+    async function deleteItem(id) {
+      if (!confirm('Delete this record?')) return;
+      try {
+        await apiCall('/api/education', 'DELETE', { id });
+        showToast('Record deleted');
+        loadItems();
+      } catch (e) { showToast(e.message, 'error'); }
+    }
+
+    document.getElementById('item-form').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const id = document.getElementById('item-id').value;
+      const data = {
+        title: document.getElementById('title').value,
+        institution: document.getElementById('institution').value || null,
+        category: document.getElementById('category').value || null,
+        order: Number(document.getElementById('order').value),
+        description: document.getElementById('description').value || null,
+      };
+      try {
+        if (id) {
+          await apiCall('/api/education', 'PUT', { id: Number(id), ...data });
+          showToast('Record updated');
+        } else {
+          await apiCall('/api/education', 'POST', data);
+          showToast('Record created');
+        }
+        hideForm();
+        loadItems();
+      } catch (e) { showToast(e.message, 'error'); }
+    });
+
+    loadItems();
+  </script>
+</AdminLayout>

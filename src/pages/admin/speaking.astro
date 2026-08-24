@@ -1,0 +1,178 @@
+---
+import AdminLayout from "@layouts/AdminLayout.astro";
+export const prerender = false;
+---
+
+<AdminLayout title="Speaking Events" active="speaking">
+  <div class="page-header">
+    <h1>Speaking Events</h1>
+    <button class="btn btn-primary" onclick="showForm()">+ New Event</button>
+  </div>
+
+  <div class="card" id="form-card" style="display: none; margin-bottom: 1.5rem;">
+    <h3 style="margin-bottom: 1rem;" id="form-title">New Event</h3>
+    <form id="item-form">
+      <input type="hidden" id="item-id" />
+      <div class="form-row">
+        <div class="form-group">
+          <label for="title">Title</label>
+          <input type="text" id="title" required />
+        </div>
+        <div class="form-group">
+          <label for="event">Event Name</label>
+          <input type="text" id="event" required />
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label for="date">Date</label>
+          <input type="date" id="date" required />
+        </div>
+        <div class="form-group">
+          <label for="location">Location</label>
+          <input type="text" id="location" />
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="topic">Topic</label>
+        <input type="text" id="topic" />
+      </div>
+      <div class="form-group">
+        <label for="description">Description</label>
+        <textarea id="description" rows="3"></textarea>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label for="type">Type</label>
+          <select id="type">
+            <option value="talk">Talk</option>
+            <option value="workshop">Workshop</option>
+            <option value="panel">Panel</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label for="slides">Slides URL</label>
+          <input type="url" id="slides" />
+        </div>
+        <div class="form-group">
+          <label for="video">Video URL</label>
+          <input type="url" id="video" />
+        </div>
+      </div>
+      <div style="display: flex; gap: 0.75rem; margin-top: 1rem;">
+        <button type="submit" class="btn btn-primary">Save</button>
+        <button type="button" class="btn btn-secondary" onclick="hideForm()">Cancel</button>
+      </div>
+    </form>
+  </div>
+
+  <div class="card">
+    <div class="table-wrapper">
+      <table>
+        <thead>
+          <tr>
+            <th>Title</th>
+            <th>Event</th>
+            <th>Date</th>
+            <th>Type</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody id="items-table"></tbody>
+      </table>
+      <div class="empty-state" id="empty" style="display: none;">
+        <p>No speaking events yet.</p>
+      </div>
+    </div>
+  </div>
+
+  <script is:inline>
+    let items = [];
+
+    async function loadItems() {
+      items = await apiCall('/api/speaking');
+      renderTable();
+    }
+
+    function renderTable() {
+      const tbody = document.getElementById('items-table');
+      const empty = document.getElementById('empty');
+      if (!items.length) { tbody.innerHTML = ''; empty.style.display = 'block'; return; }
+      empty.style.display = 'none';
+      tbody.innerHTML = items.map(p => `
+        <tr>
+          <td><strong>${p.title}</strong></td>
+          <td>${p.event}</td>
+          <td>${p.date}</td>
+          <td><span class="badge badge-blue">${p.type}</span></td>
+          <td class="actions">
+            <button class="btn btn-secondary btn-sm" onclick="editItem(${p.id})">Edit</button>
+            <button class="btn btn-danger btn-sm" onclick="deleteItem(${p.id})">Delete</button>
+          </td>
+        </tr>
+      `).join('');
+    }
+
+    function showForm(item = null) {
+      document.getElementById('form-card').style.display = 'block';
+      document.getElementById('form-title').textContent = item ? 'Edit Event' : 'New Event';
+      document.getElementById('item-id').value = item ? item.id : '';
+      document.getElementById('title').value = item ? item.title : '';
+      document.getElementById('event').value = item ? item.event : '';
+      document.getElementById('date').value = item ? item.date : new Date().toISOString().split('T')[0];
+      document.getElementById('location').value = item ? (item.location || '') : '';
+      document.getElementById('topic').value = item ? (item.topic || '') : '';
+      document.getElementById('description').value = item ? (item.description || '') : '';
+      document.getElementById('type').value = item ? (item.type || 'talk') : 'talk';
+      document.getElementById('slides').value = item ? (item.slides || '') : '';
+      document.getElementById('video').value = item ? (item.video || '') : '';
+    }
+
+    function hideForm() { document.getElementById('form-card').style.display = 'none'; }
+
+    function editItem(id) {
+      const item = items.find(p => p.id === id);
+      if (item) showForm(item);
+    }
+
+    async function deleteItem(id) {
+      if (!confirm('Delete this event?')) return;
+      try {
+        await apiCall('/api/speaking', 'DELETE', { id });
+        showToast('Event deleted');
+        loadItems();
+      } catch (e) { showToast(e.message, 'error'); }
+    }
+
+    document.getElementById('item-form').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const id = document.getElementById('item-id').value;
+      const data = {
+        title: document.getElementById('title').value,
+        event: document.getElementById('event').value,
+        date: document.getElementById('date').value,
+        location: document.getElementById('location').value || null,
+        topic: document.getElementById('topic').value || null,
+        description: document.getElementById('description').value || null,
+        type: document.getElementById('type').value || 'talk',
+        slides: document.getElementById('slides').value || null,
+        video: document.getElementById('video').value || null,
+      };
+      try {
+        if (id) {
+          await apiCall('/api/speaking', 'PUT', { id: Number(id), ...data });
+          showToast('Event updated');
+        } else {
+          await apiCall('/api/speaking', 'POST', data);
+          showToast('Event created');
+        }
+        hideForm();
+        loadItems();
+      } catch (e) { showToast(e.message, 'error'); }
+    });
+
+    loadItems();
+  </script>
+</AdminLayout>

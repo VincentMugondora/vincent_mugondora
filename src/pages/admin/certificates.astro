@@ -1,0 +1,147 @@
+---
+import AdminLayout from "@layouts/AdminLayout.astro";
+export const prerender = false;
+---
+
+<AdminLayout title="Certificates" active="certificates">
+  <div class="page-header">
+    <h1>Certificates</h1>
+    <button class="btn btn-primary" onclick="showForm()">+ New Certificate</button>
+  </div>
+
+  <div class="card" id="form-card" style="display: none; margin-bottom: 1.5rem;">
+    <h3 style="margin-bottom: 1rem;" id="form-title">New Certificate</h3>
+    <form id="item-form">
+      <input type="hidden" id="item-id" />
+      <div class="form-row">
+        <div class="form-group">
+          <label for="name">Name</label>
+          <input type="text" id="name" required />
+        </div>
+        <div class="form-group">
+          <label for="issuer">Issuer</label>
+          <input type="text" id="issuer" />
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label for="issued_date">Issued Date</label>
+          <input type="date" id="issued_date" />
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label for="file_key">File Key (URL or path)</label>
+          <input type="text" id="file_key" required />
+        </div>
+        <div class="form-group">
+          <label for="file_type">File Type (e.g. pdf, image)</label>
+          <input type="text" id="file_type" required />
+        </div>
+      </div>
+      
+      <div style="display: flex; gap: 0.75rem; margin-top: 1rem;">
+        <button type="submit" class="btn btn-primary">Save</button>
+        <button type="button" class="btn btn-secondary" onclick="hideForm()">Cancel</button>
+      </div>
+    </form>
+  </div>
+
+  <div class="card">
+    <div class="table-wrapper">
+      <table>
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Issuer</th>
+            <th>Date</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody id="items-table"></tbody>
+      </table>
+      <div class="empty-state" id="empty" style="display: none;">
+        <p>No certificates yet.</p>
+      </div>
+    </div>
+  </div>
+
+  <script is:inline>
+    let items = [];
+
+    async function loadItems() {
+      items = await apiCall('/api/certificates');
+      renderTable();
+    }
+
+    function renderTable() {
+      const tbody = document.getElementById('items-table');
+      const empty = document.getElementById('empty');
+      if (!items.length) { tbody.innerHTML = ''; empty.style.display = 'block'; return; }
+      empty.style.display = 'none';
+      tbody.innerHTML = items.map(p => `
+        <tr>
+          <td><strong>${p.name}</strong></td>
+          <td>${p.issuer || '-'}</td>
+          <td>${p.issued_date || p.issuedDate || '-'}</td>
+          <td class="actions">
+            <button class="btn btn-secondary btn-sm" onclick="editItem(${p.id})">Edit</button>
+            <button class="btn btn-danger btn-sm" onclick="deleteItem(${p.id})">Delete</button>
+          </td>
+        </tr>
+      `).join('');
+    }
+
+    function showForm(item = null) {
+      document.getElementById('form-card').style.display = 'block';
+      document.getElementById('form-title').textContent = item ? 'Edit Certificate' : 'New Certificate';
+      document.getElementById('item-id').value = item ? item.id : '';
+      document.getElementById('name').value = item ? item.name : '';
+      document.getElementById('issuer').value = item ? (item.issuer || '') : '';
+      document.getElementById('issued_date').value = item ? (item.issued_date || item.issuedDate || '') : '';
+      document.getElementById('file_key').value = item ? item.file_key || item.fileKey : '';
+      document.getElementById('file_type').value = item ? item.file_type || item.fileType : '';
+    }
+
+    function hideForm() { document.getElementById('form-card').style.display = 'none'; }
+
+    function editItem(id) {
+      const item = items.find(p => p.id === id);
+      if (item) showForm(item);
+    }
+
+    async function deleteItem(id) {
+      if (!confirm('Delete this certificate?')) return;
+      try {
+        await apiCall('/api/certificates', 'DELETE', { id });
+        showToast('Certificate deleted');
+        loadItems();
+      } catch (e) { showToast(e.message, 'error'); }
+    }
+
+    document.getElementById('item-form').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const id = document.getElementById('item-id').value;
+      const data = {
+        name: document.getElementById('name').value,
+        issuer: document.getElementById('issuer').value || null,
+        issued_date: document.getElementById('issued_date').value || null,
+        file_key: document.getElementById('file_key').value,
+        file_type: document.getElementById('file_type').value,
+      };
+      try {
+        if (id) {
+          await apiCall('/api/certificates', 'PUT', { id: Number(id), ...data });
+          showToast('Certificate updated');
+        } else {
+          await apiCall('/api/certificates', 'POST', data);
+          showToast('Certificate created');
+        }
+        hideForm();
+        loadItems();
+      } catch (e) { showToast(e.message, 'error'); }
+    });
+
+    loadItems();
+  </script>
+</AdminLayout>

@@ -1,4 +1,5 @@
 import { defineMiddleware } from "astro:middleware";
+import { verifyToken } from "@lib/auth";
 
 const SECURITY_HEADERS: Record<string, string> = {
   "X-Content-Type-Options": "nosniff",
@@ -19,13 +20,26 @@ function getCookie(request: Request, name: string): string | null {
 export const onRequest = defineMiddleware(async (_context, next) => {
   const url = new URL(_context.request.url);
 
-  if (
-    url.pathname.startsWith("/admin") &&
-    url.pathname !== "/admin/login" &&
-    !url.pathname.startsWith("/api/admin/auth")
-  ) {
+  const isAdminRoute = url.pathname.startsWith("/admin") && url.pathname !== "/admin/login";
+  const isProtectedApiRoute = url.pathname.startsWith("/api/") && !url.pathname.startsWith("/api/admin/auth") && _context.request.method !== "GET";
+
+  if (isAdminRoute || isProtectedApiRoute) {
     const token = getCookie(_context.request, "admin_token");
-    if (!token) {
+    const env = (_context.locals as any).runtime?.env;
+    const adminPassword = env?.ADMIN_PASSWORD;
+
+    let isValid = false;
+    if (token && adminPassword) {
+      isValid = await verifyToken(token, adminPassword);
+    }
+
+    if (!isValid) {
+      if (isProtectedApiRoute) {
+        return new Response(JSON.stringify({ error: "Unauthorized" }), { 
+          status: 401, 
+          headers: { "Content-Type": "application/json" } 
+        });
+      }
       return _context.redirect("/admin/login");
     }
   }
