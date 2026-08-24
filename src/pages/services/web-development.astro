@@ -27,71 +27,94 @@ const serviceJsonLd = {
 <PageLayout title="Web Development Services in Zimbabwe" description="Fast, accessible, SEO-friendly web development services by Vincent Mugondora. Websites and web applications built for performance in Zimbabwe and Africa.">
   <script is:inline type="application/ld+json" set:html={JSON.stringify(serviceJsonLd)} />
   <script is:inline type="application/ld+json" set:html={JSON.stringify(breadcrumbJsonLd)} />
+
   <!-- Hero -->
-  <section class="hero">
-    <div class="hero__container">
-      <span class="hero__badge">Services</span>
-      <h1 class="hero__title">Web Development Services</h1>
-      <p class="hero__description">
+  <section class="pt-[72px] py-16 md:py-24">
+    <div class="max-w-[1200px] mx-auto px-4 md:px-10">
+      <span class="inline-block font-display text-[12px] text-[var(--color-text-secondary)] border border-[var(--color-card-border)] rounded-full px-4 py-1 mb-6">
+        Services
+      </span>
+      <h1 class="font-display italic text-[48px] md:text-[64px] lg:text-[72px] text-[var(--color-text-primary)] leading-[1.05] font-bold tracking-tight">
+        Web <span class="marker-highlight">Development</span>
+      </h1>
+      <p class="font-body text-[16px] md:text-[18px] text-[var(--color-text-secondary)] mt-6 max-w-[600px] leading-relaxed">
         Fast, accessible websites and web applications built for performance on African internet conditions. SEO-friendly by default, optimised for real users.
       </p>
     </div>
   </section>
 
   <!-- What I Build -->
-  <section class="what-i-build">
-    <div class="section-container">
-      <h2 class="section-heading">What I Build</h2>
-      <ul class="build-list">
-        <li class="build-list__item">
-          <span class="build-list__icon"><Icon name="lucide:briefcase" /></span>
-          <div class="build-list__content">
-            <strong class="build-list__label">Business Websites</strong>
-            <span class="build-list__text"> — Professional, fast-loading websites that represent your brand and convert visitors.</span>
+  <section class="bg-[var(--color-secondary)] py-16 md:py-24">
+    <div class="max-w-[900px] mx-auto px-4 md:px-10">
+      <h2 class="font-display italic text-[36px] md:text-[48px] text-[var(--color-text-primary)] mb-8 tracking-tight leading-tight">
+        What I <span class="scribble-underline">build</span>
+      </h2>
+
+      <div class="space-y-4">
+        <div class="bg-white rounded-[16px] border border-[var(--color-card-border)] p-6 flex items-start gap-4">
+          <div class="w-10 h-10 rounded-[10px] bg-[var(--color-secondary)] flex items-center justify-center flex-shrink-0 text-[var(--color-text-primary)]">
+            <Icon name="lucide:briefcase" class="w-5 h-5" />
           </div>
-        </li>
-        <li class="build-list__item">
-          <span class="build-list__icon"><Icon name="lucide:layout" /></span>
-          <div class="build-list__content">
-            <strong class="build-list__label">Web Applications</strong>
-            <span class="build-list__text"> — Interactive applications with authentication, dashboards, and complex functionality.</span>
+          <div>
+            <h3 class="font-display italic text-[20px] font-bold text-[var(--color-text-primary)] tracking-tight">Business Websites</h3>
+            <p class="font-body text-[14px] text-[var(--color-text-secondary)] mt-1 leading-relaxed">Professional, fast-loading websites that represent your brand and convert visitors.</p>
           </div>
-        </li>
-        <li class="build-list__item">
-          <span class="build-list__icon"><Icon name="lucide:user" /></span>
-          <div class="build-list__content">
-            <strong class="build-list__label">Portfolio & Personal Sites</strong>
-            <span class="build-list__text"> — Developer portfolios, personal brands, and content sites built for SEO.</span>
+        </div>
+
+        <div class="bg-white rounded-[16px] border border-[var(--color-card-border)] p-6 flex items-start gap-4">
+          <div class="w-10 h-10 rounded-[10px] bg-[var(--color-secondary)] flex items-center justify-center flex-shrink-0 text-[var(--color-text-primary)]">
+            <Icon name="lucide:layout" class="w-5 h-5" />
           </div>
-        </li>
-        <li class="build-list__item">
-          <span class="build-list__icon"><Icon name="lucide:rocket" /></span>
-          <div class="build-list__content">
-            <strong class="build-list__label">Landing Pages</strong>
-            <span class="build-list__text"> — High-converting landing pages for products, services, and campaigns.</span>
+          <div>
+            <h3 class="font-display italic text-[20px] font-bold text-[var(--color-text-primary)] tracking-tight">Web Applications</h3>
+            <p class="font-body text-[14px] text-[var(--color-text-secondary)] mt-1 leading-relaxed">Interactive applications with authentication, dashboards, and complex functionality.</p>
           </div>
-        </li>
-      </ul>
+        </div>
+
+        <div class="bg-white rounded-[16px] border border-[var(--color-card-border)] p-6 flex items-start gap-4">
+          <div class="w-10 h-10 rounded-[10px] bg-[var(--color-secondary)] flex items-center justify-center flex-shrink-0 text-[var(--color-text-primary)]">
+            <Icon name="lucide:user" class="w-5 h-5" />
+          </div>
+          <div>
+            <h3 class="font-display italic text-[20px] font-bold text-[var(--color-text-primary)] tracking-tight">Portfolio & Personal Sites</h3>
+            <p class="font-body text-[14px] text-[var(--color-text-secondary)] mt-1 leading-relaxed">Developer portfolios, personal brands, and content sites built for SEO.</p>
+          </div>
+        </div>
+
+        <div class="bg-white rounded-[16px] border border-[var(--color-card-border)] p-6 flex items-start gap-4">
+          <div class="w-10 h-10 rounded-[10px] bg-[var(--color-secondary)] flex items-center justify-center flex-shrink-0 text-[var(--color-text-primary)]">
+            <Icon name="lucide:rocket" class="w-5 h-5" />
+          </div>
+          <div>
+            <h3 class="font-display italic text-[20px] font-bold text-[var(--color-text-primary)] tracking-tight">Landing Pages</h3>
+            <p class="font-body text-[14px] text-[var(--color-text-secondary)] mt-1 leading-relaxed">High-converting landing pages for products, services, and campaigns.</p>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 
   <!-- Technologies -->
-  <section class="technologies">
-    <div class="section-container">
-      <h2 class="section-heading">Technologies</h2>
-      <div class="tags">
+  <section class="py-16 md:py-24">
+    <div class="max-w-[900px] mx-auto px-4 md:px-10">
+      <h2 class="font-display italic text-[36px] md:text-[48px] text-[var(--color-text-primary)] mb-6 tracking-tight leading-tight">
+        Technologies
+      </h2>
+      <div class="flex flex-wrap gap-2">
         {["Astro", "Next.js", "React", "Tailwind CSS", "TypeScript", "Cloudflare Pages", "Vercel", "SEO", "Core Web Vitals"].map((t) => (
-          <span class="tag">{t}</span>
+          <span class="font-body text-[12px] text-[var(--color-text-muted)] border border-[var(--color-card-border)] rounded-full px-4 py-1.5">{t}</span>
         ))}
       </div>
     </div>
   </section>
 
-  <!-- Content / Approach -->
-  <section class="approach">
-    <div class="section-container">
-      <h2 class="section-heading">Why Performance Matters</h2>
-      <div class="approach__body">
+  <!-- Why Performance Matters -->
+  <section class="bg-[var(--color-secondary)] py-16 md:py-24">
+    <div class="max-w-[900px] mx-auto px-4 md:px-10">
+      <h2 class="font-display italic text-[36px] md:text-[48px] text-[var(--color-text-primary)] mb-6 tracking-tight leading-tight">
+        Why <span class="scribble-circle">performance</span> matters
+      </h2>
+      <div class="space-y-5 font-body text-[16px] md:text-[18px] text-[var(--color-text-secondary)] leading-relaxed max-w-[640px]">
         <p>In Zimbabwe and across Africa, internet speeds vary widely. A website that loads in 1 second on fibre takes 8 seconds on mobile data. Most visitors won't wait that long.</p>
         <p>I build websites with performance as a first-class requirement — not an afterthought. Static generation, optimised images, minimal JavaScript, and edge deployment on Cloudflare mean your site loads fast everywhere.</p>
         <p>Every website I build scores 90+ on Google PageSpeed Insights and follows accessibility best practices (WCAG guidelines), ensuring your content reaches the widest possible audience.</p>
@@ -100,222 +123,75 @@ const serviceJsonLd = {
   </section>
 
   <!-- CTA -->
-  <section class="cta">
-    <div class="cta__container">
-      <h2 class="cta__title">Need a website?</h2>
-      <p class="cta__text">Tell me about your project and I'll get back with a clear direction.</p>
-      <a class="cta__btn" href="/contact">
+  <section class="py-20 md:py-28">
+    <div class="max-w-[800px] mx-auto px-4 md:px-10 text-center">
+      <h2 class="font-display italic text-[36px] md:text-[48px] text-[var(--color-text-primary)] mb-4 tracking-tight leading-tight">
+        Need a <span class="marker-highlight">website</span>?
+      </h2>
+      <p class="font-body text-[16px] md:text-[18px] text-[var(--color-text-secondary)] leading-relaxed max-w-[500px] mx-auto">
+        Tell me about your project and I'll get back with a clear direction.
+      </p>
+      <a
+        href="/contact"
+        class="inline-flex items-center justify-center gap-2 px-8 py-3 bg-[var(--color-primary)] text-white font-body text-[14px] font-medium rounded-[10px] hover:bg-[var(--color-primary-hover)] transition-colors duration-200 mt-8"
+      >
         Start a conversation
-        <Icon name="lucide:arrow-up-right" />
+        <Icon name="lucide:arrow-up-right" class="w-4 h-4" />
       </a>
     </div>
   </section>
 </PageLayout>
 
 <style>
-  /* Hero */
-  .hero {
-    background: #f2f0ec;
-    padding: clamp(60px, 10vw, 100px) clamp(18px, 3vw, 36px) clamp(40px, 6vw, 60px);
-  }
-
-  .hero__container {
-    max-width: 1200px;
-    margin: 0 auto;
-  }
-
-  .hero__badge {
+  .marker-highlight {
+    position: relative;
     display: inline-block;
-    border-radius: 999px;
-    border: 1px solid #e4e0d8;
-    background: #fff;
-    font-size: 12px;
-    padding: 6px 16px;
-    color: #5f5f5f;
-    letter-spacing: 0.04em;
-    margin-bottom: 20px;
+    isolation: isolate;
+  }
+  .marker-highlight::before {
+    content: "";
+    position: absolute;
+    left: -0.08em;
+    right: -0.08em;
+    bottom: 0.05em;
+    height: 45%;
+    background-color: #FFB800;
+    border-radius: 20% 5% 15% 8%;
+    z-index: -1;
+    transform: rotate(-1deg);
   }
 
-  .hero__title {
-    font-family: "Lora Variable", "Lora", Georgia, serif;
-    font-weight: 500;
-    letter-spacing: -0.02em;
-    font-size: clamp(2rem, 5vw, 3rem);
-    color: #1b1b1b;
-    margin: 0 0 16px;
-    line-height: 1.15;
-  }
-
-  .hero__description {
-    color: #5f5f5f;
-    font-size: 0.95rem;
-    line-height: 1.55;
-    max-width: 640px;
-    margin: 0;
-  }
-
-  /* Shared section styles */
-  .section-container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 clamp(18px, 3vw, 36px);
-  }
-
-  .section-heading {
-    font-family: "Lora Variable", "Lora", Georgia, serif;
-    font-weight: 500;
-    letter-spacing: -0.02em;
-    font-size: 1.5rem;
-    color: #1b1b1b;
-    margin: 0 0 24px;
-  }
-
-  /* What I Build */
-  .what-i-build {
-    background: #f4f2ed;
-    border-radius: 20px;
-    padding: clamp(20px, 3vw, 34px);
-    margin: 32px clamp(18px, 3vw, 36px);
-  }
-
-  .what-i-build .section-container {
-    padding: 0;
-  }
-
-  .build-list {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    display: flex;
-    flex-direction: column;
-    gap: 18px;
-  }
-
-  .build-list__item {
-    display: flex;
-    align-items: flex-start;
-    gap: 14px;
-    background: #fff;
-    border: 1px solid #e6e2db;
-    border-radius: 16px;
-    padding: 18px 20px;
-  }
-
-  .build-list__icon {
-    flex-shrink: 0;
-    width: 22px;
-    height: 22px;
-    color: #1b1b1b;
-    margin-top: 2px;
-  }
-
-  .build-list__icon :global(svg) {
-    width: 100%;
-    height: 100%;
-  }
-
-  .build-list__content {
-    font-size: 0.95rem;
-    line-height: 1.55;
-    color: #5f5f5f;
-  }
-
-  .build-list__label {
-    color: #1b1b1b;
-    font-weight: 600;
-  }
-
-  /* Technologies */
-  .technologies {
-    padding: clamp(40px, 5vw, 60px) 0;
-  }
-
-  .tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-  }
-
-  .tag {
+  .scribble-circle {
+    position: relative;
     display: inline-block;
-    border-radius: 999px;
-    border: 1px solid #e4e0d8;
-    background: #fff;
-    font-size: 12px;
-    padding: 6px 14px;
-    color: #5f5f5f;
-    letter-spacing: 0.02em;
+  }
+  .scribble-circle::after {
+    content: "";
+    position: absolute;
+    inset: -18% -12% -22% -12%;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 100' fill='none'><path d='M40 50 C 30 20, 80 8, 130 14 C 180 22, 195 55, 165 78 C 130 95, 60 92, 30 70 C 12 56, 18 32, 50 22' stroke='%2300CEB2' stroke-width='4' stroke-linecap='round'/></svg>");
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    transform: rotate(-2deg);
+    pointer-events: none;
+    z-index: -1;
   }
 
-  /* Approach */
-  .approach {
-    padding: 0 0 clamp(40px, 5vw, 60px);
+  .scribble-underline {
+    position: relative;
+    display: inline-block;
   }
-
-  .approach__body {
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-    color: #5f5f5f;
-    font-size: 0.95rem;
-    line-height: 1.55;
-    max-width: 720px;
-  }
-
-  .approach__body p {
-    margin: 0;
-  }
-
-  /* CTA */
-  .cta {
-    background: #f4f2ed;
-    border-radius: 20px;
-    padding: clamp(40px, 5vw, 60px) clamp(20px, 3vw, 34px);
-    margin: 0 clamp(18px, 3vw, 36px) clamp(40px, 5vw, 60px);
-    text-align: center;
-  }
-
-  .cta__container {
-    max-width: 600px;
-    margin: 0 auto;
-  }
-
-  .cta__title {
-    font-family: "Lora Variable", "Lora", Georgia, serif;
-    font-weight: 500;
-    letter-spacing: -0.02em;
-    font-size: clamp(1.5rem, 3vw, 2rem);
-    color: #1b1b1b;
-    margin: 0 0 12px;
-  }
-
-  .cta__text {
-    color: #666;
-    font-size: 0.95rem;
-    line-height: 1.55;
-    margin: 0 0 28px;
-  }
-
-  .cta__btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    background: #1b1b1b;
-    color: #fff;
-    border-radius: 999px;
-    padding: 14px 28px;
-    font-size: 0.9rem;
-    font-weight: 500;
-    text-decoration: none;
-    transition: background 0.2s;
-  }
-
-  .cta__btn:hover {
-    background: #333;
-  }
-
-  .cta__btn :global(svg) {
-    width: 16px;
-    height: 16px;
+  .scribble-underline::after {
+    content: "";
+    position: absolute;
+    left: -4%;
+    right: -4%;
+    bottom: -14px;
+    height: 12px;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 14' fill='none' preserveAspectRatio='none'><path d='M3 9 C 50 3, 110 12, 197 5' stroke='%231BB6F9' stroke-width='6' stroke-linecap='round'/></svg>");
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    transform: rotate(-2deg);
+    pointer-events: none;
   }
 </style>
