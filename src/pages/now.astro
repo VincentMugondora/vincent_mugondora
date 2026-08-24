@@ -1,176 +1,177 @@
 ---
 import PageLayout from "@layouts/PageLayout.astro";
+import { siteConfig } from "@config/site";
+import { getBreadcrumbJsonLd } from "@/lib/seo";
+
+const breadcrumbJsonLd = getBreadcrumbJsonLd([
+  { name: "Home", url: siteConfig.url },
+  { name: "Now", url: `${siteConfig.url}/now` },
+]);
 ---
 
-<PageLayout title="Now" description="What Vincent Mugondora is currently working on, learning, and building.">
-  <section class="hero">
-    <div class="container">
-      <span class="badge">Now</span>
-      <h1 class="hero__title">What I'm doing now</h1>
-      <p class="hero__subtitle">
-        A snapshot of my current focus, projects, and learning.
+<PageLayout title="Now — What Vincent Mugondora Is Working On" description="What Vincent Mugondora is currently working on, learning, and building. A snapshot of current focus and projects.">
+  <script is:inline type="application/ld+json" set:html={JSON.stringify(breadcrumbJsonLd)} />
+
+  <!-- Hero -->
+  <section class="pt-[72px] py-16 md:py-24">
+    <div class="max-w-[900px] mx-auto px-4 md:px-10">
+      <span class="inline-block font-display text-[12px] text-[var(--color-text-secondary)] border border-[var(--color-card-border)] rounded-full px-4 py-1 mb-6">
+        Now
+      </span>
+      <h1 class="font-display italic text-[48px] md:text-[64px] lg:text-[72px] text-[var(--color-text-primary)] leading-[1.05] font-bold tracking-tight">
+        What I'm doing <span class="marker-highlight">now</span>
+      </h1>
+      <p class="font-body text-[16px] md:text-[18px] text-[var(--color-text-secondary)] mt-6 max-w-[520px] leading-relaxed">
+        A snapshot of my current focus, projects, and learning. Updated regularly.
       </p>
     </div>
   </section>
 
-  <section class="now-section">
-    <div class="container">
-      <div class="now-grid">
-        <div class="now-card">
-          <h2 class="now-card__heading">Currently Building</h2>
-          <ul class="now-card__list">
-            <li>
-              <span class="now-card__dot now-card__dot--green"></span>
-              <span>This portfolio — vincentmugondora.com</span>
-            </li>
-            <li>
-              <span class="now-card__dot now-card__dot--green"></span>
-              <span>Zimnovate projects</span>
-            </li>
-          </ul>
+  <!-- Currently Building -->
+  <section class="bg-[var(--color-secondary)] py-16 md:py-24">
+    <div class="max-w-[900px] mx-auto px-4 md:px-10">
+      <h2 class="font-display italic text-[36px] md:text-[48px] text-[var(--color-text-primary)] mb-8 tracking-tight leading-tight">
+        Currently <span class="scribble-underline">building</span>
+      </h2>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        <div class="bg-white rounded-[16px] border border-[var(--color-card-border)] p-6">
+          <div class="flex items-center gap-3 mb-3">
+            <span class="w-2.5 h-2.5 rounded-full bg-green-500"></span>
+            <p class="font-body text-[12px] font-semibold uppercase tracking-widest text-[var(--color-primary)]">Active</p>
+          </div>
+          <h3 class="font-display italic text-[20px] font-bold text-[var(--color-text-primary)] tracking-tight">vincentmugondora.com</h3>
+          <p class="font-body text-[14px] text-[var(--color-text-secondary)] mt-2 leading-relaxed">This portfolio — building my personal brand and digital presence.</p>
         </div>
 
-        <div class="now-card">
-          <h2 class="now-card__heading">Currently Learning</h2>
-          <ul class="now-card__list">
-            <li>
-              <span class="now-card__dot now-card__dot--amber"></span>
-              <span>Advanced AI agent architectures</span>
-            </li>
-            <li>
-              <span class="now-card__dot now-card__dot--amber"></span>
-              <span>Edge computing and Cloudflare Workers</span>
-            </li>
-          </ul>
-        </div>
-
-        <div class="now-card now-card--wide">
-          <h2 class="now-card__heading">Current Focus</h2>
-          <p class="now-card__text">
-            Building Zimnovate's product pipeline, establishing my personal brand, and teaching software engineering to young developers in Zimbabwe.
-          </p>
+        <div class="bg-white rounded-[16px] border border-[var(--color-card-border)] p-6">
+          <div class="flex items-center gap-3 mb-3">
+            <span class="w-2.5 h-2.5 rounded-full bg-green-500"></span>
+            <p class="font-body text-[12px] font-semibold uppercase tracking-widest text-[var(--color-primary)]">Active</p>
+          </div>
+          <h3 class="font-display italic text-[20px] font-bold text-[var(--color-text-primary)] tracking-tight">Zimnovate Projects</h3>
+          <p class="font-body text-[14px] text-[var(--color-text-secondary)] mt-2 leading-relaxed">Building technology products for Zimbabwe and Africa.</p>
         </div>
       </div>
+    </div>
+  </section>
+
+  <!-- Currently Learning -->
+  <section class="py-16 md:py-24">
+    <div class="max-w-[900px] mx-auto px-4 md:px-10">
+      <h2 class="font-display italic text-[36px] md:text-[48px] text-[var(--color-text-primary)] mb-8 tracking-tight leading-tight">
+        Currently <span class="scribble-circle">learning</span>
+      </h2>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        <div class="bg-white rounded-[16px] border border-[var(--color-card-border)] p-6">
+          <div class="flex items-center gap-3 mb-3">
+            <span class="w-2.5 h-2.5 rounded-full bg-amber-400"></span>
+            <p class="font-body text-[12px] font-semibold uppercase tracking-widest text-[var(--color-primary)]">Learning</p>
+          </div>
+          <h3 class="font-display italic text-[20px] font-bold text-[var(--color-text-primary)] tracking-tight">Advanced AI Agent Architectures</h3>
+          <p class="font-body text-[14px] text-[var(--color-text-secondary)] mt-2 leading-relaxed">Multi-agent systems, tool use, and autonomous reasoning.</p>
+        </div>
+
+        <div class="bg-white rounded-[16px] border border-[var(--color-card-border)] p-6">
+          <div class="flex items-center gap-3 mb-3">
+            <span class="w-2.5 h-2.5 rounded-full bg-amber-400"></span>
+            <p class="font-body text-[12px] font-semibold uppercase tracking-widest text-[var(--color-primary)]">Learning</p>
+          </div>
+          <h3 class="font-display italic text-[20px] font-bold text-[var(--color-text-primary)] tracking-tight">Edge Computing</h3>
+          <p class="font-body text-[14px] text-[var(--color-text-secondary)] mt-2 leading-relaxed">Cloudflare Workers, edge functions, and distributed systems.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Current Focus -->
+  <section class="bg-[var(--color-secondary)] py-16 md:py-24">
+    <div class="max-w-[900px] mx-auto px-4 md:px-10">
+      <h2 class="font-display italic text-[36px] md:text-[48px] text-[var(--color-text-primary)] mb-6 tracking-tight leading-tight">
+        Current <span class="marker-highlight">focus</span>
+      </h2>
+      <p class="font-body text-[16px] md:text-[18px] text-[var(--color-text-secondary)] leading-relaxed max-w-[640px]">
+        Building Zimnovate's product pipeline, establishing my personal brand, and teaching software engineering to young developers in Zimbabwe.
+      </p>
+
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 mt-10">
+        <div class="text-center">
+          <p class="font-body text-[12px] font-semibold uppercase tracking-widest text-[var(--color-primary)] mb-2">Building</p>
+          <p class="font-body text-[15px] text-[var(--color-text-secondary)] leading-relaxed">AI-powered products for African businesses</p>
+        </div>
+        <div class="text-center">
+          <p class="font-body text-[12px] font-semibold uppercase tracking-widest text-[var(--color-primary)] mb-2">Teaching</p>
+          <p class="font-body text-[15px] text-[var(--color-text-secondary)] leading-relaxed">Software development to the next generation</p>
+        </div>
+        <div class="text-center">
+          <p class="font-body text-[12px] font-semibold uppercase tracking-widest text-[var(--color-primary)] mb-2">Exploring</p>
+          <p class="font-body text-[15px] text-[var(--color-text-secondary)] leading-relaxed">Technology opportunities in Zimbabwe</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- What is a Now page -->
+  <section class="py-16 md:py-24">
+    <div class="max-w-[900px] mx-auto px-4 md:px-10 text-center">
+      <p class="font-body text-[14px] text-[var(--color-text-muted)] leading-relaxed max-w-[500px] mx-auto">
+        This is a <a href="https://nownownow.com/about" class="text-[var(--color-primary)] hover:underline">now page</a>. It's a snapshot of what I'm focused on at this point in my life.
+      </p>
     </div>
   </section>
 </PageLayout>
 
 <style>
-  .hero {
-    background: #f4f2ed;
-    padding: clamp(80px, 12vw, 140px) 0 clamp(48px, 6vw, 80px);
-  }
-
-  .container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 clamp(18px, 3vw, 36px);
-  }
-
-  .badge {
+  .marker-highlight {
+    position: relative;
     display: inline-block;
-    border-radius: 999px;
-    border: 1px solid #e4e0d8;
-    background: #fff;
-    font-size: 12px;
-    padding: 6px 16px;
-    color: #5f5f5f;
-    letter-spacing: 0.04em;
+    isolation: isolate;
+  }
+  .marker-highlight::before {
+    content: "";
+    position: absolute;
+    left: -0.08em;
+    right: -0.08em;
+    bottom: 0.05em;
+    height: 45%;
+    background-color: #FFB800;
+    border-radius: 20% 5% 15% 8%;
+    z-index: -1;
+    transform: rotate(-1deg);
   }
 
-  .hero__title {
-    font-family: "Lora Variable", "Lora", Georgia, serif;
-    font-weight: 500;
-    letter-spacing: -0.02em;
-    line-height: 1.06;
-    font-size: clamp(2.4rem, 5vw, 3.6rem);
-    color: #1b1b1b;
-    margin: 20px 0 0;
+  .scribble-circle {
+    position: relative;
+    display: inline-block;
+  }
+  .scribble-circle::after {
+    content: "";
+    position: absolute;
+    inset: -18% -12% -22% -12%;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 100' fill='none'><path d='M40 50 C 30 20, 80 8, 130 14 C 180 22, 195 55, 165 78 C 130 95, 60 92, 30 70 C 12 56, 18 32, 50 22' stroke='%2300CEB2' stroke-width='4' stroke-linecap='round'/></svg>");
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    transform: rotate(-2deg);
+    pointer-events: none;
+    z-index: -1;
   }
 
-  .hero__subtitle {
-    color: #5f5f5f;
-    font-size: 0.95rem;
-    line-height: 1.55;
-    max-width: 520px;
-    margin: 14px 0 0;
+  .scribble-underline {
+    position: relative;
+    display: inline-block;
   }
-
-  .now-section {
-    padding: clamp(40px, 6vw, 80px) 0 clamp(60px, 8vw, 100px);
-  }
-
-  .now-grid {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 20px;
-    max-width: 800px;
-  }
-
-  @media (min-width: 640px) {
-    .now-grid {
-      grid-template-columns: repeat(2, 1fr);
-    }
-
-    .now-card--wide {
-      grid-column: 1 / -1;
-    }
-  }
-
-  .now-card {
-    background: #fff;
-    border: 1px solid #e6e2db;
-    border-radius: 16px;
-    padding: clamp(20px, 3vw, 28px);
-  }
-
-  .now-card__heading {
-    font-family: "Lora Variable", "Lora", Georgia, serif;
-    font-weight: 500;
-    letter-spacing: -0.02em;
-    font-size: 1.15rem;
-    color: #1b1b1b;
-    margin: 0 0 16px;
-  }
-
-  .now-card__list {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-  }
-
-  .now-card__list li {
-    display: flex;
-    align-items: flex-start;
-    gap: 10px;
-    font-size: 0.95rem;
-    color: #5f5f5f;
-    line-height: 1.55;
-  }
-
-  .now-card__dot {
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-    flex-shrink: 0;
-    margin-top: 7px;
-  }
-
-  .now-card__dot--green {
-    background: #3fbf61;
-  }
-
-  .now-card__dot--amber {
-    background: #e5a63b;
-  }
-
-  .now-card__text {
-    color: #5f5f5f;
-    font-size: 0.95rem;
-    line-height: 1.55;
-    margin: 0;
+  .scribble-underline::after {
+    content: "";
+    position: absolute;
+    left: -4%;
+    right: -4%;
+    bottom: -14px;
+    height: 12px;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 14' fill='none' preserveAspectRatio='none'><path d='M3 9 C 50 3, 110 12, 197 5' stroke='%231BB6F9' stroke-width='6' stroke-linecap='round'/></svg>");
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    transform: rotate(-2deg);
+    pointer-events: none;
   }
 </style>
