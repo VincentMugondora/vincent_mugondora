@@ -1,5 +1,6 @@
 ---
 import "@/styles/fonts.css";
+import "@fontsource-variable/lora";
 import "@/styles/global.css";
 import "@/styles/typography.css";
 import { siteConfig } from "@/config/site";
@@ -48,6 +49,8 @@ const jsonLd = getBaseJsonLd();
 
     <link rel="preload" href="/fonts/Caveat-VariableFont_wght.woff2" as="font" type="font/woff2" crossorigin />
     <link rel="preload" href="/fonts/Inter-VariableFont_opsz,wght.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="dns-prefetch" href="https://analytics.ahrefs.com" />
+    <link rel="preconnect" href="https://analytics.ahrefs.com" crossorigin />
 
     <title>{pageTitle}</title>
     <meta name="description" content={pageDescription} />

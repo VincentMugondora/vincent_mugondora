@@ -1,12 +1,18 @@
 ---
 import PageLayout from "@layouts/PageLayout.astro";
-import { getProfilePageJsonLd } from "@/lib/seo";
+import { getProfilePageJsonLd, getBreadcrumbJsonLd } from "@/lib/seo";
+import { siteConfig } from "@config/site";
 
 const profileJsonLd = getProfilePageJsonLd();
+const breadcrumbJsonLd = getBreadcrumbJsonLd([
+  { name: "Home", url: siteConfig.url },
+  { name: "About", url: `${siteConfig.url}/about` },
+]);
 ---
 
-<PageLayout title="About" description="About Vincent Mugondora — software engineer, AI builder, educator and entrepreneur from Zimbabwe.">
+<PageLayout title="About Vincent Mugondora — Software Developer & AI Builder in Zimbabwe" description="About Vincent Mugondora — software engineer, AI builder, educator and entrepreneur from Zimbabwe. Building intelligent solutions and teaching developers.">
   <script is:inline type="application/ld+json" set:html={JSON.stringify(profileJsonLd)} />
+  <script is:inline type="application/ld+json" set:html={JSON.stringify(breadcrumbJsonLd)} />
   <!-- Hero -->
   <section class="pt-[72px] py-16 md:py-24">
     <div class="max-w-[1200px] mx-auto px-4 md:px-10">
@@ -43,7 +49,7 @@ const profileJsonLd = getProfilePageJsonLd();
           <!-- Profile card -->
           <div class="bg-white rounded-[16px] border border-[var(--color-card-border)] p-6 w-full sm:w-[260px] min-h-[360px] flex flex-col">
             <div class="w-[84px] h-[84px] rounded-full overflow-hidden">
-              <img src="/vincent.avif" alt="Vincent Mugondora" width="84" height="84" loading="eager" class="w-full h-full object-cover" />
+              <img src="/vincent.avif" alt="Vincent Mugondora" width="84" height="84" loading="eager" decoding="async" class="w-full h-full object-cover" />
             </div>
             <div class="mt-auto">
               <h3 class="font-display text-[24px] font-bold text-[var(--color-text-primary)] text-left">Vincent Mugondora</h3>
@@ -97,6 +103,10 @@ const profileJsonLd = getProfilePageJsonLd();
           <img
             src="/vincent.avif"
             alt="Vincent Mugondora"
+            width="260"
+            height="320"
+            loading="eager"
+            decoding="async"
             class="w-[260px] h-[320px] rounded-[16px] border border-[var(--color-card-border)] object-cover"
           />
         </div>

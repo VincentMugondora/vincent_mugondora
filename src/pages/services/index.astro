@@ -1,6 +1,13 @@
 ---
 import PageLayout from "@layouts/PageLayout.astro";
 import { Icon } from "astro-icon/components";
+import { getBreadcrumbJsonLd } from "@/lib/seo";
+import { siteConfig } from "@config/site";
+
+const breadcrumbJsonLd = getBreadcrumbJsonLd([
+  { name: "Home", url: siteConfig.url },
+  { name: "Services", url: `${siteConfig.url}/services` },
+]);
 
 const services = [
   {
@@ -35,6 +42,7 @@ const services = [
 ---
 
 <PageLayout title="Services | Software Development, Web Development & AI" description="Software development, web development, AI solutions and automation services by Vincent Mugondora. Building technology for businesses in Zimbabwe and Africa.">
+  <script is:inline type="application/ld+json" set:html={JSON.stringify(breadcrumbJsonLd)} />
   <section class="hero">
     <div class="hero__container">
       <span class="hero__badge">Services</span>

@@ -2,11 +2,9 @@
 import PageLayout from "@layouts/PageLayout.astro";
 import { siteConfig } from "@config/site";
 
-import { getBreadcrumbJsonLd } from "@/lib/seo";
 ---
 
 <PageLayout>
-  <script is:inline type="application/ld+json" set:html={JSON.stringify(personJsonLd)} />
   <!-- Hero -->
   <section class="relative w-full min-h-screen flex items-center justify-center overflow-hidden pt-[72px]">
     <div class="absolute inset-0 bg-gradient-to-b from-white via-white to-[var(--color-secondary)] opacity-40"></div>

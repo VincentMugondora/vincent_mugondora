@@ -2,6 +2,13 @@
 import PageLayout from "@layouts/PageLayout.astro";
 import { getAllSpeaking } from "@lib/content";
 import { formatDate } from "@lib/utils";
+import { getBreadcrumbJsonLd } from "@/lib/seo";
+import { siteConfig } from "@config/site";
+
+const breadcrumbJsonLd = getBreadcrumbJsonLd([
+  { name: "Home", url: siteConfig.url },
+  { name: "Speaking", url: `${siteConfig.url}/speaking` },
+]);
 
 const events = await getAllSpeaking();
 
@@ -89,6 +96,7 @@ const mediumBio = "Vincent Mugondora is a Zimbabwean software engineer, AI build
 ---
 
 <PageLayout title="Speaking" description="Vincent Mugondora speaks about AI, software engineering, technology education, entrepreneurship, and building technology for Africa.">
+  <script is:inline type="application/ld+json" set:html={JSON.stringify(breadcrumbJsonLd)} />
   <!-- Hero -->
   <section class="pt-[72px] py-16 md:py-24">
     <div class="max-w-[1200px] mx-auto px-4 md:px-10">

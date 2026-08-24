@@ -2,6 +2,13 @@
 import PageLayout from "@layouts/PageLayout.astro";
 import { Icon } from "astro-icon/components";
 import { siteConfig } from "@config/site";
+import { getBreadcrumbJsonLd } from "@/lib/seo";
+
+const breadcrumbJsonLd = getBreadcrumbJsonLd([
+  { name: "Home", url: siteConfig.url },
+  { name: "Services", url: `${siteConfig.url}/services` },
+  { name: "Web Development", url: `${siteConfig.url}/services/web-development` },
+]);
 
 const serviceJsonLd = {
   "@context": "https://schema.org",
@@ -19,6 +26,7 @@ const serviceJsonLd = {
 
 <PageLayout title="Web Development Services in Zimbabwe" description="Fast, accessible, SEO-friendly web development services by Vincent Mugondora. Websites and web applications built for performance in Zimbabwe and Africa.">
   <script is:inline type="application/ld+json" set:html={JSON.stringify(serviceJsonLd)} />
+  <script is:inline type="application/ld+json" set:html={JSON.stringify(breadcrumbJsonLd)} />
   <!-- Hero -->
   <section class="hero">
     <div class="hero__container">

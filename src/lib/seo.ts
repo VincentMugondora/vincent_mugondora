@@ -46,6 +46,11 @@ export function getBaseJsonLd() {
         telephone: siteConfig.phone,
         worksFor: { "@id": `${siteConfig.url}/#organization` },
         founder: { "@id": `${siteConfig.url}/#organization` },
+        address: {
+          "@type": "PostalAddress",
+          addressLocality: "Harare",
+          addressCountry: "ZW",
+        },
         knowsAbout: [
           "Software Engineering",
           "Artificial Intelligence",
@@ -57,6 +62,9 @@ export function getBaseJsonLd() {
           "RAG Systems",
           "System Design",
           "Technology Education",
+          "AI Automation",
+          "Technology in Africa",
+          "Software Development in Zimbabwe",
         ],
         sameAs: [siteConfig.githubUrl, siteConfig.linkedinUrl, siteConfig.twitterUrl],
       },

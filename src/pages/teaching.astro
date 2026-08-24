@@ -1,5 +1,12 @@
 ---
 import PageLayout from "@layouts/PageLayout.astro";
+import { getBreadcrumbJsonLd } from "@/lib/seo";
+import { siteConfig } from "@config/site";
+
+const breadcrumbJsonLd = getBreadcrumbJsonLd([
+  { name: "Home", url: siteConfig.url },
+  { name: "Teaching", url: `${siteConfig.url}/teaching` },
+]);
 
 const skillAreas = [
   { title: "Programming", skills: "Python, JavaScript, TypeScript" },
@@ -56,6 +63,7 @@ const impact = [
 ---
 
 <PageLayout title="Teaching" description="Vincent Mugondora teaches programming, AI, web development, and software engineering through practical, project-based learning in Zimbabwe.">
+  <script is:inline type="application/ld+json" set:html={JSON.stringify(breadcrumbJsonLd)} />
   <!-- Hero -->
   <section class="pt-[72px] py-16 md:py-24">
     <div class="max-w-[1200px] mx-auto px-4 md:px-10">
