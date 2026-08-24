@@ -1,0 +1,154 @@
+---
+import AdminLayout from "@layouts/AdminLayout.astro";
+export const prerender = false;
+---
+
+<AdminLayout title="Now Entries" active="now">
+  <div class="page-header">
+    <h1>Now Page Entries</h1>
+    <button class="btn btn-primary" onclick="showForm()">+ New Entry</button>
+  </div>
+
+  <div class="card" id="form-card" style="display: none; margin-bottom: 1.5rem;">
+    <h3 style="margin-bottom: 1rem;" id="form-title">New Entry</h3>
+    <form id="item-form">
+      <input type="hidden" id="item-id" />
+      <div class="form-row">
+        <div class="form-group">
+          <label for="category">Category</label>
+          <select id="category" required>
+            <option value="building">Building</option>
+            <option value="learning">Learning</option>
+            <option value="focus">Focus</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="title">Title</label>
+          <input type="text" id="title" required />
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="description">Description</label>
+        <textarea id="description" rows="2"></textarea>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label for="status">Status</label>
+          <select id="status">
+            <option value="active">Active</option>
+            <option value="completed">Completed</option>
+            <option value="paused">Paused</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="order">Order</label>
+          <input type="number" id="order" value="0" />
+        </div>
+      </div>
+      <div style="display: flex; gap: 0.75rem; margin-top: 1rem;">
+        <button type="submit" class="btn btn-primary">Save</button>
+        <button type="button" class="btn btn-secondary" onclick="hideForm()">Cancel</button>
+      </div>
+    </form>
+  </div>
+
+  <div class="card">
+    <div class="table-wrapper">
+      <table>
+        <thead>
+          <tr>
+            <th>Category</th>
+            <th>Title</th>
+            <th>Status</th>
+            <th>Order</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody id="items-table"></tbody>
+      </table>
+      <div class="empty-state" id="empty" style="display: none;">
+        <p>No entries yet.</p>
+      </div>
+    </div>
+  </div>
+
+  <script is:inline>
+    let items = [];
+
+    async function loadItems() {
+      items = await apiCall('/api/now');
+      renderTable();
+    }
+
+    function renderTable() {
+      const tbody = document.getElementById('items-table');
+      const empty = document.getElementById('empty');
+      if (!items.length) { tbody.innerHTML = ''; empty.style.display = 'block'; return; }
+      empty.style.display = 'none';
+      tbody.innerHTML = items.map(p => `
+        <tr>
+          <td><span class="badge ${p.category === 'building' ? 'badge-green' : p.category === 'learning' ? 'badge-blue' : 'badge-yellow'}">${p.category}</span></td>
+          <td><strong>${p.title}</strong></td>
+          <td>${p.status}</td>
+          <td>${p.order}</td>
+          <td class="actions">
+            <button class="btn btn-secondary btn-sm" onclick="editItem(${p.id})">Edit</button>
+            <button class="btn btn-danger btn-sm" onclick="deleteItem(${p.id})">Delete</button>
+          </td>
+        </tr>
+      `).join('');
+    }
+
+    function showForm(item = null) {
+      document.getElementById('form-card').style.display = 'block';
+      document.getElementById('form-title').textContent = item ? 'Edit Entry' : 'New Entry';
+      document.getElementById('item-id').value = item ? item.id : '';
+      document.getElementById('category').value = item ? item.category : 'building';
+      document.getElementById('title').value = item ? item.title : '';
+      document.getElementById('description').value = item ? (item.description || '') : '';
+      document.getElementById('status').value = item ? (item.status || 'active') : 'active';
+      document.getElementById('order').value = item ? (item.order || 0) : 0;
+    }
+
+    function hideForm() { document.getElementById('form-card').style.display = 'none'; }
+
+    function editItem(id) {
+      const item = items.find(p => p.id === id);
+      if (item) showForm(item);
+    }
+
+    async function deleteItem(id) {
+      if (!confirm('Delete this entry?')) return;
+      try {
+        await apiCall('/api/now', 'DELETE', { id });
+        showToast('Entry deleted');
+        loadItems();
+      } catch (e) { showToast(e.message, 'error'); }
+    }
+
+    document.getElementById('item-form').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const id = document.getElementById('item-id').value;
+      const data = {
+        category: document.getElementById('category').value,
+        title: document.getElementById('title').value,
+        description: document.getElementById('description').value || null,
+        status: document.getElementById('status').value,
+        order: Number(document.getElementById('order').value) || 0,
+      };
+      try {
+        if (id) {
+          await apiCall('/api/now', 'PUT', { id: Number(id), ...data });
+          showToast('Entry updated');
+        } else {
+          await apiCall('/api/now', 'POST', data);
+          showToast('Entry created');
+        }
+        hideForm();
+        loadItems();
+      } catch (e) { showToast(e.message, 'error'); }
+    });
+
+    loadItems();
+  </script>
+</AdminLayout>
