@@ -2,38 +2,7 @@
 import PageLayout from "@layouts/PageLayout.astro";
 import { siteConfig } from "@config/site";
 
-const personJsonLd = {
-  "@context": "https://schema.org",
-  "@type": "Person",
-  name: "Vincent Mugondora",
-  url: siteConfig.url,
-  image: `${siteConfig.url}/vincent.avif`,
-  jobTitle: "Software Developer & AI Builder",
-  description: siteConfig.description,
-  email: siteConfig.email,
-  telephone: siteConfig.phone,
-  address: {
-    "@type": "PostalAddress",
-    addressLocality: "Harare",
-    addressCountry: "ZW",
-  },
-  knowsAbout: [
-    "Software Engineering",
-    "Artificial Intelligence",
-    "AI Agents",
-    "Web Development",
-    "Python",
-    "JavaScript",
-    "TypeScript",
-    "RAG Systems",
-    "System Design",
-    "Technology Education",
-    "AI Automation",
-    "Technology in Africa",
-    "Software Development in Zimbabwe",
-  ],
-  sameAs: [siteConfig.githubUrl, siteConfig.linkedinUrl, siteConfig.twitterUrl],
-};
+import { getBreadcrumbJsonLd } from "@/lib/seo";
 ---
 
 <PageLayout>
