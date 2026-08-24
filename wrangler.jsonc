@@ -1,0 +1,28 @@
+{
+	"$schema": "./node_modules/wrangler/config-schema.json",
+	"compatibility_date": "2026-08-24",
+	"compatibility_flags": ["global_fetch_strictly_public"],
+	"name": "vincent-mugondora",
+	"main": "@astrojs/cloudflare/entrypoints/server",
+	"assets": {
+		"directory": "./dist",
+		"binding": "ASSETS"
+	},
+	"observability": {
+		"enabled": true
+	},
+	"d1_databases": [
+		{
+			"binding": "DB",
+			"database_name": "vincent-mugondora-db",
+			"database_id": "a0d7631f-334e-4c69-a554-d571bec7ff7b",
+			"migrations_dir": "db/migrations"
+		}
+	],
+	"r2_buckets": [
+		{
+			"binding": "STORAGE",
+			"bucket_name": "vincent-mugondora-files"
+		}
+	]
+}
