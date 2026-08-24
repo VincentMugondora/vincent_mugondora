@@ -1,0 +1,298 @@
+---
+export const prerender = false;
+
+interface Props {
+  title: string;
+  active?: string;
+}
+
+const { title, active } = Astro.props;
+
+const navItems = [
+  { href: "/admin", label: "Dashboard", icon: "grid" },
+  { href: "/admin/posts", label: "Posts", icon: "file-text" },
+  { href: "/admin/projects", label: "Projects", icon: "folder" },
+  { href: "/admin/experiments", label: "Experiments", icon: "flask" },
+  { href: "/admin/services", label: "Services", icon: "briefcase" },
+  { href: "/admin/now", label: "Now", icon: "clock" },
+  { href: "/admin/work-history", label: "Work History", icon: "building" },
+  { href: "/admin/education", label: "Education", icon: "graduation" },
+  { href: "/admin/site-config", label: "Site Config", icon: "settings" },
+];
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title} | Admin</title>
+    <meta name="robots" content="noindex, nofollow" />
+    <style is:global>
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      body {
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+        background: #0f172a;
+        color: #e2e8f0;
+        min-height: 100vh;
+      }
+      .admin-wrapper {
+        display: flex;
+        min-height: 100vh;
+      }
+      .admin-sidebar {
+        width: 240px;
+        background: #1e293b;
+        border-right: 1px solid #334155;
+        padding: 1.5rem 0;
+        position: fixed;
+        height: 100vh;
+        overflow-y: auto;
+        display: flex;
+        flex-direction: column;
+      }
+      .sidebar-header {
+        padding: 0 1.5rem 1.5rem;
+        border-bottom: 1px solid #334155;
+        margin-bottom: 1rem;
+      }
+      .sidebar-header h2 {
+        font-size: 1rem;
+        color: #6366f1;
+        font-weight: 600;
+      }
+      .sidebar-header span {
+        font-size: 0.75rem;
+        color: #64748b;
+      }
+      .nav-items { list-style: none; flex: 1; }
+      .nav-items li a {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        padding: 0.625rem 1.5rem;
+        color: #94a3b8;
+        text-decoration: none;
+        font-size: 0.875rem;
+        transition: all 0.15s;
+        border-left: 3px solid transparent;
+      }
+      .nav-items li a:hover {
+        background: #334155;
+        color: #e2e8f0;
+      }
+      .nav-items li a.active {
+        background: #1e1b4b;
+        color: #a5b4fc;
+        border-left-color: #6366f1;
+      }
+      .sidebar-footer {
+        padding: 1rem 1.5rem;
+        border-top: 1px solid #334155;
+        margin-top: auto;
+      }
+      .sidebar-footer a {
+        color: #94a3b8;
+        text-decoration: none;
+        font-size: 0.8rem;
+      }
+      .sidebar-footer a:hover { color: #f87171; }
+      .admin-main {
+        margin-left: 240px;
+        flex: 1;
+        padding: 2rem;
+        min-height: 100vh;
+      }
+      .page-header {
+        margin-bottom: 2rem;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+      .page-header h1 {
+        font-size: 1.75rem;
+        font-weight: 700;
+      }
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 0.6rem 1.2rem;
+        border-radius: 8px;
+        font-size: 0.875rem;
+        font-weight: 500;
+        cursor: pointer;
+        border: none;
+        transition: all 0.15s;
+        text-decoration: none;
+      }
+      .btn-primary {
+        background: #6366f1;
+        color: white;
+      }
+      .btn-primary:hover { background: #4f46e5; }
+      .btn-danger {
+        background: #dc2626;
+        color: white;
+      }
+      .btn-danger:hover { background: #b91c1c; }
+      .btn-secondary {
+        background: #334155;
+        color: #e2e8f0;
+      }
+      .btn-secondary:hover { background: #475569; }
+      .btn-sm { padding: 0.4rem 0.8rem; font-size: 0.8rem; }
+      .card {
+        background: #1e293b;
+        border: 1px solid #334155;
+        border-radius: 12px;
+        padding: 1.5rem;
+      }
+      .form-group {
+        margin-bottom: 1.25rem;
+      }
+      .form-group label {
+        display: block;
+        font-size: 0.8rem;
+        color: #94a3b8;
+        margin-bottom: 0.4rem;
+        font-weight: 500;
+      }
+      .form-group input,
+      .form-group textarea,
+      .form-group select {
+        width: 100%;
+        padding: 0.65rem 0.9rem;
+        background: #0f172a;
+        border: 1px solid #334155;
+        border-radius: 8px;
+        color: #e2e8f0;
+        font-size: 0.875rem;
+        font-family: inherit;
+        outline: none;
+        transition: border-color 0.2s;
+      }
+      .form-group input:focus,
+      .form-group textarea:focus,
+      .form-group select:focus {
+        border-color: #6366f1;
+      }
+      .form-group textarea { min-height: 120px; resize: vertical; }
+      .form-row {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1rem;
+      }
+      .table-wrapper { overflow-x: auto; }
+      table {
+        width: 100%;
+        border-collapse: collapse;
+      }
+      th, td {
+        text-align: left;
+        padding: 0.75rem 1rem;
+        border-bottom: 1px solid #334155;
+        font-size: 0.875rem;
+      }
+      th {
+        color: #64748b;
+        font-weight: 500;
+        font-size: 0.75rem;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+      }
+      td { color: #cbd5e1; }
+      tr:hover td { background: #1e293b; }
+      .badge {
+        display: inline-block;
+        padding: 0.2rem 0.6rem;
+        border-radius: 9999px;
+        font-size: 0.7rem;
+        font-weight: 500;
+      }
+      .badge-green { background: #064e3b; color: #6ee7b7; }
+      .badge-blue { background: #1e3a5f; color: #93c5fd; }
+      .badge-yellow { background: #451a03; color: #fcd34d; }
+      .badge-gray { background: #1f2937; color: #9ca3af; }
+      .actions { display: flex; gap: 0.5rem; }
+      .toast {
+        position: fixed;
+        bottom: 2rem;
+        right: 2rem;
+        padding: 0.75rem 1.5rem;
+        border-radius: 8px;
+        font-size: 0.875rem;
+        z-index: 1000;
+        animation: slideIn 0.3s ease;
+      }
+      .toast-success { background: #065f46; color: #6ee7b7; border: 1px solid #10b981; }
+      .toast-error { background: #7f1d1d; color: #fca5a5; border: 1px solid #ef4444; }
+      @keyframes slideIn {
+        from { transform: translateY(1rem); opacity: 0; }
+        to { transform: translateY(0); opacity: 1; }
+      }
+      .empty-state {
+        text-align: center;
+        padding: 3rem;
+        color: #64748b;
+      }
+      .empty-state p { margin-top: 0.5rem; font-size: 0.875rem; }
+      @media (max-width: 768px) {
+        .admin-sidebar { display: none; }
+        .admin-main { margin-left: 0; }
+        .form-row { grid-template-columns: 1fr; }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="admin-wrapper">
+      <aside class="admin-sidebar">
+        <div class="sidebar-header">
+          <h2>Admin Panel</h2>
+          <span>vincentmugondora.com</span>
+        </div>
+        <ul class="nav-items">
+          {navItems.map((item) => (
+            <li>
+              <a href={item.href} class={active === item.label.toLowerCase() ? "active" : ""}>
+                {item.label}
+              </a>
+            </li>
+          ))}
+        </ul>
+        <div class="sidebar-footer">
+          <a href="#" id="logout-btn">Logout</a>
+        </div>
+      </aside>
+      <main class="admin-main">
+        <slot />
+      </main>
+    </div>
+    <script is:inline>
+      document.getElementById('logout-btn').addEventListener('click', (e) => {
+        e.preventDefault();
+        document.cookie = 'admin_token=; path=/; max-age=0';
+        window.location.href = '/admin/login';
+      });
+
+      window.showToast = function(message, type = 'success') {
+        const toast = document.createElement('div');
+        toast.className = `toast toast-${type}`;
+        toast.textContent = message;
+        document.body.appendChild(toast);
+        setTimeout(() => toast.remove(), 3000);
+      };
+
+      window.apiCall = async function(url, method = 'GET', body = null) {
+        const opts = { method, headers: { 'Content-Type': 'application/json' } };
+        if (body) opts.body = JSON.stringify(body);
+        const res = await fetch(url, opts);
+        if (!res.ok) {
+          const err = await res.json().catch(() => ({ error: 'Request failed' }));
+          throw new Error(err.error || 'Request failed');
+        }
+        return res.json();
+      };
+    </script>
+  </body>
+</html>

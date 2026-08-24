@@ -1,0 +1,53 @@
+---
+import AdminLayout from "@layouts/AdminLayout.astro";
+export const prerender = false;
+---
+
+<AdminLayout title="Dashboard" active="dashboard">
+  <div class="page-header">
+    <h1>Dashboard</h1>
+  </div>
+
+  <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin-bottom: 2rem;">
+    <div class="card" id="stats-posts">
+      <div style="font-size: 0.75rem; color: #64748b; text-transform: uppercase; letter-spacing: 0.05em;">Posts</div>
+      <div style="font-size: 2rem; font-weight: 700; margin-top: 0.25rem;" class="stat-num">-</div>
+    </div>
+    <div class="card" id="stats-projects">
+      <div style="font-size: 0.75rem; color: #64748b; text-transform: uppercase; letter-spacing: 0.05em;">Projects</div>
+      <div style="font-size: 2rem; font-weight: 700; margin-top: 0.25rem;" class="stat-num">-</div>
+    </div>
+    <div class="card" id="stats-experiments">
+      <div style="font-size: 0.75rem; color: #64748b; text-transform: uppercase; letter-spacing: 0.05em;">Experiments</div>
+      <div style="font-size: 2rem; font-weight: 700; margin-top: 0.25rem;" class="stat-num">-</div>
+    </div>
+    <div class="card" id="stats-services">
+      <div style="font-size: 0.75rem; color: #64748b; text-transform: uppercase; letter-spacing: 0.05em;">Services</div>
+      <div style="font-size: 2rem; font-weight: 700; margin-top: 0.25rem;" class="stat-num">-</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3 style="margin-bottom: 1rem; font-size: 1rem;">Quick Actions</h3>
+    <div style="display: flex; flex-wrap: wrap; gap: 0.75rem;">
+      <a href="/admin/posts?new=1" class="btn btn-primary">New Post</a>
+      <a href="/admin/projects?new=1" class="btn btn-primary">New Project</a>
+      <a href="/admin/experiments?new=1" class="btn btn-primary">New Experiment</a>
+      <a href="/admin/now" class="btn btn-secondary">Update Now Page</a>
+      <a href="/admin/site-config" class="btn btn-secondary">Site Settings</a>
+    </div>
+  </div>
+
+  <script is:inline>
+    async function loadStats() {
+      const endpoints = ['posts', 'projects', 'experiments', 'services'];
+      for (const ep of endpoints) {
+        try {
+          const data = await apiCall(`/api/${ep}`);
+          document.querySelector(`#stats-${ep} .stat-num`).textContent = Array.isArray(data) ? data.length : '0';
+        } catch { /* ignore */ }
+      }
+    }
+    loadStats();
+  </script>
+</AdminLayout>
