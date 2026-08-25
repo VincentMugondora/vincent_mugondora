@@ -31,6 +31,26 @@ const navItems = [
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{title} | Admin</title>
     <meta name="robots" content="noindex, nofollow" />
+    <script is:inline>
+      window.showToast = function(message, type = 'success') {
+        const toast = document.createElement('div');
+        toast.className = `toast toast-${type}`;
+        toast.textContent = message;
+        document.body.appendChild(toast);
+        setTimeout(() => toast.remove(), 3000);
+      };
+
+      window.apiCall = async function(url, method = 'GET', body = null) {
+        const opts = { method, headers: { 'Content-Type': 'application/json' } };
+        if (body) opts.body = JSON.stringify(body);
+        const res = await fetch(url, opts);
+        if (!res.ok) {
+          const err = await res.json().catch(() => ({ error: 'Request failed' }));
+          throw new Error(err.error || 'Request failed');
+        }
+        return res.json();
+      };
+    </script>
     <style is:global>
       * { margin: 0; padding: 0; box-sizing: border-box; }
       body {
@@ -277,25 +297,6 @@ const navItems = [
         document.cookie = 'admin_token=; path=/; max-age=0';
         window.location.href = '/admin/login';
       });
-
-      window.showToast = function(message, type = 'success') {
-        const toast = document.createElement('div');
-        toast.className = `toast toast-${type}`;
-        toast.textContent = message;
-        document.body.appendChild(toast);
-        setTimeout(() => toast.remove(), 3000);
-      };
-
-      window.apiCall = async function(url, method = 'GET', body = null) {
-        const opts = { method, headers: { 'Content-Type': 'application/json' } };
-        if (body) opts.body = JSON.stringify(body);
-        const res = await fetch(url, opts);
-        if (!res.ok) {
-          const err = await res.json().catch(() => ({ error: 'Request failed' }));
-          throw new Error(err.error || 'Request failed');
-        }
-        return res.json();
-      };
     </script>
   </body>
 </html>
