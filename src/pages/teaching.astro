@@ -242,10 +242,11 @@ const impact = [
       try {
         const res = await fetch('/api/certificates');
         if (!res.ok) return;
-        const certs = await res.json();
+        const allCerts = await res.json();
         const grid = document.getElementById('teaching-certs-grid');
-        if (!certs.length) { grid.innerHTML = ''; return; }
-        grid.innerHTML = certs.map(c => `
+        if (!allCerts.length) { grid.innerHTML = ''; return; }
+        const certs = allCerts.slice(0, 3);
+        let html = certs.map(c => `
           <div class="bg-white rounded-[12px] border border-[var(--color-card-border)] p-5 flex items-start gap-3">
             <div class="w-9 h-9 rounded-full bg-[var(--color-secondary)] flex items-center justify-center flex-shrink-0 mt-0.5">
               <svg class="w-4 h-4 text-[var(--color-primary)]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
@@ -258,6 +259,12 @@ const impact = [
             </div>
           </div>
         `).join('');
+        if (allCerts.length > 3) {
+          html += `<a href="/certificates" class="bg-[var(--color-secondary)] rounded-[12px] border border-[var(--color-card-border)] p-5 flex items-center justify-center hover:border-[var(--color-primary)] transition-colors">
+            <span class="font-body text-[14px] text-[var(--color-primary)] font-medium">View all certificates &rarr;</span>
+          </a>`;
+        }
+        grid.innerHTML = html;
       } catch(e) { document.getElementById('teaching-certs-grid').innerHTML = ''; }
     })();
   </script>

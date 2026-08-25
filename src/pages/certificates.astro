@@ -1,0 +1,82 @@
+---
+import PageLayout from "@layouts/PageLayout.astro";
+import { getBreadcrumbJsonLd } from "@/lib/seo";
+import { siteConfig } from "@config/site";
+
+const breadcrumbJsonLd = getBreadcrumbJsonLd([
+  { name: "Home", url: siteConfig.url },
+  { name: "Certificates", url: `${siteConfig.url}/certificates` },
+]);
+---
+
+<PageLayout title="Certificates & Credentials — Vincent Mugondora" description="Industry certifications and courses completed by Vincent Mugondora in software engineering, AI, and technology.">
+  <script is:inline type="application/ld+json" set:html={JSON.stringify(breadcrumbJsonLd)} />
+
+  <section class="pt-[72px] py-16 md:py-24">
+    <div class="max-w-[1200px] mx-auto px-4 md:px-10">
+      <span class="inline-block font-display text-[12px] text-[var(--color-text-secondary)] border border-[var(--color-card-border)] rounded-full px-4 py-1 mb-6">
+        Continuous Learning
+      </span>
+      <h1 class="font-display italic text-[48px] md:text-[72px] text-[var(--color-text-primary)] leading-[1.05] font-bold tracking-tight">
+        Certificates & Credentials
+      </h1>
+      <p class="font-body text-[16px] md:text-[18px] text-[var(--color-text-secondary)] mt-6 max-w-[600px] leading-relaxed">
+        A collection of industry certifications and courses that validate my continuous learning in software engineering, AI, and technology.
+      </p>
+    </div>
+  </section>
+
+  <section class="pb-16 md:pb-24">
+    <div class="max-w-[1200px] mx-auto px-4 md:px-10">
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5" id="all-certificates-grid">
+        <div class="text-center py-12 col-span-full">
+          <p class="font-body text-[14px] text-[var(--color-text-muted)]">Loading certificates...</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</PageLayout>
+
+<script is:inline>
+  (async function() {
+    try {
+      const res = await fetch('/api/certificates');
+      if (!res.ok) return;
+      const certs = await res.json();
+      const grid = document.getElementById('all-certificates-grid');
+      if (!certs.length) {
+        grid.innerHTML = `
+          <div class="text-center py-12 col-span-full">
+            <p class="font-body text-[16px] text-[var(--color-text-muted)]">No certificates yet.</p>
+          </div>`;
+        return;
+      }
+      grid.innerHTML = certs.map(c => `
+        <div class="bg-white rounded-[16px] border border-[var(--color-card-border)] p-6 flex flex-col hover:border-[var(--color-primary)] transition-colors">
+          <div class="flex items-start gap-3 mb-4">
+            <div class="w-11 h-11 rounded-full bg-[var(--color-secondary)] flex items-center justify-center flex-shrink-0">
+              <svg class="w-5 h-5 text-[var(--color-primary)]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M4.26 10.147a60.438 60.438 0 0 0-.491 6.347A48.62 48.62 0 0 1 12 20.904a48.62 48.62 0 0 1 8.232-4.41 60.46 60.46 0 0 0-.491-6.347m-15.482 0a50.636 50.636 0 0 0-2.658-.813A59.906 59.906 0 0 1 12 3.493a59.903 59.903 0 0 1 10.399 5.84c-.896.248-1.783.52-2.658.814m-15.482 0A50.717 50.717 0 0 1 12 13.489a50.702 50.702 0 0 1 7.74-3.342" />
+              </svg>
+            </div>
+            <div class="flex-1 min-w-0">
+              <h3 class="font-display italic text-[17px] font-bold text-[var(--color-text-primary)] tracking-tight leading-snug">${c.name}</h3>
+              ${c.issuer ? `<p class="font-body text-[13px] text-[var(--color-primary)] font-medium mt-1">${c.issuer}</p>` : ''}
+            </div>
+          </div>
+          <div class="mt-auto pt-3 border-t border-[var(--color-card-border)] flex items-center justify-between">
+            ${c.issued_date || c.issuedDate ? `<span class="font-body text-[12px] text-[var(--color-text-muted)]">${c.issued_date || c.issuedDate}</span>` : '<span></span>'}
+            ${c.file_key || c.fileKey ? `<a href="${c.file_key || c.fileKey}" target="_blank" rel="noopener" class="inline-flex items-center gap-1 font-body text-[13px] text-[var(--color-primary)] font-medium hover:underline">
+              <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 6H5.25A2.25 2.25 0 0 0 3 8.25v10.5A2.25 2.25 0 0 0 5.25 21h10.5A2.25 2.25 0 0 0 18 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" />
+              </svg>
+              View
+            </a>` : ''}
+          </div>
+        </div>
+      `).join('');
+    } catch(e) {
+      document.getElementById('all-certificates-grid').innerHTML = '';
+    }
+  })();
+</script>

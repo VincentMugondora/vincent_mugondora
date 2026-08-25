@@ -372,13 +372,14 @@ const breadcrumbJsonLd = getBreadcrumbJsonLd([
       try {
         const res = await fetch('/api/certificates');
         if (!res.ok) return;
-        const certs = await res.json();
+        const allCerts = await res.json();
         const grid = document.getElementById('certificates-grid');
-        if (!certs.length) {
+        if (!allCerts.length) {
           grid.innerHTML = '<p class="font-body text-[14px] text-[var(--color-text-muted)] col-span-full text-center py-8">No certificates yet.</p>';
           return;
         }
-        grid.innerHTML = certs.map(c => `
+        const certs = allCerts.slice(0, 4);
+        let html = certs.map(c => `
           <div class="bg-white rounded-[12px] border border-[var(--color-card-border)] p-5 flex flex-col">
             <div class="flex items-start gap-3 mb-3">
               <div class="w-10 h-10 rounded-full bg-[var(--color-secondary)] flex items-center justify-center flex-shrink-0">
@@ -397,6 +398,12 @@ const breadcrumbJsonLd = getBreadcrumbJsonLd([
             </div>
           </div>
         `).join('');
+        if (allCerts.length > 4) {
+          html += `<a href="/certificates" class="bg-[var(--color-secondary)] rounded-[12px] border border-[var(--color-card-border)] p-5 flex items-center justify-center hover:border-[var(--color-primary)] transition-colors">
+            <span class="font-body text-[14px] text-[var(--color-primary)] font-medium">View all ${allCerts.length} certificates &rarr;</span>
+          </a>`;
+        }
+        grid.innerHTML = html;
       } catch (e) {
         document.getElementById('certificates-grid').innerHTML = '';
       }
