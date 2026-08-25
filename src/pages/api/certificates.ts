@@ -15,15 +15,29 @@ export const GET: APIRoute = async () => {
 export const POST: APIRoute = async ({ request }) => {
   const db = getDb(env.DB);
   const body = await request.json() as Record<string, unknown>;
-  const result = await db.insert(certificates).values(body as any).returning();
+  const values = {
+    name: body.name as string,
+    issuer: (body.issuer as string) || null,
+    issuedDate: (body.issued_date as string) || null,
+    fileKey: body.file_key as string,
+    fileType: body.file_type as string,
+  };
+  const result = await db.insert(certificates).values(values).returning();
   return Response.json(result[0], { status: 201 });
 };
 
 export const PUT: APIRoute = async ({ request }) => {
   const db = getDb(env.DB);
   const body = await request.json() as Record<string, unknown>;
-  const { id, ...data } = body;
-  const result = await db.update(certificates).set(data).where(eq(certificates.id, id as number)).returning();
+  const id = body.id as number;
+  const data = {
+    name: body.name as string,
+    issuer: (body.issuer as string) || null,
+    issuedDate: (body.issued_date as string) || null,
+    fileKey: body.file_key as string,
+    fileType: body.file_type as string,
+  };
+  const result = await db.update(certificates).set(data).where(eq(certificates.id, id)).returning();
   return Response.json(result[0]);
 };
 
