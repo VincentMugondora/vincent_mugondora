@@ -1,38 +1,114 @@
 ---
 import ArticleLayout from "@layouts/ArticleLayout.astro";
 import { getCollection, render } from "astro:content";
+import { env } from "cloudflare:workers";
+import { eq } from "drizzle-orm";
+import { getDb } from "@lib/db";
+import { posts as postsTable } from "../../../db/schema";
+import { marked } from "marked";
 import { formatDate } from "@lib/utils";
 import { siteConfig } from "@config/site";
 import { getBreadcrumbJsonLd, getFAQJsonLd } from "@/lib/seo";
 
-export async function getStaticPaths() {
-  const posts = await getCollection("posts");
-  return posts
-    .filter((post) => !post.data.draft)
-    .map((post) => ({
-      params: { slug: post.id },
-      props: { post },
-    }));
+export const prerender = false;
+
+const { slug } = Astro.params;
+
+// Try content collection first (existing markdown posts with rich data)
+const allFilePosts = await getCollection("posts");
+const filePost = allFilePosts.find((p) => p.id === slug && !p.data.draft);
+
+// Try database
+let dbPost: any = null;
+try {
+  const db = getDb(env.DB);
+  const results = await db.select().from(postsTable).where(eq(postsTable.slug, slug!)).all();
+  if (results.length > 0 && !results[0].draft) {
+    dbPost = results[0];
+  }
+} catch (e) {
+  // DB unavailable
 }
 
-const { post } = Astro.props;
-const { Content } = await render(post);
+if (!filePost && !dbPost) {
+  return Astro.redirect("/404");
+}
 
-const allPosts = await getCollection("posts");
-const relatedPosts = allPosts
-  .filter((p) => !p.data.draft && p.id !== post.id)
+// Determine data source
+const isFilePost = !!filePost;
+const title = isFilePost ? filePost.data.title : dbPost.title;
+const description = isFilePost ? filePost.data.description : dbPost.description;
+const category = isFilePost ? filePost.data.category : dbPost.category;
+const publishedAt = isFilePost ? filePost.data.publishedAt : new Date(dbPost.publishedAt);
+const updatedAt = isFilePost ? filePost.data.updatedAt : (dbPost.updatedAt ? new Date(dbPost.updatedAt) : undefined);
+const image = isFilePost ? filePost.data.image : dbPost.image;
+
+// Render content
+let renderedContent = "";
+let FileContent: any = null;
+if (isFilePost) {
+  const rendered = await render(filePost);
+  FileContent = rendered.Content;
+} else {
+  renderedContent = await marked(dbPost.content);
+}
+
+// Related posts (from both sources)
+interface RelatedPost {
+  slug: string;
+  title: string;
+  description: string;
+  category: string;
+  publishedAt: Date;
+}
+
+const relatedPosts: RelatedPost[] = [];
+
+// File-based related posts
+allFilePosts
+  .filter((p) => !p.data.draft && p.id !== slug)
+  .forEach((p) => {
+    relatedPosts.push({
+      slug: p.id,
+      title: p.data.title,
+      description: p.data.description,
+      category: p.data.category,
+      publishedAt: p.data.publishedAt,
+    });
+  });
+
+// DB related posts
+try {
+  const db = getDb(env.DB);
+  const dbPosts = await db.select().from(postsTable).where(eq(postsTable.draft, false)).all();
+  dbPosts
+    .filter((p) => p.slug !== slug)
+    .forEach((p) => {
+      if (!relatedPosts.find((r) => r.slug === p.slug)) {
+        relatedPosts.push({
+          slug: p.slug,
+          title: p.title,
+          description: p.description,
+          category: p.category,
+          publishedAt: new Date(p.publishedAt),
+        });
+      }
+    });
+} catch (e) {}
+
+const sortedRelated = relatedPosts
   .sort((a, b) => {
-    const sameCategory = (p: typeof post) => p.data.category === post.data.category;
+    const sameCategory = (p: RelatedPost) => p.category === category;
     if (sameCategory(a) && !sameCategory(b)) return -1;
     if (!sameCategory(a) && sameCategory(b)) return 1;
-    return b.data.publishedAt.getTime() - a.data.publishedAt.getTime();
+    return b.publishedAt.getTime() - a.publishedAt.getTime();
   })
   .slice(0, 3);
 
 const breadcrumbs = getBreadcrumbJsonLd([
   { name: "Home", url: siteConfig.url },
   { name: "Writing", url: `${siteConfig.url}/writing` },
-  { name: post.data.title, url: `${siteConfig.url}/writing/${post.id}` },
+  { name: title, url: `${siteConfig.url}/writing/${slug}` },
 ]);
 
 const faqsBySlug: Record<string, Array<{question: string, answer: string}>> = {
@@ -192,17 +268,17 @@ const faqsBySlug: Record<string, Array<{question: string, answer: string}>> = {
   ],
 };
 
-const faqData = faqsBySlug[post.id];
+const faqData = faqsBySlug[slug!];
 const faqJsonLd = faqData ? getFAQJsonLd(faqData) : null;
 ---
 
 <ArticleLayout
-  title={post.data.title}
-  description={post.data.description}
-  image={post.data.image}
-  publishedAt={post.data.publishedAt}
-  updatedAt={post.data.updatedAt}
-  category={post.data.category}
+  title={title}
+  description={description}
+  image={image}
+  publishedAt={publishedAt}
+  updatedAt={updatedAt}
+  category={category}
 >
   <script is:inline type="application/ld+json" set:html={JSON.stringify(breadcrumbs)} />
   {faqJsonLd && (
@@ -214,26 +290,26 @@ const faqJsonLd = faqData ? getFAQJsonLd(faqData) : null;
       <ol>
         <li><a href="/">Home</a></li>
         <li><a href="/writing">Writing</a></li>
-        <li aria-current="page">{post.data.title}</li>
+        <li aria-current="page">{title}</li>
       </ol>
     </nav>
     <div class="flex items-center gap-3 mt-4">
       <span class="font-body text-[11px] font-semibold uppercase tracking-widest text-[var(--color-primary)]">
-        {post.data.category.replace("-", " ")}
+        {category.replace("-", " ")}
       </span>
-      <time class="font-body text-[12px] text-[var(--color-text-muted)]" datetime={post.data.publishedAt.toISOString()}>
-        {formatDate(post.data.publishedAt)}
+      <time class="font-body text-[12px] text-[var(--color-text-muted)]" datetime={publishedAt.toISOString()}>
+        {formatDate(publishedAt)}
       </time>
-      {post.data.updatedAt && (
+      {updatedAt && (
         <span class="font-body text-[12px] text-[var(--color-text-muted)]">
-          (Updated {formatDate(post.data.updatedAt)})
+          (Updated {formatDate(updatedAt)})
         </span>
       )}
     </div>
     <h1 class="font-display italic text-[36px] md:text-[48px] lg:text-[56px] font-bold text-[var(--color-text-primary)] tracking-tight leading-tight mt-5">
-      {post.data.title}
+      {title}
     </h1>
-    <p class="font-body text-[16px] md:text-[18px] text-[var(--color-text-secondary)] mt-4 leading-relaxed">{post.data.description}</p>
+    <p class="font-body text-[16px] md:text-[18px] text-[var(--color-text-secondary)] mt-4 leading-relaxed">{description}</p>
     <div class="mt-6 flex items-center gap-3">
       <div class="flex h-9 w-9 items-center justify-center rounded-full bg-[var(--color-primary)] text-sm font-semibold text-white">V</div>
       <div>
@@ -242,17 +318,22 @@ const faqJsonLd = faqData ? getFAQJsonLd(faqData) : null;
       </div>
     </div>
   </header>
-  <Content />
 
-  {relatedPosts.length > 0 && (
+  {FileContent ? (
+    <FileContent />
+  ) : (
+    <Fragment set:html={renderedContent} />
+  )}
+
+  {sortedRelated.length > 0 && (
     <aside class="not-prose mt-16 pt-10 border-t border-[var(--color-card-border)]">
       <h2 class="font-display italic text-[28px] md:text-[32px] font-bold text-[var(--color-text-primary)] tracking-tight mb-6">Continue Reading</h2>
       <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
-        {relatedPosts.map((related) => (
-          <a href={`/writing/${related.id}`} class="block p-5 rounded-[12px] border border-[var(--color-card-border)] hover:-translate-y-0.5 hover:shadow-md transition duration-200">
-            <span class="font-body text-[11px] font-semibold uppercase tracking-widest text-[var(--color-primary)]">{related.data.category.replace("-", " ")}</span>
-            <h3 class="font-display italic text-[16px] font-bold text-[var(--color-text-primary)] tracking-tight leading-snug mt-2">{related.data.title}</h3>
-            <p class="font-body text-[13px] text-[var(--color-text-secondary)] mt-1.5 leading-relaxed line-clamp-2">{related.data.description}</p>
+        {sortedRelated.map((related) => (
+          <a href={`/writing/${related.slug}`} class="block p-5 rounded-[12px] border border-[var(--color-card-border)] hover:-translate-y-0.5 hover:shadow-md transition duration-200">
+            <span class="font-body text-[11px] font-semibold uppercase tracking-widest text-[var(--color-primary)]">{related.category.replace("-", " ")}</span>
+            <h3 class="font-display italic text-[16px] font-bold text-[var(--color-text-primary)] tracking-tight leading-snug mt-2">{related.title}</h3>
+            <p class="font-body text-[13px] text-[var(--color-text-secondary)] mt-1.5 leading-relaxed line-clamp-2">{related.description}</p>
           </a>
         ))}
       </div>

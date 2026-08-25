@@ -1,33 +1,93 @@
 ---
 import PageLayout from "@layouts/PageLayout.astro";
-import { getPublishedPosts } from "@lib/content";
+import { getCollection } from "astro:content";
+import { env } from "cloudflare:workers";
+import { getDb } from "@lib/db";
+import { posts as postsTable } from "../../../db/schema";
+import { eq } from "drizzle-orm";
 import { formatDate } from "@lib/utils";
 import { getBreadcrumbJsonLd } from "@/lib/seo";
 import { siteConfig } from "@config/site";
+
+export const prerender = false;
 
 const breadcrumbJsonLd = getBreadcrumbJsonLd([
   { name: "Home", url: siteConfig.url },
   { name: "Writing", url: `${siteConfig.url}/writing` },
 ]);
 
-const posts = await getPublishedPosts();
+interface PostItem {
+  slug: string;
+  title: string;
+  description: string;
+  category: string;
+  publishedAt: Date;
+  featured: boolean;
+  draft: boolean;
+  source: "file" | "db";
+  body?: string;
+}
 
-const featuredPost = posts.find((post) => post.data.featured) ?? posts[0];
+// Load from content collection (existing markdown posts)
+const filePosts = await getCollection("posts");
+const filePostItems: PostItem[] = filePosts
+  .filter((p) => !p.data.draft)
+  .map((p) => ({
+    slug: p.id,
+    title: p.data.title,
+    description: p.data.description,
+    category: p.data.category,
+    publishedAt: p.data.publishedAt,
+    featured: p.data.featured,
+    draft: p.data.draft,
+    source: "file" as const,
+    body: p.body,
+  }));
+
+// Load from database (posts created via admin)
+let dbPostItems: PostItem[] = [];
+try {
+  const db = getDb(env.DB);
+  const dbPosts = await db.select().from(postsTable).where(eq(postsTable.draft, false)).all();
+  dbPostItems = dbPosts.map((p) => ({
+    slug: p.slug,
+    title: p.title,
+    description: p.description,
+    category: p.category,
+    publishedAt: new Date(p.publishedAt),
+    featured: p.featured ?? false,
+    draft: p.draft ?? false,
+    source: "db" as const,
+    body: p.content,
+  }));
+} catch (e) {
+  // DB unavailable during build — skip
+}
+
+// Merge and deduplicate (DB wins if same slug exists in both)
+const dbSlugs = new Set(dbPostItems.map((p) => p.slug));
+const merged = [
+  ...dbPostItems,
+  ...filePostItems.filter((p) => !dbSlugs.has(p.slug)),
+];
+const posts = merged.sort((a, b) => b.publishedAt.getTime() - a.publishedAt.getTime());
+
+const featuredPost = posts.find((post) => post.featured) ?? posts[0];
 const latestPosts = posts.filter((post) => post !== featuredPost).slice(0, 6);
 
 const categories = [
   { key: "ai", label: "AI & Intelligent Systems" },
-  { key: "engineering", label: "Software Engineering" },
-  { key: "africa", label: "Building in Africa" },
+  { key: "software-engineering", label: "Software Engineering" },
+  { key: "zimbabwe-tech", label: "Building in Africa" },
   { key: "entrepreneurship", label: "Entrepreneurship" },
-  { key: "education", label: "Learning & Teaching" },
+  { key: "learning", label: "Learning & Teaching" },
 ];
 
 function getPostsByCategory(cat: string) {
-  return posts.filter((post) => post.data.category === cat);
+  return posts.filter((post) => post.category === cat);
 }
 
-function estimateReadTime(post: any) {
+function estimateReadTime(post: PostItem) {
   return `${Math.max(5, Math.ceil((post.body?.length ?? 1500) / 1200))} min read`;
 }
 ---
@@ -60,15 +120,15 @@ function estimateReadTime(post: any) {
       <div class="max-w-[1200px] mx-auto px-4 md:px-10">
         <p class="font-body text-[12px] font-semibold uppercase tracking-widest text-[var(--color-primary)] mb-6">Featured</p>
 
-        <a href={`/writing/${featuredPost.id}`} class="block bg-white rounded-[16px] border border-[var(--color-card-border)] p-8 md:p-12 hover:-translate-y-1 hover:shadow-lg transition duration-200">
+        <a href={`/writing/${featuredPost.slug}`} class="block bg-white rounded-[16px] border border-[var(--color-card-border)] p-8 md:p-12 hover:-translate-y-1 hover:shadow-lg transition duration-200">
           <p class="font-body text-[12px] font-medium uppercase tracking-widest text-[var(--color-text-muted)] mb-3">
-            {featuredPost.data.category.replace("-", " ")}
+            {featuredPost.category.replace("-", " ")}
           </p>
           <h2 class="font-display italic text-[32px] md:text-[44px] font-bold text-[var(--color-text-primary)] tracking-tight leading-tight">
-            {featuredPost.data.title}
+            {featuredPost.title}
           </h2>
           <p class="font-body text-[16px] md:text-[18px] text-[var(--color-text-secondary)] mt-4 leading-relaxed max-w-[700px]">
-            {featuredPost.data.description}
+            {featuredPost.description}
           </p>
           <span class="inline-flex items-center font-body text-[14px] text-[var(--color-primary)] font-medium mt-6 hover:underline">
             Read Article &rarr;
@@ -88,18 +148,18 @@ function estimateReadTime(post: any) {
 
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {latestPosts.map((post) => (
-            <a href={`/writing/${post.id}`} class="block bg-white rounded-[16px] border border-[var(--color-card-border)] p-6 hover:-translate-y-1 hover:shadow-lg transition duration-200">
+            <a href={`/writing/${post.slug}`} class="block bg-white rounded-[16px] border border-[var(--color-card-border)] p-6 hover:-translate-y-1 hover:shadow-lg transition duration-200">
               <p class="font-body text-[11px] font-semibold uppercase tracking-widest text-[var(--color-primary)] mb-3">
-                {post.data.category.replace("-", " ")}
+                {post.category.replace("-", " ")}
               </p>
               <h3 class="font-display italic text-[20px] font-bold text-[var(--color-text-primary)] tracking-tight leading-snug">
-                {post.data.title}
+                {post.title}
               </h3>
               <p class="font-body text-[14px] text-[var(--color-text-secondary)] mt-2 leading-relaxed line-clamp-3">
-                {post.data.description}
+                {post.description}
               </p>
               <div class="flex items-center gap-2 mt-4">
-                <span class="font-body text-[12px] text-[var(--color-text-muted)]">{formatDate(post.data.publishedAt)}</span>
+                <span class="font-body text-[12px] text-[var(--color-text-muted)]">{formatDate(post.publishedAt)}</span>
                 <span class="font-body text-[12px] text-[var(--color-text-muted)]">&middot;</span>
                 <span class="font-body text-[12px] text-[var(--color-text-muted)]">{estimateReadTime(post)}</span>
               </div>
@@ -123,14 +183,14 @@ function estimateReadTime(post: any) {
           </h2>
           <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
             {catPosts.map((post) => (
-              <a href={`/writing/${post.id}`} class="block bg-white rounded-[12px] border border-[var(--color-card-border)] p-5 hover:-translate-y-0.5 hover:shadow-md transition duration-200">
+              <a href={`/writing/${post.slug}`} class="block bg-white rounded-[12px] border border-[var(--color-card-border)] p-5 hover:-translate-y-0.5 hover:shadow-md transition duration-200">
                 <h3 class="font-display italic text-[18px] font-bold text-[var(--color-text-primary)] tracking-tight leading-snug">
-                  {post.data.title}
+                  {post.title}
                 </h3>
                 <p class="font-body text-[13px] text-[var(--color-text-secondary)] mt-1.5 leading-relaxed line-clamp-2">
-                  {post.data.description}
+                  {post.description}
                 </p>
-                <span class="font-body text-[12px] text-[var(--color-text-muted)] mt-2 inline-block">{formatDate(post.data.publishedAt)}</span>
+                <span class="font-body text-[12px] text-[var(--color-text-muted)] mt-2 inline-block">{formatDate(post.publishedAt)}</span>
               </a>
             ))}
           </div>
@@ -182,12 +242,12 @@ function estimateReadTime(post: any) {
         </h2>
         <div class="space-y-4">
           {posts.map((post) => (
-            <a href={`/writing/${post.id}`} class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1 sm:gap-4 py-3 border-b border-[var(--color-card-border)] hover:text-[var(--color-primary)] transition-colors group">
-              <h3 class="font-body text-[15px] font-medium text-[var(--color-text-primary)] group-hover:text-[var(--color-primary)] transition-colors">{post.data.title}</h3>
+            <a href={`/writing/${post.slug}`} class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1 sm:gap-4 py-3 border-b border-[var(--color-card-border)] hover:text-[var(--color-primary)] transition-colors group">
+              <h3 class="font-body text-[15px] font-medium text-[var(--color-text-primary)] group-hover:text-[var(--color-primary)] transition-colors">{post.title}</h3>
               <div class="flex items-center gap-2 shrink-0">
-                <span class="font-body text-[12px] text-[var(--color-text-muted)]">{post.data.category.replace("-", " ")}</span>
+                <span class="font-body text-[12px] text-[var(--color-text-muted)]">{post.category.replace("-", " ")}</span>
                 <span class="font-body text-[12px] text-[var(--color-text-muted)]">&middot;</span>
-                <span class="font-body text-[12px] text-[var(--color-text-muted)]">{formatDate(post.data.publishedAt)}</span>
+                <span class="font-body text-[12px] text-[var(--color-text-muted)]">{formatDate(post.publishedAt)}</span>
               </div>
             </a>
           ))}
