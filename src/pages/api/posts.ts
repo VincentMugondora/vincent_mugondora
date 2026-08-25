@@ -14,22 +14,44 @@ export const GET: APIRoute = async () => {
 
 export const POST: APIRoute = async ({ request }) => {
   const db = getDb(env.DB);
-  const body = await request.json();
-  const result = await db.insert(posts).values(body).returning();
+  const body = await request.json() as Record<string, unknown>;
+  const values = {
+    title: body.title as string,
+    slug: body.slug as string,
+    description: body.description as string,
+    content: body.content as string,
+    category: body.category as string,
+    publishedAt: body.published_at as string,
+    image: (body.image as string) || null,
+    featured: body.featured as boolean,
+    draft: body.draft as boolean,
+  };
+  const result = await db.insert(posts).values(values).returning();
   return Response.json(result[0], { status: 201 });
 };
 
 export const PUT: APIRoute = async ({ request }) => {
   const db = getDb(env.DB);
-  const body = await request.json();
-  const { id, ...data } = body;
+  const body = await request.json() as Record<string, unknown>;
+  const id = body.id as number;
+  const data = {
+    title: body.title as string,
+    slug: body.slug as string,
+    description: body.description as string,
+    content: body.content as string,
+    category: body.category as string,
+    publishedAt: body.published_at as string,
+    image: (body.image as string) || null,
+    featured: body.featured as boolean,
+    draft: body.draft as boolean,
+  };
   const result = await db.update(posts).set(data).where(eq(posts.id, id)).returning();
   return Response.json(result[0]);
 };
 
 export const DELETE: APIRoute = async ({ request }) => {
   const db = getDb(env.DB);
-  const { id } = await request.json();
+  const { id } = await request.json() as { id: number };
   await db.delete(posts).where(eq(posts.id, id));
   return Response.json({ success: true });
 };

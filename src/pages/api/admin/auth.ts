@@ -5,7 +5,7 @@ import { signToken } from "@lib/auth";
 export const prerender = false;
 
 export const POST: APIRoute = async ({ request }) => {
-  const { password } = await request.json();
+  const { password } = await request.json() as { password: string };
   const adminPassword = (env as typeof env & { ADMIN_PASSWORD?: string }).ADMIN_PASSWORD;
 
   if (!adminPassword) {
