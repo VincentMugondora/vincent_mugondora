@@ -23,8 +23,9 @@ export const POST: APIRoute = async ({ request }) => {
     category: body.category as string,
     publishedAt: body.published_at as string,
     image: (body.image as string) || null,
-    featured: body.featured as boolean,
-    draft: body.draft as boolean,
+    featured: Boolean(body.featured),
+    draft: Boolean(body.draft),
+    createdAt: new Date().toISOString(),
   };
   const result = await db.insert(posts).values(values).returning();
   return Response.json(result[0], { status: 201 });
