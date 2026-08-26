@@ -104,17 +104,41 @@ export function getProfilePageJsonLd() {
     "@context": "https://schema.org",
     "@type": "ProfilePage",
     mainEntity: {
+      "@id": `${siteConfig.url}/#person`,
       "@type": "Person",
       name: "Vincent Mugondora",
       url: siteConfig.url,
       image: `${siteConfig.url}/vincent.avif`,
       jobTitle: "Software Developer, AI Builder & Technology Educator",
-      description: siteConfig.description,
-      sameAs: [siteConfig.githubUrl, siteConfig.linkedinUrl, siteConfig.twitterUrl],
+      description:
+        "Zimbabwean software developer and AI builder creating intelligent solutions for businesses in Africa. Educator and entrepreneur based in Harare.",
+      address: {
+        "@type": "PostalAddress",
+        addressLocality: "Harare",
+        addressCountry: "ZW",
+      },
+      nationality: { "@type": "Country", name: "Zimbabwe" },
+      alumniOf: { "@type": "Organization", name: "Uncommon.org" },
+      knowsAbout: [
+        "Software Engineering",
+        "Artificial Intelligence",
+        "AI Agents",
+        "Machine Learning",
+        "Web Development",
+        "Technology Education",
+        "African Technology",
+      ],
+      sameAs: [
+        siteConfig.githubUrl,
+        siteConfig.linkedinUrl,
+        siteConfig.twitterUrl,
+        "https://uncommon.org",
+      ],
     },
     name: `About ${siteConfig.name}`,
     url: `${siteConfig.url}/about`,
-    description: siteConfig.description,
+    description:
+      "About Vincent Mugondora — software engineer, AI builder, educator and entrepreneur from Zimbabwe building intelligent solutions and teaching developers.",
   };
 }
 
