@@ -38,13 +38,20 @@ const articleJsonLd = publishedAt
       <slot />
 
       <footer class="not-prose mt-16 border-t border-[var(--color-card-border)] pt-8">
-        <div class="flex items-center gap-4">
-          <div class="flex h-12 w-12 items-center justify-center rounded-full bg-[var(--color-primary)] text-lg font-semibold text-white">V</div>
+        <div class="flex items-start gap-4">
+          <a href="/about" class="flex-shrink-0">
+            <img src="/vincent.avif" alt="Vincent Mugondora" width="48" height="48" loading="lazy" decoding="async" class="w-12 h-12 rounded-full object-cover" />
+          </a>
           <div>
             <p class="font-body font-medium text-[var(--color-text-primary)]">
               <a href="/about" class="no-underline hover:text-[var(--color-primary)]">Vincent Mugondora</a>
             </p>
-            <p class="font-body text-sm text-[var(--color-text-secondary)]">Software Developer & AI Builder</p>
+            <p class="font-body text-sm text-[var(--color-text-secondary)]">Software Developer & AI Builder in Zimbabwe. I build software, teach developers, and create AI solutions for Africa.</p>
+            <div class="flex items-center gap-3 mt-2">
+              <a href="https://github.com/vincentmugondora" class="font-body text-xs text-[var(--color-text-muted)] hover:text-[var(--color-primary)]" rel="me">GitHub</a>
+              <a href="https://www.linkedin.com/in/vincent-mugondora-7b2a922b3/" class="font-body text-xs text-[var(--color-text-muted)] hover:text-[var(--color-primary)]" rel="me">LinkedIn</a>
+              <a href="https://twitter.com/vincemugondora" class="font-body text-xs text-[var(--color-text-muted)] hover:text-[var(--color-primary)]" rel="me">Twitter</a>
+            </div>
           </div>
         </div>
       </footer>
