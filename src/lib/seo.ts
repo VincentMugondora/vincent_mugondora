@@ -71,11 +71,11 @@ export function getBaseJsonLd() {
           "Software Development in Zimbabwe",
           "African Technology",
         ],
+        alumniOf: { "@type": "Organization", name: "Uncommon.org", url: "https://uncommon.org" },
         sameAs: [
           siteConfig.githubUrl,
           siteConfig.linkedinUrl,
           siteConfig.twitterUrl,
-          "https://uncommon.org",
         ],
       },
       {
