@@ -71,7 +71,12 @@ export function getBaseJsonLd() {
           "Software Development in Zimbabwe",
           "African Technology",
         ],
-        sameAs: [siteConfig.githubUrl, siteConfig.linkedinUrl, siteConfig.twitterUrl],
+        sameAs: [
+          siteConfig.githubUrl,
+          siteConfig.linkedinUrl,
+          siteConfig.twitterUrl,
+          "https://uncommon.org",
+        ],
       },
       {
         "@type": "Organization",
