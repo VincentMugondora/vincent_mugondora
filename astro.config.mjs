@@ -1,4 +1,3 @@
-// @ts-check
 import { defineConfig } from "astro/config";
 import tailwindcss from "@tailwindcss/vite";
 import sitemap from "@astrojs/sitemap";
@@ -14,21 +13,18 @@ export default defineConfig({
     sitemap({
       filter: (page) => !page.includes("/admin"),
       serialize(item) {
-        if (item.url.includes("/writing/")) {
-          item.lastmod = new Date().toISOString();
-          item.changefreq = "weekly";
-          item.priority = 0.8;
-        } else if (item.url === "https://vincentmugondora.com") {
-          item.lastmod = new Date().toISOString();
-          item.changefreq = "weekly";
+        const now = new Date().toISOString();
+        item.lastmod = now;
+        const path = new URL(item.url).pathname;
+        if (path === "" || path === "/") {
           item.priority = 1.0;
-        } else if (item.url.includes("/services/")) {
-          item.lastmod = new Date().toISOString();
-          item.changefreq = "monthly";
+        } else if (path.startsWith("/writing")) {
+          item.priority = 0.8;
+        } else if (path.startsWith("/services")) {
+          item.priority = 0.9;
+        } else if (path === "/about") {
           item.priority = 0.9;
         } else {
-          item.lastmod = new Date().toISOString();
-          item.changefreq = "monthly";
           item.priority = 0.7;
         }
         return item;

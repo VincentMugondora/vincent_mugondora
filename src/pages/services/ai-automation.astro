@@ -2,13 +2,18 @@
 import PageLayout from "@layouts/PageLayout.astro";
 import { Icon } from "astro-icon/components";
 import { siteConfig } from "@config/site";
-import { getBreadcrumbJsonLd } from "@/lib/seo";
+import { getBreadcrumbJsonLd, getSpeakableJsonLd } from "@/lib/seo";
 
 const breadcrumbJsonLd = getBreadcrumbJsonLd([
   { name: "Home", url: siteConfig.url },
   { name: "Services", url: `${siteConfig.url}/services` },
   { name: "AI Automation", url: `${siteConfig.url}/services/ai-automation` },
 ]);
+
+const speakableJsonLd = getSpeakableJsonLd({
+  url: `${siteConfig.url}/services/ai-automation`,
+  title: "AI Automation Services for Businesses in Zimbabwe",
+});
 
 const serviceJsonLd = {
   "@context": "https://schema.org",
@@ -27,6 +32,7 @@ const serviceJsonLd = {
 <PageLayout title="AI Automation Services for Businesses in Zimbabwe | Workflow Automation" description="AI automation services for businesses in Zimbabwe and Africa. Automate repetitive work with AI workflows, document processing, WhatsApp automation, and smart business integrations.">
   <script is:inline type="application/ld+json" set:html={JSON.stringify(serviceJsonLd)} />
   <script is:inline type="application/ld+json" set:html={JSON.stringify(breadcrumbJsonLd)} />
+  <script is:inline type="application/ld+json" set:html={JSON.stringify(speakableJsonLd)} />
 
   <!-- Hero -->
   <section class="pt-[72px] py-16 md:py-24">
