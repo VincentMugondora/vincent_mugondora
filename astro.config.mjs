@@ -19,6 +19,11 @@ export default defineConfig({
 
   vite: {
     plugins: [tailwindcss()],
+    ssr: {
+      optimizeDeps: {
+        exclude: ["astro/virtual-modules/middleware.js"],
+      },
+    },
   },
 
   adapter: cloudflare(),
