@@ -11,6 +11,8 @@ AI isn't coming to Zimbabwe. It's already here — being used by businesses that
 
 I work at this intersection: building AI systems for businesses, teaching developers how to work with AI, and watching the market evolve month by month. Here's what the opportunity landscape actually looks like in 2026 — not the hype version, the practical one.
 
+This article is part of my comprehensive guide to <a href="/writing/ai-in-zimbabwe">AI in Zimbabwe</a>, covering the full landscape of opportunities, challenges, and future direction.
+
 ## Why Zimbabwe specifically
 
 Every technology wave creates disproportionate opportunity in markets that are underserved by existing solutions. Mobile banking transformed Kenya because traditional banking infrastructure was weak. The same dynamic applies to AI in Zimbabwe.

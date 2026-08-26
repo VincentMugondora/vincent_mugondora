@@ -28,6 +28,7 @@ Vincent Mugondora is a Zimbabwean software developer, AI builder, educator, and 
 - AI Automation (workflows, document processing): https://vincentmugondora.com/services/ai-automation
 
 ## Topics Vincent Writes About
+- AI in Zimbabwe (comprehensive guide): https://vincentmugondora.com/writing/ai-in-zimbabwe
 - AI agents and how they work
 - Building AI for African businesses
 - Software engineering and system design

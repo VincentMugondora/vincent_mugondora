@@ -11,6 +11,8 @@ Starting a tech startup in Zimbabwe is harder than doing it in Nairobi or Cape T
 
 I've built products, shipped software for clients, and watched dozens of Zimbabwean founders succeed and fail. The ones who make it don't follow Silicon Valley playbooks. They follow a different set of rules — ones shaped by our market, our constraints, and our unique advantages.
 
+If you're specifically interested in the AI angle, see my guide to <a href="/writing/ai-in-zimbabwe">AI in Zimbabwe</a> — it's one of the strongest startup verticals available right now.
+
 Here's what actually works.
 
 ## Why Zimbabwe, why now

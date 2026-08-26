@@ -10,7 +10,7 @@ draft: false
 
 AI isn't something that only happens in Silicon Valley. Businesses in Zimbabwe are already using it — and the ones that aren't are falling behind on efficiency, response times, and operational costs.
 
-I've built AI solutions for businesses across different industries. This isn't a speculative article about what AI "could" do in the future. These are things that work today, given Zimbabwean infrastructure and business realities.
+I've built AI solutions for businesses across different industries. This isn't a speculative article about what AI "could" do in the future. These are things that work today, given Zimbabwean infrastructure and business realities. For the broader context of AI in the country, see my guide to <a href="/writing/ai-in-zimbabwe">AI in Zimbabwe</a>.
 
 If you're deciding where to start, the best AI use cases for Zimbabwean businesses are usually the same ones across small and medium businesses: WhatsApp customer support, document processing, lead qualification, and internal knowledge access. These are the fastest ways to get value without overcomplicating the problem.
 
