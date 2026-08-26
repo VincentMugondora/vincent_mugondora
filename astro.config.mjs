@@ -11,7 +11,7 @@ export default defineConfig({
   trailingSlash: "never",
   integrations: [
     sitemap({
-      filter: (page) => !page.includes("/admin"),
+      filter: (page) => !page.includes("/admin") && !page.includes("/certificates"),
       serialize(item) {
         const now = new Date().toISOString();
         item.lastmod = now;

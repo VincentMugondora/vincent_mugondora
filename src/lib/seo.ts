@@ -118,7 +118,7 @@ export function getProfilePageJsonLd() {
         addressCountry: "ZW",
       },
       nationality: { "@type": "Country", name: "Zimbabwe" },
-      alumniOf: { "@type": "Organization", name: "Uncommon.org" },
+      alumniOf: { "@type": "Organization", name: "Uncommon.org", url: "https://uncommon.org" },
       knowsAbout: [
         "Software Engineering",
         "Artificial Intelligence",
@@ -132,7 +132,6 @@ export function getProfilePageJsonLd() {
         siteConfig.githubUrl,
         siteConfig.linkedinUrl,
         siteConfig.twitterUrl,
-        "https://uncommon.org",
       ],
     },
     name: `About ${siteConfig.name}`,
