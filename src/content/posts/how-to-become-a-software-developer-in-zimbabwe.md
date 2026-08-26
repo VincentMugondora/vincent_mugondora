@@ -12,6 +12,8 @@ If you're in Zimbabwe and want to become a software developer, this guide is for
 
 I've been building software professionally for over five years and teaching students across Zimbabwe. Here's what I've learned about what it takes to go from zero to working developer in this country.
 
+For the broader technical foundation, see my <a href="/writing/software-engineering-guide-for-beginners">software engineering guide for beginners</a>.
+
 ## The honest reality
 
 Software development is one of the best career paths available in Zimbabwe right now. The demand for developers — locally and globally — far exceeds supply. But the path isn't straightforward, and most generic career advice doesn't account for:

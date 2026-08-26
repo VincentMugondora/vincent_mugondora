@@ -11,6 +11,8 @@ Choosing a programming language in Zimbabwe isn't the same as choosing one in Lo
 
 I've been developing professionally for over five years, teaching students across Zimbabwe, and hiring junior developers. Here's what I'd tell you if you were sitting across from me asking "What should I learn?"
 
+This guide is part of my <a href="/writing/software-engineering-guide-for-beginners">complete software engineering guide for beginners</a> — start there for the full path from zero to professional.
+
 ## The languages that matter in Zimbabwe right now
 
 ### Python

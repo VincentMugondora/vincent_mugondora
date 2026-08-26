@@ -14,6 +14,8 @@ That's where system design comes in. It's the skill that separates developers wh
 
 I've designed systems for production applications, taught system design to developers, and learned many of these lessons the hard way. Here's what I wish someone had explained to me early on.
 
+This article is part of my <a href="/writing/software-engineering-guide-for-beginners">complete software engineering guide for beginners</a>.
+
 ## What is system design?
 
 System design is the process of defining the architecture, components, and interactions of a software system to satisfy specific requirements.
