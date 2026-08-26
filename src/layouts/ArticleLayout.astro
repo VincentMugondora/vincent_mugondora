@@ -31,7 +31,7 @@ const articleJsonLd = publishedAt
   : null;
 ---
 
-<BaseLayout title={title} description={description} image={image} canonicalURL={canonicalURL}>
+<BaseLayout title={title} description={description} image={image} canonicalURL={canonicalURL} ogType="article" publishedAt={publishedAt?.toISOString()}>
   <Navbar />
   <main id="main-content" class="pt-24 pb-16">
     <article class="prose mx-auto max-w-3xl px-6">
