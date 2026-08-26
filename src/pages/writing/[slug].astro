@@ -8,7 +8,7 @@ import { posts as postsTable } from "../../../db/schema";
 import { marked } from "marked";
 import { formatDate } from "@lib/utils";
 import { siteConfig } from "@config/site";
-import { getBreadcrumbJsonLd, getFAQJsonLd } from "@/lib/seo";
+import { getBreadcrumbJsonLd, getFAQJsonLd, getSpeakableJsonLd } from "@/lib/seo";
 
 export const prerender = false;
 
@@ -110,6 +110,11 @@ const breadcrumbs = getBreadcrumbJsonLd([
   { name: "Writing", url: `${siteConfig.url}/writing` },
   { name: title, url: `${siteConfig.url}/writing/${slug}` },
 ]);
+
+const speakableJsonLd = getSpeakableJsonLd({
+  url: `${siteConfig.url}/writing/${slug}`,
+  title,
+});
 
 const faqsBySlug: Record<string, Array<{question: string, answer: string}>> = {
   "ai-agents-explained-for-beginners": [
@@ -337,6 +342,7 @@ const faqJsonLd = faqData ? getFAQJsonLd(faqData) : null;
   category={category}
 >
   <script is:inline type="application/ld+json" set:html={JSON.stringify(breadcrumbs)} />
+  <script is:inline type="application/ld+json" set:html={JSON.stringify(speakableJsonLd)} />
   {faqJsonLd && (
     <script is:inline type="application/ld+json" set:html={JSON.stringify(faqJsonLd)} />
   )}
@@ -365,7 +371,7 @@ const faqJsonLd = faqData ? getFAQJsonLd(faqData) : null;
     <h1 class="font-display italic text-[36px] md:text-[48px] lg:text-[56px] font-bold text-[var(--color-text-primary)] tracking-tight leading-tight mt-5">
       {title}
     </h1>
-    <p class="font-body text-[16px] md:text-[18px] text-[var(--color-text-secondary)] mt-4 leading-relaxed">{description}</p>
+    <p data-speakable class="font-body text-[16px] md:text-[18px] text-[var(--color-text-secondary)] mt-4 leading-relaxed">{description}</p>
     <div class="mt-6 flex items-center gap-3">
       <div class="flex h-9 w-9 items-center justify-center rounded-full bg-[var(--color-primary)] text-sm font-semibold text-white">V</div>
       <div>

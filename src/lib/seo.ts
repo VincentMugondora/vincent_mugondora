@@ -204,6 +204,27 @@ export function getFAQJsonLd(faqs: Array<{ question: string; answer: string }>) 
   };
 }
 
+export function getSpeakableJsonLd(article: {
+  url: string;
+  title: string;
+  cssSelectors?: string[];
+}) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    name: article.title,
+    url: article.url,
+    speakable: {
+      "@type": "SpeakableSpecification",
+      cssSelector: article.cssSelectors ?? [
+        "article h1",
+        "[data-speakable]",
+        "article > p:first-of-type",
+      ],
+    },
+  };
+}
+
 export function getBreadcrumbJsonLd(items: Array<{ name: string; url: string }>) {
   return {
     "@context": "https://schema.org",
