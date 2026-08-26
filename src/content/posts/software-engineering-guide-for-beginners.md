@@ -3,6 +3,7 @@ title: "Software Engineering Guide for Beginners: How to Build Real Software"
 description: "A complete guide to software engineering for beginners — from choosing a language to understanding system design, APIs, databases and building production applications."
 category: "software-engineering"
 publishedAt: 2026-08-26
+updatedAt: 2026-08-26
 featured: false
 draft: false
 ---

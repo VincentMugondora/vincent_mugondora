@@ -3,6 +3,7 @@ title: "AI Agents vs Chatbots: What's the Difference?"
 description: "AI agents and chatbots are not the same thing. Here's a clear breakdown of what each does, when to use which, and why the distinction matters for your business."
 category: "ai"
 publishedAt: 2026-08-20
+updatedAt: 2026-08-20
 featured: false
 draft: false
 ---

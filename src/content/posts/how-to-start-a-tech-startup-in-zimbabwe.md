@@ -3,6 +3,7 @@ title: "How to Start a Tech Startup in Zimbabwe (Practical Guide)"
 description: "A realistic, step-by-step guide to starting a tech startup in Zimbabwe — from validating your idea to finding customers, managing costs, and scaling with limited resources."
 category: "zimbabwe-tech"
 publishedAt: 2026-08-21
+updatedAt: 2026-08-21
 featured: false
 draft: false
 ---

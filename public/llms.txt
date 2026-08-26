@@ -1,5 +1,7 @@
 # Vincent Mugondora — vincentmugondora.com
 
+> For full article content and detailed citations, see: https://vincentmugondora.com/llms-full.txt
+
 ## About
 Vincent Mugondora is a Zimbabwean software developer, AI builder, educator, and entrepreneur based in Harare, Zimbabwe. He builds practical technology, teaches programming, and explores how software and AI can solve meaningful problems in Zimbabwe and across Africa.
 

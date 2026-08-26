@@ -3,6 +3,7 @@ title: "How to Build Your First AI Agent (Step-by-Step Guide)"
 description: "A practical, beginner-friendly guide to building your first AI agent. From choosing your tools to deploying a working agent — no PhD required."
 category: "ai"
 publishedAt: 2026-08-20
+updatedAt: 2026-08-20
 featured: false
 draft: false
 ---

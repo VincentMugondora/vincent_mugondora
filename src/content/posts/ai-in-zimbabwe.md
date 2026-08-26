@@ -3,6 +3,7 @@ title: "AI in Zimbabwe: Opportunities, Challenges and the Future"
 description: "A comprehensive guide to artificial intelligence in Zimbabwe — the opportunities for developers and businesses, the challenges of adoption, and where the market is heading in 2026 and beyond."
 category: "zimbabwe-tech"
 publishedAt: 2026-08-26
+updatedAt: 2026-08-26
 featured: false
 draft: false
 ---

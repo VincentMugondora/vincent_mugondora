@@ -3,6 +3,7 @@ title: "How to Build an AI Chatbot for Your Business (2026 Guide)"
 description: "A step-by-step guide to building an AI-powered chatbot for customer support, sales, or internal use — from choosing your platform to deploying on WhatsApp."
 category: "ai"
 publishedAt: 2026-08-21
+updatedAt: 2026-08-21
 featured: false
 draft: false
 ---

@@ -3,6 +3,7 @@ title: "Building a WhatsApp AI Marketplace for Zimbabwe: Architecture & Lessons"
 description: "How I built Hustlr — a WhatsApp-native AI marketplace for Zimbabwe using FastAPI, Baileys, Redis, Supabase, and AWS Bedrock. Why WhatsApp beats native apps for African commerce, and the technical challenges of building on it."
 category: "ai"
 publishedAt: 2026-08-23
+updatedAt: 2026-08-23
 featured: false
 draft: true
 ---

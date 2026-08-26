@@ -3,6 +3,7 @@ title: "5 AI Agent Use Cases for Small Businesses (With Real Examples)"
 description: "Practical AI agent use cases that small businesses can implement today — from customer support to document processing. Real examples, not hype."
 category: "ai"
 publishedAt: 2026-08-20
+updatedAt: 2026-08-20
 featured: false
 draft: false
 ---

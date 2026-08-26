@@ -3,6 +3,7 @@ title: "Building Technology for Africa: What's Different and Why It Matters"
 description: "A practical guide to building software for African markets — the constraints, opportunities, and design decisions that make or break technology products on the continent."
 category: "zimbabwe-tech"
 publishedAt: 2026-08-26
+updatedAt: 2026-08-26
 featured: false
 draft: false
 ---

@@ -3,6 +3,7 @@ title: "Best Programming Languages to Learn in Zimbabwe (2026)"
 description: "A practical guide to choosing your first programming language in Zimbabwe — based on job market demand, internet constraints, and real career paths available locally and remotely."
 category: "zimbabwe-tech"
 publishedAt: 2026-08-21
+updatedAt: 2026-08-21
 featured: false
 draft: false
 ---

@@ -29,3 +29,10 @@ Allow: /
 
 User-agent: Bytespider
 Allow: /
+
+User-agent: cohere-ai
+Allow: /
+
+# LLM content files
+# llms.txt: summary for AI systems
+# llms-full.txt: comprehensive content for citation

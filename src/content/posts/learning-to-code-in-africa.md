@@ -3,6 +3,7 @@ title: "Learning to Code in Africa: A Complete Guide for Beginners"
 description: "A practical guide to learning programming in Africa — how to start, what to learn first, the best resources for African developers, and how to build a career from anywhere on the continent."
 category: "software-engineering"
 publishedAt: 2026-08-26
+updatedAt: 2026-08-26
 featured: false
 draft: false
 ---
