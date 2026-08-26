@@ -1,6 +1,13 @@
 ---
 import PageLayout from "@layouts/PageLayout.astro";
 import { getAllExperiments } from "@lib/content";
+import { getBreadcrumbJsonLd } from "@/lib/seo";
+import { siteConfig } from "@config/site";
+
+const breadcrumbJsonLd = getBreadcrumbJsonLd([
+  { name: "Home", url: siteConfig.url },
+  { name: "AI Lab", url: `${siteConfig.url}/ai-lab` },
+]);
 
 const experiments = await getAllExperiments();
 
@@ -59,7 +66,8 @@ const currentQuestions = [
 ];
 ---
 
-<PageLayout title="AI Lab" description="AI experiments, agents, RAG systems, and automation projects by Vincent Mugondora.">
+<PageLayout title="AI Lab | AI Experiments & Projects by Vincent Mugondora" description="AI experiments, agents, RAG systems, and automation projects by Vincent Mugondora. Exploring practical AI applications for African businesses.">
+  <script is:inline type="application/ld+json" set:html={JSON.stringify(breadcrumbJsonLd)} />
   <!-- Hero -->
   <section class="pt-[72px] py-16 md:py-24">
     <div class="max-w-[1200px] mx-auto px-4 md:px-10">
