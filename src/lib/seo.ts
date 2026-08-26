@@ -204,6 +204,34 @@ export function getFAQJsonLd(faqs: Array<{ question: string; answer: string }>) 
   };
 }
 
+export function getHowToJsonLd(howTo: {
+  name: string;
+  description: string;
+  url: string;
+  steps: Array<{ name: string; text: string }>;
+  totalTime?: string;
+}) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "HowTo",
+    name: howTo.name,
+    description: howTo.description,
+    url: howTo.url,
+    ...(howTo.totalTime && { totalTime: howTo.totalTime }),
+    step: howTo.steps.map((step, index) => ({
+      "@type": "HowToStep",
+      position: index + 1,
+      name: step.name,
+      text: step.text,
+    })),
+    author: {
+      "@type": "Person",
+      name: "Vincent Mugondora",
+      url: "https://vincentmugondora.com",
+    },
+  };
+}
+
 export function getSpeakableJsonLd(article: {
   url: string;
   title: string;

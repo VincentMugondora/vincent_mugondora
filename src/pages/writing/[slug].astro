@@ -8,7 +8,7 @@ import { posts as postsTable } from "../../../db/schema";
 import { marked } from "marked";
 import { formatDate } from "@lib/utils";
 import { siteConfig } from "@config/site";
-import { getBreadcrumbJsonLd, getFAQJsonLd, getSpeakableJsonLd } from "@/lib/seo";
+import { getBreadcrumbJsonLd, getFAQJsonLd, getSpeakableJsonLd, getHowToJsonLd } from "@/lib/seo";
 
 export const prerender = false;
 
@@ -331,6 +331,69 @@ const faqsBySlug: Record<string, Array<{question: string, answer: string}>> = {
 
 const faqData = faqsBySlug[slug!];
 const faqJsonLd = faqData ? getFAQJsonLd(faqData) : null;
+
+const howToBySlug: Record<string, { name: string; description: string; totalTime?: string; steps: Array<{ name: string; text: string }> }> = {
+  "how-to-build-your-first-ai-agent": {
+    name: "How to Build Your First AI Agent",
+    description: "A step-by-step guide to building a functional AI agent from scratch using Python.",
+    totalTime: "PT4H",
+    steps: [
+      { name: "Define what your agent will do", text: "Pick one specific task with clear success criteria. Don't build a general-purpose assistant — define a narrow goal like researching a company and writing a summary." },
+      { name: "Choose your approach", text: "Decide between using a framework (LangChain, CrewAI) or building from scratch. Building from scratch first helps you understand every piece before using abstractions." },
+      { name: "Build the core loop", text: "Implement the Think-Act-Observe loop: the LLM decides what to do, executes a tool, observes the result, and repeats until the goal is complete." },
+      { name: "Add tools", text: "Create tool functions (web search, file writing, etc.) with names and descriptions so the LLM knows when and how to use each one." },
+      { name: "Add memory", text: "Implement short-term memory (history list tracking actions) and optionally long-term memory (persisted between sessions) for your agent." },
+      { name: "Handle errors gracefully", text: "Return tool errors as observations to the agent so it can adapt. Add retry logic for invalid LLM output and a max_steps safety limit." },
+      { name: "Test and iterate", text: "Run the agent, watch for common problems (loops, wrong tool selection, hallucinated actions, premature completion), and iterate on prompts." },
+    ],
+  },
+  "how-to-build-an-ai-chatbot": {
+    name: "How to Build an AI Chatbot for Your Business",
+    description: "A step-by-step guide to building an AI-powered chatbot for customer support, sales, or internal use.",
+    totalTime: "P3W",
+    steps: [
+      { name: "Choose your approach", text: "Decide between off-the-shelf platforms (Tidio, ManyChat), low-code AI platforms (Voiceflow, Botpress), or a custom build using AI APIs." },
+      { name: "Design the technical architecture", text: "Set up the four components: message handler, knowledge retrieval (RAG), AI model for response generation, and response handler." },
+      { name: "Implement RAG for your business knowledge", text: "Prepare your knowledge base (FAQs, pricing, policies), convert to embeddings, and set up semantic search so the chatbot answers from your actual data." },
+      { name: "Handle multiple languages", text: "Configure language handling for your market — let the AI respond in the customer's language, or use language-specific knowledge bases for better accuracy." },
+      { name: "Deploy on WhatsApp", text: "Set up WhatsApp Business API, configure webhooks, integrate your AI pipeline, and implement human handoff for complex queries." },
+      { name: "Measure and optimise", text: "Track resolution rate, accuracy, escalation rate, customer satisfaction, and response time. Audit conversations weekly and fill knowledge gaps." },
+    ],
+  },
+  "how-to-become-a-software-developer-in-zimbabwe": {
+    name: "How to Become a Software Developer in Zimbabwe",
+    description: "A practical guide to starting a software development career in Zimbabwe — from first language to first job.",
+    totalTime: "P12M",
+    steps: [
+      { name: "Choose your first programming language", text: "Pick Python (easiest, useful for AI/web/data) or JavaScript (essential for web apps, largest job market). Commit to one for at least three months." },
+      { name: "Learn fundamentals, not frameworks", text: "Master variables, functions, control flow, data structures, and APIs before touching React or Django. These transfer across every language." },
+      { name: "Build things immediately", text: "After two weeks of fundamentals, start building: a calculator, to-do list, weather app, personal website, and a tool that solves a real problem you have." },
+      { name: "Learn web development", text: "Learn HTML/CSS, JavaScript in the browser, a frontend framework (React), backend basics (Node.js or Python), databases, and deployment." },
+      { name: "Handle the internet problem", text: "Download docs for offline use, use lightweight tools, download courses when connected, use text-based resources, build locally, and use Git." },
+      { name: "Build your portfolio", text: "Create 3-5 deployed projects on GitHub that demonstrate real problem-solving. Quality over quantity — each project should solve a genuine problem." },
+      { name: "Find your first paid work", text: "Start with freelancing platforms, local businesses needing websites, or remote junior roles. Build relationships in tech communities." },
+    ],
+  },
+  "how-to-start-a-tech-startup-in-zimbabwe": {
+    name: "How to Start a Tech Startup in Zimbabwe",
+    description: "A realistic guide to starting a tech startup in Zimbabwe — from validation to first customers.",
+    totalTime: "P6M",
+    steps: [
+      { name: "Validate your idea in this market", text: "Talk to 20 potential customers before coding. Look for pain (not excitement), check willingness to pay, and focus on B2B tools, WhatsApp services, or AI automation." },
+      { name: "Build with limited resources", text: "Use free tiers (Vercel, Supabase, Cloudflare), build an MVP in weeks not months, and test with WhatsApp as your first interface before building an app." },
+      { name: "Find your first customers", text: "Use direct outreach via WhatsApp groups, provide value in communities, and leverage relationships. Cold email doesn't work well in Zimbabwe." },
+      { name: "Set up your business", text: "Register as a Private Limited company for fundraising potential. Set up Paynow for local payments and Stripe for international clients." },
+      { name: "Get to revenue quickly", text: "Charge from day one if possible. Offer consulting/services alongside your product to fund development. Revenue proves demand better than user counts." },
+      { name: "Scale regionally", text: "What works in Zimbabwe often works in Zambia, Malawi, and Mozambique. Plan for regional expansion from the start — you're building for 200M+ across Southern Africa." },
+    ],
+  },
+};
+
+const howToData = howToBySlug[slug!];
+const howToJsonLd = howToData ? getHowToJsonLd({
+  ...howToData,
+  url: `${siteConfig.url}/writing/${slug}`,
+}) : null;
 ---
 
 <ArticleLayout
@@ -345,6 +408,9 @@ const faqJsonLd = faqData ? getFAQJsonLd(faqData) : null;
   <script is:inline type="application/ld+json" set:html={JSON.stringify(speakableJsonLd)} />
   {faqJsonLd && (
     <script is:inline type="application/ld+json" set:html={JSON.stringify(faqJsonLd)} />
+  )}
+  {howToJsonLd && (
+    <script is:inline type="application/ld+json" set:html={JSON.stringify(howToJsonLd)} />
   )}
 
   <header class="not-prose mb-12">
