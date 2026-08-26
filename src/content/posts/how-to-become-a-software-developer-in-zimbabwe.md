@@ -12,7 +12,7 @@ If you're in Zimbabwe and want to become a software developer, this guide is for
 
 I've been building software professionally for over five years and teaching students across Zimbabwe. Here's what I've learned about what it takes to go from zero to working developer in this country.
 
-For the broader technical foundation, see my <a href="/writing/software-engineering-guide-for-beginners">software engineering guide for beginners</a>.
+For the broader technical foundation, see my <a href="/writing/software-engineering-guide-for-beginners">software engineering guide for beginners</a>. For learning strategies specific to African developers, read <a href="/writing/learning-to-code-in-africa">Learning to Code in Africa</a>.
 
 ## The honest reality
 

@@ -201,3 +201,4 @@ For all three, the requirements are the same: a strong GitHub portfolio, the abi
 - <a href="/writing/ai-agents-explained-for-beginners">What Are AI Agents? A Simple Guide for Beginners</a>
 - <a href="/writing/how-to-build-your-first-ai-agent">How to Build Your First AI Agent</a>
 - <a href="/writing/ai-in-zimbabwe">AI in Zimbabwe: Opportunities, Challenges and the Future</a>
+- <a href="/writing/learning-to-code-in-africa">Learning to Code in Africa: A Complete Guide</a>

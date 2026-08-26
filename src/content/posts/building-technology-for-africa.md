@@ -219,3 +219,4 @@ The window for early movers is now. Developers and entrepreneurs who build for A
 - <a href="/writing/ai-opportunities-in-zimbabwe">AI Opportunities in Zimbabwe</a>
 - <a href="/writing/best-programming-languages-to-learn-in-zimbabwe">Best Programming Languages to Learn in Zimbabwe</a>
 - <a href="/writing/software-engineering-guide-for-beginners">Software Engineering Guide for Beginners</a>
+- <a href="/writing/learning-to-code-in-africa">Learning to Code in Africa: A Complete Guide</a>
