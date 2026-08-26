@@ -145,7 +145,7 @@ The path depends on who you are:
 4. Build solutions for local businesses to gain experience
 5. Target remote AI development roles for income
 
-See the full path in my guide on <a href="/writing/how-to-become-a-software-developer-in-zimbabwe">becoming a software developer in Zimbabwe</a> and <a href="/writing/best-programming-languages-to-learn-in-zimbabwe">best programming languages to learn</a>.
+See the full path in my <a href="/writing/software-engineering-guide-for-beginners">software engineering guide for beginners</a>, and Zimbabwe-specific advice on <a href="/writing/how-to-become-a-software-developer-in-zimbabwe">becoming a software developer in Zimbabwe</a> and <a href="/writing/best-programming-languages-to-learn-in-zimbabwe">best programming languages to learn</a>.
 
 ### If you're a business owner
 
