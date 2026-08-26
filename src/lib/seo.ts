@@ -41,6 +41,8 @@ export function getBaseJsonLd() {
         name: "Vincent Mugondora",
         url: siteConfig.url,
         image: `${siteConfig.url}/vincent.avif`,
+        description:
+          "Zimbabwean software developer and AI builder creating intelligent solutions for businesses in Africa. Educator and entrepreneur based in Harare.",
         jobTitle: "Software Developer & AI Builder",
         email: siteConfig.email,
         telephone: siteConfig.phone,
@@ -51,10 +53,12 @@ export function getBaseJsonLd() {
           addressLocality: "Harare",
           addressCountry: "ZW",
         },
+        nationality: { "@type": "Country", name: "Zimbabwe" },
         knowsAbout: [
           "Software Engineering",
           "Artificial Intelligence",
           "AI Agents",
+          "Machine Learning",
           "Web Development",
           "Python",
           "JavaScript",
@@ -65,6 +69,7 @@ export function getBaseJsonLd() {
           "AI Automation",
           "Technology in Africa",
           "Software Development in Zimbabwe",
+          "African Technology",
         ],
         sameAs: [siteConfig.githubUrl, siteConfig.linkedinUrl, siteConfig.twitterUrl],
       },
@@ -136,6 +141,22 @@ export function getArticleJsonLd(article: {
       name: "Vincent Mugondora",
       url: siteConfig.url,
     },
+  };
+}
+
+export function getCollectionPageJsonLd(collection: {
+  name: string;
+  description: string;
+  url: string;
+}) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    name: collection.name,
+    description: collection.description,
+    url: collection.url,
+    isPartOf: { "@id": `${siteConfig.url}/#website` },
+    author: { "@id": `${siteConfig.url}/#person` },
   };
 }
 
