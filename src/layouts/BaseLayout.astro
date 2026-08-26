@@ -14,9 +14,10 @@ interface Props {
   canonicalURL?: string;
   ogType?: string;
   publishedAt?: string;
+  noindex?: boolean;
 }
 
-const { title, description, image, canonicalURL, ogType, publishedAt } = Astro.props;
+const { title, description, image, canonicalURL, ogType, publishedAt, noindex } = Astro.props;
 
 const pageTitle = title
   ? title.includes(siteConfig.name) ? title : `${title} | ${siteConfig.name}`
@@ -54,6 +55,7 @@ const jsonLd = getBaseJsonLd();
 
     <title>{pageTitle}</title>
     <meta name="description" content={pageDescription} />
+    {noindex && <meta name="robots" content="noindex, nofollow" />}
 
     <meta name="geo.region" content="ZW-HA" />
     <meta name="geo.placename" content="Harare, Zimbabwe" />
