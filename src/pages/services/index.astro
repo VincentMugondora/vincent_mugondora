@@ -1,13 +1,15 @@
 ---
 import PageLayout from "@layouts/PageLayout.astro";
 import { Icon } from "astro-icon/components";
-import { getBreadcrumbJsonLd } from "@/lib/seo";
+import { getBreadcrumbJsonLd, getServiceCatalogJsonLd } from "@/lib/seo";
 import { siteConfig } from "@config/site";
 
 const breadcrumbJsonLd = getBreadcrumbJsonLd([
   { name: "Home", url: siteConfig.url },
   { name: "Services", url: `${siteConfig.url}/services` },
 ]);
+
+const serviceCatalogJsonLd = getServiceCatalogJsonLd();
 
 const services = [
   {
