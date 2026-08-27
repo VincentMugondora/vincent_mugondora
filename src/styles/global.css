@@ -27,7 +27,7 @@
   --color-highlight-blue: hsl(197 95% 54%);
   --color-highlight-green: hsl(168 100% 40%);
 
-  --font-display: "Caveat", "Caveat Fallback", cursive;
+  --font-display: "Caveat", cursive;
   --font-body: "Inter", "Inter Fallback", sans-serif;
 }
 
