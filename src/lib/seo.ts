@@ -264,3 +264,70 @@ export function getBreadcrumbJsonLd(items: Array<{ name: string; url: string }>)
     })),
   };
 }
+
+export function getServiceJsonLd(service: {
+  name: string;
+  description: string;
+  url: string;
+  serviceType: string;
+}) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    name: service.name,
+    description: service.description,
+    url: service.url,
+    serviceType: service.serviceType,
+    provider: { "@id": `${siteConfig.url}/#person` },
+    areaServed: [
+      { "@type": "Country", name: "Zimbabwe" },
+      { "@type": "Continent", name: "Africa" },
+    ],
+  };
+}
+
+export function getServiceCatalogJsonLd() {
+  return {
+    "@context": "https://schema.org",
+    "@type": "OfferCatalog",
+    name: "Vincent Mugondora Services",
+    description:
+      "Software development, AI solutions, and automation services for businesses in Zimbabwe and Africa.",
+    url: `${siteConfig.url}/services`,
+    provider: { "@id": `${siteConfig.url}/#person` },
+    itemListElement: [
+      {
+        "@type": "Offer",
+        itemOffered: {
+          "@type": "Service",
+          name: "Software Development",
+          url: `${siteConfig.url}/services/software-development`,
+        },
+      },
+      {
+        "@type": "Offer",
+        itemOffered: {
+          "@type": "Service",
+          name: "Web Development",
+          url: `${siteConfig.url}/services/web-development`,
+        },
+      },
+      {
+        "@type": "Offer",
+        itemOffered: {
+          "@type": "Service",
+          name: "AI Solutions for Businesses",
+          url: `${siteConfig.url}/services/ai-solutions`,
+        },
+      },
+      {
+        "@type": "Offer",
+        itemOffered: {
+          "@type": "Service",
+          name: "AI Automation Services",
+          url: `${siteConfig.url}/services/ai-automation`,
+        },
+      },
+    ],
+  };
+}
