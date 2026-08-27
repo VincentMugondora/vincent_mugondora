@@ -55,6 +55,7 @@ const serviceJsonLd = {
   <script is:inline type="application/ld+json" set:html={JSON.stringify(serviceJsonLd)} />
   <script is:inline type="application/ld+json" set:html={JSON.stringify(breadcrumbJsonLd)} />
   <script is:inline type="application/ld+json" set:html={JSON.stringify(speakableJsonLd)} />
+  <script is:inline type="application/ld+json" set:html={JSON.stringify(faqJsonLd)} />
 
   <!-- Hero -->
   <section class="pt-[72px] py-16 md:py-24">
@@ -155,6 +156,55 @@ const serviceJsonLd = {
           <li><a href="/writing/ai-agents-explained-for-beginners" class="text-[var(--color-primary)] hover:underline">What Are AI Agents?</a></li>
           <li><a href="/services/ai-solutions" class="text-[var(--color-primary)] hover:underline">AI Solutions for Businesses</a></li>
         </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Measurable Outcomes -->
+  <section class="py-16 md:py-24">
+    <div class="max-w-[900px] mx-auto px-4 md:px-10">
+      <h2 class="font-display italic text-[36px] md:text-[48px] text-[var(--color-text-primary)] mb-8 tracking-tight leading-tight">
+        Measurable <span class="marker-highlight">outcomes</span>
+      </h2>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+        <div class="border border-[var(--color-card-border)] rounded-[16px] p-6">
+          <p class="font-display italic text-[32px] font-bold text-[var(--color-primary)]">Hours → Minutes</p>
+          <p class="font-body text-[14px] text-[var(--color-text-secondary)] mt-2 leading-relaxed">Tasks that take your team hours of manual work are completed in minutes by AI.</p>
+        </div>
+        <div class="border border-[var(--color-card-border)] rounded-[16px] p-6">
+          <p class="font-display italic text-[32px] font-bold text-[var(--color-primary)]">Fewer Errors</p>
+          <p class="font-body text-[14px] text-[var(--color-text-secondary)] mt-2 leading-relaxed">Automated data processing eliminates copy-paste mistakes, missed entries, and inconsistent formatting.</p>
+        </div>
+        <div class="border border-[var(--color-card-border)] rounded-[16px] p-6">
+          <p class="font-display italic text-[32px] font-bold text-[var(--color-primary)]">24/7 Response</p>
+          <p class="font-body text-[14px] text-[var(--color-text-secondary)] mt-2 leading-relaxed">AI handles customer messages around the clock — no missed enquiries, no delayed responses.</p>
+        </div>
+        <div class="border border-[var(--color-card-border)] rounded-[16px] p-6">
+          <p class="font-display italic text-[32px] font-bold text-[var(--color-primary)]">Scale Without Hiring</p>
+          <p class="font-body text-[14px] text-[var(--color-text-secondary)] mt-2 leading-relaxed">Handle 10x the volume of enquiries, documents, or orders without adding headcount.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section for AEO -->
+  <section class="bg-[var(--color-secondary)] py-16 md:py-24">
+    <div class="max-w-[900px] mx-auto px-4 md:px-10">
+      <h2 class="font-display italic text-[36px] md:text-[48px] text-[var(--color-text-primary)] mb-8 tracking-tight leading-tight">
+        Frequently asked <span class="scribble-underline">questions</span>
+      </h2>
+
+      <div class="space-y-6">
+        {faqs.map((faq) => (
+          <details class="bg-white rounded-[16px] border border-[var(--color-card-border)] p-6 group">
+            <summary class="font-display italic text-[18px] font-bold text-[var(--color-text-primary)] tracking-tight cursor-pointer list-none flex items-center justify-between">
+              {faq.question}
+              <Icon name="lucide:chevron-down" class="w-5 h-5 text-[var(--color-text-muted)] transition-transform group-open:rotate-180 flex-shrink-0 ml-4" />
+            </summary>
+            <p class="font-body text-[14px] text-[var(--color-text-secondary)] mt-4 leading-relaxed" data-speakable>{faq.answer}</p>
+          </details>
+        ))}
       </div>
     </div>
   </section>
