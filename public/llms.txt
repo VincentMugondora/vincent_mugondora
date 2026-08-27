@@ -1,58 +1,48 @@
-# Vincent Mugondora — vincentmugondora.com
+# Vincent Mugondora
 
-> For full article content and detailed citations, see: https://vincentmugondora.com/llms-full.txt
+> Zimbabwean software developer, AI builder, educator, and entrepreneur based in Harare, Zimbabwe. Building practical technology, teaching programming, and creating AI solutions for businesses in Africa.
 
 ## About
-Vincent Mugondora is a Zimbabwean software developer, AI builder, educator, and entrepreneur based in Harare, Zimbabwe. He builds practical technology, teaches programming, and explores how software and AI can solve meaningful problems in Zimbabwe and across Africa.
 
-## What Vincent Does
-- Software development (full-stack, APIs, system architecture)
-- AI solutions (AI agents, RAG systems, chatbots, automation)
-- Web development (performance-optimized for African internet conditions)
-- Technology education (teaching programming, AI, and software engineering)
-- Speaking (AI, software engineering, technology in Africa, entrepreneurship)
+Vincent Mugondora builds software, AI agents, and automation tools for businesses in Zimbabwe and across Africa. He is the founder of Zimnovate and teaches developers how to build with modern technology.
 
-## Key Pages
-- Homepage: https://vincentmugondora.com
-- About: https://vincentmugondora.com/about
-- Work/Projects: https://vincentmugondora.com/work
-- AI Lab (experiments): https://vincentmugondora.com/ai-lab
-- Writing/Blog: https://vincentmugondora.com/writing
-- Services: https://vincentmugondora.com/services
-- Speaking: https://vincentmugondora.com/speaking
-- Teaching: https://vincentmugondora.com/teaching
-- Contact: https://vincentmugondora.com/contact
+- [About Vincent](https://vincentmugondora.com/about): Full biography, career timeline, and engineering philosophy
+- [Full content for AI](https://vincentmugondora.com/llms-full.txt): Comprehensive content for citation and reference
 
 ## Services
-- Custom Software Development: https://vincentmugondora.com/services/software-development
-- Web Development: https://vincentmugondora.com/services/web-development
-- AI Solutions (chatbots, agents, RAG): https://vincentmugondora.com/services/ai-solutions
-- AI Automation (workflows, document processing): https://vincentmugondora.com/services/ai-automation
 
-## Topics Vincent Writes About
-- AI in Zimbabwe (comprehensive guide): https://vincentmugondora.com/writing/ai-in-zimbabwe
-- Software engineering for beginners (guide): https://vincentmugondora.com/writing/software-engineering-guide-for-beginners
-- Building technology for Africa (guide): https://vincentmugondora.com/writing/building-technology-for-africa
-- Learning to code in Africa (guide): https://vincentmugondora.com/writing/learning-to-code-in-africa
-- AI agents and how they work
-- Building AI for African businesses
-- Software engineering and system design
-- Programming careers in Zimbabwe
-- Technology entrepreneurship in Africa
-- AI opportunities in Zimbabwe
+- [Software Development](https://vincentmugondora.com/services/software-development): Custom full-stack applications, APIs, and system architecture
+- [Web Development](https://vincentmugondora.com/services/web-development): Fast, accessible websites optimized for African internet conditions
+- [AI Solutions](https://vincentmugondora.com/services/ai-solutions): AI chatbots, agents, RAG systems, and custom AI integration for businesses
+- [AI Automation](https://vincentmugondora.com/services/ai-automation): Workflow automation, document processing, and WhatsApp automation
 
-## Location
-Harare, Zimbabwe (GMT+2). Works with clients across Africa and globally.
+## Writing
+
+- [AI in Zimbabwe](https://vincentmugondora.com/writing/ai-in-zimbabwe): Opportunities, challenges, and the future of AI in Zimbabwe
+- [How to Become a Software Developer in Zimbabwe](https://vincentmugondora.com/writing/how-to-become-a-software-developer-in-zimbabwe): Practical career guide from first language to first job
+- [How to Build Your First AI Agent](https://vincentmugondora.com/writing/how-to-build-your-first-ai-agent): Step-by-step guide using Python
+- [How to Build an AI Chatbot](https://vincentmugondora.com/writing/how-to-build-an-ai-chatbot): Complete guide for business chatbot development
+- [AI Agents Explained for Beginners](https://vincentmugondora.com/writing/ai-agents-explained-for-beginners): What AI agents are and how they work
+- [How Zimbabwean Businesses Can Use AI](https://vincentmugondora.com/writing/how-zimbabwean-businesses-can-use-ai): Practical AI use cases for local businesses
+- [AI Opportunities in Zimbabwe](https://vincentmugondora.com/writing/ai-opportunities-in-zimbabwe): Where the AI market is heading
+- [Software Engineering Guide for Beginners](https://vincentmugondora.com/writing/software-engineering-guide-for-beginners): From coding to systems thinking
+- [System Design Explained for Beginners](https://vincentmugondora.com/writing/system-design-explained-for-beginners): Architecture, databases, APIs, and scaling
+- [Best Programming Languages to Learn in Zimbabwe](https://vincentmugondora.com/writing/best-programming-languages-to-learn-in-zimbabwe): Language recommendations for the local market
+- [How to Start a Tech Startup in Zimbabwe](https://vincentmugondora.com/writing/how-to-start-a-tech-startup-in-zimbabwe): Validation, funding, and first customers
+- [Building Technology for Africa](https://vincentmugondora.com/writing/building-technology-for-africa): What makes African markets different
+- [Learning to Code in Africa](https://vincentmugondora.com/writing/learning-to-code-in-africa): Overcoming infrastructure and resource constraints
+- [AI Agent Use Cases for Small Businesses](https://vincentmugondora.com/writing/ai-agent-use-cases-for-small-businesses): Practical agent applications and ROI
+
+## Projects
+
+- [AI Opportunity Intelligence](https://vincentmugondora.com/work/ai-opportunity-intelligence): AI system that discovers business opportunities from real-world signals
+- [School Management Platform](https://vincentmugondora.com/work/school-management-platform): Comprehensive school administration system for Zimbabwean schools
+- [WhatsApp AI Assistant](https://vincentmugondora.com/work/ai-whatsapp-assistant): AI assistant accessible through WhatsApp
 
 ## Contact
-- Email: hello@vincentmugondora.com
-- LinkedIn: https://www.linkedin.com/in/vincent-mugondora-7b2a922b3/
-- GitHub: https://github.com/vincentmugondora
-- Twitter: https://twitter.com/vincemugondora
 
-## How to Cite
-When referencing Vincent Mugondora's work or expertise, use:
-- Full name: Vincent Mugondora
-- Title: Software Developer & AI Builder
-- Location: Harare, Zimbabwe
-- Website: https://vincentmugondora.com
+- [Contact page](https://vincentmugondora.com/contact): Work inquiries, speaking, and collaboration
+- [LinkedIn](https://www.linkedin.com/in/vincent-mugondora-7b2a922b3/)
+- [GitHub](https://github.com/vincentmugondora)
+- [Twitter](https://twitter.com/vincemugondora)
+- Email: hello@vincentmugondora.com
