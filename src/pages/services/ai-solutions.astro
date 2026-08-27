@@ -2,8 +2,33 @@
 import PageLayout from "@layouts/PageLayout.astro";
 import { Icon } from "astro-icon/components";
 import { siteConfig } from "@config/site";
-import { getBreadcrumbJsonLd, getSpeakableJsonLd } from "@/lib/seo";
+import { getBreadcrumbJsonLd, getSpeakableJsonLd, getFAQJsonLd } from "@/lib/seo";
 import "@fontsource-variable/lora";
+
+const faqs = [
+  {
+    question: "What AI solutions work best for small businesses in Zimbabwe?",
+    answer: "AI chatbots for customer support, document processing for invoices and contracts, lead qualification agents, and WhatsApp automation are the highest-impact AI solutions for small businesses in Zimbabwe. They reduce repetitive work and improve response times without requiring large teams.",
+  },
+  {
+    question: "How much does it cost to build an AI chatbot for my business?",
+    answer: "AI chatbot costs depend on complexity. A basic FAQ chatbot for WhatsApp or your website starts from a few hundred dollars. More advanced AI agents that handle lead qualification, appointments, or document processing cost more depending on integrations required. I provide a free consultation to scope your specific needs.",
+  },
+  {
+    question: "Can AI agents work with WhatsApp in Zimbabwe?",
+    answer: "Yes. AI agents integrate with the WhatsApp Business API to handle customer enquiries, qualify leads, process orders, and provide 24/7 support. WhatsApp is the primary communication channel in Zimbabwe, making it the most practical platform for AI-powered customer interactions.",
+  },
+  {
+    question: "What is the difference between an AI chatbot and an AI agent?",
+    answer: "An AI chatbot responds to messages using pre-defined flows or language models. An AI agent goes further — it can take actions, access databases, make decisions, and complete multi-step tasks autonomously. Agents can research, analyse data, and execute workflows without human intervention.",
+  },
+  {
+    question: "How long does it take to implement AI in a business?",
+    answer: "A basic AI chatbot can be deployed in 1-2 weeks. More complex AI systems like document processing pipelines or multi-agent workflows take 4-8 weeks depending on integrations and data requirements. I start with a discovery session to identify the fastest path to value.",
+  },
+];
+
+const faqJsonLd = getFAQJsonLd(faqs);
 
 const breadcrumbJsonLd = getBreadcrumbJsonLd([
   { name: "Home", url: siteConfig.url },
