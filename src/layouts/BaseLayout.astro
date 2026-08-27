@@ -82,11 +82,9 @@ const jsonLd = getBaseJsonLd();
     <meta name="twitter:image" content={ogImage} />
 
     <script is:inline type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
-
-    <!-- Ahrefs Analytics -->
-    <script src="https://analytics.ahrefs.com/analytics.js" data-key="TW3vMyn8vSGd3oswazXOuQ" async></script>
   </head>
   <body class="font-body antialiased">
     <slot />
+    <script src="https://analytics.ahrefs.com/analytics.js" data-key="TW3vMyn8vSGd3oswazXOuQ" defer></script>
   </body>
 </html>
