@@ -2,8 +2,29 @@
 import PageLayout from "@layouts/PageLayout.astro";
 import { Icon } from "astro-icon/components";
 import { siteConfig } from "@config/site";
-import { getBreadcrumbJsonLd, getSpeakableJsonLd } from "@/lib/seo";
+import { getBreadcrumbJsonLd, getSpeakableJsonLd, getFAQJsonLd } from "@/lib/seo";
 import "@fontsource-variable/lora";
+
+const faqs = [
+  {
+    question: "What business processes can be automated with AI?",
+    answer: "Common processes include invoice and receipt processing, customer message replies on WhatsApp and email, lead qualification and follow-up, report generation, data entry and categorisation, appointment scheduling, and internal document search. Any task that is repetitive, rule-based, and time-consuming is a strong candidate for AI automation.",
+  },
+  {
+    question: "How does WhatsApp automation work for businesses?",
+    answer: "WhatsApp automation uses the WhatsApp Business API to send and receive messages programmatically. An AI agent connects to your WhatsApp business number to handle customer enquiries, send order updates, qualify leads, process requests, and escalate complex issues to your team — all without manual effort.",
+  },
+  {
+    question: "Will AI automation replace my employees?",
+    answer: "No. AI automation handles the repetitive, time-consuming parts of work so your team can focus on decisions, relationships, and creative problem-solving. It is a tool that makes your existing team more productive, not a replacement for human judgement.",
+  },
+  {
+    question: "What results can I expect from AI automation?",
+    answer: "Businesses typically see 60-80% reduction in time spent on automated tasks, faster customer response times (from hours to seconds), fewer data entry errors, and the ability to handle more volume without hiring additional staff. Results vary by process complexity.",
+  },
+];
+
+const faqJsonLd = getFAQJsonLd(faqs);
 
 const breadcrumbJsonLd = getBreadcrumbJsonLd([
   { name: "Home", url: siteConfig.url },
