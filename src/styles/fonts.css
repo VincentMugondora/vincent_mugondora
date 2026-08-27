@@ -1,8 +1,28 @@
+/* Inter fallback — matches Inter metrics to minimize CLS during swap */
+@font-face {
+  font-family: 'Inter Fallback';
+  src: local('Arial');
+  size-adjust: 107%;
+  ascent-override: 90%;
+  descent-override: 22%;
+  line-gap-override: 0%;
+}
+
+/* Caveat fallback — matches Caveat metrics */
+@font-face {
+  font-family: 'Caveat Fallback';
+  src: local('Comic Sans MS'), local('cursive');
+  size-adjust: 95%;
+  ascent-override: 100%;
+  descent-override: 25%;
+  line-gap-override: 0%;
+}
+
 /* Caveat Variable — display/heading font */
 @font-face {
   font-family: 'Caveat';
   font-style: normal;
-  font-display: optional;
+  font-display: swap;
   font-weight: 400 700;
   src: url('/fonts/Caveat-VariableFont_wght.woff2') format('woff2');
 }
