@@ -196,6 +196,27 @@ const serviceJsonLd = {
     </div>
   </section>
 
+  <!-- FAQ Section for AEO -->
+  <section class="bg-[var(--color-secondary)] py-16 md:py-24">
+    <div class="max-w-[900px] mx-auto px-4 md:px-10">
+      <h2 class="font-display italic text-[36px] md:text-[48px] text-[var(--color-text-primary)] mb-8 tracking-tight leading-tight">
+        Frequently asked <span class="scribble-underline">questions</span>
+      </h2>
+
+      <div class="space-y-6">
+        {faqs.map((faq) => (
+          <details class="bg-white rounded-[16px] border border-[var(--color-card-border)] p-6 group">
+            <summary class="font-display italic text-[18px] font-bold text-[var(--color-text-primary)] tracking-tight cursor-pointer list-none flex items-center justify-between">
+              {faq.question}
+              <Icon name="lucide:chevron-down" class="w-5 h-5 text-[var(--color-text-muted)] transition-transform group-open:rotate-180 flex-shrink-0 ml-4" />
+            </summary>
+            <p class="font-body text-[14px] text-[var(--color-text-secondary)] mt-4 leading-relaxed" data-speakable>{faq.answer}</p>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
   <!-- CTA -->
   <section class="py-20 md:py-28">
     <div class="max-w-[800px] mx-auto px-4 md:px-10 text-center">
@@ -203,7 +224,7 @@ const serviceJsonLd = {
         Ready to use <span class="marker-highlight">AI</span> in your business?
       </h2>
       <p class="font-body text-[16px] md:text-[18px] text-[var(--color-text-secondary)] leading-relaxed max-w-[500px] mx-auto">
-        Tell me about your business challenge and I'll suggest how AI can help.
+        Tell me what repetitive work your team does every week — I'll show you what AI can handle.
       </p>
       <a
         href="/contact"
