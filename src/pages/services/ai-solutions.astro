@@ -3,6 +3,7 @@ import PageLayout from "@layouts/PageLayout.astro";
 import { Icon } from "astro-icon/components";
 import { siteConfig } from "@config/site";
 import { getBreadcrumbJsonLd, getSpeakableJsonLd } from "@/lib/seo";
+import "@fontsource-variable/lora";
 
 const breadcrumbJsonLd = getBreadcrumbJsonLd([
   { name: "Home", url: siteConfig.url },
