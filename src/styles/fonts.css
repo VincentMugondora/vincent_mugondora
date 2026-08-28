@@ -8,30 +8,21 @@
   line-gap-override: 0%;
 }
 
-/* Caveat Variable — display/heading font */
+/* Caveat Variable — display/heading font (Latin subset) */
 @font-face {
   font-family: 'Caveat';
   font-style: normal;
-  font-display: optional;
+  font-display: swap;
   font-weight: 400 700;
-  src: url('/fonts/Caveat-VariableFont_wght.woff2') format('woff2');
+  src: url('/fonts/Caveat-Latin.woff2') format('woff2');
 }
 
-/* Inter Variable — body font */
+/* Inter Variable — body font (Latin subset) */
 @font-face {
   font-family: 'Inter';
   font-style: normal;
   font-display: swap;
   font-weight: 100 900;
-  src: url('/fonts/Inter-VariableFont_opsz,wght.woff2') format('woff2');
-}
-
-/* Inter Variable Italic */
-@font-face {
-  font-family: 'Inter';
-  font-style: italic;
-  font-display: optional;
-  font-weight: 100 900;
-  src: url('/fonts/Inter-Italic-VariableFont_opsz,wght.woff2') format('woff2');
+  src: url('/fonts/Inter-Latin.woff2') format('woff2');
 }
 
