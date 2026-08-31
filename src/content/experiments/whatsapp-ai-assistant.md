@@ -1,7 +1,7 @@
 ---
 title: "WhatsApp AI Assistant"
 description: "Exploring how AI-powered services can be delivered through WhatsApp rather than requiring users to learn a new application."
-problem: "Most AI tools require users to visit a website or download an app. In Zimbabwe and much of Africa, WhatsApp is where people already communicate — making AI accessible means meeting people where they already are."
+problem: "Most AI tools require users to visit a website or download an app. In Zimbabwe and much of Africa, WhatsApp is where people already communicate - making AI accessible means meeting people where they already are."
 hypothesis: "AI services delivered through WhatsApp will have higher adoption and engagement than equivalent web or app-based tools, because they eliminate the friction of learning a new interface."
 technologies: ["Python", "WhatsApp API", "LLM", "Node.js", "FastAPI"]
 status: "active"
@@ -12,7 +12,7 @@ publishedAt: 2025-01-10
 
 The WhatsApp AI Assistant explores a distribution question as much as a technology question: **What happens when you deliver AI capabilities through the communication platform people already use every day?**
 
-In Zimbabwe, WhatsApp isn't just a messaging app — it's the primary digital platform for communication, commerce, information sharing, and community. If AI is going to serve people here, it should work where they already are.
+In Zimbabwe, WhatsApp isn't just a messaging app - it's the primary digital platform for communication, commerce, information sharing, and community. If AI is going to serve people here, it should work where they already are.
 
 ## The Problem
 
@@ -22,7 +22,7 @@ Current AI tools (ChatGPT, Claude, etc.) require:
 - Understanding of a new interface
 - Often: a credit card for payment
 
-For many people in Zimbabwe and Africa, these barriers mean AI remains inaccessible — not because the technology is too complex, but because the delivery mechanism doesn't match how people actually use technology.
+For many people in Zimbabwe and Africa, these barriers mean AI remains inaccessible - not because the technology is too complex, but because the delivery mechanism doesn't match how people actually use technology.
 
 ## How It Works
 
@@ -64,24 +64,24 @@ Conversations are not used for training. User data is handled with clear boundar
 
 ## Current Status
 
-The prototype is functional — it can receive WhatsApp messages, process them through an LLM, and send back intelligent responses. Current work focuses on reliability, response quality, and exploring business-specific deployments.
+The prototype is functional - it can receive WhatsApp messages, process them through an LLM, and send back intelligent responses. Current work focuses on reliability, response quality, and exploring business-specific deployments.
 
 ## What I'm Learning
 
-1. **Distribution beats sophistication** — A simple AI on WhatsApp gets more usage than a powerful AI on a website nobody visits.
-2. **Message length matters** — WhatsApp users expect concise responses. AI systems tuned for detailed web responses need to be re-tuned for messaging context.
-3. **Voice notes are the next frontier** — Many WhatsApp users prefer voice over text. Supporting voice input and output would dramatically expand accessibility.
-4. **Business use cases are clearest** — Customer support, appointment booking, and information lookup are the most natural fits for WhatsApp AI.
+1. **Distribution beats sophistication** - A simple AI on WhatsApp gets more usage than a powerful AI on a website nobody visits.
+2. **Message length matters** - WhatsApp users expect concise responses. AI systems tuned for detailed web responses need to be re-tuned for messaging context.
+3. **Voice notes are the next frontier** - Many WhatsApp users prefer voice over text. Supporting voice input and output would dramatically expand accessibility.
+4. **Business use cases are clearest** - Customer support, appointment booking, and information lookup are the most natural fits for WhatsApp AI.
 
 ## Use Cases Being Explored
 
-- **Business customer support** — AI handling common enquiries for local businesses 24/7
-- **Information services** — Agricultural prices, weather, news summaries
-- **Educational assistance** — Study help, concept explanations, practice questions
-- **Administrative automation** — Appointment scheduling, reminders, follow-ups
+- **Business customer support** - AI handling common enquiries for local businesses 24/7
+- **Information services** - Agricultural prices, weather, news summaries
+- **Educational assistance** - Study help, concept explanations, practice questions
+- **Administrative automation** - Appointment scheduling, reminders, follow-ups
 
 ## Why This Matters for Zimbabwe
 
-WhatsApp has near-universal adoption in Zimbabwe. Building AI into WhatsApp means building AI that can actually reach people — not just technically sophisticated users, but everyone.
+WhatsApp has near-universal adoption in Zimbabwe. Building AI into WhatsApp means building AI that can actually reach people - not just technically sophisticated users, but everyone.
 
 If AI's promise is to make information and assistance more accessible, the delivery channel matters as much as the technology itself.

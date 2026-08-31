@@ -1927,7 +1927,7 @@
                 "height": 1294
               },
               "snippet": "<section class=\"bg-offwhite text-slate-brand py-20 lg:py-28\">",
-              "nodeLabel": "What I Build\nAI Chatbots — Intelligent conversational agents for customer suppo…"
+              "nodeLabel": "What I Build\nAI Chatbots - Intelligent conversational agents for customer suppo…"
             },
             "score": 0.0365787190080343,
             "subItems": {
@@ -4859,7 +4859,7 @@
                 "width": 38,
                 "height": 45
               },
-              "snippet": "<a href=\"/\" class=\"header__logo\" aria-label=\"Vincent Mugondora — Home\" data-astro-cid-u6lvrvjr=\"\">",
+              "snippet": "<a href=\"/\" class=\"header__logo\" aria-label=\"Vincent Mugondora - Home\" data-astro-cid-u6lvrvjr=\"\">",
               "nodeLabel": "VM.",
               "explanation": "Fix any of the following:\n  Text inside the element is not included in the accessible name"
             }
@@ -6571,7 +6571,7 @@
                     "height": 1294
                   },
                   "snippet": "<section class=\"bg-offwhite text-slate-brand py-20 lg:py-28\">",
-                  "nodeLabel": "What I Build\nAI Chatbots — Intelligent conversational agents for customer suppo…"
+                  "nodeLabel": "What I Build\nAI Chatbots - Intelligent conversational agents for customer suppo…"
                 },
                 "score": 0.0365787190080343,
                 "subItems": {

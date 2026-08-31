@@ -1,6 +1,6 @@
 ---
 title: "Software Engineering Guide for Beginners: How to Build Real Software"
-description: "A complete guide to software engineering for beginners — from choosing a language to understanding system design, APIs, databases and building production applications."
+description: "A complete guide to software engineering for beginners - from choosing a language to understanding system design, APIs, databases and building production applications."
 category: "software-engineering"
 publishedAt: 2026-08-26
 updatedAt: 2026-08-26
@@ -10,9 +10,9 @@ draft: false
 
 Software engineering is more than writing code. It's understanding problems, designing systems, building reliable software, and shipping products that work in the real world.
 
-**The short answer:** If you want to become a software engineer, you need three things — a programming language you can build with, understanding of how systems fit together, and the ability to ship working software. Everything else (frameworks, tools, methodologies) layers on top of that foundation.
+**The short answer:** If you want to become a software engineer, you need three things - a programming language you can build with, understanding of how systems fit together, and the ability to ship working software. Everything else (frameworks, tools, methodologies) layers on top of that foundation.
 
-I've been building production software for years and teaching developers in Zimbabwe how to move from beginner to professional. This guide covers the full path — not abstract theory, but what you actually need to know to build real software and get paid for it.
+I've been building production software for years and teaching developers in Zimbabwe how to move from beginner to professional. This guide covers the full path - not abstract theory, but what you actually need to know to build real software and get paid for it.
 
 ## What is software engineering?
 
@@ -28,8 +28,8 @@ The distinction matters because the market pays significantly more for engineers
 
 You need at least one language you can build complete applications with. For most beginners, that means:
 
-- **Python** — easiest to learn, directly useful for AI, data, automation, and backend development
-- **JavaScript/TypeScript** — essential for web development, largest job market globally
+- **Python** - easiest to learn, directly useful for AI, data, automation, and backend development
+- **JavaScript/TypeScript** - essential for web development, largest job market globally
 
 I've written a detailed comparison for the Zimbabwean context: <a href="/writing/best-programming-languages-to-learn-in-zimbabwe">best programming languages to learn in Zimbabwe</a>.
 
@@ -50,7 +50,7 @@ Key concepts:
 
 Every real application stores data. You need to understand:
 
-- Relational databases (PostgreSQL, MySQL) — tables, queries, relationships
+- Relational databases (PostgreSQL, MySQL) - tables, queries, relationships
 - When to use SQL vs NoSQL
 - How to design a database schema
 - Basic indexing for performance
@@ -138,7 +138,7 @@ Beyond technical skills, the engineers I've seen succeed share these traits:
 
 ## Software engineering in Africa
 
-Building software in Africa — and specifically in Zimbabwe — comes with unique constraints and advantages:
+Building software in Africa - and specifically in Zimbabwe - comes with unique constraints and advantages:
 
 ### Constraints
 - Unreliable internet (design for offline-first and low bandwidth)
@@ -158,12 +158,12 @@ The developers who understand African context while building to global standards
 
 Once you have the fundamentals, you can specialise:
 
-- **Frontend engineering** — user interfaces, React/Vue/Svelte, design systems
-- **Backend engineering** — APIs, databases, server architecture, performance
-- **Full-stack development** — both frontend and backend
-- **AI/ML engineering** — building AI applications, see <a href="/writing/ai-agents-explained-for-beginners">AI agents for beginners</a>
-- **DevOps/Infrastructure** — deployment, monitoring, cloud architecture
-- **Mobile development** — React Native, Flutter, native iOS/Android
+- **Frontend engineering** - user interfaces, React/Vue/Svelte, design systems
+- **Backend engineering** - APIs, databases, server architecture, performance
+- **Full-stack development** - both frontend and backend
+- **AI/ML engineering** - building AI applications, see <a href="/writing/ai-agents-explained-for-beginners">AI agents for beginners</a>
+- **DevOps/Infrastructure** - deployment, monitoring, cloud architecture
+- **Mobile development** - React Native, Flutter, native iOS/Android
 
 For the AI specialisation specifically, I've written about <a href="/writing/how-to-build-your-first-ai-agent">building your first AI agent</a> as a practical starting point.
 

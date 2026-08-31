@@ -4,7 +4,7 @@ Read this before writing or modifying code.
 
 ## What this is
 
-The official personal website and digital brand hub for Vincent Mugondora — Software Engineer, AI Builder, Educator, and Entrepreneur.
+The official personal website and digital brand hub for Vincent Mugondora - Software Engineer, AI Builder, Educator, and Entrepreneur.
 
 ## Stack
 

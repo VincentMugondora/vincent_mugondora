@@ -1,4 +1,4 @@
-/* Inter fallback — matches Inter metrics to minimize CLS during swap */
+/* Inter fallback - matches Inter metrics to minimize CLS during swap */
 @font-face {
   font-family: 'Inter Fallback';
   src: local('Arial');
@@ -8,7 +8,7 @@
   line-gap-override: 0%;
 }
 
-/* Caveat Variable — display/heading font (Latin subset) */
+/* Caveat Variable - display/heading font (Latin subset) */
 @font-face {
   font-family: 'Caveat';
   font-style: normal;
@@ -17,7 +17,7 @@
   src: url('/fonts/Caveat-Latin.woff2') format('woff2');
 }
 
-/* Inter Variable — body font (Latin subset) */
+/* Inter Variable - body font (Latin subset) */
 @font-face {
   font-family: 'Inter';
   font-style: normal;

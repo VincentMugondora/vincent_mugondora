@@ -20,7 +20,7 @@ Newest decisions go at the top.
 
 ---
 
-## 2026-08-14 — Personal domain is the primary brand
+## 2026-08-14 - Personal domain is the primary brand
 
 **Decision:** The primary website is vincentmugondora.com.
 
@@ -32,7 +32,7 @@ Newest decisions go at the top.
 
 ---
 
-## 2026-08-14 — Personal brand is separate from Zimnovate
+## 2026-08-14 - Personal brand is separate from Zimnovate
 
 **Decision:** Vincent Mugondora and Zimnovate have distinct identities.
 
@@ -44,7 +44,7 @@ Newest decisions go at the top.
 
 ---
 
-## 2026-08-14 — Static-first architecture
+## 2026-08-14 - Static-first architecture
 
 **Decision:** The portfolio will be primarily statically rendered using Astro.
 
@@ -56,7 +56,7 @@ Newest decisions go at the top.
 
 ---
 
-## 2026-08-14 — No CMS for v1
+## 2026-08-14 - No CMS for v1
 
 **Decision:** Portfolio content is maintained through the repository using Markdown/MDX and Astro content collections.
 
@@ -68,7 +68,7 @@ Newest decisions go at the top.
 
 ---
 
-## 2026-08-14 — Brand colors
+## 2026-08-14 - Brand colors
 
 **Decision:** Use Midnight Navy, Electric Blue and African Gold as the core palette.
 
@@ -80,7 +80,7 @@ Newest decisions go at the top.
 
 ---
 
-## 2026-08-14 — Typography
+## 2026-08-14 - Typography
 
 **Decision:** Space Grotesk for headings, Inter for body text and JetBrains Mono for technical content.
 
@@ -92,7 +92,7 @@ Newest decisions go at the top.
 
 ---
 
-## 2026-08-14 — Reference image is inspiration, not a clone
+## 2026-08-14 - Reference image is inspiration, not a clone
 
 **Decision:** The supplied portfolio image defines the visual direction but must not be copied directly.
 
@@ -104,7 +104,7 @@ Newest decisions go at the top.
 
 ---
 
-## 2026-08-14 — Content must be truthful
+## 2026-08-14 - Content must be truthful
 
 **Decision:** Never invent achievements, statistics, clients, testimonials, awards, project results or experience.
 
@@ -116,7 +116,7 @@ Newest decisions go at the top.
 
 ---
 
-## 2026-08-14 — Minimal JavaScript
+## 2026-08-14 - Minimal JavaScript
 
 **Decision:** Use JavaScript only where interaction genuinely requires it.
 
@@ -128,7 +128,7 @@ Newest decisions go at the top.
 
 ---
 
-## 2026-08-14 — Dark/light editorial rhythm
+## 2026-08-14 - Dark/light editorial rhythm
 
 **Decision:** Alternate between light editorial sections and Midnight Navy dark sections.
 

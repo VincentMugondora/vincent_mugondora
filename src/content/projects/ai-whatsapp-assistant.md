@@ -1,6 +1,6 @@
 ---
 title: "WhatsApp AI Assistant"
-description: "An AI assistant that lives inside WhatsApp — making useful AI accessible through the platform people already use every day, without requiring app downloads or technical knowledge."
+description: "An AI assistant that lives inside WhatsApp - making useful AI accessible through the platform people already use every day, without requiring app downloads or technical knowledge."
 problem: "Most people in Zimbabwe will never download an AI app or use a chatbot on a website. But they use WhatsApp every day. Useful AI needs to meet people where they are."
 role: "Engineer"
 technologies: ["Python", "FastAPI", "WhatsApp Cloud API", "OpenAI", "Redis", "PostgreSQL"]
@@ -31,7 +31,7 @@ A WhatsApp-native AI assistant that:
 2. **Understands intent** using natural language processing
 3. **Generates helpful responses** using GPT-4 class models
 4. **Maintains conversation context** across multiple messages
-5. **Handles diverse queries** — from general knowledge to specific business questions
+5. **Handles diverse queries** - from general knowledge to specific business questions
 
 Users simply message the WhatsApp number like they'd message a friend. No accounts, no apps, no learning curve.
 
@@ -67,15 +67,15 @@ User (WhatsApp) → WhatsApp Cloud API → Webhook (FastAPI)
 
 ### Key technical decisions
 
-**FastAPI** — Async webhook handling is critical. WhatsApp sends messages via webhooks that must respond quickly. FastAPI's async support handles concurrent messages without blocking.
+**FastAPI** - Async webhook handling is critical. WhatsApp sends messages via webhooks that must respond quickly. FastAPI's async support handles concurrent messages without blocking.
 
-**Redis for conversation context** — Each user's conversation history is stored in Redis with a TTL. This gives the AI context about previous messages without expensive database queries on every interaction. Context expires after inactivity so the system doesn't accumulate stale conversations indefinitely.
+**Redis for conversation context** - Each user's conversation history is stored in Redis with a TTL. This gives the AI context about previous messages without expensive database queries on every interaction. Context expires after inactivity so the system doesn't accumulate stale conversations indefinitely.
 
-**PostgreSQL for analytics** — Every interaction is logged: message content, response time, user satisfaction signals, error rates. This data drives improvements to the system over time.
+**PostgreSQL for analytics** - Every interaction is logged: message content, response time, user satisfaction signals, error rates. This data drives improvements to the system over time.
 
-**WhatsApp Cloud API (Meta)** — Chose the official API over unofficial libraries (Baileys) for production reliability. The official API has rate limits and costs per conversation, but provides stability and compliance that matter for a production service.
+**WhatsApp Cloud API (Meta)** - Chose the official API over unofficial libraries (Baileys) for production reliability. The official API has rate limits and costs per conversation, but provides stability and compliance that matter for a production service.
 
-**Prompt engineering over fine-tuning** — Rather than fine-tuning a model (expensive, slow to iterate), the system uses carefully crafted prompts with dynamic context injection. This allows rapid iteration on the AI's behaviour without model retraining.
+**Prompt engineering over fine-tuning** - Rather than fine-tuning a model (expensive, slow to iterate), the system uses carefully crafted prompts with dynamic context injection. This allows rapid iteration on the AI's behaviour without model retraining.
 
 ## Design Decisions for African Users
 
@@ -125,15 +125,15 @@ Meta has strict policies about what automated messages can contain. The system m
 
 ### 1. Distribution beats features
 
-A mediocre AI on WhatsApp reaches more people than a brilliant AI on a dedicated app. The distribution advantage of meeting users on their existing platform is enormous. Don't build the perfect product — build the accessible one.
+A mediocre AI on WhatsApp reaches more people than a brilliant AI on a dedicated app. The distribution advantage of meeting users on their existing platform is enormous. Don't build the perfect product - build the accessible one.
 
 ### 2. Conversation design is harder than AI engineering
 
-Getting the AI to generate good text is the easy part. Designing conversation flows that feel natural, handle edge cases, and guide users to useful outcomes — that's the real engineering challenge.
+Getting the AI to generate good text is the easy part. Designing conversation flows that feel natural, handle edge cases, and guide users to useful outcomes - that's the real engineering challenge.
 
 ### 3. African users are surprisingly tolerant of AI
 
-The fear that users wouldn't trust or understand AI was largely unfounded. People quickly develop intuitions about what the AI can and can't do. They treat it like a knowledgeable friend — asking questions they'd otherwise search Google for, but in a more natural format.
+The fear that users wouldn't trust or understand AI was largely unfounded. People quickly develop intuitions about what the AI can and can't do. They treat it like a knowledgeable friend - asking questions they'd otherwise search Google for, but in a more natural format.
 
 ### 4. The business model is in the B2B layer
 

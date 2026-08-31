@@ -2,7 +2,7 @@
 
 This is the concrete priority order for the top five pages to improve first.
 
-## Priority 1 — AI Solutions for Businesses
+## Priority 1 - AI Solutions for Businesses
 
 Target intent:
 - ai solutions for businesses
@@ -22,7 +22,7 @@ High-impact updates:
   - /writing/ai-agent-use-cases-for-small-businesses
 - Add a short CTA for business owners: "Tell me what repetitive work your team does every week."
 
-## Priority 2 — AI Automation Services
+## Priority 2 - AI Automation Services
 
 Target intent:
 - AI automation services
@@ -39,7 +39,7 @@ High-impact updates:
 - Link to the AI agents and Zimbabwe business AI articles.
 - Emphasize measurable outcomes: saved time, fewer errors, faster response times.
 
-## Priority 3 — What Are AI Agents? A Simple Guide for Beginners
+## Priority 3 - What Are AI Agents? A Simple Guide for Beginners
 
 Target intent:
 - what are AI agents
@@ -56,7 +56,7 @@ High-impact updates:
 - Add a short callout: "If you're in Zimbabwe and evaluating automation, read this before buying a solution."
 - Link back to the business services page and AI use-case article.
 
-## Priority 4 — How Zimbabwean Businesses Can Use AI in 2026
+## Priority 4 - How Zimbabwean Businesses Can Use AI in 2026
 
 Target intent:
 - AI for Zimbabwe businesses
@@ -73,7 +73,7 @@ High-impact updates:
 - Link directly to the services pages and relevant examples.
 - Include a closing CTA aimed at local business owners.
 
-## Priority 5 — How to Build Your First AI Agent
+## Priority 5 - How to Build Your First AI Agent
 
 Target intent:
 - how to build an AI agent

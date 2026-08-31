@@ -1,6 +1,6 @@
 ---
 title: "Building Technology for Africa: What's Different and Why It Matters"
-description: "A practical guide to building software for African markets — the constraints, opportunities, and design decisions that make or break technology products on the continent."
+description: "A practical guide to building software for African markets - the constraints, opportunities, and design decisions that make or break technology products on the continent."
 category: "zimbabwe-tech"
 publishedAt: 2026-08-26
 updatedAt: 2026-08-26
@@ -10,7 +10,7 @@ draft: false
 
 Building software for Africa is not the same as building software for Europe or North America and then translating it. The constraints are different, the users are different, and the opportunities are different.
 
-**The short answer:** Technology products succeed in Africa when they're designed around three realities — unreliable infrastructure, mobile-first users, and problems that global companies either ignore or can't solve from overseas. Developers who understand these constraints have a structural advantage over well-funded competitors building from Silicon Valley.
+**The short answer:** Technology products succeed in Africa when they're designed around three realities - unreliable infrastructure, mobile-first users, and problems that global companies either ignore or can't solve from overseas. Developers who understand these constraints have a structural advantage over well-funded competitors building from Silicon Valley.
 
 I build software in Zimbabwe and for African markets. This guide covers what's genuinely different about building technology here, what works, and where the biggest opportunities exist for developers and entrepreneurs.
 
@@ -27,7 +27,7 @@ In most developed markets, you can assume:
 
 In most African markets, you can assume none of these. Building as though they exist guarantees your product will fail for most users.
 
-The developers who succeed here design for the infrastructure that actually exists — not the infrastructure they wish existed.
+The developers who succeed here design for the infrastructure that actually exists - not the infrastructure they wish existed.
 
 ### The user is different
 
@@ -39,7 +39,7 @@ The typical African technology user:
 - Has limited experience with complex application interfaces
 - Values trust and personal relationships in transactions
 
-Products that ignore these realities have elegant UIs that nobody uses. Products that embrace them — like M-Pesa, which made mobile money work with USSD on feature phones — transform entire economies.
+Products that ignore these realities have elegant UIs that nobody uses. Products that embrace them - like M-Pesa, which made mobile money work with USSD on feature phones - transform entire economies.
 
 ### The opportunity is different
 
@@ -57,7 +57,7 @@ These are large problems with large markets and very few good solutions.
 
 ### 1. Offline-first and low-bandwidth
 
-Your application should work — or degrade gracefully — when connectivity is unreliable.
+Your application should work - or degrade gracefully - when connectivity is unreliable.
 
 **Practical approach:**
 - Cache aggressively on the client
@@ -79,7 +79,7 @@ WhatsApp is the default communication platform across Africa. Over 90% of smartp
 - Already optimised for low-bandwidth networks
 - Users already trust and understand the interface
 
-I built a <a href="/work/ai-whatsapp-assistant">WhatsApp AI assistant</a> specifically because this distribution channel is unmatched for reaching African users. See also my article on <a href="/writing/how-zimbabwean-businesses-can-use-ai">how Zimbabwean businesses can use AI</a> — WhatsApp is the common starting point.
+I built a <a href="/work/ai-whatsapp-assistant">WhatsApp AI assistant</a> specifically because this distribution channel is unmatched for reaching African users. See also my article on <a href="/writing/how-zimbabwean-businesses-can-use-ai">how Zimbabwean businesses can use AI</a> - WhatsApp is the common starting point.
 
 ### 3. Mobile-first (and often mobile-only)
 
@@ -97,18 +97,18 @@ Don't start with a desktop application and adapt it for mobile. Start with mobil
 
 A $10/month subscription that seems cheap in San Francisco is a significant expense in Harare. Pricing models that work in Africa:
 
-- **Per-transaction fees** — charge when value is delivered
-- **Freemium with micro-payments** — let users pay for what they use
-- **WhatsApp-based services** — low marginal cost per interaction
-- **Bulk SMS/USSD** — reach users without smartphones
-- **Agent models** — one subscription serves an entire community
+- **Per-transaction fees** - charge when value is delivered
+- **Freemium with micro-payments** - let users pay for what they use
+- **WhatsApp-based services** - low marginal cost per interaction
+- **Bulk SMS/USSD** - reach users without smartphones
+- **Agent models** - one subscription serves an entire community
 
 ### 5. Build for trust
 
 In markets with limited consumer protection and many scams, trust is the hardest thing to build and the easiest to lose.
 
 - Show real people behind the product
-- Start local — a product trusted in one community can expand
+- Start local - a product trusted in one community can expand
 - Use existing trust networks (WhatsApp groups, community leaders, churches)
 - Deliver value before asking for payment
 - Make support accessible (WhatsApp, not email tickets)
@@ -127,7 +127,7 @@ Accepting payments in many African countries is harder than building the product
 
 ### Multi-language support
 
-Most African countries have multiple languages. Users often switch between languages mid-conversation (code-switching). Your product needs to handle this — especially for AI applications.
+Most African countries have multiple languages. Users often switch between languages mid-conversation (code-switching). Your product needs to handle this - especially for AI applications.
 
 **Approach:**
 - Support the dominant trade language + English at minimum
@@ -151,7 +151,7 @@ Design for these patterns rather than against them.
 Africa's largest employment sector. Technology opportunities: market price information, supply chain coordination, crop disease detection, weather-based advisories, input marketplace, access to finance.
 
 ### Financial services
-Mobile money proved the market. Next wave: lending, insurance, savings products, cross-border payments, merchant services — all mobile-first.
+Mobile money proved the market. Next wave: lending, insurance, savings products, cross-border payments, merchant services - all mobile-first.
 
 ### Education
 Teacher shortages, large class sizes, uneven quality. Technology opportunities: supplementary learning, teacher support tools, assessment automation, school management. See my <a href="/work/school-management-platform">school management platform</a> case study.
@@ -163,7 +163,7 @@ Limited healthcare access, especially rural. Telemedicine, patient triage, healt
 Most trade in Africa happens informally. Marketplaces, inventory management, logistics, and payment solutions for informal traders represent massive opportunity.
 
 ### Business operations
-Most SMEs still run on paper and WhatsApp groups. Simple CRM, invoicing, inventory, and customer management tools — built for how African businesses actually operate — have enormous markets. I cover this in <a href="/writing/ai-agent-use-cases-for-small-businesses">AI agent use cases for small businesses</a>.
+Most SMEs still run on paper and WhatsApp groups. Simple CRM, invoicing, inventory, and customer management tools - built for how African businesses actually operate - have enormous markets. I cover this in <a href="/writing/ai-agent-use-cases-for-small-businesses">AI agent use cases for small businesses</a>.
 
 ## Why African builders have an advantage
 
@@ -179,7 +179,7 @@ Global companies struggle in African markets for specific, structural reasons:
 
 **They solve the wrong problems.** The problems worth solving in Africa aren't the same ones worth solving in the US. Local founders understand which problems are real and which are imagined.
 
-This is why I believe African developers should build for African problems — not just consume technology built elsewhere. See my broader perspective on <a href="/writing/ai-in-zimbabwe">AI in Zimbabwe</a> and <a href="/writing/how-to-start-a-tech-startup-in-zimbabwe">starting a tech startup in Zimbabwe</a>.
+This is why I believe African developers should build for African problems - not just consume technology built elsewhere. See my broader perspective on <a href="/writing/ai-in-zimbabwe">AI in Zimbabwe</a> and <a href="/writing/how-to-start-a-tech-startup-in-zimbabwe">starting a tech startup in Zimbabwe</a>.
 
 ## How to get started
 
@@ -195,10 +195,10 @@ For the technical foundation, see my <a href="/writing/software-engineering-guid
 
 ### If you're building from outside Africa
 
-1. Partner with someone local (not as a translator — as a co-founder who actually understands the market)
+1. Partner with someone local (not as a translator - as a co-founder who actually understands the market)
 2. Live with the constraints yourself (use 2G for a week, pay for everything via mobile money)
 3. Don't assume your successful model from another market will transfer
-4. Start in one city, one country — "Africa" is 54 countries with different markets
+4. Start in one city, one country - "Africa" is 54 countries with different markets
 
 ## The future
 

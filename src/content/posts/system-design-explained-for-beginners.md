@@ -1,6 +1,6 @@
 ---
 title: "System Design Explained for Beginners (With Examples)"
-description: "What system design is, why it matters, and how to think about building software that scales — explained simply for developers ready to move beyond single-file projects."
+description: "What system design is, why it matters, and how to think about building software that scales - explained simply for developers ready to move beyond single-file projects."
 category: "software-engineering"
 publishedAt: 2026-08-16
 updatedAt: 2026-08-20
@@ -8,7 +8,7 @@ featured: true
 draft: false
 ---
 
-At some point, every developer hits the same wall. You can build features. You can write functions. But when someone asks you to design a whole system — "How would you build an app that handles 10,000 users?" — you freeze.
+At some point, every developer hits the same wall. You can build features. You can write functions. But when someone asks you to design a whole system - "How would you build an app that handles 10,000 users?" - you freeze.
 
 That's where system design comes in. It's the skill that separates developers who build features from developers who architect products.
 
@@ -22,7 +22,7 @@ System design is the process of defining the architecture, components, and inter
 
 In simpler terms: it's deciding **how the pieces of your application fit together** before you write the code.
 
-When you build a to-do app, you don't need system design. When you build a marketplace that handles payments, user accounts, real-time notifications, and file uploads across multiple services — you absolutely do.
+When you build a to-do app, you don't need system design. When you build a marketplace that handles payments, user accounts, real-time notifications, and file uploads across multiple services - you absolutely do.
 
 ## Why system design matters
 
@@ -46,9 +46,9 @@ When you build a to-do app, you don't need system design. When you build a marke
 
 The most fundamental split in software:
 
-**Client** — what the user interacts with (browser, mobile app, desktop app)
+**Client** - what the user interacts with (browser, mobile app, desktop app)
 
-**Server** — what processes requests and stores data (your backend)
+**Server** - what processes requests and stores data (your backend)
 
 Every web application has this split. When you type a URL, your browser (client) sends a request to a server, which responds with HTML, JSON, or other data.
 
@@ -58,7 +58,7 @@ Every web application has this split. When you type a URL, your browser (client)
 
 An API (Application Programming Interface) is how different parts of your system talk to each other.
 
-**REST API** — The most common pattern. Uses HTTP verbs (GET, POST, PUT, DELETE) and URLs to represent resources.
+**REST API** - The most common pattern. Uses HTTP verbs (GET, POST, PUT, DELETE) and URLs to represent resources.
 
 ```
 GET /api/users/123        → Get user 123
@@ -67,9 +67,9 @@ PUT /api/users/123        → Update user 123
 DELETE /api/orders/456    → Delete order 456
 ```
 
-**GraphQL** — A query language that lets the client request exactly the data it needs. Good when different clients need different data shapes.
+**GraphQL** - A query language that lets the client request exactly the data it needs. Good when different clients need different data shapes.
 
-**WebSockets** — Persistent connections for real-time data (chat, live updates, notifications).
+**WebSockets** - Persistent connections for real-time data (chat, live updates, notifications).
 
 **Key decision:** Which API style fits your use case? REST is the default for most applications. GraphQL helps when you have complex data needs. WebSockets for anything real-time.
 
@@ -77,9 +77,9 @@ DELETE /api/orders/456    → Delete order 456
 
 Where your data lives permanently. The two main categories:
 
-**Relational (SQL)** — PostgreSQL, MySQL. Data in tables with rows and columns. Relationships between tables. Strong consistency (data is always accurate). Best for structured data with clear relationships.
+**Relational (SQL)** - PostgreSQL, MySQL. Data in tables with rows and columns. Relationships between tables. Strong consistency (data is always accurate). Best for structured data with clear relationships.
 
-**Non-relational (NoSQL)** — MongoDB, Redis, DynamoDB. Flexible data shapes. Better for certain patterns (documents, key-value pairs, graphs). Often faster for specific access patterns.
+**Non-relational (NoSQL)** - MongoDB, Redis, DynamoDB. Flexible data shapes. Better for certain patterns (documents, key-value pairs, graphs). Often faster for specific access patterns.
 
 **Key decision:** Most applications should start with PostgreSQL. It handles 90% of use cases well. Only reach for NoSQL when you have a specific reason (very high write throughput, unstructured data, caching).
 
@@ -90,10 +90,10 @@ Storing frequently-accessed data in a fast layer so you don't hit the database e
 **Example:** Your homepage shows the 10 latest blog posts. Instead of querying the database on every page load, cache the result for 5 minutes. 1,000 requests hit the cache; 1 request hits the database.
 
 **Where caching happens:**
-- **Browser cache** — static assets (images, CSS, JS) stored locally
-- **CDN cache** — content cached at edge servers near users (Cloudflare)
-- **Application cache** — results stored in memory (Redis)
-- **Database cache** — query results cached by the database itself
+- **Browser cache** - static assets (images, CSS, JS) stored locally
+- **CDN cache** - content cached at edge servers near users (Cloudflare)
+- **Application cache** - results stored in memory (Redis)
+- **Database cache** - query results cached by the database itself
 
 **Key decision:** What to cache, for how long, and how to invalidate (refresh) the cache when data changes. Cache invalidation is genuinely one of the hardest problems in software.
 
@@ -111,37 +111,37 @@ Users → Load Balancer → Server 1
 
 ### 6. Horizontal vs. vertical scaling
 
-**Vertical scaling** — Make your server bigger (more RAM, faster CPU). Simple but has limits.
+**Vertical scaling** - Make your server bigger (more RAM, faster CPU). Simple but has limits.
 
-**Horizontal scaling** — Add more servers. More complex but practically unlimited.
+**Horizontal scaling** - Add more servers. More complex but practically unlimited.
 
 **Key decision:** Start vertical (it's simpler). Design for horizontal (so you can switch when needed). This means: don't store session data on the server, don't write to local files you expect to persist, and keep services stateless where possible.
 
 ## Thinking about trade-offs
 
-System design is fundamentally about trade-offs. There's no perfect architecture — only architectures that optimise for different things.
+System design is fundamentally about trade-offs. There's no perfect architecture - only architectures that optimise for different things.
 
 ### Consistency vs. availability
 
-**Consistency** — Every user sees the same data at the same time.
+**Consistency** - Every user sees the same data at the same time.
 
-**Availability** — The system always responds, even if the data might be slightly stale.
+**Availability** - The system always responds, even if the data might be slightly stale.
 
 **Example:** A bank account balance must be consistent (you can't show two different balances). A social media feed can be slightly stale (it's fine if a like takes 2 seconds to appear for other users).
 
 ### Simplicity vs. scalability
 
-**Simpler architecture** — Fewer components, easier to understand, faster to build. But might not handle growth.
+**Simpler architecture** - Fewer components, easier to understand, faster to build. But might not handle growth.
 
-**Scalable architecture** — More components, more complexity, handles growth. But slower to build and harder to debug.
+**Scalable architecture** - More components, more complexity, handles growth. But slower to build and harder to debug.
 
 **The right choice:** Start simple. Add complexity only when you have evidence that you need it. Many successful applications run on a single server for years.
 
 ### Speed vs. accuracy
 
-**Fast responses** — Cache aggressively, accept slightly stale data.
+**Fast responses** - Cache aggressively, accept slightly stale data.
 
-**Accurate responses** — Always read from the source, accept slower responses.
+**Accurate responses** - Always read from the source, accept slower responses.
 
 **Example:** A product catalog can be cached (prices change infrequently). A real-time bidding system cannot (every millisecond matters).
 
@@ -208,11 +208,11 @@ Before designing anything, understand:
 
 For a marketplace, you need:
 
-- **User system** — registration, login, profiles
-- **Listing system** — create, edit, search, browse products
-- **Messaging** — buyers and sellers communicate
-- **Payment** — secure transactions
-- **Search** — find products by keywords, category, price
+- **User system** - registration, login, profiles
+- **Listing system** - create, edit, search, browse products
+- **Messaging** - buyers and sellers communicate
+- **Payment** - secure transactions
+- **Search** - find products by keywords, category, price
 
 ### Step 3: Choose your architecture
 
@@ -234,19 +234,19 @@ For a team of 1-3 developers building an MVP:
 
 What tables do you need?
 
-- `users` — id, name, email, password_hash, role (buyer/seller)
-- `listings` — id, seller_id, title, description, price, category, status
-- `orders` — id, buyer_id, listing_id, status, paid_at
-- `messages` — id, sender_id, receiver_id, listing_id, content, sent_at
+- `users` - id, name, email, password_hash, role (buyer/seller)
+- `listings` - id, seller_id, title, description, price, category, status
+- `orders` - id, buyer_id, listing_id, status, paid_at
+- `messages` - id, sender_id, receiver_id, listing_id, content, sent_at
 
 ### Step 5: Identify scaling points
 
 Where will problems appear first as you grow?
 
-- **Search** — Full-text search in PostgreSQL works up to ~100K listings. Beyond that, add Elasticsearch or similar.
-- **Images** — Store in object storage (S3/Cloudflare R2), not your database.
-- **Payments** — Use a third-party processor (Stripe, PayNow). Don't handle money yourself.
-- **Real-time messaging** — WebSockets for live chat. Can start with polling if simpler.
+- **Search** - Full-text search in PostgreSQL works up to ~100K listings. Beyond that, add Elasticsearch or similar.
+- **Images** - Store in object storage (S3/Cloudflare R2), not your database.
+- **Payments** - Use a third-party processor (Stripe, PayNow). Don't handle money yourself.
+- **Real-time messaging** - WebSockets for live chat. Can start with polling if simpler.
 
 ### Step 6: Plan for what you don't build now
 
@@ -256,7 +256,7 @@ Document decisions and their boundaries:
 - "We're server-rendering pages. If load exceeds X, add CDN caching."
 - "We're using a monolith. If the team grows beyond 5, consider extracting the payment service."
 
-This is system design in practice. You're not predicting the future — you're making decisions explicitly so they can be changed deliberately.
+This is system design in practice. You're not predicting the future - you're making decisions explicitly so they can be changed deliberately.
 
 ## How to get better at system design
 
@@ -310,12 +310,12 @@ For each, practice thinking through requirements, components, data models, and s
 
 ## Common mistakes
 
-1. **Over-engineering from day one** — Building for 1 million users when you have 100
-2. **Under-engineering for growth** — Making decisions that are impossible to change later
-3. **Ignoring the data model** — Your database schema is your architecture's foundation
-4. **Not considering failure** — What happens when a service is unavailable?
-5. **Copying without understanding** — Using microservices because Netflix does, without having Netflix's problems
-6. **Premature optimisation** — Caching everything before measuring what's actually slow
+1. **Over-engineering from day one** - Building for 1 million users when you have 100
+2. **Under-engineering for growth** - Making decisions that are impossible to change later
+3. **Ignoring the data model** - Your database schema is your architecture's foundation
+4. **Not considering failure** - What happens when a service is unavailable?
+5. **Copying without understanding** - Using microservices because Netflix does, without having Netflix's problems
+6. **Premature optimisation** - Caching everything before measuring what's actually slow
 
 ## The most important principle
 
@@ -328,12 +328,12 @@ The best architecture for a new project is almost always:
 - One frontend
 - Deployed to one platform
 
-Then evolve deliberately as real constraints emerge. The developers who design good systems aren't the ones who know the most complex patterns — they're the ones who know when simplicity is enough.
+Then evolve deliberately as real constraints emerge. The developers who design good systems aren't the ones who know the most complex patterns - they're the ones who know when simplicity is enough.
 
 ---
 
 **Related reading:**
 
-- [How to Build Your First AI Agent](/writing/how-to-build-your-first-ai-agent) — apply system design thinking to building an AI agent from scratch
-- [How to Become a Software Developer in Zimbabwe](/writing/how-to-become-a-software-developer-in-zimbabwe) — the full roadmap from beginner to working developer
-- [Best Programming Languages to Learn in Zimbabwe](/writing/best-programming-languages-to-learn-in-zimbabwe) — choosing the right language for your career goals
+- [How to Build Your First AI Agent](/writing/how-to-build-your-first-ai-agent) - apply system design thinking to building an AI agent from scratch
+- [How to Become a Software Developer in Zimbabwe](/writing/how-to-become-a-software-developer-in-zimbabwe) - the full roadmap from beginner to working developer
+- [Best Programming Languages to Learn in Zimbabwe](/writing/best-programming-languages-to-learn-in-zimbabwe) - choosing the right language for your career goals

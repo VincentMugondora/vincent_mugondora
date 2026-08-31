@@ -1,4 +1,4 @@
-# Vincent Mugondora Personal Portfolio — PRD
+# Vincent Mugondora Personal Portfolio - PRD
 
 ## One-liner
 
@@ -377,18 +377,18 @@ Building technology, developing people, and creating solutions for Africa.
 
 ## Colors
 
-Midnight Navy — #0B1220
-Electric Blue — #2563EB
-African Gold — #F4B942
-Off White — #F8FAFC
-Slate — #1E293B
-Muted Slate — #64748B
+Midnight Navy - #0B1220
+Electric Blue - #2563EB
+African Gold - #F4B942
+Off White - #F8FAFC
+Slate - #1E293B
+Muted Slate - #64748B
 
 ## Typography
 
-Space Grotesk — headings
-Inter — body
-JetBrains Mono — technical content
+Space Grotesk - headings
+Inter - body
+JetBrains Mono - technical content
 
 ---
 

@@ -137,7 +137,7 @@ export function getProfilePageJsonLd() {
     name: `About ${siteConfig.name}`,
     url: `${siteConfig.url}/about`,
     description:
-      "About Vincent Mugondora — software engineer, AI builder, educator and entrepreneur from Zimbabwe building intelligent solutions and teaching developers.",
+      "About Vincent Mugondora - software engineer, AI builder, educator and entrepreneur from Zimbabwe building intelligent solutions and teaching developers.",
   };
 }
 

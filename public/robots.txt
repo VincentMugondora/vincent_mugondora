@@ -11,7 +11,7 @@ User-agent: Bingbot
 Allow: /
 Crawl-delay: 1
 
-# AI Crawlers — explicitly allow for AEO
+# AI Crawlers - explicitly allow for AEO
 User-agent: GPTBot
 Allow: /
 

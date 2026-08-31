@@ -5895,7 +5895,7 @@
                 "width": 38,
                 "height": 45
               },
-              "snippet": "<a href=\"/\" class=\"header__logo\" aria-label=\"Vincent Mugondora — Home\" data-astro-cid-u6lvrvjr=\"\">",
+              "snippet": "<a href=\"/\" class=\"header__logo\" aria-label=\"Vincent Mugondora - Home\" data-astro-cid-u6lvrvjr=\"\">",
               "nodeLabel": "VM.",
               "explanation": "Fix any of the following:\n  Text inside the element is not included in the accessible name"
             }

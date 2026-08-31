@@ -4843,7 +4843,7 @@
                 "height": 112
               },
               "snippet": "<p class=\"mt-4 text-lg text-muted\">",
-              "nodeLabel": "What AI agents are, how they work, and why they matter — explained without jarg…",
+              "nodeLabel": "What AI agents are, how they work, and why they matter - explained without jarg…",
               "explanation": "Fix any of the following:\n  Element has insufficient color contrast of 4.32 (foreground color: #64748b, background color: #f5f4f0, font size: 13.5pt (18px), font weight: normal). Expected contrast ratio of 4.5:1"
             },
             "subItems": {
@@ -5165,7 +5165,7 @@
                 "width": 38,
                 "height": 45
               },
-              "snippet": "<a href=\"/\" class=\"header__logo\" aria-label=\"Vincent Mugondora — Home\" data-astro-cid-u6lvrvjr=\"\">",
+              "snippet": "<a href=\"/\" class=\"header__logo\" aria-label=\"Vincent Mugondora - Home\" data-astro-cid-u6lvrvjr=\"\">",
               "nodeLabel": "VM.",
               "explanation": "Fix any of the following:\n  Text inside the element is not included in the accessible name"
             }

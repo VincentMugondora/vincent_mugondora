@@ -1,7 +1,7 @@
 ---
 title: "School Management Platform"
-description: "A role-based platform for managing students, teachers, parents, classes and academic operations — built to handle the complexity of real school administration."
-problem: "Schools in Zimbabwe manage students, staff, classes, grades, attendance, fees and communication using paper, spreadsheets, and WhatsApp groups — creating chaos as they grow."
+description: "A role-based platform for managing students, teachers, parents, classes and academic operations - built to handle the complexity of real school administration."
+problem: "Schools in Zimbabwe manage students, staff, classes, grades, attendance, fees and communication using paper, spreadsheets, and WhatsApp groups - creating chaos as they grow."
 role: "Full-Stack Engineer"
 technologies: ["Next.js", "TypeScript", "PostgreSQL", "Prisma", "Tailwind CSS", "NextAuth.js"]
 featured: true
@@ -12,7 +12,7 @@ publishedAt: 2026-06-15
 
 ## The Problem
 
-Schools in Zimbabwe — and across Africa — manage increasingly complex operations with tools that weren't designed for the job. A growing school might have:
+Schools in Zimbabwe - and across Africa - manage increasingly complex operations with tools that weren't designed for the job. A growing school might have:
 
 - 500+ students across multiple grades and streams
 - 30+ teachers with different subjects and class assignments
@@ -21,7 +21,7 @@ Schools in Zimbabwe — and across Africa — manage increasingly complex operat
 - Exam results that take weeks to compile manually
 - Parent communication scattered across WhatsApp groups
 
-The typical progression: paper → spreadsheets → WhatsApp coordination → chaos. Every school hits a point where manual processes break down. They need a system — but existing school management platforms are either too expensive, too complex, or designed for educational systems that work differently from Zimbabwean schools.
+The typical progression: paper → spreadsheets → WhatsApp coordination → chaos. Every school hits a point where manual processes break down. They need a system - but existing school management platforms are either too expensive, too complex, or designed for educational systems that work differently from Zimbabwean schools.
 
 ## The Solution
 
@@ -60,15 +60,15 @@ Deployment:       Vercel (frontend) + Supabase (database)
 
 ### Key design decisions
 
-**Next.js App Router** — Chose for its server-side rendering (fast initial loads on slow connections), built-in API routes (no separate backend needed), and TypeScript support. The school admin uses this daily — page loads need to be fast even on 3G.
+**Next.js App Router** - Chose for its server-side rendering (fast initial loads on slow connections), built-in API routes (no separate backend needed), and TypeScript support. The school admin uses this daily - page loads need to be fast even on 3G.
 
-**Role-based access from the start** — Rather than adding roles later, the entire data model and routing system is built around four distinct user types. Every API endpoint checks role permissions. Every page renders differently based on who's viewing it.
+**Role-based access from the start** - Rather than adding roles later, the entire data model and routing system is built around four distinct user types. Every API endpoint checks role permissions. Every page renders differently based on who's viewing it.
 
-**PostgreSQL + Prisma** — Relational data is deeply relational in a school context: students belong to classes, classes have teachers, teachers teach subjects, subjects have grades, grades belong to terms. PostgreSQL handles this naturally. Prisma gives type-safe database access that catches errors at compile time.
+**PostgreSQL + Prisma** - Relational data is deeply relational in a school context: students belong to classes, classes have teachers, teachers teach subjects, subjects have grades, grades belong to terms. PostgreSQL handles this naturally. Prisma gives type-safe database access that catches errors at compile time.
 
-**Multi-currency fee handling** — Zimbabwe's currency situation means schools often accept fees in multiple currencies. The fee module handles ZiG, USD, and rand with configurable exchange rates.
+**Multi-currency fee handling** - Zimbabwe's currency situation means schools often accept fees in multiple currencies. The fee module handles ZiG, USD, and rand with configurable exchange rates.
 
-**Offline-aware design** — Teachers marking attendance in classrooms may have spotty connectivity. The attendance interface works with optimistic updates and syncs when connectivity returns.
+**Offline-aware design** - Teachers marking attendance in classrooms may have spotty connectivity. The attendance interface works with optimistic updates and syncs when connectivity returns.
 
 ## Challenges
 
@@ -78,11 +78,11 @@ A school's data relationships are surprisingly complex. Students move between cl
 
 ### Performance on low-bandwidth
 
-The admin generates reports that aggregate data across the entire school — hundreds of students, thousands of grade entries. Making these queries fast enough for a usable experience on Zimbabwean internet required careful database indexing, server-side pagination, and aggressive caching of computed results.
+The admin generates reports that aggregate data across the entire school - hundreds of students, thousands of grade entries. Making these queries fast enough for a usable experience on Zimbabwean internet required careful database indexing, server-side pagination, and aggressive caching of computed results.
 
 ### Multi-tenancy decisions
 
-Should this serve one school or many? I designed the data model for multi-tenancy from the start (each record belongs to a `schoolId`), even though the first deployment is single-school. This means the platform can serve multiple schools without a rewrite — important for scaling.
+Should this serve one school or many? I designed the data model for multi-tenancy from the start (each record belongs to a `schoolId`), even though the first deployment is single-school. This means the platform can serve multiple schools without a rewrite - important for scaling.
 
 ### Authentication that works for non-technical users
 
@@ -92,19 +92,19 @@ Teachers and parents aren't software engineers. The authentication flow needed t
 
 ### 1. Start with the admin, not the parent
 
-The natural instinct is to build the parent-facing features first (they're the "customer"). But the school admin is the buyer and daily power user. If the admin experience isn't excellent, nothing else matters — they won't adopt the system.
+The natural instinct is to build the parent-facing features first (they're the "customer"). But the school admin is the buyer and daily power user. If the admin experience isn't excellent, nothing else matters - they won't adopt the system.
 
 ### 2. Reports win deals
 
-School administrators make decisions with data — enrollment trends, fee collection rates, academic performance summaries. The reporting module is what convinces a school head to adopt the system. Beautiful UI is secondary to useful reports.
+School administrators make decisions with data - enrollment trends, fee collection rates, academic performance summaries. The reporting module is what convinces a school head to adopt the system. Beautiful UI is secondary to useful reports.
 
 ### 3. WhatsApp integration is essential
 
-Even with a full platform, schools still communicate via WhatsApp. Rather than fighting this, the system generates formatted messages that admins can share to WhatsApp groups — fee reminders, grade summaries, announcements. Meeting users where they are.
+Even with a full platform, schools still communicate via WhatsApp. Rather than fighting this, the system generates formatted messages that admins can share to WhatsApp groups - fee reminders, grade summaries, announcements. Meeting users where they are.
 
 ### 4. Zimbabwean schools have unique requirements
 
-Term structures, fee payment patterns, multi-currency handling, class streaming systems — these differ significantly from UK/US school software. Building specifically for Zimbabwean school operations is a genuine competitive advantage over generic international platforms.
+Term structures, fee payment patterns, multi-currency handling, class streaming systems - these differ significantly from UK/US school software. Building specifically for Zimbabwean school operations is a genuine competitive advantage over generic international platforms.
 
 ## Results
 

@@ -40,7 +40,7 @@ Automate repetitive business processes with AI. Workflow automation, document pr
 
 ### [AI in Zimbabwe: Opportunities, Challenges and the Future](https://vincentmugondora.com/writing/ai-in-zimbabwe)
 
-A comprehensive guide to artificial intelligence in Zimbabwe — the opportunities for developers and businesses, the challenges of adoption, and where the market is heading. AI in Zimbabwe represents one of the biggest technology opportunities available to developers, entrepreneurs and businesses in the country. The combination of low competition, high global demand for AI skills, and massive inefficiency in local business operations creates a window of opportunity. Key opportunities include building AI solutions for local businesses, remote AI development work ($3,000-$8,000/month), AI consulting, and building AI-powered products for underserved African markets.
+A comprehensive guide to artificial intelligence in Zimbabwe - the opportunities for developers and businesses, the challenges of adoption, and where the market is heading. AI in Zimbabwe represents one of the biggest technology opportunities available to developers, entrepreneurs and businesses in the country. The combination of low competition, high global demand for AI skills, and massive inefficiency in local business operations creates a window of opportunity. Key opportunities include building AI solutions for local businesses, remote AI development work ($3,000-$8,000/month), AI consulting, and building AI-powered products for underserved African markets.
 
 ### [How to Become a Software Developer in Zimbabwe (2026 Guide)](https://vincentmugondora.com/writing/how-to-become-a-software-developer-in-zimbabwe)
 
@@ -48,7 +48,7 @@ A practical guide to starting a software development career in Zimbabwe. Covers 
 
 ### [How to Build Your First AI Agent (Step-by-Step Guide)](https://vincentmugondora.com/writing/how-to-build-your-first-ai-agent)
 
-A practical guide to building a functional AI agent from scratch using Python. Covers the core Think-Act-Observe loop, adding tools, implementing memory, error handling, and testing. No PhD required — just basic Python and an API key from OpenAI or Anthropic. A basic functional agent can be built in a few hours.
+A practical guide to building a functional AI agent from scratch using Python. Covers the core Think-Act-Observe loop, adding tools, implementing memory, error handling, and testing. No PhD required - just basic Python and an API key from OpenAI or Anthropic. A basic functional agent can be built in a few hours.
 
 ### [How to Build an AI Chatbot for Your Business (2026 Guide)](https://vincentmugondora.com/writing/how-to-build-an-ai-chatbot)
 
@@ -56,11 +56,11 @@ A step-by-step guide to building an AI-powered chatbot. Covers choosing between 
 
 ### [AI Agents Explained for Beginners](https://vincentmugondora.com/writing/ai-agents-explained-for-beginners)
 
-Explains what AI agents are and how they differ from chatbots. An AI agent is software that receives a goal, plans how to achieve it, takes actions using tools, and evaluates results — repeating until the task is complete. Unlike chatbots that just answer questions, agents actively complete multi-step tasks autonomously.
+Explains what AI agents are and how they differ from chatbots. An AI agent is software that receives a goal, plans how to achieve it, takes actions using tools, and evaluates results - repeating until the task is complete. Unlike chatbots that just answer questions, agents actively complete multi-step tasks autonomously.
 
 ### [AI Agents vs Chatbots: What's the Difference?](https://vincentmugondora.com/writing/ai-agents-vs-chatbots)
 
-A chatbot responds to messages — you ask a question, it gives an answer. An AI agent completes tasks autonomously — you give it a goal, and it plans steps, uses tools, and takes actions. Chatbots are reactive and single-turn; agents are proactive and multi-step. Many businesses benefit from both working together.
+A chatbot responds to messages - you ask a question, it gives an answer. An AI agent completes tasks autonomously - you give it a goal, and it plans steps, uses tools, and takes actions. Chatbots are reactive and single-turn; agents are proactive and multi-step. Many businesses benefit from both working together.
 
 ### [How Zimbabwean Businesses Can Use AI](https://vincentmugondora.com/writing/how-zimbabwean-businesses-can-use-ai)
 
@@ -76,7 +76,7 @@ Software engineering is the discipline of designing, building, testing and maint
 
 ### [System Design Explained for Beginners](https://vincentmugondora.com/writing/system-design-explained-for-beginners)
 
-System design is the process of defining the architecture, components, and interactions of a software system before writing code. Covers databases, APIs, caching, servers, scalability, and reliability. Almost always start with a monolith — split into microservices only when you have multiple teams or components needing independent scaling.
+System design is the process of defining the architecture, components, and interactions of a software system before writing code. Covers databases, APIs, caching, servers, scalability, and reliability. Almost always start with a monolith - split into microservices only when you have multiple teams or components needing independent scaling.
 
 ### [How to Start a Tech Startup in Zimbabwe (Practical Guide)](https://vincentmugondora.com/writing/how-to-start-a-tech-startup-in-zimbabwe)
 
@@ -84,15 +84,15 @@ A realistic guide to starting a tech startup in Zimbabwe. Key advice: validate w
 
 ### [Best Programming Languages to Learn in Zimbabwe](https://vincentmugondora.com/writing/best-programming-languages-to-learn-in-zimbabwe)
 
-Python is the best first language for most Zimbabweans — runs on low-spec hardware, lightweight documentation, easiest syntax, directly relevant to AI. JavaScript is essential second language for web development with the largest global job market. For remote work, TypeScript, Python, and Go command the highest salaries.
+Python is the best first language for most Zimbabweans - runs on low-spec hardware, lightweight documentation, easiest syntax, directly relevant to AI. JavaScript is essential second language for web development with the largest global job market. For remote work, TypeScript, Python, and Go command the highest salaries.
 
 ### [Building Technology for Africa](https://vincentmugondora.com/writing/building-technology-for-africa)
 
-What makes building technology for Africa different: unreliable infrastructure (internet drops, power outages, low-spec devices), mobile-first users who communicate via WhatsApp, and problems that global companies ignore. Products succeed when designed around these realities. Biggest opportunities: agriculture, financial services, education, healthcare, commerce, and SME operations — all built mobile-first.
+What makes building technology for Africa different: unreliable infrastructure (internet drops, power outages, low-spec devices), mobile-first users who communicate via WhatsApp, and problems that global companies ignore. Products succeed when designed around these realities. Biggest opportunities: agriculture, financial services, education, healthcare, commerce, and SME operations - all built mobile-first.
 
 ### [Learning to Code in Africa](https://vincentmugondora.com/writing/learning-to-code-in-africa)
 
-How to learn programming in Africa: start with Python or JavaScript using free text-based resources (freeCodeCamp, The Odin Project). Practice 30 minutes daily, build projects solving local problems, push everything to GitHub. Prioritise text-based resources over video — they use 100x less data and work offline. Most African developers reach professional readiness within 10-12 months.
+How to learn programming in Africa: start with Python or JavaScript using free text-based resources (freeCodeCamp, The Odin Project). Practice 30 minutes daily, build projects solving local problems, push everything to GitHub. Prioritise text-based resources over video - they use 100x less data and work offline. Most African developers reach professional readiness within 10-12 months.
 
 ### [AI Agent Use Cases for Small Businesses](https://vincentmugondora.com/writing/ai-agent-use-cases-for-small-businesses)
 
@@ -100,7 +100,7 @@ AI agents can handle customer support (WhatsApp 24/7), process documents (invoic
 
 ### [Building a WhatsApp AI Marketplace for Zimbabwe](https://vincentmugondora.com/writing/building-whatsapp-ai-marketplace-zimbabwe)
 
-Exploring how AI-powered marketplaces can work within WhatsApp — the dominant communication platform in Zimbabwe — to connect buyers and sellers with intelligent matching and automation.
+Exploring how AI-powered marketplaces can work within WhatsApp - the dominant communication platform in Zimbabwe - to connect buyers and sellers with intelligent matching and automation.
 
 ## Projects
 

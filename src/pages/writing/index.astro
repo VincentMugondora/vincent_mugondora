@@ -68,7 +68,7 @@ try {
     body: p.content,
   }));
 } catch (e) {
-  // DB unavailable during build — skip
+  // DB unavailable during build - skip
 }
 
 // Merge and deduplicate (DB wins if same slug exists in both)
@@ -99,7 +99,7 @@ function estimateReadTime(post: PostItem) {
 }
 ---
 
-<PageLayout title="Writing" description="Ideas, lessons, experiments and observations on software engineering, AI, technology, entrepreneurship and building in Africa — by Vincent Mugondora.">
+<PageLayout title="Writing" description="Ideas, lessons, experiments and observations on software engineering, AI, technology, entrepreneurship and building in Africa - by Vincent Mugondora.">
   <script is:inline type="application/ld+json" set:html={JSON.stringify(breadcrumbJsonLd)} />
   <script is:inline type="application/ld+json" set:html={JSON.stringify(collectionJsonLd)} />
   <!-- Hero -->
