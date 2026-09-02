@@ -1,5 +1,4 @@
 import { defineMiddleware } from "astro:middleware";
-import { env } from "cloudflare:workers";
 import { verifyToken } from "@lib/auth";
 
 const SECURITY_HEADERS: Record<string, string> = {
@@ -26,7 +25,9 @@ export const onRequest = defineMiddleware(async (_context, next) => {
 
   if (isAdminRoute || isProtectedApiRoute) {
     const token = getCookie(_context.request, "admin_token");
-    const adminPassword = (env as typeof env & { ADMIN_PASSWORD?: string }).ADMIN_PASSWORD;
+    // Prefer environment bindings provided by the runtime (e.g. Cloudflare Workers)
+    // but fall back to process.env for local development.
+    const adminPassword = ((_context as any).env && (_context as any).env.ADMIN_PASSWORD) ?? process.env.ADMIN_PASSWORD;
 
     let isValid = false;
     if (token && adminPassword) {
