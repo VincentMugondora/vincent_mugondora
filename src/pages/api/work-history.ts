@@ -14,14 +14,14 @@ export const GET: APIRoute = async () => {
 
 export const POST: APIRoute = async ({ request }) => {
   const db = getDb(env.DB);
-  const body = await request.json();
+  const body = await request.json() as any;
   const result = await db.insert(workHistory).values(body).returning();
   return Response.json(result[0], { status: 201 });
 };
 
 export const PUT: APIRoute = async ({ request }) => {
   const db = getDb(env.DB);
-  const body = await request.json();
+  const body = await request.json() as any;
   const { id, ...data } = body;
   const result = await db.update(workHistory).set(data).where(eq(workHistory.id, id)).returning();
   return Response.json(result[0]);
@@ -29,7 +29,7 @@ export const PUT: APIRoute = async ({ request }) => {
 
 export const DELETE: APIRoute = async ({ request }) => {
   const db = getDb(env.DB);
-  const { id } = await request.json();
+  const { id } = await request.json() as any;
   await db.delete(workHistory).where(eq(workHistory.id, id));
   return Response.json({ success: true });
 };
