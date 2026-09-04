@@ -1,7 +1,9 @@
 import type { APIRoute } from 'astro';
 import satori from 'satori';
-import { Resvg } from '@resvg/resvg-js';
+import { Resvg, initWasm } from '@resvg/resvg-wasm';
 import { getCollection } from 'astro:content';
+
+let wasmInitialized = false;
 
 export async function getStaticPaths() {
   const posts = await getCollection('posts');
@@ -12,6 +14,16 @@ export async function getStaticPaths() {
 }
 
 export const GET: APIRoute = async ({ props }) => {
+  if (!wasmInitialized) {
+    try {
+      const wasmBuffer = await fetch('https://unpkg.com/@resvg/resvg-wasm/index_bg.wasm').then(res => res.arrayBuffer());
+      await initWasm(wasmBuffer);
+      wasmInitialized = true;
+    } catch (e) {
+      console.warn("WASM already initialized or failed");
+    }
+  }
+
   const { title, category } = props;
 
   // Inter font fetch or load from local buffer
