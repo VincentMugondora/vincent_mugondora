@@ -1,0 +1,34 @@
+---
+interface Heading {
+  depth: number;
+  slug: string;
+  text: string;
+}
+
+interface Props {
+  headings: Heading[];
+}
+
+const { headings } = Astro.props;
+
+// Filter out h1 (title) and only keep h2 and h3 for the TOC
+const tocHeadings = headings.filter((h) => h.depth > 1 && h.depth <= 3);
+---
+
+{tocHeadings.length > 0 && (
+  <nav class="not-prose mb-10 p-6 bg-[var(--color-secondary)] border border-[var(--color-card-border)] rounded-[12px]">
+    <h2 class="font-display italic text-[18px] font-bold text-[var(--color-text-primary)] mb-4">Table of Contents</h2>
+    <ul class="flex flex-col gap-2.5">
+      {tocHeadings.map((heading) => (
+        <li class={heading.depth === 3 ? "ml-4" : ""}>
+          <a
+            href={`#${heading.slug}`}
+            class="font-body text-[14px] text-[var(--color-text-secondary)] hover:text-[var(--color-primary)] transition-colors hover:underline"
+          >
+            {heading.text}
+          </a>
+        </li>
+      ))}
+    </ul>
+  </nav>
+)}

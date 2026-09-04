@@ -241,7 +241,10 @@ const impact = [
     (async function() {
       try {
         const res = await fetch('/api/certificates');
-        if (!res.ok) return;
+        if (!res.ok) {
+          document.getElementById('teaching-certs-grid').innerHTML = '<p class="font-body text-[14px] text-red-500 col-span-full text-center py-8">Failed to load certificates.</p>';
+          return;
+        }
         const allCerts = await res.json();
         const grid = document.getElementById('teaching-certs-grid');
         if (!allCerts.length) { grid.innerHTML = ''; return; }

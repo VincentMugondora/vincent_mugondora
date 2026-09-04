@@ -9,6 +9,7 @@ import { marked } from "marked";
 import { formatDate } from "@lib/utils";
 import { siteConfig } from "@config/site";
 import { getBreadcrumbJsonLd, getFAQJsonLd, getSpeakableJsonLd, getHowToJsonLd } from "@/lib/seo";
+import TableOfContents from "@components/writing/TableOfContents.astro";
 
 export const prerender = false;
 
@@ -46,10 +47,13 @@ const image = isFilePost ? filePost.data.image : dbPost.image;
 // Render content
 let renderedContent = "";
 let FileContent: any = null;
+let headings: any[] = [];
 if (isFilePost) {
   const rendered = await render(filePost);
   FileContent = rendered.Content;
+  headings = rendered.headings;
 } else {
+  // Database posts don't automatically generate headings without parsing markdown manually
   renderedContent = await marked(dbPost.content);
 }
 
@@ -446,6 +450,8 @@ const howToJsonLd = howToData ? getHowToJsonLd({
       </div>
     </div>
   </header>
+
+  {headings.length > 0 && <TableOfContents headings={headings} />}
 
   {FileContent ? (
     <FileContent />

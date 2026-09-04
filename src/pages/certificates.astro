@@ -41,7 +41,13 @@ const breadcrumbJsonLd = getBreadcrumbJsonLd([
   (async function() {
     try {
       const res = await fetch('/api/certificates');
-      if (!res.ok) return;
+      if (!res.ok) {
+        document.getElementById('all-certificates-grid').innerHTML = `
+          <div class="text-center py-12 col-span-full">
+            <p class="font-body text-[16px] text-red-500">Failed to load certificates. Please check if the database table exists or if there is a server error.</p>
+          </div>`;
+        return;
+      }
       const certs = await res.json();
       const grid = document.getElementById('all-certificates-grid');
       if (!certs.length) {
