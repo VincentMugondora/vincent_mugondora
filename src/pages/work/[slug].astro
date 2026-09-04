@@ -1,6 +1,7 @@
 ---
 import PageLayout from "@layouts/PageLayout.astro";
 import { getCollection, render } from "astro:content";
+import SoftwareSchema from "@components/seo/SoftwareSchema.astro";
 
 export async function getStaticPaths() {
   const projects = await getCollection("projects");
@@ -12,9 +13,20 @@ export async function getStaticPaths() {
 
 const { project } = Astro.props;
 const { Content } = await render(project);
+const canonicalUrl = `https://vincentmugondora.com/work/${project.id}`;
 ---
 
 <PageLayout title={project.data.title} description={project.data.description}>
+  <SoftwareSchema
+    name={project.data.title}
+    description={project.data.description}
+    url={canonicalUrl}
+    applicationCategory="BusinessApplication"
+    technologies={project.data.technologies}
+    datePublished={project.data.publishedAt ? new Date(project.data.publishedAt) : undefined}
+    codeRepository={project.data.github}
+  />
+  
   <!-- Case Study Hero -->
   <section class="pt-[72px] py-16 md:py-24">
     <div class="max-w-[900px] mx-auto px-4 md:px-10">

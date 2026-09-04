@@ -3,6 +3,7 @@ import ArticleLayout from "@layouts/ArticleLayout.astro";
 import { getCollection, render } from "astro:content";
 import { siteConfig } from "@config/site";
 import { getBreadcrumbJsonLd } from "@/lib/seo";
+import SoftwareSchema from "@components/seo/SoftwareSchema.astro";
 
 export async function getStaticPaths() {
   const experiments = await getCollection("experiments");
@@ -28,6 +29,15 @@ const breadcrumbs = getBreadcrumbJsonLd([
   publishedAt={experiment.data.publishedAt}
 >
   <script is:inline type="application/ld+json" set:html={JSON.stringify(breadcrumbs)} />
+  <SoftwareSchema
+    name={experiment.data.title}
+    description={experiment.data.description}
+    url={`${siteConfig.url}/ai-lab/${experiment.id}`}
+    applicationCategory="AIApplication"
+    technologies={experiment.data.technologies}
+    datePublished={experiment.data.publishedAt}
+    codeRepository={experiment.data.github}
+  />
 
   <header class="not-prose mb-12">
     <nav class="breadcrumb" aria-label="Breadcrumb">

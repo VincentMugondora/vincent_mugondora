@@ -1,0 +1,56 @@
+---
+interface Props {
+  name: string;
+  description: string;
+  url: string;
+  applicationCategory: 
+    | 'BusinessApplication' 
+    | 'DeveloperApplication' 
+    | 'WebApplication' 
+    | 'AIApplication';
+  operatingSystem?: string;
+  technologies?: string[];
+  datePublished?: Date;
+  codeRepository?: string;
+}
+
+const {
+  name,
+  description,
+  url,
+  applicationCategory,
+  operatingSystem = 'Web, Cloud',
+  technologies = [],
+  datePublished,
+  codeRepository,
+} = Astro.props;
+
+const siteUrl = 'https://vincentmugondora.com';
+const personId = `${siteUrl}/#person`;
+
+const softwareSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'SoftwareApplication',
+  '@id': `${url}#software`,
+  name,
+  description,
+  url,
+  applicationCategory,
+  operatingSystem,
+  author: {
+    '@type': 'Person',
+    '@id': personId,
+  },
+  creator: {
+    '@type': 'Person',
+    '@id': personId,
+  },
+  ...(datePublished && { datePublished: datePublished.toISOString() }),
+  ...(codeRepository && { codeRepository }),
+  ...(technologies.length > 0 && {
+    keywords: technologies.join(', '),
+  }),
+};
+---
+
+<script type="application/ld+json" set:html={JSON.stringify(softwareSchema)} />
