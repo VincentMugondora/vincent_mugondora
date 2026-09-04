@@ -129,3 +129,12 @@ export const siteConfig = sqliteTable("site_config", {
   value: text("value").notNull(),
   updatedAt: text("updated_at").default("(datetime('now'))"),
 });
+
+export const messages = sqliteTable("messages", {
+  id: integer("id").primaryKey({ autoIncrement: true }),
+  name: text("name").notNull(),
+  email: text("email").notNull(),
+  message: text("message").notNull(),
+  status: text("status").default("unread"),
+  createdAt: text("created_at").default("(datetime('now'))"),
+});

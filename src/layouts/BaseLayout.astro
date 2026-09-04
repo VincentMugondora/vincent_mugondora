@@ -4,7 +4,7 @@ import "@/styles/global.css";
 import "@/styles/typography.css";
 import { siteConfig } from "@/config/site";
 import { getBaseJsonLd } from "@/lib/seo";
-
+import SchemaGraph from "@/components/seo/SchemaGraph.astro";
 
 interface Props {
   title?: string;
@@ -36,6 +36,11 @@ if (currentPath.length > 1 && currentPath.endsWith('/')) {
 const canonical = canonicalURL ?? new URL(currentPath, siteConfig.url).href;
 const ogImage = image ?? `${siteConfig.url}/og-default.png`;
 const jsonLd = getBaseJsonLd();
+
+let parsedPublishedAt;
+if (publishedAt) {
+  parsedPublishedAt = new Date(publishedAt);
+}
 ---
 
 <!doctype html>

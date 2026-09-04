@@ -1,0 +1,93 @@
+---
+interface Props {
+  title: string;
+  description: string;
+  canonicalUrl: string;
+  type?: 'WebSite' | 'Article' | 'ItemPage';
+  datePublished?: Date;
+  dateModified?: Date;
+}
+
+const {
+  title,
+  description,
+  canonicalUrl,
+  type = 'WebSite',
+  datePublished,
+  dateModified
+} = Astro.props;
+
+const siteUrl = 'https://vincentmugondora.com';
+const personId = `${siteUrl}/#person`;
+const websiteId = `${siteUrl}/#website`;
+
+const schemaGraph = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'Person',
+      '@id': personId,
+      name: 'Vincent Mugondora',
+      url: siteUrl,
+      jobTitle: 'Software Engineer & AI Builder',
+      description: 'Zimbabwean software engineer, AI builder, educator, and entrepreneur.',
+      image: `${siteUrl}/images/vincent-mugondora.jpg`,
+      address: {
+        '@type': 'PostalAddress',
+        addressLocality: 'Harare',
+        addressCountry: 'ZW'
+      },
+      sameAs: [
+        'https://github.com/vincentmugondora',
+        'https://www.linkedin.com/in/vincent-mugondora-7b2a922b3/',
+        'https://twitter.com/vincemugondora',
+        'https://dev.to/vincentmugondora'
+      ],
+      worksFor: {
+        '@type': 'Organization',
+        name: 'Uncommon.org',
+        url: 'https://uncommon.org'
+      },
+      founder: {
+        '@type': 'Organization',
+        name: 'Zimnovate',
+        url: 'https://zimnovate.co.zw'
+      },
+      knowsAbout: [
+        'https://en.wikipedia.org/wiki/Artificial_intelligence',
+        'Software Engineering',
+        'System Architecture',
+        'AI Agents',
+        'Web Development'
+      ]
+    },
+    {
+      '@type': 'WebSite',
+      '@id': websiteId,
+      url: siteUrl,
+      name: 'Vincent Mugondora',
+      publisher: { '@id': personId },
+      inLanguage: 'en-US'
+    },
+    {
+      '@type': type,
+      '@id': `${canonicalUrl}#webpage`,
+      url: canonicalUrl,
+      name: title,
+      description: description,
+      isPartOf: { '@id': websiteId },
+      about: { '@id': personId },
+      inLanguage: 'en-US',
+      ...(type === 'Article' && {
+        author: { '@id': personId },
+        publisher: { '@id': personId },
+        datePublished: datePublished?.toISOString(),
+        dateModified: (dateModified || datePublished)?.toISOString(),
+        headline: title
+      })
+    }
+  ]
+};
+---
+
+<script type="application/ld+json" set:html={JSON.stringify(schemaGraph)} />

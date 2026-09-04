@@ -8,6 +8,13 @@
       "when": 1787556043585,
       "tag": "0000_strange_masque",
       "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "6",
+      "when": 1788510139599,
+      "tag": "0001_demonic_switch",
+      "breakpoints": true
     }
   ]
 }
