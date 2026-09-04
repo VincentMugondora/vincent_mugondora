@@ -1,0 +1,24 @@
+---
+import { getCollection } from "astro:content";
+
+interface Props {
+  slug: string;
+}
+
+const { slug } = Astro.props;
+const allPosts = await getCollection("posts");
+const post = allPosts.find((p) => p.id === slug || p.id === `${slug}.mdx`);
+
+if (!post) {
+  // Graceful fallback if slug is wrong
+  return null;
+}
+---
+
+<a href={`/writing/${slug}`} class="not-prose block my-8 p-5 rounded-[12px] bg-[var(--color-secondary)] border border-[var(--color-card-border)] hover:-translate-y-0.5 hover:shadow-md transition duration-200 no-underline">
+  <div class="flex items-center gap-3 mb-2">
+    <span class="font-body text-[11px] font-semibold uppercase tracking-widest text-[var(--color-primary)]">Read Next</span>
+  </div>
+  <h3 class="font-display italic text-[18px] font-bold text-[var(--color-text-primary)] tracking-tight leading-snug">{post.data.title}</h3>
+  <p class="font-body text-[14px] text-[var(--color-text-secondary)] mt-1.5 leading-relaxed line-clamp-2">{post.data.description}</p>
+</a>

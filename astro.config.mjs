@@ -5,11 +5,13 @@ import sitemap from "@astrojs/sitemap";
 import icon from "astro-icon";
 
 import cloudflare from "@astrojs/cloudflare";
+import mdx from "@astrojs/mdx";
 
 export default defineConfig({
   site: "https://vincentmugondora.com",
   trailingSlash: "never",
   integrations: [
+    mdx(),
     sitemap({
       filter: (page) => !page.includes("/admin") && !page.includes("/certificates"),
       serialize(item) {
