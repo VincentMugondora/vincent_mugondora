@@ -7,7 +7,7 @@ export const prerender = false;
 
 export const POST: APIRoute = async ({ request }) => {
   try {
-    const data = await request.json();
+    const data = (await request.json()) as any;
 
     if (!data.name || !data.email || !data.message) {
       return new Response(JSON.stringify({ error: "Missing required fields" }), {

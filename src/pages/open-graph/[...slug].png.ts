@@ -8,7 +8,7 @@ let wasmInitialized = false;
 export async function getStaticPaths() {
   const posts = await getCollection('posts');
   return posts.map((entry) => ({
-    params: { slug: entry.slug },
+    params: { slug: entry.id },
     props: { title: entry.data.title, category: entry.data.category?.replace('-', ' ') ?? 'Writing' },
   }));
 }
@@ -122,7 +122,7 @@ export const GET: APIRoute = async ({ props }) => {
   const resvg = new Resvg(svg);
   const pngBuffer = resvg.render().asPng();
 
-  return new Response(pngBuffer, {
+  return new Response(pngBuffer as any, {
     headers: {
       'Content-Type': 'image/png',
       'Cache-Control': 'public, max-age=31536000, immutable',

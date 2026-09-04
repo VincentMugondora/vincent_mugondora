@@ -1,0 +1,25 @@
+---
+interface Props {
+  points: string[];
+}
+const { points } = Astro.props;
+---
+
+<div class="bg-[var(--color-secondary)] border border-[var(--color-card-border)] rounded-[16px] p-6 md:p-8 my-8 not-prose">
+  <h3 class="font-display italic text-[24px] text-[var(--color-text-primary)] mb-4 flex items-center gap-2">
+    <svg class="w-6 h-6 text-[var(--color-primary)]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+    </svg>
+    Key Takeaways
+  </h3>
+  <ul class="space-y-3">
+    {points.map((point) => (
+      <li class="flex items-start gap-3">
+        <svg class="w-5 h-5 text-[var(--color-primary)] mt-0.5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+        </svg>
+        <span class="font-body text-[16px] text-[var(--color-text-secondary)]">{point}</span>
+      </li>
+    ))}
+  </ul>
+</div>

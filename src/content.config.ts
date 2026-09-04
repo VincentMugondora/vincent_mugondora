@@ -49,6 +49,7 @@ const experiments = defineCollection({
     problem: z.string().optional(),
     hypothesis: z.string().optional(),
     technologies: z.array(z.string()).default([]),
+    github: z.string().url().optional(),
     status: z.enum(["active", "completed", "paused"]).default("active"),
     publishedAt: z.coerce.date().optional(),
   }),
