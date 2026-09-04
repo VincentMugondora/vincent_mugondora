@@ -43,6 +43,7 @@ export default defineConfig({
   vite: {
     plugins: [tailwindcss()],
     ssr: {
+      external: ["@resvg/resvg-js"],
       optimizeDeps: {
         exclude: ["astro/virtual-modules/middleware.js"],
       },
