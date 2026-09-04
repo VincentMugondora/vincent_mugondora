@@ -1,0 +1,269 @@
+export const faqsBySlug: Record<string, Array<{question: string, answer: string}>> = {
+  "ai-agents-explained-for-beginners": [
+    {
+      question: "What is an AI agent and how does it work?",
+      answer: "An AI agent is software that receives a goal, plans how to achieve it, takes actions using tools (like APIs, databases, or email), and evaluates the results - repeating until the task is complete. Unlike a chatbot that just answers questions, an agent actively completes multi-step tasks on your behalf.",
+    },
+    {
+      question: "What does it mean to create an AI agent?",
+      answer: "Creating an AI agent means building software that combines a language model (for reasoning and planning) with tools (for taking real-world actions) and memory (for maintaining context). You define what the agent can do, connect it to the systems it needs, and give it clear instructions about its purpose.",
+    },
+    {
+      question: "What are AI agents and how do they work?",
+      answer: "AI agents are autonomous software programs that use artificial intelligence to complete tasks without step-by-step human guidance. They work in a think-act-observe loop: the AI reasons about what to do next, uses a tool to take action, observes the result, and repeats until the goal is achieved.",
+    },
+  ],
+  "ai-agents-vs-chatbots": [
+    {
+      question: "What is the difference between an AI agent and a chatbot?",
+      answer: "A chatbot responds to messages - you ask a question, it gives an answer. An AI agent completes tasks autonomously - you give it a goal, and it plans steps, uses tools, and takes actions to achieve it. Chatbots are reactive and single-turn; agents are proactive and multi-step.",
+    },
+    {
+      question: "Do I need a chatbot or an AI agent for my business?",
+      answer: "If your main need is answering customer questions faster (FAQs, pricing, hours), a chatbot is sufficient and cheaper. If you need multi-step tasks completed autonomously (processing documents, qualifying leads, updating multiple systems), you need an AI agent. Many businesses benefit from both working together.",
+    },
+    {
+      question: "Can chatbots and AI agents work together?",
+      answer: "Yes - this is often the best architecture. The chatbot serves as the customer-facing interface for quick responses, while the AI agent handles complex backend tasks when needed. The customer experiences a smooth conversation while the agent completes multi-step work behind the scenes.",
+    },
+  ],
+  "how-to-become-a-software-developer-in-zimbabwe": [
+    {
+      question: "How long does it take to become a software developer in Zimbabwe?",
+      answer: "With consistent daily practice of 1-3 hours, most people can land their first paid work within 10-12 months. This timeline includes learning fundamentals (months 1-3), building web applications (months 4-6), creating portfolio projects (months 7-9), and finding first paid work (months 10-12). Full-time dedication can accelerate this significantly.",
+    },
+    {
+      question: "What programming language should I learn first in Zimbabwe?",
+      answer: "Python or JavaScript. Python is easiest for beginners and immediately useful for web development, data, automation, and AI. JavaScript is essential for web applications and has the largest global job market. Both have strong demand in Africa and work well on low-spec hardware with limited internet.",
+    },
+    {
+      question: "Can I become a software developer without a degree in Zimbabwe?",
+      answer: "Yes. The software industry increasingly values demonstrated skills over formal qualifications. A strong GitHub portfolio with 3-5 projects, contributions to open source, and practical experience matter more than a degree. Many successful Zimbabwean developers are self-taught using free online resources.",
+    },
+  ],
+  "how-zimbabwean-businesses-can-use-ai": [
+    {
+      question: "How can businesses in Zimbabwe use AI?",
+      answer: "Zimbabwean businesses can use AI for customer support automation (WhatsApp chatbots), document processing (invoices, receipts, contracts), lead qualification, internal knowledge systems, content creation, and data analysis. The most impactful starting point is usually automating repetitive customer communication on WhatsApp.",
+    },
+    {
+      question: "How much does AI cost for a small business in Zimbabwe?",
+      answer: "AI API costs are typically $3-$10/month for a business handling 100 customer messages daily. Hosting runs $5-$50/month. The main investment is development - building and integrating a custom solution. For businesses losing hours daily to repetitive tasks, the return on investment is typically seen within 2-3 months.",
+    },
+    {
+      question: "What is the best AI solution for small businesses in Zimbabwe?",
+      answer: "For most Zimbabwean small businesses, an AI-powered WhatsApp chatbot is the highest-impact starting point. It handles customer enquiries 24/7, works on the platform customers already use, and can reduce routine support volume by 60-80%. Start there, prove the value, then expand to more complex automation.",
+    },
+  ],
+  "how-to-build-your-first-ai-agent": [
+    {
+      question: "What do I need to build an AI agent?",
+      answer: "You need basic Python knowledge (functions, loops, dictionaries, APIs), an API key from OpenAI or Anthropic, and an understanding of what AI agents are. No machine learning background, maths degree, or special hardware is required. The core pattern is simple: think, act, observe, repeat.",
+    },
+    {
+      question: "Which programming language is best for building AI agents?",
+      answer: "Python is the best choice for building AI agents. It has the most comprehensive AI/ML libraries, the best framework support (LangChain, CrewAI, Autogen), and the simplest syntax for working with APIs. Most AI agent tutorials and documentation assume Python.",
+    },
+    {
+      question: "How long does it take to build an AI agent?",
+      answer: "A basic functional agent (one task, two tools) can be built in a few hours if you understand the fundamentals. A production-ready agent with error handling, memory, and real system integrations typically takes 1-2 weeks. The core loop is simple - reliability and edge cases are where time goes.",
+    },
+  ],
+  "software-engineering-guide-for-beginners": [
+    {
+      question: "What is software engineering?",
+      answer: "Software engineering is the discipline of designing, building, testing and maintaining software systems. Unlike simple coding or scripting, it deals with how pieces fit together, handling failures, and building software that others can maintain and extend. The market pays significantly more for engineers who can think about systems than for developers who can only write individual functions.",
+    },
+    {
+      question: "How long does it take to become a software engineer?",
+      answer: "With consistent daily practice of 1-3 hours, most people can reach professional readiness in 10-12 months. This includes learning fundamentals (months 1-3), web development (months 4-6), engineering skills and portfolio projects (months 7-9), and job readiness (months 10-12). Full-time dedication can accelerate this significantly.",
+    },
+    {
+      question: "What programming language should I learn first for software engineering?",
+      answer: "Python or JavaScript. Python is easiest to learn and immediately useful for AI, data, automation, and backend development. JavaScript is essential for web applications and has the largest global job market. Pick one and commit to it for at least three months before expanding.",
+    },
+  ],
+  "system-design-explained-for-beginners": [
+    {
+      question: "What is system design in software development?",
+      answer: "System design is the process of defining the architecture, components, and interactions of a software system before writing code. It's deciding how the pieces of your application fit together - databases, APIs, caching, servers - to satisfy requirements around performance, scalability, and reliability.",
+    },
+    {
+      question: "When do I need to learn system design?",
+      answer: "Once you can build features and individual applications, system design becomes the next critical skill. You need it when building anything that serves more than a handful of users, involves multiple services or databases, or needs to handle growth. It's also a key topic in senior developer and technical interviews.",
+    },
+    {
+      question: "Should I start with a monolith or microservices?",
+      answer: "Almost always start with a monolith. One backend, one database, one deployment. It's simpler to develop, deploy, and debug. Only split into microservices when you have multiple teams working on different parts of the system or specific components that need to scale independently. Most successful applications run as monoliths for years.",
+    },
+  ],
+  "best-programming-languages-to-learn-in-zimbabwe": [
+    {
+      question: "What is the best programming language to learn in Zimbabwe?",
+      answer: "Python is the best first language for most Zimbabweans. It runs well on low-spec hardware, has lightweight text-based documentation (low data usage), has the easiest syntax for beginners, and is directly relevant to the AI boom. JavaScript is the best second language, essential for web development and with the largest global job market.",
+    },
+    {
+      question: "Which programming languages have the most jobs in Zimbabwe?",
+      answer: "JavaScript/TypeScript has the largest job market both locally and remotely - every business needs web applications. Python is growing fast due to AI and data science demand. Locally, Java still has presence in banking and enterprise. For remote work, TypeScript, Python, and Go command the highest salaries.",
+    },
+    {
+      question: "Can I get a programming job in Zimbabwe without a degree?",
+      answer: "Yes. The Zimbabwean tech market, especially remote work, values demonstrated skills over formal qualifications. Build a GitHub portfolio with 3-5 projects, contribute to open source, and focus on practical skills. Many successful Zimbabwean developers are self-taught and work remotely for international companies.",
+    },
+  ],
+  "ai-opportunities-in-zimbabwe": [
+    {
+      question: "What AI opportunities exist in Zimbabwe?",
+      answer: "AI opportunities in Zimbabwe include: building chatbots and automation for local businesses, remote AI development work ($3,000-$8,000/month), data labelling and annotation services, AI consulting for enterprises adopting automation, and building AI-powered products for underserved African markets (agriculture, fintech, healthcare, education).",
+    },
+    {
+      question: "How can I start a career in AI in Zimbabwe?",
+      answer: "Learn Python first, then study machine learning fundamentals and how to work with AI APIs (OpenAI, Anthropic). Build practical projects - chatbots, document processors, automation tools. The fastest path to income is building AI solutions for local businesses (WhatsApp bots, customer support automation) while pursuing remote AI developer roles.",
+    },
+    {
+      question: "Is there demand for AI developers in Zimbabwe?",
+      answer: "Yes - demand far exceeds supply. Very few developers in Zimbabwe can build AI solutions, creating significant opportunity. Locally, businesses need chatbots and automation. Remotely, AI developers command high salaries globally. The combination of low local competition and high global demand makes this one of the best career paths available.",
+    },
+  ],
+  "how-to-start-a-tech-startup-in-zimbabwe": [
+    {
+      question: "How do I start a tech company in Zimbabwe?",
+      answer: "Start by solving a specific problem you've observed in the Zimbabwean market. Validate demand by talking to potential customers before building. Register your company (Private Limited for fundraising potential). Build a minimal first version, get paying customers quickly, and reinvest revenue. Focus on mobile-first, WhatsApp-friendly solutions.",
+    },
+    {
+      question: "What are the best tech startup ideas in Zimbabwe?",
+      answer: "High-opportunity areas include: WhatsApp-based business tools, mobile payment integrations, agricultural tech (market prices, supply chain), B2B software for local companies still using spreadsheets, education platforms, and AI-powered automation services. The best ideas solve problems that global companies ignore because the market seems too small.",
+    },
+    {
+      question: "How do I fund a tech startup in Zimbabwe?",
+      answer: "Most successful Zimbabwean startups bootstrap - they get paying customers from day one and grow from revenue. Other options include: consulting/freelancing while building your product, grants from organisations supporting African tech, angel investors in the diaspora, and regional accelerators. Avoid seeking VC funding too early.",
+    },
+  ],
+  "ai-agent-use-cases-for-small-businesses": [
+    {
+      question: "What can AI agents do for small businesses?",
+      answer: "AI agents can handle customer support (answering FAQs on WhatsApp 24/7), process documents (extracting data from invoices and receipts), qualify sales leads (engaging prospects and scoring them automatically), manage internal knowledge (answering staff questions instantly), and handle scheduling and follow-ups (never missing a prospect).",
+    },
+    {
+      question: "How much do AI agents cost for a small business?",
+      answer: "AI API costs are typically $10-$100/month for small businesses. The main investment is development - building a custom agent integrated with your specific systems and data. For businesses spending 5+ hours per week on repetitive tasks, the return on investment is usually seen within 2-3 months through reduced labour costs and faster response times.",
+    },
+    {
+      question: "Is my small business ready for AI agents?",
+      answer: "Your business is ready if you have tasks that are: repetitive (happening 5+ hours per week in roughly the same way), follow a logical process (you can write down the steps), cost-justified (the agent saves more than it costs to build), and have clear success criteria. If only one or two apply, a simpler automation may be more appropriate.",
+    },
+  ],
+  "ai-in-zimbabwe": [
+    {
+      question: "What is the state of AI in Zimbabwe?",
+      answer: "AI in Zimbabwe is at an early but rapidly growing stage. Businesses are adopting AI for customer support automation, document processing, and operational efficiency. Developer supply is extremely low relative to demand, creating significant opportunity for early movers in both local and remote AI work.",
+    },
+    {
+      question: "What are the biggest AI opportunities in Zimbabwe?",
+      answer: "The biggest AI opportunities in Zimbabwe are: building AI solutions for local businesses (WhatsApp chatbots, automation), remote AI development work ($3,000-$8,000/month), AI consulting for enterprises, and building AI-powered products for underserved African markets in agriculture, fintech, healthcare, and education.",
+    },
+    {
+      question: "What are the challenges of AI adoption in Zimbabwe?",
+      answer: "Key challenges include unreliable internet connectivity, expensive data costs, limited developer talent, low business awareness of AI capabilities, power supply issues from load shedding, and difficulty accessing global AI APIs due to payment infrastructure. These are solvable through offline-first design, WhatsApp-based delivery, and local pricing strategies.",
+    },
+  ],
+  "building-technology-for-africa": [
+    {
+      question: "What makes building technology for Africa different?",
+      answer: "Three main differences: unreliable infrastructure (internet drops, power outages, low-spec devices), mobile-first users who communicate primarily via WhatsApp and pay for data in small bundles, and problems that global companies either ignore or can't solve from overseas. Products succeed when designed around these realities rather than assuming developed-market infrastructure.",
+    },
+    {
+      question: "Why do global tech companies struggle in African markets?",
+      answer: "They don't understand the user (optimising for unlimited data and new iPhones), can't price for the market (San Francisco cost structures don't allow African price points), lack local trust (adoption is relationship-driven), and often solve the wrong problems. Local founders with community connections and market understanding have a structural advantage.",
+    },
+    {
+      question: "What are the biggest technology opportunities in Africa?",
+      answer: "Agriculture (market prices, supply chain, crop disease detection), financial services (lending, insurance, mobile payments), education (supplementary learning, school management), healthcare (telemedicine, triage), commerce (marketplaces for informal trade), and SME operations (CRM, invoicing, inventory) - all built mobile-first for how African businesses actually operate.",
+    },
+  ],
+  "learning-to-code-in-africa": [
+    {
+      question: "How do I learn to code in Africa?",
+      answer: "Start with Python or JavaScript using free resources like freeCodeCamp or The Odin Project (text-based, low data usage). Practice 30 minutes daily, build projects that solve local problems (WhatsApp tools, multi-currency calculators), push everything to GitHub. Most African developers reach professional readiness within 10-12 months of consistent practice.",
+    },
+    {
+      question: "What are the best free resources for learning programming in Africa?",
+      answer: "freeCodeCamp (full curriculum, works on slow internet), The Odin Project (text-based, no video buffering), CS50 from Harvard (downloadable lectures), and MDN Web Docs (offline reference). Prioritise text-based resources over video - they use 100x less data and work offline once downloaded.",
+    },
+    {
+      question: "Can I get a programming job from Africa without a degree?",
+      answer: "Yes. The global tech industry increasingly values demonstrated skills over formal qualifications. Build a GitHub portfolio with 3-5 deployed projects, contribute to open source, and focus on practical skills. Remote companies hire based on what you can build, not where you studied. Thousands of self-taught African developers work remotely for international companies.",
+    },
+  ],
+  "how-to-build-an-ai-chatbot": [
+    {
+      question: "How much does it cost to build an AI chatbot?",
+      answer: "AI API costs are typically $0.001-$0.01 per customer interaction. For a business handling 100 messages daily, ongoing AI costs are $3-$10/month. Hosting runs $5-$50/month. The main cost is development - building a custom solution integrated with your business data and systems. Off-the-shelf tools are cheaper but less effective.",
+    },
+    {
+      question: "How do I build a chatbot for WhatsApp?",
+      answer: "You need: a WhatsApp Business API account (via a provider like Twilio or Meta's Cloud API), a backend server to process messages, an AI model (GPT-4 or Claude) for generating responses, and a knowledge base with your business information. The chatbot receives messages via webhook, generates AI responses using your data, and sends replies back through the API.",
+    },
+    {
+      question: "What is RAG and why does my chatbot need it?",
+      answer: "RAG (Retrieval Augmented Generation) is a technique where your chatbot searches your business documents to find relevant information before generating a response. Without RAG, the AI can only use its general training data and may hallucinate. With RAG, it answers from your actual business information - pricing, policies, product details - accurately.",
+    },
+  ],
+};
+
+export const howToBySlug: Record<string, { name: string; description: string; totalTime?: string; steps: Array<{ name: string; text: string }> }> = {
+  "how-to-build-your-first-ai-agent": {
+    name: "How to Build Your First AI Agent",
+    description: "A step-by-step guide to building a functional AI agent from scratch using Python.",
+    totalTime: "PT4H",
+    steps: [
+      { name: "Define what your agent will do", text: "Pick one specific task with clear success criteria. Don't build a general-purpose assistant - define a narrow goal like researching a company and writing a summary." },
+      { name: "Choose your approach", text: "Decide between using a framework (LangChain, CrewAI) or building from scratch. Building from scratch first helps you understand every piece before using abstractions." },
+      { name: "Build the core loop", text: "Implement the Think-Act-Observe loop: the LLM decides what to do, executes a tool, observes the result, and repeats until the goal is complete." },
+      { name: "Add tools", text: "Create tool functions (web search, file writing, etc.) with names and descriptions so the LLM knows when and how to use each one." },
+      { name: "Add memory", text: "Implement short-term memory (history list tracking actions) and optionally long-term memory (persisted between sessions) for your agent." },
+      { name: "Handle errors gracefully", text: "Return tool errors as observations to the agent so it can adapt. Add retry logic for invalid LLM output and a max_steps safety limit." },
+      { name: "Test and iterate", text: "Run the agent, watch for common problems (loops, wrong tool selection, hallucinated actions, premature completion), and iterate on prompts." },
+    ],
+  },
+  "how-to-build-an-ai-chatbot": {
+    name: "How to Build an AI Chatbot for Your Business",
+    description: "A step-by-step guide to building an AI-powered chatbot for customer support, sales, or internal use.",
+    totalTime: "P3W",
+    steps: [
+      { name: "Choose your approach", text: "Decide between off-the-shelf platforms (Tidio, ManyChat), low-code AI platforms (Voiceflow, Botpress), or a custom build using AI APIs." },
+      { name: "Design the technical architecture", text: "Set up the four components: message handler, knowledge retrieval (RAG), AI model for response generation, and response handler." },
+      { name: "Implement RAG for your business knowledge", text: "Prepare your knowledge base (FAQs, pricing, policies), convert to embeddings, and set up semantic search so the chatbot answers from your actual data." },
+      { name: "Handle multiple languages", text: "Configure language handling for your market - let the AI respond in the customer's language, or use language-specific knowledge bases for better accuracy." },
+      { name: "Deploy on WhatsApp", text: "Set up WhatsApp Business API, configure webhooks, integrate your AI pipeline, and implement human handoff for complex queries." },
+      { name: "Measure and optimise", text: "Track resolution rate, accuracy, escalation rate, customer satisfaction, and response time. Audit conversations weekly and fill knowledge gaps." },
+    ],
+  },
+  "how-to-become-a-software-developer-in-zimbabwe": {
+    name: "How to Become a Software Developer in Zimbabwe",
+    description: "A practical guide to starting a software development career in Zimbabwe - from first language to first job.",
+    totalTime: "P12M",
+    steps: [
+      { name: "Choose your first programming language", text: "Pick Python (easiest, useful for AI/web/data) or JavaScript (essential for web apps, largest job market). Commit to one for at least three months." },
+      { name: "Learn fundamentals, not frameworks", text: "Master variables, functions, control flow, data structures, and APIs before touching React or Django. These transfer across every language." },
+      { name: "Build things immediately", text: "After two weeks of fundamentals, start building: a calculator, to-do list, weather app, personal website, and a tool that solves a real problem you have." },
+      { name: "Learn web development", text: "Learn HTML/CSS, JavaScript in the browser, a frontend framework (React), backend basics (Node.js or Python), databases, and deployment." },
+      { name: "Handle the internet problem", text: "Download docs for offline use, use lightweight tools, download courses when connected, use text-based resources, build locally, and use Git." },
+      { name: "Build your portfolio", text: "Create 3-5 deployed projects on GitHub that demonstrate real problem-solving. Quality over quantity - each project should solve a genuine problem." },
+      { name: "Find your first paid work", text: "Start with freelancing platforms, local businesses needing websites, or remote junior roles. Build relationships in tech communities." },
+    ],
+  },
+  "how-to-start-a-tech-startup-in-zimbabwe": {
+    name: "How to Start a Tech Startup in Zimbabwe",
+    description: "A realistic guide to starting a tech startup in Zimbabwe - from validation to first customers.",
+    totalTime: "P6M",
+    steps: [
+      { name: "Validate your idea in this market", text: "Talk to 20 potential customers before coding. Look for pain (not excitement), check willingness to pay, and focus on B2B tools, WhatsApp services, or AI automation." },
+      { name: "Build with limited resources", text: "Use free tiers (Vercel, Supabase, Cloudflare), build an MVP in weeks not months, and test with WhatsApp as your first interface before building an app." },
+      { name: "Find your first customers", text: "Use direct outreach via WhatsApp groups, provide value in communities, and leverage relationships. Cold email doesn't work well in Zimbabwe." },
+      { name: "Set up your business", text: "Register as a Private Limited company for fundraising potential. Set up Paynow for local payments and Stripe for international clients." },
+      { name: "Get to revenue quickly", text: "Charge from day one if possible. Offer consulting/services alongside your product to fund development. Revenue proves demand better than user counts." },
+      { name: "Scale regionally", text: "What works in Zimbabwe often works in Zambia, Malawi, and Mozambique. Plan for regional expansion from the start - you're building for 200M+ across Southern Africa." },
+    ],
+  },
+};
