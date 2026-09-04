@@ -135,7 +135,7 @@ const howToJsonLd = howToData ? getHowToJsonLd({
 <ArticleLayout
   title={title}
   description={description}
-  image={image}
+  image={image ?? `${siteConfig.url}/open-graph/${slug}.png`}
   publishedAt={publishedAt}
   updatedAt={updatedAt}
   category={category}

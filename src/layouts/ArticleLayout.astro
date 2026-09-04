@@ -2,7 +2,6 @@
 import BaseLayout from "./BaseLayout.astro";
 import Navbar from "@components/navigation/Navbar.astro";
 import Footer from "@components/navigation/Footer.astro";
-import { getArticleJsonLd } from "@/lib/seo";
 import { siteConfig } from "@/config/site";
 
 interface Props {
@@ -18,17 +17,6 @@ interface Props {
 const { title, description, image, canonicalURL, publishedAt, updatedAt } = Astro.props;
 
 const articleUrl = canonicalURL ?? new URL(Astro.url.pathname, siteConfig.url).href;
-
-const articleJsonLd = publishedAt
-  ? getArticleJsonLd({
-      title,
-      description,
-      url: articleUrl,
-      publishedAt: publishedAt.toISOString(),
-      updatedAt: updatedAt?.toISOString(),
-      image,
-    })
-  : null;
 ---
 
 <BaseLayout title={title} description={description} image={image} canonicalURL={canonicalURL} ogType="article" publishedAt={publishedAt?.toISOString()}>
@@ -58,7 +46,4 @@ const articleJsonLd = publishedAt
     </article>
   </main>
   <Footer />
-  {articleJsonLd && (
-    <script is:inline type="application/ld+json" set:html={JSON.stringify(articleJsonLd)} />
-  )}
 </BaseLayout>

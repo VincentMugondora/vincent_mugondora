@@ -1,9 +1,7 @@
 ---
 import "@/styles/fonts.css";
 import "@/styles/global.css";
-import "@/styles/typography.css";
 import { siteConfig } from "@/config/site";
-import { getBaseJsonLd } from "@/lib/seo";
 import SchemaGraph from "@/components/seo/SchemaGraph.astro";
 
 interface Props {
@@ -35,7 +33,6 @@ if (currentPath.length > 1 && currentPath.endsWith('/')) {
 }
 const canonical = canonicalURL ?? new URL(currentPath, siteConfig.url).href;
 const ogImage = image ?? `${siteConfig.url}/og-default.png`;
-const jsonLd = getBaseJsonLd();
 
 let parsedPublishedAt;
 if (publishedAt) {
@@ -86,7 +83,13 @@ if (publishedAt) {
     <meta name="twitter:description" content={pageDescription} />
     <meta name="twitter:image" content={ogImage} />
 
-    <script is:inline type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+    <SchemaGraph 
+      title={pageTitle} 
+      description={pageDescription} 
+      canonicalUrl={canonical}
+      type={ogType === 'article' ? 'Article' : 'WebSite'}
+      datePublished={parsedPublishedAt}
+    />
   </head>
   <body class="font-body antialiased">
     <slot />
