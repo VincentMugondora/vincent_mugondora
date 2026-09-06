@@ -53,25 +53,26 @@ const filePostItems: PostItem[] = filePosts
 // Load from database (posts created via admin)
 let dbPostItems: PostItem[] = [];
 try {
-  const d1 = Astro.locals.runtime?.env?.DB;
-  if (d1) {
-    const db = getDb(d1);
-    const dbPosts = await db.select().from(postsTable).where(eq(postsTable.draft, false)).all();
-    dbPostItems = dbPosts.map((p) => ({
-    slug: p.slug,
-    title: p.title,
-    description: p.description,
-    category: p.category,
-    publishedAt: new Date(p.publishedAt),
-    featured: p.featured ?? false,
-    draft: p.draft ?? false,
-    source: "db" as const,
-    body: p.content,
-  }));
+  const res = await fetch(new URL('/api/posts', Astro.url));
+  if (res.ok) {
+    const dbPosts = await res.json();
+    dbPostItems = dbPosts
+      .filter((p: any) => !p.draft)
+      .map((p: any) => ({
+        slug: p.slug,
+        title: p.title,
+        description: p.description,
+        category: p.category,
+        publishedAt: new Date(p.publishedAt || p.published_at),
+        featured: p.featured ?? false,
+        draft: p.draft ?? false,
+        source: "db" as const,
+        body: p.content,
+      }));
   }
 } catch (e) {
   // DB unavailable during build - skip
-  console.error("Error loading DB posts:", e);
+  console.error("Error fetching DB posts:", e);
 }
 
 // Merge and deduplicate (DB wins if same slug exists in both)

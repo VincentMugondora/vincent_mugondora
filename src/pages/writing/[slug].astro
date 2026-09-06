@@ -20,18 +20,23 @@ const filePost = allFilePosts.find((p) => p.id === slug && !p.data.draft);
 
 // Try database
 let dbPost: any = null;
+let allDbPosts: any[] = [];
 try {
-  const d1 = Astro.locals.runtime?.env?.DB;
-  if (d1) {
-    const db = getDb(d1);
-    const results = await db.select().from(postsTable).where(eq(postsTable.slug, slug!)).all();
-    if (results.length > 0 && !results[0].draft) {
-      dbPost = results[0];
+  const res = await fetch(new URL('/api/posts', Astro.url));
+  if (res.ok) {
+    allDbPosts = await res.json();
+    const found = allDbPosts.find((p: any) => p.slug === slug && !p.draft);
+    if (found) {
+      dbPost = found;
+      // Normalize dates
+      dbPost.publishedAt = new Date(dbPost.publishedAt || dbPost.published_at);
+      if (dbPost.updatedAt || dbPost.updated_at) {
+        dbPost.updatedAt = new Date(dbPost.updatedAt || dbPost.updated_at);
+      }
     }
   }
 } catch (e) {
-  // DB unavailable
-  console.error("Error loading DB post:", e);
+  console.error("Error fetching DB post:", e);
 }
 
 if (!filePost && !dbPost) {
@@ -85,28 +90,19 @@ allFilePosts
   });
 
 // DB related posts
-try {
-  const d1 = Astro.locals.runtime?.env?.DB;
-  if (d1) {
-    const db = getDb(d1);
-    const dbPosts = await db.select().from(postsTable).where(eq(postsTable.draft, false)).all();
-    dbPosts
-      .filter((p) => p.slug !== slug)
-      .forEach((p) => {
-        if (!relatedPosts.find((r) => r.slug === p.slug)) {
-          relatedPosts.push({
-            slug: p.slug,
-            title: p.title,
-            description: p.description,
-            category: p.category,
-            publishedAt: new Date(p.publishedAt),
-          });
-        }
+allDbPosts
+  .filter((p) => !p.draft && p.slug !== slug)
+  .forEach((p) => {
+    if (!relatedPosts.find((r) => r.slug === p.slug)) {
+      relatedPosts.push({
+        slug: p.slug,
+        title: p.title,
+        description: p.description,
+        category: p.category,
+        publishedAt: new Date(p.publishedAt || p.published_at),
       });
-  }
-} catch (e) {
-  console.error("Error loading related DB posts:", e);
-}
+    }
+  });
 
 const sortedRelated = relatedPosts
   .sort((a, b) => {
