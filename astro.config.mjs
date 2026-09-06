@@ -44,9 +44,7 @@ export default defineConfig({
     plugins: [tailwindcss()],
     ssr: {
       external: ["@resvg/resvg-js"],
-      optimizeDeps: {
-        exclude: ["astro/virtual-modules/middleware.js", "marked"],
-      },
+        exclude: ["astro/virtual-modules/middleware.js", "marked", "astro"],
     },
   },
 

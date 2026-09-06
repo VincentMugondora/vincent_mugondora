@@ -230,6 +230,9 @@ export const prerender = false;
           }
           if (fm.image) document.getElementById('image').value = fm.image;
           
+          if (fm.featured !== undefined) document.getElementById('featured').checked = fm.featured === 'true' || fm.featured === true;
+          if (fm.draft !== undefined) document.getElementById('draft').checked = fm.draft === 'true' || fm.draft === true;
+          
           document.getElementById('content').value = content;
           if (typeof showToast === 'function') showToast('File imported successfully! Review the fields before saving.');
         } else {
