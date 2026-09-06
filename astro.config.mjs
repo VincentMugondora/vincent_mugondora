@@ -45,7 +45,8 @@ export default defineConfig({
     ssr: {
       external: ["@resvg/resvg-js"],
       optimizeDeps: {
-        exclude: ["astro/virtual-modules/middleware.js", "marked", "astro"],
+        noDiscovery: true,
+        include: [],
       },
     },
   },

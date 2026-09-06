@@ -1,7 +1,6 @@
 ---
 import PageLayout from "@layouts/PageLayout.astro";
 import { getCollection } from "astro:content";
-import { env } from "cloudflare:workers";
 import { getDb } from "@lib/db";
 import { posts as postsTable } from "../../../db/schema";
 import { eq } from "drizzle-orm";
@@ -54,9 +53,11 @@ const filePostItems: PostItem[] = filePosts
 // Load from database (posts created via admin)
 let dbPostItems: PostItem[] = [];
 try {
-  const db = getDb(env.DB);
-  const dbPosts = await db.select().from(postsTable).where(eq(postsTable.draft, false)).all();
-  dbPostItems = dbPosts.map((p) => ({
+  const d1 = Astro.locals.runtime?.env?.DB;
+  if (d1) {
+    const db = getDb(d1);
+    const dbPosts = await db.select().from(postsTable).where(eq(postsTable.draft, false)).all();
+    dbPostItems = dbPosts.map((p) => ({
     slug: p.slug,
     title: p.title,
     description: p.description,
@@ -67,8 +68,10 @@ try {
     source: "db" as const,
     body: p.content,
   }));
+  }
 } catch (e) {
   // DB unavailable during build - skip
+  console.error("Error loading DB posts:", e);
 }
 
 // Merge and deduplicate (DB wins if same slug exists in both)
