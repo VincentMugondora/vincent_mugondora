@@ -1,9 +1,22 @@
 import type { APIRoute } from 'astro';
-import satori from 'satori';
-import { Resvg, initWasm } from '@resvg/resvg-wasm';
 import { getCollection } from 'astro:content';
 
+export const prerender = false;
+
+if (!(globalThis as any).self) {
+  (globalThis as any).self = globalThis;
+}
+if (!(globalThis as any).self.location) {
+  Object.defineProperty((globalThis as any).self, 'location', {
+    value: new URL('https://vincentmugondora.com/'),
+    writable: true,
+    configurable: true,
+  });
+}
+
 let wasmInitialized = false;
+let satoriLib: typeof import('satori') | undefined;
+let resvgLib: typeof import('@resvg/resvg-wasm') | undefined;
 
 export async function getStaticPaths() {
   const posts = await getCollection('posts');
@@ -13,22 +26,34 @@ export async function getStaticPaths() {
   }));
 }
 
+async function ensureImageRuntime() {
+  if (!satoriLib) {
+    satoriLib = await import('satori');
+  }
+  if (!resvgLib) {
+    resvgLib = await import('@resvg/resvg-wasm');
+  }
+}
+
 export const GET: APIRoute = async ({ props }) => {
+  await ensureImageRuntime();
+  const satori = (satoriLib as any).default ?? satoriLib;
+  const { Resvg, initWasm } = resvgLib as typeof import('@resvg/resvg-wasm');
+
   if (!wasmInitialized) {
     try {
-      const wasmBuffer = await fetch('https://unpkg.com/@resvg/resvg-wasm/index_bg.wasm').then(res => res.arrayBuffer());
+      const wasmBuffer = await fetch('https://unpkg.com/@resvg/resvg-wasm/index_bg.wasm').then((res) => res.arrayBuffer());
       await initWasm(wasmBuffer);
       wasmInitialized = true;
     } catch (e) {
-      console.warn("WASM already initialized or failed");
+      console.warn('WASM already initialized or failed');
     }
   }
 
-  const { title, category } = props;
+  const { title, category } = props as { title: string; category: string };
 
-  // Inter font fetch or load from local buffer
   const fontData = await fetch(
-    'https://cdn.jsdelivr.net/fontsource/fonts/inter@latest/latin-700-normal.woff'
+    'https://cdn.jsdelivr.net/fontsource/fonts/inter@latest/latin-700-normal.woff',
   ).then((res) => res.arrayBuffer());
 
   const svg = await satori(
@@ -116,7 +141,7 @@ export const GET: APIRoute = async ({ props }) => {
           style: 'normal',
         },
       ],
-    }
+    },
   );
 
   const resvg = new Resvg(svg);
