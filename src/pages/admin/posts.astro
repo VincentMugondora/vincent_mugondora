@@ -12,6 +12,11 @@ export const prerender = false;
   <div class="card" id="form-card" style="display: none; margin-bottom: 1.5rem;">
     <h3 style="margin-bottom: 1rem;" id="form-title">New Post</h3>
     <form id="post-form">
+      <div class="form-group" style="margin-bottom: 1.5rem; padding: 1rem; border: 1px dashed var(--border, #ccc); border-radius: 4px;">
+        <label for="import-file" style="margin-bottom: 0.5rem; display: block; font-weight: bold;">Import from MD/MDX File</label>
+        <input type="file" id="import-file" accept=".md,.mdx" style="display: block;" />
+        <small style="color: var(--text-muted, #666); display: block; margin-top: 0.5rem;">Upload a markdown file with frontmatter to auto-fill this form.</small>
+      </div>
       <input type="hidden" id="post-id" />
       <div class="form-row">
         <div class="form-group">
@@ -176,6 +181,65 @@ export const prerender = false;
       if (!document.getElementById('post-id').value) {
         document.getElementById('slug').value = e.target.value.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
       }
+    });
+
+    document.getElementById('import-file').addEventListener('change', (e) => {
+      const file = e.target.files[0];
+      if (!file) return;
+
+      const reader = new FileReader();
+      reader.onload = (event) => {
+        const text = event.target.result;
+        
+        // Parse frontmatter
+        const match = text.match(/^---\n([\s\S]*?)\n---\n([\s\S]*)$/);
+        if (match) {
+          const frontmatterStr = match[1];
+          const content = match[2].trim();
+          
+          const fm = {};
+          frontmatterStr.split('\n').forEach(line => {
+            const colonIdx = line.indexOf(':');
+            if (colonIdx > 0) {
+              const key = line.slice(0, colonIdx).trim();
+              let value = line.slice(colonIdx + 1).trim();
+              
+              if (value.startsWith('"') && value.endsWith('"')) value = value.slice(1, -1);
+              if (value.startsWith("'") && value.endsWith("'")) value = value.slice(1, -1);
+              if (value.startsWith('[') && value.endsWith(']')) {
+                const arr = value.slice(1, -1).split(',').map(s => s.trim().replace(/^['"]|['"]$/g, ''));
+                value = arr.join(', ');
+              }
+              fm[key] = value;
+            }
+          });
+          
+          if (fm.title) {
+            document.getElementById('title').value = fm.title;
+            document.getElementById('title').dispatchEvent(new Event('input'));
+          }
+          if (fm.description) document.getElementById('description').value = fm.description;
+          if (fm.category) document.getElementById('category').value = fm.category;
+          if (fm.publishDate || fm.date) {
+            try {
+              const d = new Date(fm.publishDate || fm.date);
+              if (!isNaN(d)) {
+                document.getElementById('published_at').value = d.toISOString().split('T')[0];
+              }
+            } catch (err) {}
+          }
+          if (fm.image) document.getElementById('image').value = fm.image;
+          
+          document.getElementById('content').value = content;
+          if (typeof showToast === 'function') showToast('File imported successfully! Review the fields before saving.');
+        } else {
+          document.getElementById('content').value = text;
+          if (typeof showToast === 'function') showToast('No frontmatter found, loaded content only.');
+        }
+        
+        e.target.value = ''; // Reset
+      };
+      reader.readAsText(file);
     });
 
     loadPosts();
