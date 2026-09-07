@@ -6,32 +6,42 @@ import { posts } from "../../../db/schema";
 export const prerender = false;
 
 export const GET: APIRoute = async (ctx) => {
-  const d1 = ctx.locals.runtime?.env?.DB;
-  if (!d1) return Response.json([]);
-  const db = getDb(d1);
-  const all = await db.select().from(posts).all();
-  return Response.json(all);
+  try {
+    const d1 = ctx.locals.runtime?.env?.DB;
+    if (!d1) return Response.json([]);
+    const db = getDb(d1);
+    const all = await db.select().from(posts).all();
+    return Response.json(all);
+  } catch (error: any) {
+    console.error("GET /api/posts error:", error);
+    return Response.json({ error: error.message, stack: error.stack }, { status: 500 });
+  }
 };
 
 export const POST: APIRoute = async (ctx) => {
-  const d1 = ctx.locals.runtime?.env?.DB;
-  if (!d1) return Response.json({ error: "DB not found" }, { status: 500 });
-  const db = getDb(d1);
-  const body = await ctx.request.json() as Record<string, unknown>;
-  const values = {
-    title: body.title as string,
-    slug: body.slug as string,
-    description: body.description as string,
-    content: body.content as string,
-    category: body.category as string,
-    publishedAt: body.published_at as string,
-    image: (body.image as string) || null,
-    featured: Boolean(body.featured),
-    draft: Boolean(body.draft),
-    createdAt: new Date().toISOString(),
-  };
-  const result = await db.insert(posts).values(values).returning();
-  return Response.json(result[0], { status: 201 });
+  try {
+    const d1 = ctx.locals.runtime?.env?.DB;
+    if (!d1) return Response.json({ error: "DB not found" }, { status: 500 });
+    const db = getDb(d1);
+    const body = await ctx.request.json() as Record<string, unknown>;
+    const values = {
+      title: body.title as string,
+      slug: body.slug as string,
+      description: body.description as string,
+      content: body.content as string,
+      category: body.category as string,
+      publishedAt: body.published_at as string,
+      image: (body.image as string) || null,
+      featured: Boolean(body.featured),
+      draft: Boolean(body.draft),
+      createdAt: new Date().toISOString(),
+    };
+    const result = await db.insert(posts).values(values).returning();
+    return Response.json(result[0], { status: 201 });
+  } catch (error: any) {
+    console.error("POST /api/posts error:", error);
+    return Response.json({ error: error.message, stack: error.stack }, { status: 500 });
+  }
 };
 
 export const PUT: APIRoute = async (ctx) => {

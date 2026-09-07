@@ -22,9 +22,10 @@ const filePost = allFilePosts.find((p) => p.id === slug && !p.data.draft);
 let dbPost: any = null;
 let allDbPosts: any[] = [];
 try {
-  const res = await fetch(new URL('/api/posts', Astro.url));
-  if (res.ok) {
-    allDbPosts = await res.json();
+  const d1 = Astro.locals.runtime?.env?.DB;
+  if (d1) {
+    const db = getDb(d1);
+    allDbPosts = await db.select().from(postsTable);
     const found = allDbPosts.find((p: any) => p.slug === slug && !p.draft);
     if (found) {
       dbPost = found;
