@@ -17,7 +17,20 @@ export default defineConfig({
       serialize(item) {
         const now = new Date().toISOString();
         item.lastmod = now;
-        const path = new URL(item.url).pathname;
+        
+        let url = new URL(item.url);
+        // Clean URL to prevent redirects (strip .html and trailing slashes)
+        if (url.pathname.endsWith('/index.html')) {
+          url.pathname = url.pathname.slice(0, -11) || '/';
+        } else if (url.pathname.endsWith('.html')) {
+          url.pathname = url.pathname.slice(0, -5);
+        }
+        if (url.pathname.length > 1 && url.pathname.endsWith('/')) {
+          url.pathname = url.pathname.slice(0, -1);
+        }
+        item.url = url.href;
+
+        const path = url.pathname;
         if (path === "" || path === "/") {
           item.priority = 1.0;
         } else if (path.startsWith("/writing")) {
