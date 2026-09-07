@@ -2,12 +2,13 @@ import type { APIRoute } from "astro";
 import { eq } from "drizzle-orm";
 import { getDb } from "@lib/db";
 import { posts } from "../../../db/schema";
+import { env } from "cloudflare:workers";
 
 export const prerender = false;
 
-export const GET: APIRoute = async (ctx) => {
+export const GET: APIRoute = async () => {
   try {
-    const d1 = ctx.locals.runtime?.env?.DB;
+    const d1 = (env as any).DB;
     if (!d1) return Response.json([]);
     const db = getDb(d1);
     const all = await db.select().from(posts).all();
@@ -20,7 +21,7 @@ export const GET: APIRoute = async (ctx) => {
 
 export const POST: APIRoute = async (ctx) => {
   try {
-    const d1 = ctx.locals.runtime?.env?.DB;
+    const d1 = (env as any).DB;
     if (!d1) return Response.json({ error: "DB not found" }, { status: 500 });
     const db = getDb(d1);
     const body = await ctx.request.json() as Record<string, unknown>;
@@ -45,7 +46,7 @@ export const POST: APIRoute = async (ctx) => {
 };
 
 export const PUT: APIRoute = async (ctx) => {
-  const d1 = ctx.locals.runtime?.env?.DB;
+  const d1 = (env as any).DB;
   if (!d1) return Response.json({ error: "DB not found" }, { status: 500 });
   const db = getDb(d1);
   const body = await ctx.request.json() as Record<string, unknown>;
@@ -66,7 +67,7 @@ export const PUT: APIRoute = async (ctx) => {
 };
 
 export const DELETE: APIRoute = async (ctx) => {
-  const d1 = ctx.locals.runtime?.env?.DB;
+  const d1 = (env as any).DB;
   if (!d1) return Response.json({ error: "DB not found" }, { status: 500 });
   const db = getDb(d1);
   const { id } = await ctx.request.json() as { id: number };

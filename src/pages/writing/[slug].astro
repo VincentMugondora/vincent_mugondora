@@ -9,6 +9,7 @@ import { formatDate } from "@lib/utils";
 import { siteConfig } from "@config/site";
 import { getBreadcrumbJsonLd, getFAQJsonLd, getSpeakableJsonLd, getHowToJsonLd } from "@/lib/seo";
 import TableOfContents from "@components/writing/TableOfContents.astro";
+import { env } from "cloudflare:workers";
 
 export const prerender = false;
 
@@ -22,7 +23,7 @@ const filePost = allFilePosts.find((p) => p.id === slug && !p.data.draft);
 let dbPost: any = null;
 let allDbPosts: any[] = [];
 try {
-  const d1 = Astro.locals.runtime?.env?.DB;
+  const d1 = (env as any).DB;
   if (d1) {
     const db = getDb(d1);
     allDbPosts = await db.select().from(postsTable);

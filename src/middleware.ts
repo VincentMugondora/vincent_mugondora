@@ -8,7 +8,7 @@ const SECURITY_HEADERS: Record<string, string> = {
   "Permissions-Policy": "geolocation=(), microphone=(), camera=()",
   "Cross-Origin-Opener-Policy": "same-origin",
   "Content-Security-Policy":
-    "default-src 'self'; script-src 'self' 'unsafe-inline' https://analytics.ahrefs.com; style-src 'self' 'unsafe-inline'; img-src 'self' https: data:; font-src 'self'; connect-src 'self' https://analytics.ahrefs.com; frame-ancestors 'none'",
+    "default-src 'self'; script-src 'self' 'unsafe-inline' https://analytics.ahrefs.com https://static.cloudflareinsights.com; style-src 'self' 'unsafe-inline'; img-src 'self' https: data:; font-src 'self'; connect-src 'self' https://analytics.ahrefs.com https://cloudflareinsights.com; frame-ancestors 'none'",
 };
 
 function getCookie(request: Request, name: string): string | null {

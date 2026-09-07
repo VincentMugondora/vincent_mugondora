@@ -11,7 +11,7 @@ Primary Goal: Sub-50ms TTFB regional delivery, 100/100 Core Web Vitals, sub-seco
 1.2 Data, Form & API Layer
  * Database Placement:
    * If using Supabase, host exclusively in the af-south-1 (Johannesburg) AWS region to minimize regional database query latency.
-   * If using Cloudflare D1 (Serverless SQLite), access bindings natively inside Astro via Astro.locals.runtime.env.DB.
+   * If using Cloudflare D1 (Serverless SQLite), access bindings natively inside Astro via `import { env } from "cloudflare:workers"`.
  * Form Submissions: Handle contact and lead forms via serverless endpoints (src/pages/api/contact.ts) or zero-JS form providers (e.g., Web3Forms). Never load heavy client-side form libraries.
  * Analytics: Use Cloudflare Web Analytics (injected at the edge) or ultra-lightweight solutions (Plausible/Umami <1 KB). DO NOT embed standard gtag.js / Google Analytics scripts.
 2. FRONTEND ENGINEERING & ON-PAGE PERFORMANCE SPECS
