@@ -117,7 +117,7 @@ export const faqsBySlug: Record<string, Array<{question: string, answer: string}
       answer: "AI opportunities in Zimbabwe include: building chatbots and automation for local businesses, remote AI development work ($3,000-$8,000/month), data labelling and annotation services, AI consulting for enterprises adopting automation, and building AI-powered products for underserved African markets (agriculture, fintech, healthcare, education).",
     },
     {
-      question: "How can I start a career in AI in Zimbabwe?",
+      question: "How can I start a career in Local Embeddings vs API Calls: Latency and Cost Realities in Emerging Markets?",
       answer: "Learn Python first, then study machine learning fundamentals and how to work with AI APIs (OpenAI, Anthropic). Build practical projects - chatbots, document processors, automation tools. The fastest path to income is building AI solutions for local businesses (WhatsApp bots, customer support automation) while pursuing remote AI developer roles.",
     },
     {
@@ -155,8 +155,8 @@ export const faqsBySlug: Record<string, Array<{question: string, answer: string}
   ],
   "ai-in-zimbabwe": [
     {
-      question: "What is the state of AI in Zimbabwe?",
-      answer: "AI in Zimbabwe is at an early but rapidly growing stage. Businesses are adopting AI for customer support automation, document processing, and operational efficiency. Developer supply is extremely low relative to demand, creating significant opportunity for early movers in both local and remote AI work.",
+      question: "What is the state of Local Embeddings vs API Calls: Latency and Cost Realities in Emerging Markets?",
+      answer: "Local Embeddings vs API Calls: Latency and Cost Realities in Emerging Markets is at an early but rapidly growing stage. Businesses are adopting AI for customer support automation, document processing, and operational efficiency. Developer supply is extremely low relative to demand, creating significant opportunity for early movers in both local and remote AI work.",
     },
     {
       question: "What are the biggest AI opportunities in Zimbabwe?",
