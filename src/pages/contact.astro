@@ -302,9 +302,12 @@ const breadcrumbJsonLd = getBreadcrumbJsonLd([
               statusEl.classList.add('hidden');
             }, 5000);
           } else {
-            throw new Error('Failed to send');
+            const errData = await res.json().catch(() => ({}));
+            console.error('API Error:', errData);
+            throw new Error(errData.error || 'Failed to send');
           }
         } catch (error) {
+          console.error("Fetch Error:", error);
           statusEl.textContent = 'Oops! Something went wrong. Please try emailing me directly.';
           statusEl.classList.add('bg-red-100', 'text-red-800');
           statusEl.classList.remove('hidden');
