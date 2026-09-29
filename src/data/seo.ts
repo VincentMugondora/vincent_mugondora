@@ -29,7 +29,7 @@ export const faqsBySlug: Record<string, Array<{question: string, answer: string}
   ],
   "how-to-become-a-software-developer-in-zimbabwe": [
     {
-      question: "How long does it take to become a software developer in Zimbabwe?",
+      question: "How long does it take to become a software engineer in Zimbabwe?",
       answer: "With consistent daily practice of 1-3 hours, most people can land their first paid work within 10-12 months. This timeline includes learning fundamentals (months 1-3), building web applications (months 4-6), creating portfolio projects (months 7-9), and finding first paid work (months 10-12). Full-time dedication can accelerate this significantly.",
     },
     {
@@ -37,7 +37,7 @@ export const faqsBySlug: Record<string, Array<{question: string, answer: string}
       answer: "Python or JavaScript. Python is easiest for beginners and immediately useful for web development, data, automation, and AI. JavaScript is essential for web applications and has the largest global job market. Both have strong demand in Africa and work well on low-spec hardware with limited internet.",
     },
     {
-      question: "Can I become a software developer without a degree in Zimbabwe?",
+      question: "Can I become a software engineer without a degree in Zimbabwe?",
       answer: "Yes. The software industry increasingly values demonstrated skills over formal qualifications. A strong GitHub portfolio with 3-5 projects, contributions to open source, and practical experience matter more than a degree. Many successful Zimbabwean developers are self-taught using free online resources.",
     },
   ],
@@ -240,7 +240,7 @@ export const howToBySlug: Record<string, { name: string; description: string; to
     ],
   },
   "how-to-become-a-software-developer-in-zimbabwe": {
-    name: "How to Become a Software Developer in Zimbabwe",
+    name: "How to Become a software engineer in Zimbabwe",
     description: "A practical guide to starting a software development career in Zimbabwe - from first language to first job.",
     totalTime: "P12M",
     steps: [

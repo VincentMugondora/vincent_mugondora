@@ -42,8 +42,8 @@ export function getBaseJsonLd() {
         url: siteConfig.url,
         image: `${siteConfig.url}/vincent.avif`,
         description:
-          "Zimbabwean software developer and AI builder creating intelligent solutions for businesses in Africa. Educator and entrepreneur based in Harare.",
-        jobTitle: "Software Developer & AI Builder",
+          "Zimbabwean software engineer and AI builder creating intelligent solutions for businesses in Africa. based in Harare.",
+        jobTitle: "software engineer & AI Builder",
         email: siteConfig.email,
         telephone: siteConfig.phone,
         worksFor: { "@id": `${siteConfig.url}/#organization` },
@@ -109,9 +109,9 @@ export function getProfilePageJsonLd() {
       name: "Vincent Mugondora",
       url: siteConfig.url,
       image: `${siteConfig.url}/vincent.avif`,
-      jobTitle: "Software Developer, AI Builder & Technology Educator",
+      jobTitle: "software engineer & AI Builder",
       description:
-        "Zimbabwean software developer and AI builder creating intelligent solutions for businesses in Africa. Educator and entrepreneur based in Harare.",
+        "Zimbabwean software engineer and AI builder creating intelligent solutions for businesses in Africa. based in Harare.",
       address: {
         "@type": "PostalAddress",
         addressLocality: "Harare",
@@ -137,7 +137,7 @@ export function getProfilePageJsonLd() {
     name: `About ${siteConfig.name}`,
     url: `${siteConfig.url}/about`,
     description:
-      "About Vincent Mugondora - software engineer, AI builder, educator and entrepreneur from Zimbabwe building intelligent solutions and teaching developers.",
+      "About Vincent Mugondora - software engineer, AI builder, from Zimbabwe building intelligent solutions and teaching developers.",
   };
 }
 
